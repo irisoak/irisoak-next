@@ -1063,3 +1063,416 @@ body {
     max-width: 14rem;
   }
 }
+
+/* ========================================
+   Services
+======================================== */
+
+.services {
+  padding-block: 5rem 6rem;
+  background: var(--colour-background);
+}
+
+.services__eyebrow {
+  margin: 0 0 2.5rem;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================
+   Services List
+======================================== */
+
+.services__list {
+  border-top: 1px solid var(--colour-border);
+}
+
+.services__item {
+  border-bottom: 1px solid var(--colour-border);
+
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+/* ========================================
+   Services Summary Row
+======================================== */
+
+.services__summary {
+  display: grid;
+
+  grid-template-columns:
+    minmax(10rem, 0.7fr)
+    minmax(18rem, 1.7fr)
+    minmax(8rem, 0.6fr);
+
+  align-items: center;
+
+  gap: 2.5rem;
+
+  padding-block: 2rem;
+}
+
+.services__name h2 {
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.services__description {
+  max-width: 34rem;
+  margin: 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ========================================
+   Services Price + Explore
+======================================== */
+
+.services__action {
+  display: grid;
+
+  justify-items: end;
+
+  gap: 0.5rem;
+
+  text-align: right;
+}
+
+.services__price {
+  color: var(--colour-text-secondary);
+
+  font-size: 0.9rem;
+}
+
+.services__explore {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-primary);
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.services__explore:hover {
+  color: var(--colour-brand-primary);
+}
+
+.services__explore:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   Services Expanded State
+======================================== */
+
+.services__item--open {
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+
+  background: var(--colour-brand-primary);
+  color: var(--colour-background);
+}
+
+.services__item--open .services__name h2,
+.services__item--open .services__description,
+.services__item--open .services__price,
+.services__item--open .services__explore {
+  color: var(--colour-background);
+}
+
+.services__details {
+  padding:
+    0
+    0
+    2rem;
+}
+
+.services__detail {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: start;
+
+  gap: 2rem;
+
+  padding-block: 1.25rem;
+
+  border-top: 1px solid
+    color-mix(
+      in srgb,
+      var(--colour-background) 28%,
+      transparent
+    );
+}
+
+.services__detail h3 {
+  margin: 0;
+
+  color: var(--colour-background);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.services__detail p {
+  max-width: 42rem;
+
+  margin: 0.5rem 0 0;
+
+  color: color-mix(
+    in srgb,
+    var(--colour-background) 82%,
+    transparent
+  );
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.services__detail > span {
+  color: var(--colour-background);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* ========================================
+   Services Hover
+======================================== */
+
+@media (hover: hover) {
+  .services__item:not(.services__item--open):hover {
+    background: color-mix(
+      in srgb,
+      var(--colour-surface) 55%,
+      transparent
+    );
+  }
+
+  .services__summary {
+    transition: padding-inline 180ms ease;
+  }
+
+  .services__item:not(.services__item--open):hover
+    .services__summary {
+    padding-inline: 1rem;
+  }
+}
+
+/* ========================================
+   Custom Project
+======================================== */
+
+.services__custom {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: end;
+
+  gap: 2rem;
+
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+
+  border-top: 1px solid var(--colour-text-primary);
+}
+
+.services__custom-label {
+  margin: 0 0 0.75rem;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.services__custom h2 {
+  max-width: 20ch;
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+.services__custom-link {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-primary);
+
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.services__custom-link:hover {
+  color: var(--colour-brand-primary);
+}
+
+.services__custom-link:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   Services — Tablet
+======================================== */
+
+@media (max-width: 64rem) {
+  .services {
+    padding-block: 4.5rem 5rem;
+  }
+
+  .services__summary {
+    grid-template-columns:
+      minmax(8rem, 0.7fr)
+      minmax(0, 1.5fr)
+      auto;
+
+    gap: 1.75rem;
+  }
+}
+
+/* ========================================
+   Services — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .services {
+    padding-block: 4rem;
+  }
+
+  .services__eyebrow {
+    margin-bottom: 2rem;
+
+    text-align: left;
+  }
+
+  .services__summary {
+    grid-template-columns: 1fr;
+
+    gap: 0.85rem;
+
+    padding-block: 1.75rem;
+  }
+
+  .services__name h2 {
+    font-size: 1.8rem;
+  }
+
+  .services__description {
+    max-width: none;
+
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .services__action {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 0.25rem;
+
+    text-align: left;
+  }
+
+  .services__price,
+  .services__explore {
+    font-size: 0.9rem;
+  }
+
+  .services__item--open {
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+  }
+
+  .services__details {
+    padding-bottom: 1.75rem;
+  }
+
+  .services__detail {
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+
+    padding-block: 1rem;
+  }
+
+  .services__detail > span {
+    white-space: normal;
+  }
+
+  .services__custom {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+
+  .services__custom-label {
+    margin-bottom: 0.5rem;
+  }
+
+  .services__custom h2 {
+    max-width: none;
+
+    font-size: 2rem;
+  }
+
+  .services__custom-link {
+    justify-self: start;
+  }
+}
