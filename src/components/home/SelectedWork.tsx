@@ -60,7 +60,7 @@ export default function SelectedWork() {
 
         <div className="selected-work__footer">
           <Link href="/work" className="selected-work__view-all">
-            View All Work <span aria-hidden="true">→</span>
+            View My Work <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

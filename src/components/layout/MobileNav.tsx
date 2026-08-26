@@ -9,7 +9,7 @@ export default function MobileNav() {
         <span>Work</span>
       </Link>
 
-      <Link href="/services" className="mobile-nav__link">
+      <Link href="/#services" className="mobile-nav__link">
         <Layers3 size={20} strokeWidth={1.5} />
         <span>Services</span>
       </Link>

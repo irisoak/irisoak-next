@@ -35,7 +35,7 @@ export default function Hero() {
 
           <div className="hero__actions">
             <Button href="/work-with-me">
-              START A PRJOECT
+              START A PROJECT
             </Button>
 
             <Button href="/work" variant="text">

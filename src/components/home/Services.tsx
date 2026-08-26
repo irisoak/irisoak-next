@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Container from "@/components/layout/Container";
 
 type ServiceName = "Launch" | "Refresh" | "Care";
@@ -9,6 +10,7 @@ type Service = {
   name: ServiceName;
   description: string;
   price: string;
+  image: string;
   details: {
     label: string;
     price?: string;
@@ -22,14 +24,19 @@ const services: Service[] = [
     description:
       "A focused website to get your business online professionally.",
     price: "From £695",
+    image: "/images/services/launch.webp",
     details: [
       {
         label: "One Page",
         price: "From £695",
+        description:
+          "A focused single-page website for businesses that need a clear, professional online presence.",
       },
       {
         label: "Up to 5 Pages",
         price: "From £1,295",
+        description:
+          "A larger business website with room for dedicated services, about, contact and supporting content.",
       },
     ],
   },
@@ -38,6 +45,7 @@ const services: Service[] = [
     description:
       "Improve an existing website with a clearer, more polished experience.",
     price: "From £895",
+    image: "/images/services/refresh.webp",
     details: [
       {
         label: "Website Refresh",
@@ -52,18 +60,25 @@ const services: Service[] = [
     description:
       "Ongoing maintenance, monitoring and technical support for your website.",
     price: "From £89/month",
+    image: "/images/services/care.webp",
     details: [
       {
         label: "Essential",
         price: "£89/month",
+        description:
+          "Core technical maintenance, monitoring, security checks and regular site health reviews.",
       },
       {
         label: "Standard",
         price: "£179/month",
+        description:
+          "Everything in Essential, plus up to two hours of small content or website changes each month.",
       },
       {
         label: "Priority",
         price: "£329/month",
+        description:
+          "Ongoing technical support with up to four hours of monthly changes, higher priority and proactive improvement recommendations.",
       },
     ],
   },
@@ -71,12 +86,30 @@ const services: Service[] = [
 
 export default function Services() {
   const [openService, setOpenService] = useState<ServiceName | null>(null);
+  const [isCustomOpen, setIsCustomOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "success"
+    >("idle");
 
   const toggleService = (serviceName: ServiceName) => {
     setOpenService((current) =>
       current === serviceName ? null : serviceName
     );
   };
+
+  const handleCustomSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+    ) => {
+    event.preventDefault();
+
+    setFormStatus("sending");
+
+    // Temporary simulated submission.
+    // Replace with your real API/email handler later.
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    setFormStatus("success");
+    };
 
   return (
     <section className="services" id="services">
@@ -88,6 +121,7 @@ export default function Services() {
         <div className="services__list">
           {services.map((service) => {
             const isOpen = openService === service.name;
+            const serviceId = `service-${service.name.toLowerCase()}`;
 
             return (
               <article
@@ -105,6 +139,16 @@ export default function Services() {
                     {service.description}
                   </p>
 
+                  <div className="services__media" aria-hidden="true">
+                    <Image
+                      src={service.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 35vw"
+                      className="services__image"
+                    />
+                  </div>
+
                   <div className="services__action">
                     <span className="services__price">
                       {service.price}
@@ -114,20 +158,20 @@ export default function Services() {
                       type="button"
                       className="services__explore"
                       aria-expanded={isOpen}
-                      aria-controls={`service-${service.name.toLowerCase()}`}
+                      aria-controls={serviceId}
                       onClick={() => toggleService(service.name)}
                     >
                       {isOpen ? "Close" : "Explore"}
 
                       <span aria-hidden="true">
-                        {isOpen ? " ×" : " →"}
+                        {isOpen ? "x" : " →"}
                       </span>
                     </button>
                   </div>
                 </div>
 
                 <div
-                  id={`service-${service.name.toLowerCase()}`}
+                  id={serviceId}
                   className="services__details"
                   hidden={!isOpen}
                 >
@@ -156,7 +200,8 @@ export default function Services() {
         </div>
 
         <div className="services__custom">
-          <div>
+          {/* Custom Project text */}
+          <div className="services__custom-text">
             <p className="services__custom-label">
               Custom Project
             </p>
@@ -164,16 +209,209 @@ export default function Services() {
             <h2>
               Need something more specific?
             </h2>
+
+            <p className="services__custom-description">
+              Custom applications, integrations and more complex builds
+              are scoped around what your project actually needs.
+            </p>
           </div>
 
+          {/* Custom Project image */}
+          <div
+            className="services__custom-media"
+            aria-hidden="true"
+          >
+            <Image
+              src="/images/services/custom.webp"
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 35vw"
+              className="services__custom-image"
+            />
+          </div>
+
+          {/* Custom Project enquiry */}
           <button
             type="button"
             className="services__custom-link"
+            onClick={() => {
+                setFormStatus("idle");
+                setIsCustomOpen(true);
+            }}
           >
             Custom Enquiry
             <span aria-hidden="true"> ➺</span>
           </button>
         </div>
+
+        {isCustomOpen && (
+          <div
+            className="custom-enquiry"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="custom-enquiry-title"
+          >
+            <div
+              className="custom-enquiry__backdrop"
+              onClick={() => setIsCustomOpen(false)}
+              aria-hidden="true"
+            />
+
+            <div className="custom-enquiry__panel">
+              <button
+                type="button"
+                className="custom-enquiry__close"
+                aria-label="Close custom enquiry"
+                onClick={() => setIsCustomOpen(false)}
+              >
+                x
+              </button>
+
+              {formStatus === "success" ? (
+                <div className="custom-enquiry__success">
+                  <p className="custom-enquiry__eyebrow">
+                    Enquiry Received
+                  </p>
+
+                  <h2>Thank you for reaching out!</h2>
+
+                  <p className="custom-enquiry__intro">
+                    Your enquiry has been received. I&apos;ll review the
+                    details and follow up by email with next steps.
+                    If you have any questions in the meantime, please email me 
+                    directly at {" "}
+                    <a href="mailto:iris@irisoak.dev"
+                       className="enquiry-success__email"
+                    >
+                      iris@irisoak.dev
+                    </a>
+                  </p>
+
+                  <button
+                    type="button"
+                    className="button button--primary"
+                    onClick={() => setIsCustomOpen(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <p className="custom-enquiry__eyebrow">
+                    Custom Project
+                  </p>
+
+                  <h2 id="custom-enquiry-title">
+                    Tell me what you&apos;re looking to build.
+                  </h2>
+
+                  <p className="custom-enquiry__intro">
+                    A few details are enough to get started. I&apos;ll review your
+                    enquiry and follow up with the next steps.
+                  </p>
+
+                  <form
+                    className="custom-enquiry__form"
+                    onSubmit={handleCustomSubmit}
+                  >
+                    <label>
+                      Name
+                      <input
+                        type="text"
+                        name="name"
+                        autoComplete="name"
+                        required
+                      />
+                    </label>
+
+                    <label>
+                      Email
+                      <input
+                        type="email"
+                        name="email"
+                        autoComplete="email"
+                        required
+                      />
+                    </label>
+
+                    <label>
+                      What are you looking to build?
+                      <textarea
+                        name="project"
+                        rows={5}
+                        required
+                      />
+                    </label>
+
+                    <label>
+                      Budget range
+                        <select name="budget" defaultValue="">
+                          <option value="" disabled>
+                            Select a range
+                          </option>
+
+                          <option value="under-1000">
+                            Under £1,000
+                          </option>
+
+                          <option value="1000-2500">
+                            £1,000 - £2,500
+                          </option>
+
+                          <option value="2500-5000">
+                            £2,500 - £5,000
+                          </option>
+
+                          <option value="5000-plus">
+                            £5,000+
+                          </option>
+
+                          <option value="unsure">
+                            Not sure yet
+                          </option>
+                        </select>
+                      </label>
+
+                      <label>
+                        Timeline
+                        <select name="timeline" defaultValue="">
+                          <option value="" disabled>
+                            Select a timeline
+                          </option>
+
+                          <option value="asap">
+                            As soon as possible
+                          </option>
+
+                          <option value="1-2-months">
+                            1-2 months
+                          </option>
+
+                          <option value="3-6-months">
+                            3-6 months
+                          </option>
+
+                          <option value="flexible">
+                            Flexible
+                          </option>
+                        </select>
+                      </label>
+
+                      <button
+                        type="submit"
+                        className="button button--primary"
+                        disabled={formStatus === "sending"}
+                      >
+                        {formStatus === "sending"
+                          ? "Sending..."
+                          : "Send Enquiry"}
+                      </button>
+                    </form>
+                  </>
+                )}
+              </div>
+          </div>
+        )}
       </Container>
     </section>
   );
