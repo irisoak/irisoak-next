@@ -7,7 +7,7 @@ import { Mail } from "lucide-react";
 const footerNavigation = [
   { href: "/work", label: "Work" },
   { href: "/#services", label: "Services" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#client-journey", label: "Contact" },
 ];
 
 export default function Footer() {
@@ -19,14 +19,16 @@ export default function Footer() {
             iris & oak
           </Link>
 
-          <p className="footer-copyright">
-            © {new Date().getFullYear()} Iris & Oak. All rights reserved.
-          </p>
+          <div className="footer-legal">
+            <p className="footer-copyright">
+              © {new Date().getFullYear()} Iris & Oak. All rights reserved.
+            </p>
 
-          <Link href="/privacy" className="footer__privacy-link">
-            Privacy Policy
-          </Link>
-        </div>
+            <Link href="/privacy" className="footer__privacy-link">
+              Privacy Policy
+            </Link>
+          </div>
+        </div>  
 
         <nav aria-label="Footer navigation">
           <ul className="footer-nav">

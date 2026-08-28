@@ -269,6 +269,13 @@ export default function ClientJourney() {
             you.
           </p>
 
+          <p className="client-journey__email">
+            Prefer email?{" "}
+            <a href="mailto:iris@irisoak.dev">
+              iris@irisoak.dev
+            </a>
+          </p>
+
           {!isJourneyOpen && (
             <button
               type="button"
@@ -297,7 +304,7 @@ export default function ClientJourney() {
               aria-label="Close client journey form"
               onClick={() => setIsJourneyOpen(false)}
             >
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">x</span>
             </button>
 
             {/* ========================================

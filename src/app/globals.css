@@ -412,47 +412,49 @@ body {
 
   .footer-content {
     grid-template-columns: 1fr;
-
     align-items: start;
-
     gap: 2rem;
   }
 
-  /* Allows footer children to be reordered */
   .footer-brand {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
   .footer-logo {
-    order: 1;
+    justify-self: start;
+  }
 
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .footer-copyright {
+    margin: 0;
+  }
+
+  .footer__privacy-link {
+    margin: 0;
+  }
+
+  .footer-content > nav {
     justify-self: start;
   }
 
   .footer-nav {
-    order: 2;
-
     flex-wrap: wrap;
-
     justify-content: flex-start;
-    justify-self: start;
-
     gap: 1rem 1.5rem;
   }
 
   .footer-socials {
-    order: 3;
-
     justify-content: flex-start;
     justify-self: start;
-  }
-
-  .footer-copyright {
-    order: 4;
-
-    justify-self: start;
-
-    margin-top: 0.5rem;
   }
 }
 
@@ -2822,6 +2824,24 @@ body {
   line-height: 1.7;
 }
 
+.client-journey__email {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--colour-text-secondary);
+}
+
+.client-journey__email a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.client-journey__email a:hover {
+  color: var(--colour-brand-primary);
+}
+
 .client-journey__placeholder {
   margin-top: 3rem;
   padding-block: 3rem;
@@ -3781,6 +3801,636 @@ body {
 
   .form-actions > .button--primary {
     justify-self: end;
+  }
+}
+
+/* ========================================
+   Work Page
+======================================== */
+
+.work-page {
+  padding-block: 7rem;
+}
+
+.work-page__header {
+  max-width: 50rem;
+  margin-bottom: 6rem;
+}
+
+.work-page__eyebrow {
+  margin: 0 0 1.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.work-page__header h1 {
+  max-width: 10ch;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.work-page__intro {
+  max-width: 40rem;
+  margin: 2rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.work-page__projects {
+  border-top: 1px solid currentColor;
+}
+
+.work-page__project {
+  border-bottom: 1px solid currentColor;
+}
+
+.work-page__project-link {
+  display: grid;
+  grid-template-columns: 3rem minmax(16rem, 0.75fr) 1fr;
+  gap: 2rem;
+
+  padding-block: 3rem;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-page__project-number {
+  padding-top: 0.25rem;
+
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.work-page__project-image {
+  min-height: 20rem;
+
+  background: rgba(0, 0, 0, 0.06);
+
+  overflow: hidden;
+}
+
+.work-page__project-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 2rem;
+}
+
+.work-page__category {
+  margin: 0 0 1rem;
+
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+}
+
+.work-page__project-content h2 {
+  margin: 0;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.work-page__description {
+  max-width: 30rem;
+  margin: 1.5rem 0 0;
+
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
+.work-page__arrow {
+  flex: 0 0 auto;
+
+  font-size: 2rem;
+
+  transition: transform 180ms ease;
+}
+
+.work-page__project-link:hover .work-page__arrow {
+  transform: translateX(0.4rem);
+}
+
+.work-page__contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 2rem;
+
+  margin-top: 5rem;
+  padding-top: 2rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.work-page__contact p {
+  margin: 0;
+
+  font-size: 1.22rem;
+}
+
+.work-page__contact a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ========================================
+   Work Page — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .work-page {
+    padding-block: 4rem 6rem;
+  }
+
+  .work-page__header {
+    margin-bottom: 4rem;
+  }
+
+  .work-page__header h1 {
+    font-size: clamp(3rem, 15vw, 4.5rem);
+  }
+
+  .work-page__project-link {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    padding-block: 2.5rem;
+  }
+
+  .work-page__project-image {
+    min-height: 15rem;
+  }
+
+  .work-page__project-content {
+    align-items: flex-end;
+  }
+
+  .work-page__project-content h2 {
+    font-size: 2.75rem;
+  }
+
+  .work-page__contact {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* ========================================
+   Case Study
+======================================== */
+
+.case-study {
+  padding-block: 6rem 0;
+}
+
+.case-study__hero {
+  padding-bottom: 5rem;
+}
+
+.case-study__back {
+  display: inline-block;
+
+  margin-bottom: 4rem;
+
+  color: inherit;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.case-study__back:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.case-study__eyebrow {
+  margin: 0 0 1.25rem;
+
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+
+.case-study__hero h1 {
+  margin: 0;
+
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.case-study__lead {
+  max-width: 46rem;
+
+  margin: 2rem 0 0;
+
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.6;
+}
+
+.case-study__meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 2rem;
+
+  margin-top: 4rem;
+  padding-top: 2rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.case-study__meta div {
+  min-width: 0;
+}
+
+.case-study__meta span {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+}
+
+.case-study__meta p {
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.case-study__meta-link {
+  display: inline-block;
+
+  margin-top: 0.5rem;
+
+  color: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  border-bottom: 1px solid currentColor;
+}
+
+.case-study__meta-link:hover {
+  opacity: 0.65;
+}
+
+
+/* ========================================
+   Case Study — Visuals
+======================================== */
+
+.case-study__visual {
+  padding-block: 2rem 6rem;
+}
+
+.case-study__image--powerbi {
+  max-width: 74rem;
+  margin-inline: auto;
+}
+
+.case-study__image--hero {
+  min-height: 46rem;
+}
+
+.case-study__screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   Case Study — Sections
+======================================== */
+
+.case-study__section {
+  padding-block: 6rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.case-study__section-grid {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
+
+  gap: 4rem;
+}
+
+.case-study__section-number {
+  margin: 0 0 0.4rem;
+
+  font-size: 0.95rem;
+  opacity: 0.5;
+}
+
+.case-study__section-label {
+  margin: 0;
+
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.case-study__section-content {
+  max-width: 56rem;
+}
+
+.case-study__section-content h2 {
+  max-width: 14ch;
+
+  margin: 0 0 2rem;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.75rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.case-study__section-content > p {
+  max-width: 46rem;
+
+  margin: 0;
+
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.case-study__section-content > p + p {
+  margin-top: 1.25rem;
+}
+
+
+/* ========================================
+   Case Study — Capabilities
+======================================== */
+
+.case-study__capabilities {
+  margin-top: 3rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.case-study__capability {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+
+  gap: 1.5rem;
+
+  padding-block: 1.25rem;
+
+  border-bottom: 1px solid currentColor;
+}
+
+.case-study__capability span {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.case-study__capability p {
+  margin: 0;
+
+  font-size: 1rem;
+}
+
+
+/* ========================================
+   Case Study — Technology
+======================================== */
+
+.case-study__technology {
+  margin-top: 3rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.case-study__technology-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.35fr) 1fr;
+
+  gap: 2rem;
+
+  padding-block: 1.2rem;
+
+  border-bottom: 1px solid currentColor;
+}
+
+.case-study__technology-row span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+}
+
+.case-study__technology-row p {
+  margin: 0;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   Case Study — Architecture
+======================================== */
+
+.case-study__architecture {
+  display: grid;
+  justify-items: start;
+
+  gap: 0.75rem;
+
+  max-width: 30rem;
+
+  margin-top: 3rem;
+  padding: 2rem;
+
+  border: 1px solid currentColor;
+}
+
+.case-study__architecture p {
+  margin: 0;
+
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+}
+
+.case-study__architecture span {
+  font-size: 0.8rem;
+  opacity: 0.55;
+}
+
+/* ========================================
+   Case Study — Deployment Note
+======================================== */
+
+.case-study__deployment-note {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.case-study__deployment-note span {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+}
+
+.case-study__deployment-note p {
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   Case Study — Result
+======================================== */
+
+.case-study__section--result {
+  padding-bottom: 7rem;
+}
+
+.case-study__external-link {
+  display: inline-block;
+
+  margin-top: 2.5rem;
+
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.case-study__external-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+
+/* ========================================
+   Case Study — Navigation
+======================================== */
+
+.case-study__navigation {
+  padding-block: 2rem 4rem;
+
+  border-top: 1px solid currentColor;
+}
+
+.case-study__navigation a {
+  color: inherit;
+  font-size: 1.055rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.case-study__navigation a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+
+/* ========================================
+   Case Study — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .case-study {
+    padding-top: 4rem;
+  }
+
+  .case-study__hero {
+    padding-bottom: 3.5rem;
+  }
+
+  .case-study__back {
+    margin-bottom: 3rem;
+  }
+
+  .case-study__hero h1 {
+    font-size: clamp(4rem, 20vw, 6rem);
+  }
+
+  .case-study__lead {
+    font-size: 1.1rem;
+  }
+
+  .case-study__meta {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1.75rem 1rem;
+
+    margin-top: 3rem;
+  }
+
+  .case-study__visual {
+    padding-block: 1rem 4rem;
+  }
+
+  .case-study__image,
+  .case-study__image--hero {
+    min-height: 18rem;
+  }
+
+  .case-study__section {
+    padding-block: 4rem;
+  }
+
+  .case-study__section-grid {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+  }
+
+  .case-study__section-content h2 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .case-study__section-content > p {
+    font-size: 1rem;
+  }
+
+  .case-study__technology-row {
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+  }
+
+  .case-study__architecture {
+    width: 100%;
+
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+  }
+
+  .case-study__section--result {
+    padding-bottom: 5rem;
+  }
+
+  .case-study__navigation {
+    padding-bottom: 6rem;
   }
 }
 
