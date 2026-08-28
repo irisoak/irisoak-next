@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import Container from "@/components/layout/Container";
 
@@ -109,11 +110,11 @@ export default function ClientJourney() {
 
     const displayValues: Record<string, string> = {
       "one-page": "One page",
-      "2-5-pages": "2–5 Pages",
+      "2-5-pages": "2-5 Pages",
       "more-than-5": "More than 5 Pages",
 
-      "1-3-months": "1–3 Months",
-      "3-6-months": "3–6 Months",
+      "1-3-months": "1-3 Months",
+      "3-6-months": "3-6 Months",
 
       asap: "As soon as possible",
       exploring: "Just exploring ideas",
@@ -1267,8 +1268,14 @@ export default function ClientJourney() {
                       />
 
                       <span>
-                        I confirm that Iris & Oak may use the information
-                        provided to respond to this enquiry.
+                        I confirm that Iris & Oak may use the information provided to respond to this enquiry. See the{" "}
+                        <a
+                          href="/privacy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Privacy Policy.
+                        </a>  
                       </span>
                     </label>
 

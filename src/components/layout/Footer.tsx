@@ -20,8 +20,12 @@ export default function Footer() {
           </Link>
 
           <p className="footer-copyright">
-            © {new Date().getFullYear()} Iris & Oak
+            © {new Date().getFullYear()} Iris & Oak. All rights reserved.
           </p>
+
+          <Link href="/privacy" className="footer__privacy-link">
+            Privacy Policy
+          </Link>
         </div>
 
         <nav aria-label="Footer navigation">

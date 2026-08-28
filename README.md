@@ -1,36 +1,229 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Iris & Oak
 
-## Getting Started
+A production-focused freelance software development website built for **Iris & Oak**.
 
-First, run the development server:
+Iris & Oak provides thoughtfully engineered websites, web applications and technical solutions for individuals, startups and small businesses.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+> Thoughtfully engineered software, built to last.
+
+## Overview
+
+The Iris & Oak website is a production-focused Next.js application designed around a simple client journey: understand the services available, explore the approach to development and submit a structured project enquiry.
+
+The site prioritises responsive design, clear communication and a calm, straightforward experience for prospective clients.
+
+This repository is publicly available for **portfolio, demonstration and code-review purposes**. Iris & Oak and the source code contained within this repository remain proprietary.
+
+## Features
+
+- Responsive desktop and mobile experience
+- Service and pricing presentation
+- Expandable service details
+- Multi-step client enquiry journey
+- Service-specific project questions
+- Review and amend workflow before submission
+- Form validation and consent handling
+- Separate custom project enquiry flow
+- Transactional enquiry emails
+- Mobile navigation
+- Responsive layouts across common screen sizes
+
+## Services
+
+The website presents four primary service categories:
+
+### Launch
+
+Focused websites for businesses establishing their online presence.
+
+### Refresh
+
+Redesign and improvement of existing websites.
+
+### Care
+
+Ongoing website maintenance, monitoring and technical support.
+
+### Custom Project
+
+Tailored development for projects that fall outside the standard service packages.
+
+Current service packages and pricing are available directly through the Iris & Oak website.
+
+## Tech Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- CSS
+
+### Backend & Integrations
+
+- Next.js API Routes
+- Resend
+
+### Development
+
+- Git
+- GitHub
+- Node.js
+
+## Client Enquiry Flow
+
+The main enquiry experience uses a four-step client journey:
+
+1. **About you**
+2. **Your needs**
+3. **Your project**
+4. **Review and send**
+
+Project questions adapt to the service selected by the client, allowing Iris & Oak to collect relevant project information without presenting unnecessary technical questions.
+
+Before submission, clients can review their information and amend individual sections.
+
+The enquiry flow also includes:
+
+- Required-field validation
+- Email validation
+- Consent confirmation
+- Service-specific project questions
+- Clear, readable review summary
+- Submission error handling
+- Transactional email integration
+- Successful submission confirmation
+- Form reset for subsequent enquiries
+
+A separate streamlined enquiry experience is provided for custom projects.
+
+## Responsive Design
+
+The interface has been designed for both desktop and mobile use.
+
+The mobile experience includes:
+
+- Dedicated mobile navigation
+- Responsive typography and spacing
+- Mobile-friendly enquiry forms
+- Responsive service layouts
+- Touch-friendly controls
+- Adapted review and submission layouts
+
+## Email Integration
+
+Client enquiries are processed through server-side API routes and integrated with **Resend** for transactional email delivery.
+
+Sensitive credentials and API keys are managed through environment variables and are not exposed through client-side code.
+
+## Testing
+
+v1.0.0 has been tested primarily through manual QA across the main user journeys and responsive layouts.
+
+Automated testing is planned as part of a future release.
+
+Current manual testing covers areas including:
+
+- Navigation
+- Responsive layouts
+- Service interactions
+- Form validation
+- Multi-step enquiry navigation
+- Review and amend functionality
+- Consent validation
+- Enquiry submission
+- Email delivery
+- Submission success states
+- Form reset behaviour
+- Desktop and mobile layouts
+
+## Project Structure
+
+```text
+irisoak-next/
+├── public/
+├── src/
+│   ├── api/
+│   ├── app/
+│   └── components/
+├── .gitignore
+├── LICENSE.md
+├── .nvmrc
+├── package.json
+├── README.md
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Status
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**v1.0.0 — MVP**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The core Iris & Oak website is feature-complete for its initial MVP release.
 
-## Learn More
+v1.0.0 includes the primary website experience, service presentation, responsive layouts, client enquiry workflows and transactional email integration.
 
-To learn more about Next.js, take a look at the following resources:
+Further improvements will be developed as separate releases rather than continuing to expand the initial MVP scope.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Potential post-v1.0 improvements include:
 
-## Deploy on Vercel
+- Additional case studies and client work
+- Automated testing
+- Accessibility and multilingual support
+- Enquiry workflow enhancements
+- Client account and project portal
+- Proposal and invoicing integrations
+- Additional business administration tooling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The roadmap is subject to change as Iris & Oak develops and real client requirements emerge.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Security
+
+Sensitive credentials and production configuration are managed using environment variables and are not committed to source control.
+
+The public repository does not contain production API keys, credentials, client information or other secrets.
+
+Any production-specific configuration that should not be publicly accessible is maintained separately from the public source code.
+
+## Repository Usage
+
+This repository is public so that prospective clients, recruiters and other interested parties can review the development work behind Iris & Oak.
+
+Public visibility does **not** mean that the project is open source.
+
+The repository is provided for:
+
+- Portfolio viewing
+- Technical demonstration
+- Code review
+- Recruitment and professional evaluation
+
+Permission is not granted to use this repository as a template, starter project or commercial product.
+
+## License
+
+Copyright © 2026 Iris & Oak. All rights reserved.
+
+This repository and its contents are publicly available for **portfolio, demonstration and code-review purposes only**.
+
+Unless prior written permission is provided by Iris & Oak, the source code, website design, branding, written content and other original materials contained within this repository may not be:
+
+- Copied or reproduced
+- Modified or adapted
+- Redistributed
+- Republished
+- Sublicensed
+- Sold
+- Used as a template or starter project
+- Used in another commercial or non-commercial project
+
+No open-source license is granted by the publication or public accessibility of this repository.
+
+The **Iris & Oak** name, identity, visual design and associated branding remain proprietary.
+
+For permission regarding use of any material contained within this repository, please contact Iris & Oak.
+
+**All rights reserved.**
+
+See [`LICENSE`](./LICENSE) for full terms.

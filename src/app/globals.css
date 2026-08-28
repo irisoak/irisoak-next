@@ -362,6 +362,31 @@ body {
   text-decoration: none;
 }
 
+.footer__legal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.footer__legal p {
+  margin: 0;
+}
+
+.footer__privacy-link {
+  color: inherit;
+  font-size: 0.8rem;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 180ms ease;
+}
+
+.footer__privacy-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 /* Footer hover */
 .footer-nav a:hover,
 .footer-socials a:hover {
@@ -2280,6 +2305,49 @@ body {
   text-underline-offset: 0.2rem;
 }
 
+.custom-enquiry__consent {
+  margin-top: 0.5rem;
+}
+
+.custom-enquiry__consent-label {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.custom-enquiry__consent-label input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.custom-enquiry__consent-label span {
+  flex: 1;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.custom-enquiry__consent-label a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.custom-enquiry__consent-error {
+  margin: 0.5rem 0 0 1.75rem;
+  font-size: 0.85rem;
+}
+
 /* ========================================
    Services — Tablet
 ======================================== */
@@ -3400,6 +3468,18 @@ body {
   font-style: italic;
 }
 
+.form-confirmation a {
+  color: var(--colour-brand-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.form-confirmation a:hover {
+  text-decoration-thickness: 2px;
+}
+
 /* ========================================
    Client Journey — Review Mobile
 ======================================== */
@@ -3478,6 +3558,170 @@ body {
 
 .client-journey__success .button {
   margin-top: 2rem;
+}
+
+/* ========================================
+   Privacy Policy
+======================================== */
+
+.privacy-page {
+  padding-block: 7rem;
+  background: var(--colour-background);
+}
+
+.privacy-page__header {
+  max-width: 52rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.privacy-page__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--colour-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.privacy-page__header h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--colour-brand-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.privacy-page__intro {
+  max-width: 42rem;
+  margin: 2rem 0 0;
+  color: var(--colour-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.privacy-page__updated {
+  margin: 1.5rem 0 0;
+  color: var(--colour-text-secondary);
+  font-size: 0.85rem;
+}
+
+.privacy-page__content {
+  display: grid;
+  gap: 0;
+  max-width: 52rem;
+  margin-top: 2rem;
+}
+
+.privacy-page__content > section {
+  padding-block: 2.75rem;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.privacy-page__content h2 {
+  margin: 0 0 1.25rem;
+  color: var(--colour-brand-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.privacy-page__content h3 {
+  margin: 0 0 0.5rem;
+  color: var(--colour-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.privacy-page__content p {
+  margin: 0;
+  color: var(--colour-text-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.privacy-page__content p + p {
+  margin-top: 1rem;
+}
+
+.privacy-page__content ul {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+  padding-left: 1.25rem;
+  color: var(--colour-text-secondary);
+}
+
+.privacy-page__content li {
+  padding-left: 0.25rem;
+  line-height: 1.65;
+}
+
+.privacy-page__content a,
+.privacy-page__footer a {
+  color: var(--colour-brand-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.privacy-page__provider {
+  margin-top: 1.75rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--colour-border);
+}
+
+.privacy-page__provider + .privacy-page__provider {
+  margin-top: 2rem;
+}
+
+.privacy-page__rights-callout {
+  margin-block: 1rem;
+  padding-inline: 1.5rem;
+  border-left: 2px solid var(--colour-brand-primary);
+}
+
+.privacy-page__footer {
+  max-width: 52rem;
+  padding-top: 3rem;
+}
+
+.privacy-page__footer a {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@media (max-width: 48rem) {
+  .privacy-page {
+    padding-block: 4rem 6rem;
+  }
+
+  .privacy-page__header {
+    padding-bottom: 3rem;
+  }
+
+  .privacy-page__header h1 {
+    font-size: 3.25rem;
+  }
+
+  .privacy-page__intro {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .privacy-page__content > section {
+    padding-block: 2.25rem;
+  }
+
+  .privacy-page__content h2 {
+    font-size: 1.9rem;
+  }
+
+  .privacy-page__rights-callout {
+    padding-inline: 1rem 0;
+  }
 }
 
 /* ========================================

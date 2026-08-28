@@ -91,6 +91,9 @@ export default function Services() {
     "idle" | "sending" | "success" | "error"
     >("idle");
 
+  const [customConsentGiven, setCustomConsentGiven] = useState(false);
+  const [customConsentError, setCustomConsentError] = useState(false);  
+
   const toggleService = (serviceName: ServiceName) => {
     setOpenService((current) =>
       current === serviceName ? null : serviceName
@@ -102,6 +105,12 @@ export default function Services() {
     ) => {
     event.preventDefault();
 
+    if (!customConsentGiven) {
+        setCustomConsentError(true);
+        return;
+    }
+
+    setCustomConsentError(false);
     setFormStatus("sending");
 
     const form = event.currentTarget;
@@ -130,10 +139,11 @@ export default function Services() {
       }
 
       setFormStatus("success");
+      setCustomConsentGiven(false);
+      setCustomConsentError(false);
       form.reset();
     } catch (error) {
       console.error(error);
-
       setFormStatus("error");
     }
   };
@@ -276,8 +286,10 @@ export default function Services() {
             type="button"
             className="services__custom-link"
             onClick={() => {
-                setFormStatus("idle");
-                setIsCustomOpen(true);
+              setFormStatus("idle");
+              setCustomConsentGiven(false);
+              setCustomConsentError(false);
+              setIsCustomOpen(true);
             }}
           >
             Custom Enquiry
@@ -437,6 +449,49 @@ export default function Services() {
                           </option>
                         </select>
                       </label>
+
+                      <div className="custom-enquiry__consent">
+                        <label className="custom-enquiry__consent-label">
+                          <input
+                            type="checkbox"
+                            name="privacyAcknowledgement"
+                            checked={customConsentGiven}
+                            required
+                            aria-invalid={customConsentError}
+                            onChange={(event) => {
+                              const checked = event.target.checked;
+
+                              setCustomConsentGiven(checked);
+
+                              if (checked) {
+                                setCustomConsentError(false);
+                              }
+                            }}
+                          />
+
+                          <span>
+                            I confirm that Iris & Oak may use the information provided to respond
+                            to this enquiry.{" "}
+                            <a
+                              href="/privacy"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              See the Privacy Policy.
+                            </a>
+                          </span>
+                        </label>
+
+                        {customConsentError && (
+                          <p
+                            className="custom-enquiry__consent-error"
+                            role="alert"
+                          >
+                            Please confirm that you have read the privacy information before
+                            sending your enquiry.
+                          </p>
+                        )}
+                      </div>
 
                       {formStatus === "error" && (
                         <p
