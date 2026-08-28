@@ -88,7 +88,7 @@ export default function Services() {
   const [openService, setOpenService] = useState<ServiceName | null>(null);
   const [isCustomOpen, setIsCustomOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<
-    "idle" | "sending" | "success"
+    "idle" | "sending" | "success" | "error"
     >("idle");
 
   const toggleService = (serviceName: ServiceName) => {
@@ -104,12 +104,50 @@ export default function Services() {
 
     setFormStatus("sending");
 
-    // Temporary simulated submission.
-    // Replace with your real API/email handler later.
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    setFormStatus("success");
+    const enquiry = {
+      service: "custom",
+      name: formData.get("name"),
+      email: formData.get("email"),
+      project: formData.get("project"),
+      budget: formData.get("budget"),
+      timeline: formData.get("timeline"),
     };
+
+    try {
+      const response = await fetch("/api/enquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(enquiry),
+      });
+
+      if (!response.ok) {
+        throw new Error("Enquiry submission failed.");
+      }
+
+      setFormStatus("success");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+
+      setFormStatus("error");
+    }
+  };
+   
+  const handleServiceEnquiry = (serviceName: ServiceName) => {
+    console.log("Selected service:", serviceName);
+
+    document
+      .getElementById("client-journey")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
 
   return (
     <section className="services" id="services">
@@ -161,7 +199,7 @@ export default function Services() {
                       aria-controls={serviceId}
                       onClick={() => toggleService(service.name)}
                     >
-                      {isOpen ? "Close" : "Explore"}
+                      {isOpen ? "" : "Explore"}
 
                       <span aria-hidden="true">
                         {isOpen ? "x" : " →"}
@@ -170,30 +208,33 @@ export default function Services() {
                   </div>
                 </div>
 
-                <div
-                  id={serviceId}
-                  className="services__details"
-                  hidden={!isOpen}
-                >
-                  {service.details.map((detail) => (
-                    <div
-                      className="services__detail"
-                      key={detail.label}
-                    >
-                      <div>
-                        <h3>{detail.label}</h3>
-
-                        {detail.description && (
+                {openService === service.name && (
+                  <div className="services__details">
+                    {service.details.map((detail) => (
+                      <div
+                        className="services__detail"
+                        key={detail.label}
+                      >
+                        <div>
+                          <h3>{detail.label}</h3>
                           <p>{detail.description}</p>
-                        )}
-                      </div>
+                        </div>
 
-                      {detail.price && (
                         <span>{detail.price}</span>
-                      )}
+                      </div>
+                    ))}
+
+                    <div className="services__enquire-row">
+                      <button
+                        type="button"
+                        className="services__enquire"
+                        onClick={() => handleServiceEnquiry(service.name)}
+                      >
+                        Enquire <span aria-hidden="true">→</span>
+                      </button>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </article>
             );
           })}
@@ -355,11 +396,11 @@ export default function Services() {
                           </option>
 
                           <option value="1000-2500">
-                            £1,000 - £2,500
+                            £1,000-£2,500
                           </option>
 
                           <option value="2500-5000">
-                            £2,500 - £5,000
+                            £2,500-£5,000
                           </option>
 
                           <option value="5000-plus">
@@ -384,11 +425,11 @@ export default function Services() {
                           </option>
 
                           <option value="1-2-months">
-                            1-2 months
+                            1-2 Months
                           </option>
 
                           <option value="3-6-months">
-                            3-6 months
+                            3-6 Months
                           </option>
 
                           <option value="flexible">
@@ -396,6 +437,19 @@ export default function Services() {
                           </option>
                         </select>
                       </label>
+
+                      {formStatus === "error" && (
+                        <p
+                          className="custom-enquiry__error"
+                          role="alert"
+                        >
+                          Something went wrong while sending your enquiry.
+                          Please try again or email me directly at{" "}
+                          <a href="mailto:iris@irisoak.dev">
+                            iris@irisoak.dev
+                          </a>.
+                        </p>
+                      )}
 
                       <button
                         type="submit"

@@ -768,26 +768,53 @@ body {
 }
 
 /* ========================================
-   Selected Work
+   Hero — Entrance Animation
 ======================================== */
 
-.selected-work {
-  padding-block: 4rem 5rem;
+.hero__title,
+.hero__text,
+.hero__supporting-text,
+.hero__actions,
+.hero__media {
+  opacity: 0;
+  transform: translateY(12px);
 
-  background: var(--colour-background);
+  animation:
+    hero-enter 650ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
 }
 
-/* Section heading */
-.selected-work__eyebrow {
-  margin: 0 0 1.5rem;
+.hero__title {
+  animation-delay: 80ms;
+}
 
-  color: var(--colour-text-primary);
+.hero__text {
+  animation-delay: 150ms;
+}
 
-  font-size: 1rem;
-  font-weight: 600;
+.hero__supporting-text {
+  animation-delay: 220ms;
+}
 
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.hero__actions {
+  animation-delay: 290ms;
+}
+
+.hero__media {
+  animation-delay: 180ms;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ========================================
@@ -1041,6 +1068,148 @@ body {
 }
 
 /* ========================================
+   Technology Approach
+   Desktop: thin horizontal statement band
+======================================== */
+
+.technology-approach {
+  padding-top: 3.5rem;
+  padding-bottom: 5.5rem;
+
+  background: var(--colour-background);
+}
+
+/* Main statement */
+.technology-approach__primary {
+  max-width: 50rem;
+
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 1.75vw, 1.85rem);
+  font-weight: 400;
+
+  line-height: 1.3;
+}
+
+/* Main desktop layout */
+.technology-approach__inner {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.8fr)
+    auto
+    minmax(14rem, 0.7fr);
+
+  align-items: center;
+
+  gap: 2.5rem;
+
+  padding-block: 2.25rem;
+
+  border-top: 1px solid var(--colour-border);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+/* Main statement */
+.technology-approach__primary {
+  max-width: 44rem;
+
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 400;
+
+  line-height: 1.3;
+}
+
+/* Desktop vertical divider */
+.technology-approach__divider {
+  width: 1px;
+  height: 5rem;
+
+  background: var(--colour-border);
+}
+
+/* Supporting statement */
+.technology-approach__secondary {
+  max-width: 22rem;
+
+  margin: 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* ========================================
+   Technology Approach — Mobile
+   Editorial staggered layout
+======================================== */
+
+@media (max-width: 48rem) {
+  .technology-approach {
+    padding-top: 2.5rem;
+    padding-bottom: 6.5rem;
+  }
+
+  .technology-approach__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 0;
+
+    padding-block: 2rem;
+  }
+
+  /* Main statement stays left */
+  .technology-approach__primary {
+    max-width: 21rem;
+
+    font-size: 1.65rem;
+    line-height: 1.3;
+  }
+
+  /* Long editorial divider */
+  .technology-approach__divider {
+    width: 70%;
+    height: 1px;
+
+    margin:
+      2rem
+      0
+      1.25rem;
+
+    background: var(--colour-border);
+  }
+
+  /* Secondary statement moves to the right */
+  .technology-approach__secondary {
+    width: 58%;
+    max-width: 17rem;
+
+    margin:
+      0
+      0
+      0
+      auto;
+
+    color: var(--colour-text-secondary);
+
+    font-size: 0.95rem;
+    line-height: 1.65;
+
+    text-align: left;
+  }
+}
+
+/* ========================================
    My Approach
 ======================================== */
 
@@ -1058,7 +1227,7 @@ body {
 
   color: var(--colour-text-primary);
 
-  font-size: 1rem;
+  font-size: 1.135rem;
   font-weight: 600;
 
   text-transform: uppercase;
@@ -1167,7 +1336,7 @@ body {
 
   color: var(--colour-text-primary);
 
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
 
   text-transform: uppercase;
@@ -1416,6 +1585,46 @@ body {
   color: var(--colour-background);
 }
 
+
+/* ========================================
+   Services — Expanded Action
+   Desktop
+======================================== */
+
+.services__item--open .services__action {
+  display: grid;
+
+  align-content: center;
+  justify-items: end;
+
+  gap: 0.5rem;
+
+  padding-block: 1.5rem;
+  padding-left: 2rem;
+
+  text-align: right;
+}
+
+/* Close icon above starting price */
+.services__item--open .services__explore {
+  order: -1;
+
+  justify-self: end;
+
+  font-size: 1.5rem;
+  line-height: 1;
+
+  transform: translateY(-1.15rem);
+}
+
+/* Starting price stays underneath */
+.services__item--open .services__price {
+  order: 1;
+
+  justify-self: end;
+}
+
+
 /* ========================================
    Services — Expanded Pricing Details
 ======================================== */
@@ -1424,7 +1633,7 @@ body {
   padding-bottom: 2rem;
 }
 
-/* Individual tier */
+/* Individual pricing tier */
 .services__detail {
   display: grid;
 
@@ -1446,18 +1655,26 @@ body {
     );
 }
 
-/* Tier title */
+
+/* ========================================
+   Services — Tier Title
+======================================== */
+
 .services__detail h3 {
   margin: 0;
 
   color: var(--colour-background);
 
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 600;
 }
 
-/* Tier description */
+
+/* ========================================
+   Services — Tier Description
+======================================== */
+
 .services__detail p {
   max-width: 42rem;
 
@@ -1473,7 +1690,11 @@ body {
   line-height: 1.6;
 }
 
-/* Tier price */
+
+/* ========================================
+   Services — Tier Price
+======================================== */
+
 .services__detail > span {
   color: var(--colour-background);
 
@@ -1481,6 +1702,105 @@ body {
   font-weight: 600;
 
   white-space: nowrap;
+}
+
+/* ========================================
+   Services — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+
+  /* Expanded service layout */
+  .services__item--open .services__summary {
+    grid-template-columns: 1fr;
+  }
+
+  /* ======================================
+     Expanded Service — Mobile Action
+  ====================================== */
+
+  .services__item--open .services__action {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    gap: 0.5rem;
+
+    padding:
+      0.5rem
+      0
+      1rem;
+
+    text-align: right;
+  }
+
+  /* Move only the close icon higher */
+  .services__item--open .services__explore {
+    order: 0;
+
+    align-self: flex-end;
+
+    font-size: 1.5rem;
+    line-height: 1;
+
+    transform: translateY(-5.5rem);
+  }
+
+  /* Keep starting price underneath */
+  .services__item--open .services__price {
+    order: 1;
+
+    align-self: flex-end;
+  }
+
+  .services__enquire-row {
+    justify-content: flex-start;
+    padding-top: 1.25rem;
+  }
+}
+
+/* ========================================
+   Services — Enquire Action
+======================================== */
+
+.services__enquire-row {
+  display: flex;
+
+  justify-content: flex-end;
+
+  padding-top: 1.5rem;
+}
+
+.services__enquire {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-background);
+
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.services__enquire:hover {
+  opacity: 0.75;
+
+  transform: translateX(0.2rem);
+}
+
+.services__enquire:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 4px;
 }
 
 /* ========================================
@@ -1520,7 +1840,7 @@ body {
 
   color: var(--colour-text-secondary);
 
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
 
   text-transform: uppercase;
@@ -1941,6 +2261,26 @@ body {
 }
 
 /* ========================================
+   Custom Enquiry — Error State
+======================================== */
+
+.custom-enquiry__error {
+  margin: 0;
+
+  color: #8a2f2f;
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.custom-enquiry__error a {
+  color: inherit;
+
+  font-weight: 600;
+  text-underline-offset: 0.2rem;
+}
+
+/* ========================================
    Services — Tablet
 ======================================== */
 
@@ -2103,6 +2443,14 @@ body {
     font-size: 0.9rem;
   }
 
+  @media (max-width: 48rem) {
+    .services__enquire-row {
+      justify-content: flex-end;
+
+      padding-top: 1.25rem;
+    }
+  }
+
   /* Expanded service */
   .services__item--open {
     margin-inline: -1rem;
@@ -2189,6 +2537,1010 @@ body {
 }
 
 /* ========================================
+   FAQ
+======================================== */
+
+.faq {
+  padding-block: 5rem 6rem;
+
+  background: var(--colour-surface);
+}
+
+.faq__eyebrow {
+  margin: 0 0 2.5rem;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1.125rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================
+   FAQ — List
+======================================== */
+
+.faq__list {
+  border-top: 1px solid var(--colour-border);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--colour-border);
+}
+
+/* ========================================
+   FAQ — Question
+======================================== */
+
+.faq__question {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  width: 100%;
+
+  gap: 2rem;
+
+  padding:
+    1.75rem
+    0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-primary);
+
+  font: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.faq__question > span:first-child {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 400;
+
+  line-height: 1.2;
+}
+
+.faq__icon {
+  color: var(--colour-text-secondary);
+
+  font-size: 1.5rem;
+  font-weight: 400;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+/* ========================================
+   FAQ — Answer
+======================================== */
+
+.faq__answer {
+  width: 100%;
+  max-width: none;
+
+  padding:
+    0
+    0
+    1.75rem;
+}
+
+.faq__answer p {
+  margin: 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Desktop only */
+@media (min-width: 48.01rem) {
+  .faq__answer p {
+    white-space: nowrap;
+  }
+}
+
+/* ========================================
+   FAQ — Hover / Focus
+======================================== */
+
+@media (hover: hover) {
+  .faq__question:hover .faq__icon {
+    color: var(--colour-brand-primary);
+  }
+
+  .faq__question:hover > span:first-child {
+    color: var(--colour-brand-primary);
+  }
+}
+
+.faq__question:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   FAQ — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .faq {
+    padding-block: 4rem;
+  }
+
+  .faq__eyebrow {
+    margin-bottom: 2rem;
+  }
+
+  .faq__question {
+    gap: 1rem;
+
+    padding-block: 1.5rem;
+  }
+
+  .faq__question > span:first-child {
+    font-size: 1.6rem;
+  }
+
+  .faq__answer {
+    max-width: none;
+
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* ========================================
+   Client Journey
+======================================== */
+
+.client-journey {
+  scroll-margin-top: 2rem;
+
+  padding-block: 6rem;
+
+  background: var(--colour-background);
+}
+
+.client-journey__header {
+  max-width: 48rem;
+}
+
+.client-journey__eyebrow {
+  margin: 0 0 1rem;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1.125rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.client-journey__title {
+  max-width: 18ch;
+
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 400;
+
+  line-height: 1.05;
+}
+
+.client-journey__intro {
+  max-width: 40rem;
+
+  margin: 1.5rem 0 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.client-journey__placeholder {
+  margin-top: 3rem;
+  padding-block: 3rem;
+
+  border-top: 1px solid var(--colour-border);
+  border-bottom: 1px solid var(--colour-border);
+
+  color: var(--colour-text-secondary);
+}
+
+.form-required {
+  color: #8a2f2f;
+}
+
+/* ========================================
+   Client Journey — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .client-journey {
+    padding-block: 4rem;
+  }
+
+  .client-journey__title {
+    max-width: none;
+
+    font-size: 2.5rem;
+  }
+
+  .client-journey__placeholder {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ========================================
+   Client Journey — Progress
+======================================== */
+
+.journey-progress {
+  margin-top: 3.5rem;
+}
+
+.journey-progress__status {
+  margin: 0 0 1rem;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.journey-progress__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  margin: 0;
+  padding: 0;
+
+  border-top: 1px solid var(--colour-border);
+
+  list-style: none;
+}
+
+.journey-progress__item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  padding:
+    1rem
+    0;
+
+  color: var(--colour-text-secondary);
+}
+
+.journey-progress__number {
+  display: inline-grid;
+
+  place-items: center;
+
+  width: 1.75rem;
+  height: 1.75rem;
+
+  border: 1px solid var(--colour-border);
+  border-radius: 50%;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.journey-progress__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.journey-progress__item.is-active {
+  color: var(--colour-brand-primary);
+}
+
+.journey-progress__item.is-active
+  .journey-progress__number {
+  border-color: var(--colour-brand-primary);
+
+  background: var(--colour-brand-primary);
+  color: var(--colour-background);
+}
+
+/* ========================================
+   Client Journey — Open Form Action
+======================================== */
+
+.client-journey__toggle {
+  margin-top: 2rem;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-primary);
+
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.client-journey__toggle:hover {
+  color: var(--colour-brand-primary);
+
+  transform: translateX(0.2rem);
+}
+
+.client-journey__toggle:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   Client Journey — Expanded Area
+======================================== */
+
+.client-journey__expanded {
+  position: relative;
+
+  margin-top: 2.5rem;
+  padding-top: 0.1rem;
+
+  border-top: 1px solid
+    color-mix(
+      in srgb,
+      var(--colour-border) 65%,
+      transparent
+    );
+}
+
+/* Close icon */
+.client-journey__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-primary);
+
+  font: inherit;
+  font-size: 2.15rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.client-journey__close:hover {
+  color: var(--colour-brand-primary);
+}
+
+.client-journey__close:focus-visible {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   Client Journey — Form
+======================================== */
+
+.client-journey-form {
+  margin-top: 3rem;
+}
+
+.form-section {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+}
+
+.form-section legend {
+  margin-bottom: 2rem;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.form-grid {
+  display: grid;
+
+  gap: 1.5rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.form-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-field {
+  display: grid;
+
+  gap: 0.5rem;
+}
+
+.form-field label {
+  color: var(--colour-text-primary);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+
+  padding: 0.9rem 1rem;
+
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
+
+  background: #ffffff;
+  color: var(--colour-text-primary);
+
+  font: inherit;
+  font-size: 1rem;
+
+  outline: none;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--colour-focus);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--colour-focus) 18%,
+      transparent
+    );
+}
+
+.form-field input.form-field--error,
+.form-field select.form-field--error {
+  border-color: #8a2f2f;
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      #8a2f2f 12%,
+      transparent
+    );
+}
+
+/* ========================================
+   Client Journey — Project Field Spacing
+======================================== */
+
+.journey-step > .form-field + .form-field {
+  margin-top: 1.5rem;
+}
+
+.journey-step > .form-field + .form-grid,
+.journey-step > .form-grid + .form-field {
+  margin-top: 1.5rem;
+}
+
+/* ========================================
+   Client Journey — Navigation
+======================================== */
+
+.journey-navigation {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-top: 2.5rem;
+}
+
+.journey-navigation--forward {
+  justify-content: flex-end;
+}
+
+/* ========================================
+   Client Journey — Form Hint
+======================================== */
+
+.form-hint {
+  max-width: 38rem;
+
+  margin:
+    -0.75rem
+    0
+    2rem;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   Client Journey — Service Choices
+======================================== */
+
+.service-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+.choice-card {
+  position: relative;
+
+  display: block;
+
+  padding: 1.5rem;
+
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.choice-card input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.choice-card > span {
+  display: grid;
+
+  gap: 0.5rem;
+}
+
+.choice-card strong {
+  color: var(--colour-text-primary);
+
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+
+  line-height: 1.2;
+}
+
+.choice-card small {
+  color: var(--colour-text-secondary);
+
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.choice-card:hover {
+  border-color: var(--colour-brand-primary);
+}
+
+.choice-card--selected {
+  border-color: var(--colour-brand-primary);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--colour-brand-primary) 7%,
+      transparent
+    );
+}
+
+.choice-card--selected strong {
+  color: var(--colour-brand-primary);
+}
+
+.choice-card:has(input:focus-visible) {
+  outline: 3px solid var(--colour-focus);
+  outline-offset: 3px;
+}
+
+.journey-navigation .button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+/* ========================================
+   Client Journey — Service Choices Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .service-options {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-card {
+    padding: 1.25rem;
+  }
+
+  .choice-card strong {
+    font-size: 1.4rem;
+  }
+}
+
+/* ========================================
+   Client Journey — Review
+======================================== */
+
+.review-header {
+  max-width: 48rem;
+  margin-bottom: 3rem;
+}
+
+.review-header h2,
+.review-submit-intro h2 {
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.review-header p,
+.review-submit-intro p {
+  max-width: 40rem;
+
+  margin: 1rem 0 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ========================================
+   Client Journey — Review Sections
+======================================== */
+
+.review-sections {
+  display: grid;
+
+  gap: 2.5rem;
+}
+
+.review-section {
+  padding-top: 1.5rem;
+
+  border-top: 1px solid var(--colour-border);
+}
+
+.review-section__header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.review-section__header h3 {
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.review-edit-button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-secondary);
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.review-edit-button:hover {
+  color: var(--colour-brand-primary);
+}
+
+/* ========================================
+   Client Journey — Review List
+======================================== */
+
+.review-list {
+  display: grid;
+
+  gap: 1rem;
+
+  margin: 0;
+}
+
+.review-list > div {
+  display: grid;
+
+  grid-template-columns:
+    minmax(10rem, 0.35fr)
+    minmax(0, 1fr);
+
+  gap: 2rem;
+}
+
+.review-list dt {
+  color: var(--colour-text-secondary);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.review-list dd {
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   Client Journey — Final Submit
+======================================== */
+
+.review-submit-intro {
+  margin-top: 4rem;
+  padding-top: 2rem;
+
+  border-top: 1px solid var(--colour-border);
+}
+
+.form-actions {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 2rem;
+
+  margin-top: 2.5rem;
+}
+
+.form-confirmation {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.75rem;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.form-confirmation input {
+  flex: 0 0 auto;
+
+  margin-top: 0.2rem;
+}
+
+.form-confirmation__error {
+  margin: 0;
+
+  color: #8a2f2f;
+
+  font-size: 0.85rem;
+  line-height: 1.5;
+
+  font-style: italic;
+}
+
+/* ========================================
+   Client Journey — Review Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .review-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .review-list > div {
+    grid-template-columns: 1fr;
+
+    gap: 0.25rem;
+  }
+
+  .review-submit-intro {
+    margin-top: 3rem;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+  }
+
+  .form-actions .button {
+    justify-self: start;
+  }
+}
+
+/* ========================================
+   Client Journey — Submission States
+======================================== */
+
+.client-journey__error {
+  margin: 2rem 0 0;
+
+  color: #8a2f2f;
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.client-journey__error a {
+  color: inherit;
+
+  font-weight: 600;
+}
+
+.client-journey__success {
+  max-width: 42rem;
+
+  padding-block: 3rem;
+}
+
+.client-journey__success h2 {
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.client-journey__success p {
+  margin: 1.25rem 0 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.client-journey__success .button {
+  margin-top: 2rem;
+}
+
+/* ========================================
+   Client Journey — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .journey-progress {
+    margin-top: 0;
+  }
+
+  .journey-progress__list {
+    grid-template-columns: repeat(4, auto);
+
+    gap: 0.75rem;
+
+    overflow-x: auto;
+  }
+
+  .journey-progress__item {
+    min-width: max-content;
+  }
+
+  .journey-progress__label {
+    font-size: 0.8rem;
+  }
+
+  .client-journey-form {
+    margin-top: 2.5rem;
+  }
+
+  .form-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .form-section legend {
+    font-size: 2.2rem;
+  }
+
+  .journey-navigation {
+    margin-top: 2rem;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .form-actions > .button--secondary {
+    justify-self: start;
+  }
+
+  .form-actions > div {
+    width: 100%;
+  }
+
+  .form-actions > .button--primary {
+    justify-self: end;
+  }
+}
+
+/* ========================================
    Reduced Motion
    Removes decorative animation for users
    who request reduced motion
@@ -2204,5 +3556,17 @@ body {
 
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .hero__title,
+  .hero__text,
+  .hero__supporting-text,
+  .hero__actions,
+  .hero__media {
+    opacity: 1 !important;
+
+    transform: none !important;
+
+    animation: none !important;
   }
 }
