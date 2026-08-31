@@ -13,10 +13,12 @@ const capabilities = [
   "Create, view, update and delete inventory items",
   "Search, filtering, sorting and pagination",
   "Stock-level monitoring",
+  "Supplier management",
+  "Dashboard operational analytics",
   "Inventory value and category analytics",
-  "Dashboard summary metrics",
-  "Power BI reporting",
-  "REST API documentation",
+  "Reports and CSV export",
+  "Power BI business intelligence",
+  "Responsive desktop and mobile experience",
 ];
 
 const technologies = [
@@ -41,12 +43,12 @@ const technologies = [
     value: "Docker, Docker Compose",
   },
   {
-    area: "CI/CD",
+    area: "CI",
     value: "GitHub Actions",
   },
   {
     area: "Deployment",
-    value: "Vercel, Render",
+    value: "Vercel",
   },
 ];
 
@@ -67,9 +69,9 @@ export default function PartsPilotPage() {
           <h1>PartsPilot</h1>
 
           <p className="case-study__lead">
-            An automotive inventory management and analytics platform
-            designed and built to make stock, inventory value and
-            operational information easier to manage and understand.
+            A full-stack automotive inventory management and analytics
+            platform designed to bring stock control, supplier management,
+            reporting and operational insight into one clear product experience.
           </p>
 
           <div className="case-study__meta">
@@ -90,7 +92,7 @@ export default function PartsPilotPage() {
 
             <div>
               <span>Status</span>
-              <p>Live</p>
+              <p>Feature Complete</p>
 
               <a
                 href="https://inventory-management-system-iris408.vercel.app/"
@@ -98,7 +100,7 @@ export default function PartsPilotPage() {
                 rel="noreferrer"
                 className="case-study__meta-link"
               >
-                Visit the Live Site ↗
+                View Frontend Demo ↗
               </a>
             </div>
           </div>
@@ -109,12 +111,19 @@ export default function PartsPilotPage() {
       <section className="case-study__visual">
         <div className="site-container">
           <div className="case-study__image case-study__image--hero">
-            {/* Replace with actual PartsPilot image later */}
+            <Image
+              src="/images/work/partspilot/dashboard.png"
+              alt="PartsPilot dashboard showing inventory metrics and recent activity"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
+              priority
+            />
           </div>
         </div>
       </section>
 
-      {/* Problem */}
+      {/* Section 01 - Problem */}
       <section className="case-study__section">
         <div className="site-container case-study__section-grid">
           <div>
@@ -124,28 +133,28 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              Inventory shouldn&apos;t become harder to understand as
-              it grows.
+              Inventory shouldn't become harder to understand as it grows.
             </h2>
 
             <p>
-              PartsPilot was created around a practical inventory
-              management problem: businesses need more than a list of
-              parts. They need to understand what is available, what
-              needs attention and what their inventory data is telling
-              them.
+              PartsPilot was created around a practical operational
+              problem: managing inventory requires more than keeping a
+              list of parts. Teams need to understand what is available,
+              what needs attention, where stock comes from and what the
+              wider inventory data is telling them.
             </p>
 
             <p>
-              The product brings day-to-day inventory management,
-              stock monitoring and operational analytics into one
-              application built around an automotive parts dataset.
+              The product brings inventory management, stock monitoring,
+              supplier information and reporting into one automotive-focused
+              application, turning day-to-day records into clearer operational
+              information.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Approach */}
+      {/* Section 02 - Approach */}
       <section className="case-study__section">
         <div className="site-container case-study__section-grid">
           <div>
@@ -155,21 +164,21 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              From inventory records to useful operational information.
+              From inventory records to a complete operational workflow.
             </h2>
 
             <p>
-              PartsPilot was designed as a complete full-stack system
+              PartsPilot was designed as a complete full-stack product
               rather than a standalone interface. The React frontend
               communicates with a FastAPI REST API, with SQLAlchemy
-              providing the persistence layer over PostgreSQL.
+              managing persistence through PostgreSQL.
             </p>
 
             <p>
-              The application focuses on making common inventory
-              workflows straightforward while surfacing useful
-              information such as stock status, category performance
-              and inventory value.
+              The product was developed around practical workflows: managing
+              inventory, tracking stock levels, maintaining supplier records,
+              reviewing operational analytics and exporting useful reporting
+              data without separating each task into a different tool.
             </p>
           </div>
         </div>
@@ -179,12 +188,18 @@ export default function PartsPilotPage() {
       <section className="case-study__visual">
         <div className="site-container">
           <div className="case-study__image">
-            {/* Inventory/dashboard screenshot */}
+            <Image
+              src="/images/work/partspilot/inventory.png"
+              alt="PartsPilot inventory management interface with search, filtering and stock controls"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
+            />
           </div>
         </div>
       </section>
 
-      {/* Solution */}
+      {/* Section 03 - Solution */}
       <section className="case-study__section">
         <div className="site-container case-study__section-grid">
           <div>
@@ -215,7 +230,7 @@ export default function PartsPilotPage() {
         </div>
       </section>
 
-      {/* Analytics */}
+      {/* Section 04 - Analytics */}
       <section className="case-study__section">
         <div className="site-container case-study__section-grid">
           <div>
@@ -227,19 +242,20 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              Operational data with a dedicated reporting layer.
+              Operational insight with a dedicated reporting layer.
             </h2>
 
             <p>
-              Alongside analytics within the application, PartsPilot
-              includes a dedicated Power BI dashboard for deeper
-              inventory reporting and business intelligence.
+              PartsPilot combines reporting within the application with a
+              dedicated Power BI dashboard, giving operational inventory data
+              a clearer business intelligence layer.
             </p>
 
             <p>
-              The Power BI dashboard is complete. Current development is focused
-              on a broader UX update across PartsPilot, including final frontend
-              polish and refinement of the remaining application experience
+              The application provides inventory value, stock, product and
+              category reporting alongside CSV export, while Power BI extends
+              the reporting experience with interactive visual analysis of the
+              automotive inventory dataset.
             </p>
           </div>
         </div>
@@ -260,7 +276,7 @@ export default function PartsPilotPage() {
         </div>
       </section>
 
-      {/* Engineering */}
+      {/* Section 05 - Engineering */}
       <section className="case-study__section">
         <div className="site-container case-study__section-grid">
           <div>
@@ -293,21 +309,22 @@ export default function PartsPilotPage() {
               <p>FastAPI</p>
               <span>↓ SQLAlchemy</span>
               <p>PostgreSQL</p>
-              <span>↓</span>
-              <p>Power BI</p>
             </div>
 
             <div className="case-study__deployment-note">
               <span>Deployment</span>
               <p>
-                React frontend deployed on Vercel, with the FastAPI backend deployed on Render.
+                The React frontend is deployed on Vercel. The FastAPI API and
+                PostgreSQL database currently run within the local development
+                environment, with public backend deployment remaining a separate
+                infrastructure step.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Result */}
+      {/* Section 06 - Result */}
       <section className="case-study__section case-study__section--result">
         <div className="site-container case-study__section-grid">
           <div>
@@ -319,21 +336,22 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              A deployed product with the core platform complete.
+              A feature-complete full-stack product built from end to end.
             </h2>
 
             <p>
-              PartsPilot is now deployed as a live demonstration using
-              a sample automotive inventory dataset. Authentication,
-              inventory management, application analytics, PostgreSQL,
-              Docker, CI and the Power BI reporting dashboard are all
-              operational.
+              PartsPilot has reached its v2.0.0 feature-complete milestone,
+              bringing together authenticated inventory management, supplier
+              workflows, operational analytics, reporting and Power BI within
+              one automotive-focused product.
             </p>
 
             <p>
-              The core product is complete and deployed. Current development is
-              focused on a UX update, final frontend polish and expanding automated
-              test coverage before PartsPilot moves primarily into maintenance.
+              The project now moves into maintenance, with future work focused
+              on reliability, testing, documentation and infrastructure rather
+              than continued feature expansion. The frontend is available as a
+              public Vercel demonstration, while public backend deployment
+              remains a separate infrastructure step.
             </p>
 
             <a
@@ -342,7 +360,7 @@ export default function PartsPilotPage() {
               rel="noreferrer"
               className="case-study__external-link"
             >
-              View live product ↗
+              View frontend demo ↗
             </a>
           </div>
         </div>
