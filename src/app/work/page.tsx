@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const projects = [
@@ -7,6 +8,8 @@ const projects = [
     description:
       "A considered business website designed to create a clearer, more polished digital presence.",
     href: "/work/kawari-company",
+    image: null,
+    imageAlt: "",
   },
   {
     title: "PartsPilot",
@@ -14,6 +17,9 @@ const projects = [
     description:
       "A full-stack inventory platform built to manage automotive parts, stock levels and operational data.",
     href: "/work/partspilot",
+    image: "/images/work/partspilot/dashboard.png",
+    imageAlt:
+      "PartsPilot dashboard showing inventory metrics and recent activity",
   },
 ];
 
@@ -50,7 +56,15 @@ export default function WorkPage() {
                 </div>
 
                 <div className="work-page__project-image">
-                  {/* Project image will go here */}
+                  {project.image && (
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      width={1600}
+                      height={900}
+                      className="work-page__project-screenshot"
+                    />
+                  )}
                 </div>
 
                 <div className="work-page__project-content">
@@ -66,7 +80,10 @@ export default function WorkPage() {
                     </p>
                   </div>
 
-                  <span className="work-page__arrow" aria-hidden="true">
+                  <span
+                    className="work-page__arrow"
+                    aria-hidden="true"
+                  >
                     →
                   </span>
                 </div>
@@ -79,7 +96,8 @@ export default function WorkPage() {
           <p>Have a project in mind?</p>
 
           <Link href="/#client-journey">
-            Start a conversation <span aria-hidden="true">→</span>
+            Start a conversation{" "}
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

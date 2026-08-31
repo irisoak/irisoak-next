@@ -114,10 +114,6 @@ export default function PartsPilotPage() {
             <Image
               src="/images/work/partspilot/dashboard.png"
               alt="PartsPilot dashboard showing inventory metrics and recent activity"
-              width={1600}
-              height={900}
-              className="case-study__screenshot"
-              priority
             />
           </div>
         </div>
