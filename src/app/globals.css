@@ -845,6 +845,28 @@ body {
 }
 
 /* ========================================
+   Selected Work
+======================================== */
+
+.selected-work {
+  padding-block: 5rem 6rem;
+
+  background: var(--colour-background);
+}
+
+.selected-work__eyebrow {
+  margin: 0 0 2.5rem;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1.125rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================
    Selected Work — Grid
 ======================================== */
 
@@ -867,6 +889,10 @@ body {
   text-decoration: none;
 }
 
+.selected-work__link--disabled {
+  cursor: default;
+}
+
 /* ========================================
    Selected Work — Project Image
 ======================================== */
@@ -875,15 +901,48 @@ body {
   position: relative;
 
   width: 100%;
-  aspect-ratio: 16 / 10;
+  min-height: 15rem;
+  aspect-ratio: 16 / 8.5;
 
   overflow: hidden;
+
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
 
   background: var(--colour-surface);
 
   transition:
     background 180ms ease,
     transform 180ms ease;
+}
+
+.selected-work__screenshot {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+}
+
+.selected-work__placeholder {
+  display: flex;
+
+  width: 100%;
+  height: 90%;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--colour-text-secondary);
+}
+
+.selected-work__placeholder span {
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* ========================================
@@ -936,17 +995,20 @@ body {
     color 180ms ease;
 }
 
-/* Project hover */
+/* Selected Work hover */
 @media (hover: hover) {
-  .selected-work__link:hover .selected-work__image {
-    background: var(--colour-brand-primary);
+  .selected-work__link:not(.selected-work__link--disabled):hover
+    .selected-work__image {
+    transform: translateY(-2px);
   }
 
-  .selected-work__link:hover .selected-work__details {
+  .selected-work__link:not(.selected-work__link--disabled):hover
+    .selected-work__details {
     border-color: var(--colour-text-primary);
   }
 
-  .selected-work__link:hover .selected-work__arrow {
+  .selected-work__link:not(.selected-work__link--disabled):hover
+    .selected-work__arrow {
     color: var(--colour-brand-primary);
 
     transform: translateX(0.3rem);
@@ -3814,87 +3876,146 @@ body {
 
 .work-page__header {
   max-width: 50rem;
+
   margin-bottom: 6rem;
 }
 
 .work-page__eyebrow {
   margin: 0 0 1.5rem;
+
   font-size: 0.85rem;
+
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .work-page__header h1 {
   max-width: 10ch;
+
   margin: 0;
+
   font-family: var(--font-heading);
   font-size: clamp(3.5rem, 7vw, 6.5rem);
   font-weight: 400;
+
   line-height: 0.95;
 }
 
 .work-page__intro {
   max-width: 40rem;
+
   margin: 2rem 0 0;
+
   font-size: 1.05rem;
   line-height: 1.7;
 }
 
 .work-page__projects {
-  border-top: 1px solid currentColor;
+  border-top: 1px solid var(--colour-border);
 }
 
 .work-page__project {
-  border-bottom: 1px solid currentColor;
+  border-bottom: 1px solid var(--colour-border);
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
 }
 
 .work-page__project-link {
   display: grid;
-  grid-template-columns: 3rem minmax(16rem, 0.75fr) 1fr;
+
+  grid-template-columns:
+    3rem
+    minmax(16rem, 0.75fr)
+    1fr;
+
   gap: 2rem;
 
   padding-block: 3rem;
 
   color: inherit;
+
   text-decoration: none;
+}
+
+.work-page__project-link--disabled {
+  cursor: default;
 }
 
 .work-page__project-number {
   padding-top: 0.25rem;
 
   font-size: 0.75rem;
+
   opacity: 0.6;
 }
+
+/* ========================================
+   Work Page — Project Image
+======================================== */
 
 .work-page__project-image {
   min-height: 15rem;
 
-  background: rgba(0, 0, 0, 0.06);
-
   overflow: hidden;
-}
 
-.work-page__project-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
 
-  gap: 2rem;
+  background: var(--colour-surface);
 }
 
 .work-page__project-screenshot {
   display: block;
+
   width: 100%;
   height: 100%;
-  object-fit: fill;
+
+  object-fit: cover;
+}
+
+.work-page__project-placeholder {
+  display: flex;
+
+  width: 100%;
+  min-height: 15rem;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--colour-text-secondary);
+}
+
+.work-page__project-placeholder span {
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================
+   Work Page — Project Content
+======================================== */
+
+.work-page__project-content {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 2rem;
 }
 
 .work-page__category {
   margin: 0 0 1rem;
 
   font-size: 0.8rem;
+
   text-transform: uppercase;
   letter-spacing: 0.06em;
+
   opacity: 0.65;
 }
 
@@ -3904,14 +4025,17 @@ body {
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 400;
+
   line-height: 1;
 }
 
 .work-page__description {
   max-width: 30rem;
+
   margin: 1.5rem 0 0;
 
   line-height: 1.7;
+
   opacity: 0.75;
 }
 
@@ -3923,21 +4047,60 @@ body {
   transition: transform 180ms ease;
 }
 
-.work-page__project-link:hover .work-page__arrow {
-  transform: translateX(0.4rem);
+/* ========================================
+   Work Page — Hover
+======================================== */
+
+.work-page__project {
+  border-bottom: 1px solid var(--colour-border);
+
+  transition:
+    background 220ms ease,
+    transform 220ms ease;
 }
+
+.work-page__project-link {
+  display: grid;
+  grid-template-columns: 3rem minmax(16rem, 0.75fr) 1fr;
+  gap: 2rem;
+
+  padding: 3rem 1rem;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+@media (hover: hover) {
+  .work-page__project-link:hover {
+    background: var(--colour-surface);
+    transform: translateX(0.35rem);
+  }
+
+  .work-page__project-link:hover .work-page__arrow {
+    transform: translateX(0.4rem);
+  }
+}
+
+/* ========================================
+   Work Page — Contact
+======================================== */
 
 .work-page__contact {
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
+  justify-content: space-between;
 
   gap: 2rem;
 
   margin-top: 5rem;
   padding-top: 2rem;
 
-  border-top: 1px solid currentColor;
+  border-top: 1px solid var(--colour-border);
 }
 
 .work-page__contact p {
@@ -3948,7 +4111,9 @@ body {
 
 .work-page__contact a {
   color: inherit;
+
   font-weight: 600;
+
   text-decoration: none;
 }
 
@@ -3971,6 +4136,7 @@ body {
 
   .work-page__project-link {
     grid-template-columns: 1fr;
+
     gap: 1.5rem;
 
     padding-block: 2.5rem;
@@ -4108,6 +4274,11 @@ body {
   padding-block: 2rem 6rem;
 }
 
+.case-study__visual--hero {
+  background-color: #070b14;
+}
+
+.case-study__image--inventory,
 .case-study__image--powerbi {
   max-width: 74rem;
   margin-inline: auto;
@@ -4183,6 +4354,35 @@ body {
 
 .case-study__section-content > p + p {
   margin-top: 1.25rem;
+}
+
+.case-study__section--accent {
+  background: #070b14e0;
+  color: var(--colour-background);
+}
+
+.case-study__section--accent .case-study__section-number,
+.case-study__section--accent .case-study__section-label,
+.case-study__section--accent .case-study__section-content h2,
+.case-study__section--accent .case-study__section-content p,
+.case-study__section--accent .case-study__technology-row span,
+.case-study__section--accent .case-study__technology-row p,
+.case-study__section--accent .case-study__capability span,
+.case-study__section--accent .case-study__capability p {
+  color: var(--colour-background);
+}
+
+.case-study__section--accent,
+.case-study__section--accent .case-study__technology,
+.case-study__section--accent .case-study__technology-row,
+.case-study__section--accent .case-study__capabilities,
+.case-study__section--accent .case-study__capability {
+  border-color:
+    color-mix(
+      in srgb,
+      var(--colour-background) 28%,
+      transparent
+    );
 }
 
 

@@ -6,10 +6,11 @@ const projects = [
     title: "Kawari Company",
     category: "Web Design & Development",
     description:
-      "A considered business website designed to create a clearer, more polished digital presence.",
+      "A consultancy website in development for a specialist safeguarding, regulation and independent review practice.",
     href: "/work/kawari-company",
     image: null,
     imageAlt: "",
+    status: "In Development",
   },
   {
     title: "PartsPilot",
@@ -20,6 +21,7 @@ const projects = [
     image: "/images/work/partspilot/dashboard.png",
     imageAlt:
       "PartsPilot dashboard showing inventory metrics and recent activity",
+    status: null,
   },
 ];
 
@@ -42,21 +44,15 @@ export default function WorkPage() {
         </header>
 
         <div className="work-page__projects">
-          {projects.map((project, index) => (
-            <article
-              className="work-page__project"
-              key={project.title}
-            >
-              <Link
-                href={project.href}
-                className="work-page__project-link"
-              >
+          {projects.map((project, index) => {
+            const content = (
+              <>
                 <div className="work-page__project-number">
                   0{index + 1}
                 </div>
 
                 <div className="work-page__project-image">
-                  {project.image && (
+                  {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.imageAlt}
@@ -64,6 +60,10 @@ export default function WorkPage() {
                       height={900}
                       className="work-page__project-screenshot"
                     />
+                  ) : (
+                    <div className="work-page__project-placeholder">
+                      <span>{project.status}</span>
+                    </div>
                   )}
                 </div>
 
@@ -80,16 +80,38 @@ export default function WorkPage() {
                     </p>
                   </div>
 
-                  <span
-                    className="work-page__arrow"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
+                  {project.href && (
+                    <span
+                      className="work-page__arrow"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  )}
                 </div>
-              </Link>
-            </article>
-          ))}
+              </>
+            );
+
+            return (
+              <article
+                className="work-page__project"
+                key={project.title}
+              >
+                {project.href ? (
+                  <Link
+                    href={project.href}
+                    className="work-page__project-link"
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  <div className="work-page__project-link work-page__project-link--disabled">
+                    {content}
+                  </div>
+                )}
+              </article>
+            );
+          })}
         </div>
 
         <div className="work-page__contact">

@@ -108,12 +108,15 @@ export default function PartsPilotPage() {
       </section>
 
       {/* Main product image */}
-      <section className="case-study__visual">
+      <section className="case-study__visual case-study__visual--hero">
         <div className="site-container">
           <div className="case-study__image case-study__image--hero">
             <Image
-              src="/images/work/partspilot/dashboard.png"
+              src="/images/work/partspilot/overview.png"
               alt="PartsPilot dashboard showing inventory metrics and recent activity"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
             />
           </div>
         </div>
@@ -151,7 +154,7 @@ export default function PartsPilotPage() {
       </section>
 
       {/* Section 02 - Approach */}
-      <section className="case-study__section">
+      <section className="case-study__section case-study__section--accent">
         <div className="site-container case-study__section-grid">
           <div>
             <p className="case-study__section-number">02</p>
@@ -183,7 +186,7 @@ export default function PartsPilotPage() {
       {/* Product image */}
       <section className="case-study__visual">
         <div className="site-container">
-          <div className="case-study__image">
+          <div className="case-study__image case-study__image--inventory">
             <Image
               src="/images/work/partspilot/inventory.png"
               alt="PartsPilot inventory management interface with search, filtering and stock controls"
@@ -227,7 +230,7 @@ export default function PartsPilotPage() {
       </section>
 
       {/* Section 04 - Analytics */}
-      <section className="case-study__section">
+      <section className="case-study__section case-study__section--accent">
         <div className="site-container case-study__section-grid">
           <div>
             <p className="case-study__section-number">04</p>
@@ -258,7 +261,7 @@ export default function PartsPilotPage() {
       </section>
 
       {/* Power BI image */}
-      <section className="case-study__visual">
+      <section className="case-study__visual case-study__visual--powerbi">
         <div className="site-container">
           <div className="case-study__image case-study__image--powerbi">
             <Image
@@ -321,7 +324,7 @@ export default function PartsPilotPage() {
       </section>
 
       {/* Section 06 - Result */}
-      <section className="case-study__section case-study__section--result">
+      <section className="case-study__section case-study__section--accent">
         <div className="site-container case-study__section-grid">
           <div>
             <p className="case-study__section-number">06</p>
