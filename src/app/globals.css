@@ -122,48 +122,49 @@ body {
 .site-header {
   width: 100%;
 
+  border-bottom: 1px solid var(--colour-border);
+
   background: var(--colour-background);
 }
 
-/* Main desktop header layout */
 .header-content {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
 
-  min-height: 5rem;
+  min-height: 5.5rem;
 
   align-items: center;
 
   gap: 2rem;
 }
 
-/* Iris & Oak logo */
+/* Brand */
 .site-logo {
   justify-self: start;
 
   color: var(--colour-brand-primary);
 
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 1;
+
+  letter-spacing: -0.02em;
 
   text-decoration: none;
 }
 
-/* Main navigation container */
+/* Navigation */
 .site-nav {
   justify-self: center;
 }
 
-/* Navigation links */
 .nav-list {
   display: flex;
 
   align-items: center;
-  justify-content: center;
 
-  gap: 3rem;
+  gap: 2.5rem;
 
   margin: 0;
   padding: 0;
@@ -172,55 +173,78 @@ body {
 }
 
 .nav-link {
+  position: relative;
+
   color: var(--colour-text-primary);
 
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
 
   text-decoration: none;
-
-  transition: color 150ms ease;
 }
 
-.nav-link:hover {
-  color: var(--colour-text-secondary);
+.nav-link::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -0.45rem;
+  left: 0;
+
+  height: 1px;
+
+  background: var(--colour-brand-primary);
+
+  content: "";
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition: transform 200ms ease;
 }
 
-/* Header CTA */
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Primary action */
 .header-cta {
   display: inline-flex;
 
-  min-height: 2.75rem;
+  min-height: 2.8rem;
 
   align-items: center;
   justify-content: center;
   justify-self: end;
 
-  padding-inline: 1.25rem;
+  padding-inline: 1.35rem;
 
-  border: 1px solid var(--colour-text-primary);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--colour-brand-primary);
+  border-radius: 0;
 
-  background: #ffffff;
-  color: var(--colour-text-primary);
+  background: var(--colour-brand-primary);
+  color: var(--colour-background);
 
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
+
+  letter-spacing: 0.08em;
 
   text-decoration: none;
   white-space: nowrap;
 
   transition:
-    background 150ms ease,
-    color 150ms ease;
+    background 180ms ease,
+    color 180ms ease;
 }
 
 .header-cta:hover {
-  background: var(--colour-text-primary);
-  color: #ffffff;
+  background: transparent;
+  color: var(--colour-brand-primary);
 }
 
-/* Header keyboard focus */
 .site-logo:focus-visible,
 .nav-link:focus-visible,
 .header-cta:focus-visible {
@@ -233,26 +257,19 @@ body {
 ======================================== */
 
 @media (max-width: 48rem) {
-  .site-header {
-    border-bottom: 1px solid var(--colour-border);
-  }
-
   .header-content {
     display: flex;
 
-    min-height: 4rem;
+    min-height: 4.5rem;
 
     align-items: center;
     justify-content: center;
   }
 
   .site-logo {
-    justify-self: auto;
-
-    font-size: 1.4rem;
+    font-size: 1.45rem;
   }
 
-  /* Desktop navigation is replaced by bottom nav */
   .site-nav,
   .header-cta {
     display: none;
@@ -545,83 +562,84 @@ body {
 }
 
 /* ========================================
-   Hero — Desktop Layout
+   Hero — Desktop
 ======================================== */
 
 .hero__container {
-  display: grid;
+  display: flex;
 
   grid-template-columns:
-    minmax(0, 1.35fr)
-    minmax(28rem, 1fr);
+    minmax(0, 1.5fr)
+    minmax(22rem, 0.75fr);
 
   grid-template-areas:
     "content media";
 
-  align-items: start;
+  min-height: calc(100vh - 5.5rem);
 
-  gap: 1.5rem;
+  align-items: center;
 
-  padding-top: 0;
-  padding-bottom: 3rem;
+  gap: clamp(3rem, 6vw, 7rem);
+
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
-/* Hero text content */
+/* Content */
 .hero__content {
   grid-area: content;
-
-  position: relative;
-  z-index: 2;
 
   display: flex;
   flex-direction: column;
 
-  max-width: 48rem;
+  max-width: 46rem;
 
-  padding-top: 4rem;
+  justify-content: center;
+
+  padding: 0;
 }
 
-/* Hero heading */
+/* Heading */
 .hero__title {
-  max-width: 18ch;
+  max-width: 15ch;
 
   margin: 0;
 
-  color: var(--colour-brand-primary);
+  color: #f5f1e8;
 
   font-family: var(--font-heading);
-  font-size: clamp(3.6rem, 5.4vw, 5.5rem);
+  font-size: clamp(4rem, 6.5vw, 7rem);
   font-weight: 400;
 
-  line-height: 0.96;
-  letter-spacing: -0.025em;
+  line-height: 0.93;
+  letter-spacing: -0.04em;
 }
 
-/* Hero primary description */
+/* Main description */
 .hero__text {
-  max-width: 40rem;
+  max-width: 36rem;
 
-  margin: 2rem 0 0;
+  margin: 2.75rem 0 0;
 
-  color: var(--colour-text-secondary);
+  color: rgba(245, 241, 232, 0.88);
 
-  font-size: 1.25rem;
-  line-height: 1.7;
+  font-size: 1.4rem;
+  line-height: 1.65;
 }
 
-/* Hero supporting description */
+/* Supporting description */
 .hero__supporting-text {
-  max-width: 48rem;
+  max-width: 36rem;
 
-  margin: 1.75rem 0 0;
+  margin: 1rem 0 0;
 
   color: var(--colour-text-secondary);
 
-  font-size: 1.15rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
-/* Hero actions */
+/* Actions */
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -630,57 +648,85 @@ body {
 
   gap: 2rem;
 
-  margin-top: 2.25rem;
+  margin-top: 2rem;
 }
 
 /* ========================================
-   Hero — Image
+   Hero — Background Image
 ======================================== */
 
-.hero__media {
-  grid-area: media;
-
+.hero--image {
   position: relative;
+  isolation: isolate;
 
-  width: calc(100% + 2rem);
-
-  margin-right: -2rem;
-
-  aspect-ratio: 3 / 3.3;
+  min-height: calc(100vh - 5.5rem);
 
   overflow: hidden;
+
+  background: var(--colour-brand-primary);
 }
 
-.hero__image {
+.hero__background {
+  z-index: -3;
+
   object-fit: cover;
   object-position: center;
 }
 
-/* Desktop hero image fade */
-.hero__media::after {
+.hero__overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
-
-  content: "";
+  z-index: -1;
 
   background: linear-gradient(
-    to right,
-    var(--colour-background) 0%,
-    color-mix(
-      in srgb,
-      var(--colour-background) 48%,
-      transparent
-    ) 2%,
-    color-mix(
-      in srgb,
-      var(--colour-background) 15%,
-      transparent
-    ) 10%,
-    transparent 60%
+    90deg,
+    rgba(22, 40, 32, 0.97) 0%,
+    rgba(22, 40, 32, 0.92) 28%,
+    rgba(22, 40, 32, 0.68) 42%,
+    rgba(22, 40, 32, 0.22) 58%,
+    transparent 74%
   );
 
   pointer-events: none;
+}
+
+/* Blur only the left text zone */
+.hero--image::after {
+  position: absolute;
+  inset: 0 48% 0 0;
+  z-index: -2;
+
+  content: "";
+
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+
+  mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 60%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 60%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+}
+
+.hero__eyebrow {
+  margin: 0 0 1.5rem;
+
+  color: rgba(245, 241, 232, 0.72);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
 }
 
 /* ========================================
@@ -689,21 +735,18 @@ body {
 
 @media (max-width: 64rem) {
   .hero__container {
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr);
+    min-height: calc(100vh - 5.5rem);
 
-    gap: 1rem;
-
-    padding-top: 1.5rem;
-  }
-
-  .hero__content {
-    padding-top: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .hero__title {
-    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+  }
+
+  .hero__content {
+    max-width: 42rem;
   }
 }
 
@@ -712,70 +755,61 @@ body {
 ======================================== */
 
 @media (max-width: 48rem) {
+  .hero--image,
   .hero__container {
-    grid-template-columns: 1fr;
-
-    grid-template-areas:
-      "media"
-      "content";
-
-    gap: 2rem;
-
-    padding-top: 0;
-    padding-bottom: 2.5rem;
+    min-height: calc(100vh - 4.5rem);
   }
 
-  /* Shallow full-width hero image */
-  .hero__media {
-    width: calc(100% + 2rem);
-
-    margin-left: -1rem;
-    margin-right: -1rem;
-
-    aspect-ratio: 16 / 7;
-  }
-
-  .hero__image {
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* Remove desktop fade on mobile */
-  .hero__media::after {
-    background: none;
+  .hero__container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .hero__content {
     max-width: none;
-
-    padding-top: 0;
   }
 
   .hero__title {
-    max-width: none;
+    max-width: 11ch;
 
-    font-size: clamp(2.8rem, 11vw, 4.4rem);
+    font-size: clamp(3rem, 13vw, 4.8rem);
 
-    line-height: 0.98;
-  }
-
-  .hero__text,
-  .hero__supporting-text {
-    max-width: none;
+    line-height: 0.94;
   }
 
   .hero__text {
-    margin-top: 1.5rem;
-  }
+    max-width: none;
 
-  .hero__supporting-text {
-    margin-top: 1.25rem;
+    margin-top: 2rem;
+
+    font-size: 1.05rem;
   }
 
   .hero__actions {
+    align-items: flex-start;
+
     gap: 1.5rem;
 
     margin-top: 2rem;
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(22, 40, 32, 0.97) 0%,
+      rgba(22, 40, 32, 0.92) 60%,
+      rgba(22, 40, 32, 0.68) 100%
+    );
+  }
+
+  .hero--image::after {
+    inset: 0;
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 }
 
@@ -785,11 +819,10 @@ body {
 
 @media (max-width: 30rem) {
   .hero__title {
-    font-size: clamp(2.6rem, 12vw, 3.8rem);
+    font-size: clamp(2.8rem, 14vw, 4rem);
   }
 
   .hero__actions {
-    align-items: flex-start;
     flex-direction: column;
   }
 }
@@ -798,11 +831,10 @@ body {
    Hero — Entrance Animation
 ======================================== */
 
+.hero__eyebrow,
 .hero__title,
 .hero__text,
-.hero__supporting-text,
-.hero__actions,
-.hero__media {
+.hero__actions {
   opacity: 0;
   transform: translateY(12px);
 
@@ -810,6 +842,10 @@ body {
     hero-enter 650ms
     cubic-bezier(0.22, 1, 0.36, 1)
     forwards;
+}
+
+.hero__eyebrow {
+  animation-delay: 40ms;
 }
 
 .hero__title {
@@ -820,16 +856,8 @@ body {
   animation-delay: 150ms;
 }
 
-.hero__supporting-text {
-  animation-delay: 220ms;
-}
-
 .hero__actions {
-  animation-delay: 290ms;
-}
-
-.hero__media {
-  animation-delay: 180ms;
+  animation-delay: 220ms;
 }
 
 @keyframes hero-enter {
@@ -841,6 +869,272 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Technology Approach
+======================================== */
+
+.technology-approach {
+  padding-block: 6rem;
+
+  border-bottom: 1px solid var(--colour-border);
+
+  background: var(--colour-background);
+}
+
+.technology-approach__inner {
+  border-top: 1px solid var(--colour-border);
+
+  padding-top: 2rem;
+}
+
+.technology-approach__eyebrow {
+  margin: 0 0 4rem;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+}
+
+.technology-approach__grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(18rem, 0.75fr);
+
+  gap: clamp(4rem, 8vw, 9rem);
+
+  align-items: start;
+}
+
+.technology-approach__primary {
+  max-width: 12ch;
+
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.technology-approach__secondary {
+  max-width: 30rem;
+
+  padding-top: 0.4rem;
+}
+
+.technology-approach__secondary p {
+  margin: 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 1.2rem;
+  line-height: 1.75;
+}
+
+.technology-approach__secondary p + p {
+  margin-top: 1.5rem;
+}
+
+.technology-approach__contact-link {
+  color: var(--colour-brand-primary);
+
+  font-weight: 600;
+  font-size: 1.05rem;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid currentColor;
+
+  transition: opacity 150ms ease;
+}
+
+.technology-approach__contact-link:hover {
+  opacity: 0.65;
+}
+
+/* ========================================
+   Technology Approach — Tablet
+======================================== */
+
+@media (max-width: 64rem) {
+  .technology-approach {
+    padding-block: 5rem;
+  }
+
+  .technology-approach__grid {
+    gap: 3rem;
+  }
+
+  .technology-approach__primary {
+    font-size: clamp(2.6rem, 5vw, 4rem);
+  }
+
+  .technology-approach__stack {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .technology-approach__stack::before {
+    left: 0;
+  }
+}
+
+/* ========================================
+   Technology Approach — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .technology-approach {
+    padding-block: 4rem;
+  }
+
+  .technology-approach__eyebrow {
+    margin-bottom: 2.5rem;
+  }
+
+  .technology-approach__grid {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+  }
+
+  .technology-approach__primary {
+    max-width: 11ch;
+
+    font-size: clamp(2.7rem, 11vw, 4rem);
+  }
+
+  .technology-approach__secondary {
+    max-width: none;
+
+    padding-top: 0;
+  }
+  .technology-approach__stack {
+    width: 100%;
+
+    margin-left: 0;
+  }
+}
+
+
+/* ========================================
+   My Approach
+======================================== */
+
+.expectations {
+  padding-block: 6rem;
+
+  background: var(--colour-surface);
+
+  text-align: center;
+}
+
+/* Section heading */
+.expectations__eyebrow {
+  margin: 0 0 3.5rem;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1.135rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Approach grid */
+.expectations__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 4rem;
+}
+
+/* Individual approach item */
+.expectations__item {
+  display: grid;
+
+  justify-items: center;
+
+  gap: 1rem;
+
+  text-align: center;
+}
+
+/* Approach icon */
+.expectations__icon {
+  display: block;
+
+  width: 1.75rem;
+  height: 1.75rem;
+
+  color: var(--colour-brand-primary);
+}
+
+/* Approach label */
+.expectations__title {
+  max-width: 14rem;
+
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+/* ========================================
+   My Approach — Tablet
+======================================== */
+
+@media (max-width: 64rem) {
+  .expectations {
+    padding-block: 5rem;
+  }
+
+  .expectations__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 3rem 4rem;
+  }
+}
+
+/* ========================================
+   My Approach — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .expectations {
+    padding-block: 4rem;
+  }
+
+  .expectations__eyebrow {
+    margin-bottom: 2.75rem;
+  }
+
+  .expectations__grid {
+    grid-template-columns: 1fr;
+
+    gap: 2.5rem;
+  }
+
+  .expectations__item {
+    gap: 0.9rem;
   }
 }
 
@@ -1153,257 +1447,6 @@ body {
   body {
     padding-bottom:
       calc(4.75rem + env(safe-area-inset-bottom));
-  }
-}
-
-/* ========================================
-   Technology Approach
-   Desktop: thin horizontal statement band
-======================================== */
-
-.technology-approach {
-  padding-top: 3.5rem;
-  padding-bottom: 5.5rem;
-
-  background: var(--colour-background);
-}
-
-/* Main statement */
-.technology-approach__primary {
-  max-width: 50rem;
-
-  margin: 0;
-
-  color: var(--colour-brand-primary);
-
-  font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 1.75vw, 1.85rem);
-  font-weight: 400;
-
-  line-height: 1.3;
-}
-
-/* Main desktop layout */
-.technology-approach__inner {
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.8fr)
-    auto
-    minmax(14rem, 0.7fr);
-
-  align-items: center;
-
-  gap: 2.5rem;
-
-  padding-block: 2.25rem;
-
-  border-top: 1px solid var(--colour-border);
-  border-bottom: 1px solid var(--colour-border);
-}
-
-/* Main statement */
-.technology-approach__primary {
-  max-width: 44rem;
-
-  margin: 0;
-
-  color: var(--colour-brand-primary);
-
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 2vw, 2rem);
-  font-weight: 400;
-
-  line-height: 1.3;
-}
-
-/* Desktop vertical divider */
-.technology-approach__divider {
-  width: 1px;
-  height: 5rem;
-
-  background: var(--colour-border);
-}
-
-/* Supporting statement */
-.technology-approach__secondary {
-  max-width: 22rem;
-
-  margin: 0;
-
-  color: var(--colour-text-secondary);
-
-  font-size: 0.95rem;
-  line-height: 1.65;
-}
-
-/* ========================================
-   Technology Approach — Mobile
-   Editorial staggered layout
-======================================== */
-
-@media (max-width: 48rem) {
-  .technology-approach {
-    padding-top: 2.5rem;
-    padding-bottom: 6.5rem;
-  }
-
-  .technology-approach__inner {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    gap: 0;
-
-    padding-block: 2rem;
-  }
-
-  /* Main statement stays left */
-  .technology-approach__primary {
-    max-width: 21rem;
-
-    font-size: 1.65rem;
-    line-height: 1.3;
-  }
-
-  /* Long editorial divider */
-  .technology-approach__divider {
-    width: 70%;
-    height: 1px;
-
-    margin:
-      2rem
-      0
-      1.25rem;
-
-    background: var(--colour-border);
-  }
-
-  /* Secondary statement moves to the right */
-  .technology-approach__secondary {
-    width: 58%;
-    max-width: 17rem;
-
-    margin:
-      0
-      0
-      0
-      auto;
-
-    color: var(--colour-text-secondary);
-
-    font-size: 0.95rem;
-    line-height: 1.65;
-
-    text-align: left;
-  }
-}
-
-/* ========================================
-   My Approach
-======================================== */
-
-.expectations {
-  padding-block: 6rem;
-
-  background: var(--colour-surface);
-
-  text-align: center;
-}
-
-/* Section heading */
-.expectations__eyebrow {
-  margin: 0 0 3.5rem;
-
-  color: var(--colour-text-primary);
-
-  font-size: 1.135rem;
-  font-weight: 600;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* Approach grid */
-.expectations__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  gap: 4rem;
-}
-
-/* Individual approach item */
-.expectations__item {
-  display: grid;
-
-  justify-items: center;
-
-  gap: 1rem;
-
-  text-align: center;
-}
-
-/* Approach icon */
-.expectations__icon {
-  display: block;
-
-  width: 1.75rem;
-  height: 1.75rem;
-
-  color: var(--colour-brand-primary);
-}
-
-/* Approach label */
-.expectations__title {
-  max-width: 14rem;
-
-  margin: 0;
-
-  color: var(--colour-text-primary);
-
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 500;
-
-  line-height: 1.4;
-}
-
-/* ========================================
-   My Approach — Tablet
-======================================== */
-
-@media (max-width: 64rem) {
-  .expectations {
-    padding-block: 5rem;
-  }
-
-  .expectations__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 3rem 4rem;
-  }
-}
-
-/* ========================================
-   My Approach — Mobile
-======================================== */
-
-@media (max-width: 48rem) {
-  .expectations {
-    padding-block: 4rem;
-  }
-
-  .expectations__eyebrow {
-    margin-bottom: 2.75rem;
-  }
-
-  .expectations__grid {
-    grid-template-columns: 1fr;
-
-    gap: 2.5rem;
-  }
-
-  .expectations__item {
-    gap: 0.9rem;
   }
 }
 
@@ -4357,6 +4400,12 @@ body {
 }
 
 .case-study__section--accent {
+  position: relative;
+  left: 50%;
+
+  width: 100vw;
+  margin-left: -50vw;
+
   background: #070b14e0;
   color: var(--colour-background);
 }

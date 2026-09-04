@@ -6,8 +6,8 @@ import { Mail } from "lucide-react";
 
 const footerNavigation = [
   { href: "/work", label: "Work" },
-  { href: "/#services", label: "Services" },
-  { href: "/#client-journey", label: "Contact" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Footer() {

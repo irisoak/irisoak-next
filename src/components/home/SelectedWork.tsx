@@ -6,17 +6,18 @@ const projects = [
     title: "Kawari Company",
     category: "Web Design & Development",
     href: "/work/kawari-company",
-    image: null,
-    imageAlt: "",
-    status: "In Development",
+    image: "/images/work/kawari-company/kawari-homepage.png",
+    loading: "eager",
+    imageAlt: "Kawari Company homepage screenshot",
+    status: null,
   },
   {
     title: "PartsPilot",
     category: "Automotive Inventory Intelligence Platform",
     href: "/work/partspilot",
     image: "/images/work/partspilot/dashboard.png",
-    imageAlt:
-      "PartsPilot dashboard showing inventory metrics and recent activity",
+    loading: "eager",
+    imageAlt: "PartsPilot dashboard showing inventory metrics and recent activity",
     status: null,
   },
 ];

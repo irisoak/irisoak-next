@@ -3,7 +3,7 @@ import Container from "./Container";
 
 const navigation = [
   { href: "/work", label: "WORK" },
-  { href: "/#services", label: "SERVICES" },
+  { href: "/services", label: "SERVICES" },
 ];
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
         </nav>
 
         <Link
-          href="/#client-journey" className="header-cta"
+          href="/contact" className="header-cta"
         >
           WORK WITH ME
         </Link>

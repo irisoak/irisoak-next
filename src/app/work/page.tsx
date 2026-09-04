@@ -8,9 +8,9 @@ const projects = [
     description:
       "A consultancy website in development for a specialist safeguarding, regulation and independent review practice.",
     href: "/work/kawari-company",
-    image: null,
-    imageAlt: "",
-    status: "In Development",
+    image: "/images/work/kawari-company/kawari-homepage.png",
+    imageAlt: "Kawari Company homepage",
+    status: null,
   },
   {
     title: "PartsPilot",

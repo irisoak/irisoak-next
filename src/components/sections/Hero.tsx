@@ -4,37 +4,34 @@ import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
-    <section className="hero">
+    <section className="hero hero--image">
+      <Image
+        src="/images/hero-iris-oak-workspace.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="hero__background"
+      />
+
+      <div className="hero__overlay" />
+
       <Container className="hero__container">
-
-        <div className="hero__media">
-          <Image
-            src="/images/hero-developer-workspace.png"
-            alt="Developer workspace with a laptop and curved monitor displaying code and a website in development."
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 55vw"
-            className="hero__image"
-          />
-        </div>
-
         <div className="hero__content">
+          <p className="hero__eyebrow">
+            DESIGN · DEVELOPMENT · DIGITAL PRODUCTS
+          </p>
+
           <h1 className="hero__title">
-            Thoughtful digital products, built for real businesses.
+            Ideas into meaningful solutions
           </h1>
 
           <p className="hero__text">
-            I design and build accessible, maintainable websites and digital
-            products for small businesses, founders and growing organisations.
-          </p>
-
-          <p className="hero__supporting-text">
-            Full-stack development, thoughtful design, and long-term support —
-            all under one roof.
+            Thoughtfully designed websites and digital products, built around real people, businesses and ideas.
           </p>
 
           <div className="hero__actions">
-            <Button href="/#client-journey">
+            <Button href="/contact">
               START A PROJECT
             </Button>
 
@@ -43,7 +40,6 @@ export default function Hero() {
             </Button>
           </div>
         </div>
-
       </Container>
     </section>
   );
