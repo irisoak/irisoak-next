@@ -34,7 +34,7 @@ export default function Hero() {
           </p>
 
           <div className="hero__actions">
-            <Button href="/work-with-me">
+            <Button href="/#client-journey">
               START A PROJECT
             </Button>
 

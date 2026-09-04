@@ -30,8 +30,7 @@ export default function Header() {
         </nav>
 
         <Link
-          href="/contact"
-          className="header-cta"
+          href="/#client-journey" className="header-cta"
         >
           WORK WITH ME
         </Link>
