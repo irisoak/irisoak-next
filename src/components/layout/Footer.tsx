@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "./Container";
 
-import { FaLinkedinIn, FaInstagram } from "react-icons/fa6";
+import { FaLinkedinIn, FaInstagram, FaFacebook } from "react-icons/fa6";
 import { Mail } from "lucide-react";
 
 const footerNavigation = [
@@ -43,16 +43,20 @@ export default function Footer() {
         </nav>
 
         <div className="footer-socials" aria-label="Social links">
-          <a href="https://www.linkedin.com/company/irisandoak" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/irisandoak" aria-label="Iris & Oak on LinkedIn">
             <FaLinkedinIn size={20} strokeWidth={1.5} />
           </a>
 
-          <a href="https://www.instagram.com/irisoakdev/" aria-label="Instagram">
+          <a href="https://www.instagram.com/irisoakdev/" aria-label="Iris & Oak on Instagram">
             <FaInstagram size={20} strokeWidth={1.5} />
           </a>
 
           <a href="mailto:iris@irisoak.dev" aria-label="Email me">
             <Mail size={20} strokeWidth={1.5} />
+          </a>
+
+          <a href="https://www.facebook.com/profile.php?id=61593802392943" aria-label="Iris & Oak on Facebook">
+            <FaFacebook size={20} strokeWidth={1.5} />
           </a>
         </div>
       </Container>
