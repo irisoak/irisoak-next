@@ -35,7 +35,11 @@ export default function Hero() {
               START A PROJECT
             </Button>
 
-            <Button href="/work" variant="text">
+            <Button
+              href="/work"
+              variant="text"
+              className="hero__view-work"
+            >
               VIEW MY WORK <span aria-hidden="true">→</span>
             </Button>
           </div>

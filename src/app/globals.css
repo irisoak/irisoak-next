@@ -656,6 +656,17 @@ body {
   margin-top: 2rem;
 }
 
+.hero__view-work {
+  color: #ffffff;
+}
+
+.hero__view-work:hover,
+.hero__view-work:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
 /* ========================================
    Hero — Background Image
 ======================================== */
