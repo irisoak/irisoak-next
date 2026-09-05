@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <TechnologyApproach />
-    <MyApproach />
+      <MyApproach />
       <SelectedWork />
       <Services />
       <FAQ />
