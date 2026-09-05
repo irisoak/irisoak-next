@@ -33,6 +33,12 @@ type JourneyData = {
   additionalInformation: string;
 };
 
+type ClientJourneyProps = {
+  defaultOpen?: boolean;
+  initialService?: string;
+  standalone?: boolean;
+};
+
 const initialJourneyData: JourneyData = {
   name: "",
   organisation: "",
@@ -57,11 +63,18 @@ const initialJourneyData: JourneyData = {
   additionalInformation: "",
 };
 
-export default function ClientJourney() {
+export default function ClientJourney({
+  defaultOpen = false,
+  initialService = "",
+  standalone = false,
+}: ClientJourneyProps) {
+
+
   const [currentStep, setCurrentStep] = useState(1);
-  const [isJourneyOpen, setIsJourneyOpen] = useState(false);
+  const [isJourneyOpen, setIsJourneyOpen] = useState(defaultOpen);
   const [consentGiven, setConsentGiven] = useState(false);
   const [consentError, setConsentError] = useState(false);
+  const [isAmendingAbout, setIsAmendingAbout] = useState(false);
 
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "success" | "error"
@@ -73,8 +86,10 @@ export default function ClientJourney() {
     organisationType: false,
   });
 
-  const [journeyData, setJourneyData] =
-    useState<JourneyData>(initialJourneyData);
+  const [journeyData, setJourneyData] = useState<JourneyData>({
+    ...initialJourneyData,
+    service: initialService,
+  });
 
   /* ========================================
      Step 1 Validation
@@ -93,6 +108,12 @@ export default function ClientJourney() {
     setStepOneErrors(errors);
 
     if (Object.values(errors).some(Boolean)) {
+      return;
+    }
+
+    if (isAmendingAbout) {
+      setIsAmendingAbout(false);
+      setCurrentStep(4);
       return;
     }
 
@@ -168,16 +189,43 @@ export default function ClientJourney() {
     }
   };
 
+  const handleServiceChange = (service: string) => {
+    setJourneyData((current) => ({
+      ...current,
+      service,
+
+      hasBrand: "",
+      pageCount: "",
+
+      currentWebsiteUrl: "",
+      refreshProblem: "",
+
+      currentPlatform: "",
+      supportType: "",
+
+      customBuild: "",
+      integrations: "",
+
+      timeline: "",
+      budget: "",
+      additionalInformation: "",
+    }));
+  };
+
   /* ========================================
      Reset Journey
   ======================================== */
 
   const resetJourney = () => {
     setCurrentStep(1);
-    setJourneyData(initialJourneyData);
+    setJourneyData({
+      ...initialJourneyData,
+      service: initialService,
+    });
     setConsentGiven(false);
     setConsentError(false);
     setFormStatus("idle");
+    setIsAmendingAbout(false);
 
     setStepOneErrors({
       name: false,
@@ -298,14 +346,16 @@ export default function ClientJourney() {
             id="client-journey-form"
             className="client-journey__expanded"
           >
-            <button
-              type="button"
-              className="client-journey__close"
-              aria-label="Close client journey form"
-              onClick={() => setIsJourneyOpen(false)}
-            >
-              <span aria-hidden="true">x</span>
-            </button>
+            {!standalone && (
+              <button
+                type="button"
+                className="client-journey__close"
+                aria-label="Close client journey form"
+                onClick={() => setIsJourneyOpen(false)}
+              >
+                <span aria-hidden="true">x</span>
+              </button>
+            )}
 
             {/* ========================================
                 Progress
@@ -528,7 +578,7 @@ export default function ClientJourney() {
                       type="submit"
                       className="button button--primary"
                     >
-                      Continue
+                      {isAmendingAbout ? "Save changes" : "Continue"}
                     </button>
                   </div>
                 </fieldset>
@@ -574,10 +624,7 @@ export default function ClientJourney() {
                         value="launch"
                         checked={journeyData.service === "launch"}
                         onChange={(event) =>
-                          setJourneyData((current) => ({
-                            ...current,
-                            service: event.target.value,
-                          }))
+                          handleServiceChange(event.target.value)
                         }
                       />
 
@@ -603,10 +650,7 @@ export default function ClientJourney() {
                         value="refresh"
                         checked={journeyData.service === "refresh"}
                         onChange={(event) =>
-                          setJourneyData((current) => ({
-                            ...current,
-                            service: event.target.value,
-                          }))
+                          handleServiceChange(event.target.value)
                         }
                       />
 
@@ -632,10 +676,7 @@ export default function ClientJourney() {
                         value="care"
                         checked={journeyData.service === "care"}
                         onChange={(event) =>
-                          setJourneyData((current) => ({
-                            ...current,
-                            service: event.target.value,
-                          }))
+                          handleServiceChange(event.target.value)
                         }
                       />
 
@@ -661,10 +702,7 @@ export default function ClientJourney() {
                         value="custom"
                         checked={journeyData.service === "custom"}
                         onChange={(event) =>
-                          setJourneyData((current) => ({
-                            ...current,
-                            service: event.target.value,
-                          }))
+                          handleServiceChange(event.target.value)
                         }
                       />
 
@@ -682,7 +720,7 @@ export default function ClientJourney() {
                     <button
                       type="button"
                       className="button button--secondary"
-                      onClick={() => setCurrentStep(1)}
+                      onClick={() => {setCurrentStep(1)}}
                     >
                       Back
                     </button>
@@ -715,8 +753,8 @@ export default function ClientJourney() {
                   <legend>Your project</legend>
 
                   <p className="form-hint">
-                    A few details will help me understand what would make the
-                    most sense for your project.
+                    Share whatever you know so far. It&apos;s fine to leave anything
+                    blank—we can work through the details together.
                   </p>
 
                   {/* Launch */}
@@ -1069,7 +1107,10 @@ export default function ClientJourney() {
                       <button
                         type="button"
                         className="review-edit-button"
-                        onClick={() => setCurrentStep(1)}
+                        onClick={() => {
+                          setIsAmendingAbout(true);
+                          setCurrentStep(1);
+                        }}  
                       >
                         Amend
                       </button>
@@ -1338,16 +1379,25 @@ export default function ClientJourney() {
                   .
                 </p>
 
-                <button
-                  type="button"
-                  className="button button--primary"
-                  onClick={() => {
-                    resetJourney();
-                    setIsJourneyOpen(false);
-                  }}
-                >
-                  Return to Iris & Oak
-                </button>
+                {standalone ? (
+                  <Link
+                    href="/"
+                    className="button button--primary"
+                  >
+                    Return to Iris & Oak
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="button button--primary"
+                    onClick={() => {
+                      resetJourney();
+                      setIsJourneyOpen(false);
+                    }}
+                  >
+                    Return to Iris & Oak
+                  </button>
+                )}
               </div>
             )}
           </div>

@@ -117,7 +117,7 @@ export default function WorkPage() {
         <div className="work-page__contact">
           <p>Have a project in mind?</p>
 
-          <Link href="/#client-journey">
+          <Link href="/contact">
             Start a conversation{" "}
             <span aria-hidden="true">→</span>
           </Link>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/layout/Container";
 
 type ServiceName = "Launch" | "Refresh" | "Care";
@@ -147,17 +148,6 @@ export default function Services() {
       setFormStatus("error");
     }
   };
-   
-  const handleServiceEnquiry = (serviceName: ServiceName) => {
-    console.log("Selected service:", serviceName);
-
-    document
-      .getElementById("client-journey")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  };
 
   return (
     <section className="services" id="services">
@@ -235,13 +225,12 @@ export default function Services() {
                     ))}
 
                     <div className="services__enquire-row">
-                      <button
-                        type="button"
+                      <Link
+                        href={`/contact?service=${service.name.toLowerCase()}`}
                         className="services__enquire"
-                        onClick={() => handleServiceEnquiry(service.name)}
                       >
                         Enquire <span aria-hidden="true">→</span>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 )}
