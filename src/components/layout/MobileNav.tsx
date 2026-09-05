@@ -14,7 +14,7 @@ export default function MobileNav() {
         <span>Services</span>
       </Link>
 
-      <Link href="/work-with-me" className="mobile-nav__link">
+      <Link href="/contact" className="mobile-nav__link">
         <Send size={20} strokeWidth={1.5} />
         <span>Contact</span>
       </Link>
