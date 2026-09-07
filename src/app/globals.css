@@ -764,6 +764,10 @@ body {
   .hero__content {
     max-width: 42rem;
   }
+
+  .hero__actions {
+    align-items: center;
+  }
 }
 
 /* ========================================
@@ -802,10 +806,8 @@ body {
   }
 
   .hero__actions {
-    align-items: flex-start;
-
+    align-items: center;
     gap: 1.5rem;
-
     margin-top: 2rem;
   }
 
@@ -839,7 +841,13 @@ body {
   }
 
   .hero__actions {
+    width: fit-content;
+
     flex-direction: column;
+
+    align-items: center;
+
+    gap: 1rem;
   }
 }
 
@@ -4885,8 +4893,13 @@ body {
   }
 
   .work-page__project-image {
-    min-height: 15rem;
+    min-height: 0;
   }
+
+  .work-page__project-screenshot {
+    height: auto;
+    object-fit: contain;
+  }  
 
   .work-page__project-content {
     align-items: flex-end;
