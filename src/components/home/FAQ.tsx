@@ -27,7 +27,7 @@ const faqItems: FAQItem[] = [
     question: "How much does care and maintenance cost?",
     answer: (
       <>
-        <strong>Site Check-Up</strong> is a one-time payment of £149.
+        <strong>Site Check-up</strong> is a one-time payment of £149.
         <br />
         Ongoing <strong>Core Care</strong> starts from{" "}
         <strong>£59/month</strong> or £590/year, with{" "}
@@ -52,7 +52,7 @@ const faqItems: FAQItem[] = [
   ),
 },
 {
-  question: "How much does a refresh for my exisiting website typically cost?",
+  question: "How much does a refresh for my existing website typically cost?",
   answer: (
     <>
       <strong>Refresh</strong> projects are quoted after an initial review of
