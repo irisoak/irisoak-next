@@ -11,8 +11,13 @@ type JourneyData = {
   organisationType: string;
   service: string;
 
-  // Launch
+  // Essentials / Launch
   hasBrand: string;
+
+  // Essentials
+  contentReady: string;
+
+  // Launch
   pageCount: string;
 
   // Refresh
@@ -47,6 +52,7 @@ const initialJourneyData: JourneyData = {
   service: "",
 
   hasBrand: "",
+  contentReady: "",
   pageCount: "",
 
   currentWebsiteUrl: "",
@@ -68,8 +74,6 @@ export default function ClientJourney({
   initialService = "",
   standalone = false,
 }: ClientJourneyProps) {
-
-
   const [currentStep, setCurrentStep] = useState(1);
   const [isJourneyOpen, setIsJourneyOpen] = useState(defaultOpen);
   const [consentGiven, setConsentGiven] = useState(false);
@@ -146,6 +150,10 @@ export default function ClientJourney({
       no: "No",
       partial: "Partially / still working on it",
 
+      "within-budget": "Yes",
+      "budget-flexible": "Yes, with some flexibility",
+      "budget-unsure": "I'm not sure yet",
+
       individual: "An Individual",
       "sole-trader": "A Sole Trader",
       startup: "A Startup",
@@ -176,6 +184,8 @@ export default function ClientJourney({
 
   const getServiceName = () => {
     switch (journeyData.service) {
+      case "essentials":
+        return "Website Essentials";
       case "launch":
         return "Launch";
       case "refresh":
@@ -195,6 +205,7 @@ export default function ClientJourney({
       service,
 
       hasBrand: "",
+      contentReady: "",
       pageCount: "",
 
       currentWebsiteUrl: "",
@@ -218,10 +229,12 @@ export default function ClientJourney({
 
   const resetJourney = () => {
     setCurrentStep(1);
+
     setJourneyData({
       ...initialJourneyData,
       service: initialService,
     });
+
     setConsentGiven(false);
     setConsentError(false);
     setFormStatus("idle");
@@ -255,6 +268,7 @@ export default function ClientJourney({
       organisationType: journeyData.organisationType,
 
       hasBrand: journeyData.hasBrand,
+      contentReady: journeyData.contentReady,
       pageCount: journeyData.pageCount,
 
       currentWebsiteUrl: journeyData.currentWebsiteUrl,
@@ -305,7 +319,9 @@ export default function ClientJourney({
         ======================================== */}
 
         <div className="client-journey__header">
-          <p className="client-journey__eyebrow">Start a project</p>
+          <p className="client-journey__eyebrow">
+            Start a project
+          </p>
 
           <h2 className="client-journey__title">
             Tell me a little about what you need.
@@ -332,7 +348,8 @@ export default function ClientJourney({
               aria-controls="client-journey-form"
               onClick={() => setIsJourneyOpen(true)}
             >
-              Start the Conversation <span aria-hidden="true">→</span>
+              Start the Conversation{" "}
+              <span aria-hidden="true">→</span>
             </button>
           )}
         </div>
@@ -556,16 +573,31 @@ export default function ClientJourney({
                         <option value="" disabled>
                           Select an option
                         </option>
-                        <option value="individual">An Individual</option>
-                        <option value="sole-trader">A Sole Trader</option>
-                        <option value="startup">A Startup</option>
+
+                        <option value="individual">
+                          An Individual
+                        </option>
+
+                        <option value="sole-trader">
+                          A Sole Trader
+                        </option>
+
+                        <option value="startup">
+                          A Startup
+                        </option>
+
                         <option value="small-business">
                           A Small Business
                         </option>
+
                         <option value="medium-business">
                           A Medium-Sized Business
                         </option>
-                        <option value="charity">A Charity</option>
+
+                        <option value="charity">
+                          A Charity
+                        </option>
+
                         <option value="community-organisation">
                           A Community Organisation
                         </option>
@@ -578,7 +610,9 @@ export default function ClientJourney({
                       type="submit"
                       className="button button--primary"
                     >
-                      {isAmendingAbout ? "Save changes" : "Continue"}
+                      {isAmendingAbout
+                        ? "Save changes"
+                        : "Continue"}
                     </button>
                   </div>
                 </fieldset>
@@ -611,6 +645,38 @@ export default function ClientJourney({
                   </p>
 
                   <div className="service-options">
+                    {/* Website Essentials */}
+
+                    <label
+                      className={`choice-card choice-card--essentials ${
+                        journeyData.service === "essentials"
+                          ? "choice-card--selected"
+                          : ""
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="service"
+                        value="essentials"
+                        checked={journeyData.service === "essentials"}
+                        onChange={(event) =>
+                          handleServiceChange(event.target.value)
+                        }
+                      />
+
+                      <span>
+                        <strong>Website Essentials</strong>
+
+                        <small>
+                          A streamlined one-page website for independent
+                          businesses that need a clear, professional presence
+                          online.
+                        </small>
+                      </span>
+                    </label>
+
+                    {/* Launch */}
+
                     <label
                       className={`choice-card ${
                         journeyData.service === "launch"
@@ -630,12 +696,15 @@ export default function ClientJourney({
 
                       <span>
                         <strong>Launch</strong>
+
                         <small>
-                          A focused website to get your business online
+                          A bespoke website to get your business online
                           professionally.
                         </small>
                       </span>
                     </label>
+
+                    {/* Refresh */}
 
                     <label
                       className={`choice-card ${
@@ -656,12 +725,15 @@ export default function ClientJourney({
 
                       <span>
                         <strong>Refresh</strong>
+
                         <small>
-                          Improve or redesign an existing website with a clearer,
-                          more polished experience.
+                          Improve or redesign an existing website with a
+                          clearer, more polished experience.
                         </small>
                       </span>
                     </label>
+
+                    {/* Care */}
 
                     <label
                       className={`choice-card ${
@@ -682,12 +754,15 @@ export default function ClientJourney({
 
                       <span>
                         <strong>Care</strong>
+
                         <small>
-                          Ongoing maintenance, technical support and improvements
-                          for your website.
+                          Ongoing maintenance, technical support and
+                          improvements for your website.
                         </small>
                       </span>
                     </label>
+
+                    {/* Custom */}
 
                     <label
                       className={`choice-card ${
@@ -708,9 +783,10 @@ export default function ClientJourney({
 
                       <span>
                         <strong>Custom Project</strong>
+
                         <small>
-                          Something more specific, technical or tailored to your
-                          business.
+                          Something more specific, technical or tailored to
+                          your business.
                         </small>
                       </span>
                     </label>
@@ -720,7 +796,7 @@ export default function ClientJourney({
                     <button
                       type="button"
                       className="button button--secondary"
-                      onClick={() => {setCurrentStep(1)}}
+                      onClick={() => setCurrentStep(1)}
                     >
                       Back
                     </button>
@@ -753,11 +829,197 @@ export default function ClientJourney({
                   <legend>Your project</legend>
 
                   <p className="form-hint">
-                    Share whatever you know so far. It&apos;s fine to leave anything
-                    blank—we can work through the details together.
+                    Share whatever you know so far. It&apos;s fine to leave
+                    anything blank—we can work through the details together.
                   </p>
 
-                  {/* Launch */}
+                  {/* ========================================
+                      Website Essentials
+                  ======================================== */}
+
+                  {journeyData.service === "essentials" && (
+                    <div className="essentials-enquiry">
+                      <div className="essentials-enquiry__summary">
+                        <div>
+                          <p className="essentials-enquiry__eyebrow">
+                            Website Essentials
+                          </p>
+
+                          <h3>
+                            A simple, professional website for getting your
+                            business online.
+                          </h3>
+
+                          <p>
+                            One streamlined responsive page with up to four
+                            focused sections, contact details, social or booking
+                            links, essential SEO setup and one consolidated
+                            revision round.
+                          </p>
+                        </div>
+
+                        <div className="essentials-enquiry__price">
+                          <span>Fixed scope</span>
+                          <strong>£495</strong>
+                        </div>
+                      </div>
+
+                      <div className="essentials-enquiry__grid">
+                        <div className="form-field">
+                          <label htmlFor="journey-essentials-brand">
+                            Do you already have a logo or existing branding?
+                          </label>
+
+                          <select
+                            id="journey-essentials-brand"
+                            name="hasBrand"
+                            value={journeyData.hasBrand}
+                            onChange={(event) =>
+                              setJourneyData((current) => ({
+                                ...current,
+                                hasBrand: event.target.value,
+                              }))
+                            }
+                          >
+                            <option value="">
+                              Select an option
+                            </option>
+
+                            <option value="yes">
+                              Yes
+                            </option>
+
+                            <option value="no">
+                              No
+                            </option>
+
+                            <option value="partial">
+                              Partially / still working on it
+                            </option>
+                          </select>
+                        </div>
+
+                        <div className="form-field">
+                          <label htmlFor="journey-essentials-content">
+                            Do you already have the text and images you&apos;d
+                            like to use?
+                          </label>
+
+                          <select
+                            id="journey-essentials-content"
+                            name="contentReady"
+                            value={journeyData.contentReady}
+                            onChange={(event) =>
+                              setJourneyData((current) => ({
+                                ...current,
+                                contentReady: event.target.value,
+                              }))
+                            }
+                          >
+                            <option value="">
+                              Select an option
+                            </option>
+
+                            <option value="yes">
+                              Yes
+                            </option>
+
+                            <option value="no">
+                              No
+                            </option>
+
+                            <option value="partial">
+                              Partially / still working on it
+                            </option>
+                          </select>
+                        </div>
+
+                        <div className="form-field">
+                          <label htmlFor="journey-essentials-timeline">
+                            When would you like to get started?
+                          </label>
+
+                          <select
+                            id="journey-essentials-timeline"
+                            name="timeline"
+                            value={journeyData.timeline}
+                            onChange={(event) =>
+                              setJourneyData((current) => ({
+                                ...current,
+                                timeline: event.target.value,
+                              }))
+                            }
+                          >
+                            <option value="">
+                              Select an option
+                            </option>
+
+                            <option value="asap">
+                              As soon as possible
+                            </option>
+
+                            <option value="1-3-months">
+                              Within 1–3 months
+                            </option>
+
+                            <option value="3-6-months">
+                              Within 3–6 months
+                            </option>
+
+                            <option value="exploring">
+                              Just exploring ideas
+                            </option>
+
+                            <option value="flexible">
+                              My timeline is flexible
+                            </option>
+
+                            <option value="unsure">
+                              I&apos;m not sure yet
+                            </option>
+                          </select>
+                        </div>
+
+                        <div className="form-field">
+                          <label htmlFor="journey-essentials-budget">
+                            Is £495 within the budget you had in mind?
+                          </label>
+
+                          <select
+                            id="journey-essentials-budget"
+                            name="budget"
+                            value={journeyData.budget}
+                            onChange={(event) =>
+                              setJourneyData((current) => ({
+                                ...current,
+                                budget: event.target.value,
+                              }))
+                            }
+                          >
+                            <option value="">
+                              Select an option
+                            </option>
+
+                            <option value="within-budget">
+                              Yes
+                            </option>
+
+                            <option value="budget-flexible">
+                              Yes, with some flexibility
+                            </option>
+
+                            <option value="budget-unsure">
+                              I&apos;m not sure yet
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ========================================
+                      Launch
+                  ======================================== */}
 
                   {journeyData.service === "launch" && (
                     <>
@@ -777,9 +1039,18 @@ export default function ClientJourney({
                             }))
                           }
                         >
-                          <option value="">Select an option</option>
-                          <option value="yes">Yes</option>
-                          <option value="no">No</option>
+                          <option value="">
+                            Select an option
+                          </option>
+
+                          <option value="yes">
+                            Yes
+                          </option>
+
+                          <option value="no">
+                            No
+                          </option>
+
                           <option value="partial">
                             Partially / still working on it
                           </option>
@@ -802,12 +1073,22 @@ export default function ClientJourney({
                             }))
                           }
                         >
-                          <option value="">Select an option</option>
-                          <option value="one-page">One page</option>
-                          <option value="2-5-pages">2–5 pages</option>
+                          <option value="">
+                            Select an option
+                          </option>
+
+                          <option value="one-page">
+                            One page
+                          </option>
+
+                          <option value="2-5-pages">
+                            2–5 pages
+                          </option>
+
                           <option value="more-than-5">
                             More than 5 pages
                           </option>
+
                           <option value="unsure">
                             I&apos;m not sure yet
                           </option>
@@ -816,7 +1097,9 @@ export default function ClientJourney({
                     </>
                   )}
 
-                  {/* Refresh */}
+                  {/* ========================================
+                      Refresh
+                  ======================================== */}
 
                   {journeyData.service === "refresh" && (
                     <>
@@ -861,7 +1144,9 @@ export default function ClientJourney({
                     </>
                   )}
 
-                  {/* Care */}
+                  {/* ========================================
+                      Care
+                  ======================================== */}
 
                   {journeyData.service === "care" && (
                     <>
@@ -881,13 +1166,33 @@ export default function ClientJourney({
                             }))
                           }
                         >
-                          <option value="">Select an option</option>
-                          <option value="wordpress">WordPress</option>
-                          <option value="squarespace">Squarespace</option>
-                          <option value="shopify">Shopify</option>
-                          <option value="custom">Custom-built</option>
-                          <option value="other">Other</option>
-                          <option value="unsure">I&apos;m not sure</option>
+                          <option value="">
+                            Select an option
+                          </option>
+
+                          <option value="wordpress">
+                            WordPress
+                          </option>
+
+                          <option value="squarespace">
+                            Squarespace
+                          </option>
+
+                          <option value="shopify">
+                            Shopify
+                          </option>
+
+                          <option value="custom">
+                            Custom-built
+                          </option>
+
+                          <option value="other">
+                            Other
+                          </option>
+
+                          <option value="unsure">
+                            I&apos;m not sure
+                          </option>
                         </select>
                       </div>
 
@@ -907,19 +1212,26 @@ export default function ClientJourney({
                             }))
                           }
                         >
-                          <option value="">Select an option</option>
+                          <option value="">
+                            Select an option
+                          </option>
+
                           <option value="maintenance">
                             Maintenance and security
                           </option>
+
                           <option value="content-changes">
                             Small website or content changes
                           </option>
+
                           <option value="technical-support">
                             Ongoing technical support
                           </option>
+
                           <option value="improvements">
                             Performance or accessibility improvements
                           </option>
+
                           <option value="unsure">
                             I&apos;m not sure yet
                           </option>
@@ -928,7 +1240,9 @@ export default function ClientJourney({
                     </>
                   )}
 
-                  {/* Custom */}
+                  {/* ========================================
+                      Custom
+                  ======================================== */}
 
                   {journeyData.service === "custom" && (
                     <>
@@ -973,67 +1287,82 @@ export default function ClientJourney({
                     </>
                   )}
 
-                  {/* Shared Project Details */}
+                  {/* ========================================
+                      Shared Project Details
+                      Essentials has its own timeline + budget
+                  ======================================== */}
 
-                  <div className="form-grid form-grid--two">
-                    <div className="form-field">
-                      <label htmlFor="journey-timeline">
-                        When would you like to get started?
-                      </label>
+                  {journeyData.service !== "essentials" && (
+                    <div className="form-grid form-grid--two">
+                      <div className="form-field">
+                        <label htmlFor="journey-timeline">
+                          When would you like to get started?
+                        </label>
 
-                      <select
-                        id="journey-timeline"
-                        name="timeline"
-                        value={journeyData.timeline}
-                        onChange={(event) =>
-                          setJourneyData((current) => ({
-                            ...current,
-                            timeline: event.target.value,
-                          }))
-                        }
-                      >
-                        <option value="">Select an option</option>
-                        <option value="asap">
-                          As soon as possible
-                        </option>
-                        <option value="1-3-months">
-                          Within 1–3 months
-                        </option>
-                        <option value="3-6-months">
-                          Within 3–6 months
-                        </option>
-                        <option value="exploring">
-                          Just exploring ideas
-                        </option>
-                        <option value="flexible">
-                          My timeline is flexible
-                        </option>
-                        <option value="unsure">
-                          I&apos;m not sure yet
-                        </option>
-                      </select>
+                        <select
+                          id="journey-timeline"
+                          name="timeline"
+                          value={journeyData.timeline}
+                          onChange={(event) =>
+                            setJourneyData((current) => ({
+                              ...current,
+                              timeline: event.target.value,
+                            }))
+                          }
+                        >
+                          <option value="">
+                            Select an option
+                          </option>
+
+                          <option value="asap">
+                            As soon as possible
+                          </option>
+
+                          <option value="1-3-months">
+                            Within 1–3 months
+                          </option>
+
+                          <option value="3-6-months">
+                            Within 3–6 months
+                          </option>
+
+                          <option value="exploring">
+                            Just exploring ideas
+                          </option>
+
+                          <option value="flexible">
+                            My timeline is flexible
+                          </option>
+
+                          <option value="unsure">
+                            I&apos;m not sure yet
+                          </option>
+                        </select>
+                      </div>
+
+                      <div className="form-field">
+                        <label htmlFor="journey-budget">
+                          Do you have a budget in mind?
+                        </label>
+
+                        <input
+                          id="journey-budget"
+                          name="budget"
+                          type="text"
+                          placeholder="For example: unsure, flexible or around £2,000"
+                          value={journeyData.budget}
+                          onChange={(event) =>
+                            setJourneyData((current) => ({
+                              ...current,
+                              budget: event.target.value,
+                            }))
+                          }
+                        />
+                      </div>
                     </div>
+                  )}
 
-                    <div className="form-field">
-                      <label htmlFor="journey-budget">
-                        Do you have a budget in mind?
-                      </label>
-
-                      <input
-                        id="journey-budget"
-                        name="budget"
-                        type="text"
-                        placeholder="For example: unsure, flexible or around £2,000"
-                        value={journeyData.budget}
-                        onChange={(event) =>
-                          setJourneyData((current) => ({
-                            ...current,
-                            budget: event.target.value,
-                          }))
-                        }
-                      />
-                    </div>
-                  </div>
+                  {/* Additional Information */}
 
                   <div className="form-field">
                     <label htmlFor="journey-additional-information">
@@ -1085,7 +1414,9 @@ export default function ClientJourney({
                     Review your enquiry
                   </p>
 
-                  <h2>Check everything looks right.</h2>
+                  <h2>
+                    Check everything looks right.
+                  </h2>
 
                   <p>
                     Review the details below before sending your enquiry. You
@@ -1102,7 +1433,9 @@ export default function ClientJourney({
                     aria-labelledby="review-about-title"
                   >
                     <div className="review-section__header">
-                      <h3 id="review-about-title">About you</h3>
+                      <h3 id="review-about-title">
+                        About you
+                      </h3>
 
                       <button
                         type="button"
@@ -1110,7 +1443,7 @@ export default function ClientJourney({
                         onClick={() => {
                           setIsAmendingAbout(true);
                           setCurrentStep(1);
-                        }}  
+                        }}
                       >
                         Amend
                       </button>
@@ -1134,7 +1467,9 @@ export default function ClientJourney({
 
                       <div>
                         <dt>Reaching out as</dt>
-                        <dd>{formatValue(journeyData.organisationType)}</dd>
+                        <dd>
+                          {formatValue(journeyData.organisationType)}
+                        </dd>
                       </div>
                     </dl>
                   </section>
@@ -1146,7 +1481,9 @@ export default function ClientJourney({
                     aria-labelledby="review-needs-title"
                   >
                     <div className="review-section__header">
-                      <h3 id="review-needs-title">Your needs</h3>
+                      <h3 id="review-needs-title">
+                        Your needs
+                      </h3>
 
                       <button
                         type="button"
@@ -1172,7 +1509,9 @@ export default function ClientJourney({
                     aria-labelledby="review-project-title"
                   >
                     <div className="review-section__header">
-                      <h3 id="review-project-title">Your project</h3>
+                      <h3 id="review-project-title">
+                        Your project
+                      </h3>
 
                       <button
                         type="button"
@@ -1184,33 +1523,67 @@ export default function ClientJourney({
                     </div>
 
                     <dl className="review-list">
+                      {/* Website Essentials */}
+
+                      {journeyData.service === "essentials" && (
+                        <>
+                          <div>
+                            <dt>Existing brand / logo</dt>
+                            <dd>
+                              {formatValue(journeyData.hasBrand)}
+                            </dd>
+                          </div>
+
+                          <div>
+                            <dt>Content ready</dt>
+                            <dd>
+                              {formatValue(journeyData.contentReady)}
+                            </dd>
+                          </div>
+                        </>
+                      )}
+
+                      {/* Launch */}
+
                       {journeyData.service === "launch" && (
                         <>
                           <div>
                             <dt>Existing brand / logo</dt>
-                            <dd>{formatValue(journeyData.hasBrand)}</dd>
+                            <dd>
+                              {formatValue(journeyData.hasBrand)}
+                            </dd>
                           </div>
 
                           <div>
                             <dt>Estimated pages</dt>
-                            <dd>{formatValue(journeyData.pageCount)}</dd>
+                            <dd>
+                              {formatValue(journeyData.pageCount)}
+                            </dd>
                           </div>
                         </>
                       )}
+
+                      {/* Refresh */}
 
                       {journeyData.service === "refresh" && (
                         <>
                           <div>
                             <dt>Current website</dt>
-                            <dd>{journeyData.currentWebsiteUrl || "—"}</dd>
+                            <dd>
+                              {journeyData.currentWebsiteUrl || "—"}
+                            </dd>
                           </div>
 
                           <div>
                             <dt>What isn&apos;t working</dt>
-                            <dd>{journeyData.refreshProblem || "—"}</dd>
+                            <dd>
+                              {journeyData.refreshProblem || "—"}
+                            </dd>
                           </div>
                         </>
                       )}
+
+                      {/* Care */}
 
                       {journeyData.service === "care" && (
                         <>
@@ -1223,38 +1596,55 @@ export default function ClientJourney({
 
                           <div>
                             <dt>Support needed</dt>
-                            <dd>{formatValue(journeyData.supportType)}</dd>
+                            <dd>
+                              {formatValue(journeyData.supportType)}
+                            </dd>
                           </div>
                         </>
                       )}
+
+                      {/* Custom */}
 
                       {journeyData.service === "custom" && (
                         <>
                           <div>
                             <dt>What you&apos;re trying to build</dt>
-                            <dd>{journeyData.customBuild || "—"}</dd>
+                            <dd>
+                              {journeyData.customBuild || "—"}
+                            </dd>
                           </div>
 
                           <div>
                             <dt>Integrations</dt>
-                            <dd>{journeyData.integrations || "—"}</dd>
+                            <dd>
+                              {journeyData.integrations || "—"}
+                            </dd>
                           </div>
                         </>
                       )}
 
                       <div>
                         <dt>Preferred timeline</dt>
-                        <dd>{formatValue(journeyData.timeline)}</dd>
+                        <dd>
+                          {formatValue(journeyData.timeline)}
+                        </dd>
                       </div>
 
                       <div>
                         <dt>Budget</dt>
-                        <dd>{journeyData.budget || "—"}</dd>
+
+                        <dd>
+                          {journeyData.service === "essentials"
+                            ? formatValue(journeyData.budget)
+                            : journeyData.budget || "—"}
+                        </dd>
                       </div>
 
                       <div>
                         <dt>Additional information</dt>
-                        <dd>{journeyData.additionalInformation || "—"}</dd>
+                        <dd>
+                          {journeyData.additionalInformation || "—"}
+                        </dd>
                       </div>
                     </dl>
                   </section>
@@ -1265,11 +1655,13 @@ export default function ClientJourney({
                 ======================================== */}
 
                 <div className="review-submit-intro">
-                  <h2>Ready to send your enquiry?</h2>
+                  <h2>
+                    Ready to send your enquiry?
+                  </h2>
 
                   <p>
-                    Once you&apos;re happy with the information above, send your
-                    enquiry to Iris & Oak.
+                    Once you&apos;re happy with the information above, send
+                    your enquiry to Iris & Oak.
                   </p>
                 </div>
 
@@ -1278,8 +1670,8 @@ export default function ClientJourney({
                     className="client-journey__error"
                     role="alert"
                   >
-                    Something went wrong while sending your enquiry. Please try
-                    again or email me directly at{" "}
+                    Something went wrong while sending your enquiry. Please
+                    try again or email me directly at{" "}
                     <a href="mailto:iris@irisoak.dev">
                       iris@irisoak.dev
                     </a>
@@ -1316,14 +1708,15 @@ export default function ClientJourney({
                       />
 
                       <span>
-                        I confirm that Iris & Oak may use the information provided to respond to this enquiry. See the{" "}
+                        I confirm that Iris & Oak may use the information
+                        provided to respond to this enquiry. See the{" "}
                         <a
                           href="/privacy"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           Privacy Policy.
-                        </a>  
+                        </a>
                       </span>
                     </label>
 
@@ -1364,15 +1757,17 @@ export default function ClientJourney({
                   Enquiry received
                 </p>
 
-                <h2>Thank you, {journeyData.name}.</h2>
+                <h2>
+                  Thank you, {journeyData.name}.
+                </h2>
 
                 <p>
                   Sent! I&apos;ll be in touch soon.
                 </p>
 
                 <p>
-                  If you have any questions in the meantime, please email me directly
-                  at{" "}
+                  If you have any questions in the meantime, please email me
+                  directly at{" "}
                   <a href="mailto:iris@irisoak.dev">
                     iris@irisoak.dev
                   </a>

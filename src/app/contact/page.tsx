@@ -7,6 +7,7 @@ type ContactPageProps = {
 };
 
 const allowedServices = new Set([
+  "essentials",
   "launch",
   "refresh",
   "care",

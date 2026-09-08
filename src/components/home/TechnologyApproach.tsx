@@ -26,6 +26,7 @@ export default function TechnologyApproach() {
                 <p>
                   Not sure what approach makes sense? I can help you work through
                   the options and decide what is worth building.{" "}
+                  <br></br>
                   <Link href="/contact" className="technology-approach__contact-link">
                     Contact me →
                   </Link>

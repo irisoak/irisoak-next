@@ -95,7 +95,7 @@ export default function PartsPilotPage() {
               <p>Feature Complete</p>
 
               <a
-                href="https://inventory-management-system-iris408.vercel.app/"
+                href="https://www.partspilot.uk"
                 target="_blank"
                 rel="noreferrer"
                 className="case-study__meta-link"
@@ -354,7 +354,7 @@ export default function PartsPilotPage() {
             </p>
 
             <a
-              href="https://inventory-management-system-iris408.vercel.app/"
+              href="https://www.partspilot.uk"
               target="_blank"
               rel="noreferrer"
               className="case-study__external-link"

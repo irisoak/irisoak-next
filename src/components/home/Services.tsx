@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 
-type ServiceName = "Launch" | "Refresh" | "Care";
+type ServiceName = "Essentials" | "Launch" | "Refresh" | "Care";
 
 type Service = {
+  number: string;
   name: ServiceName;
   description: string;
   price: string;
@@ -21,65 +22,90 @@ type Service = {
 
 const services: Service[] = [
   {
+    number: "00",
+    name: "Essentials",
+    description:
+      "A streamlined one-page website for independent businesses that need a professional presence online without a larger custom build.",
+    price: "£495",
+    image: "/images/services/essentials.png",
+    details: [
+      {
+        label: "Website Essentials",
+        price: "£495",
+        description:
+          "One streamlined responsive page with up to four focused sections, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
+      },
+    ],
+  },
+  {
+    number: "01",
     name: "Launch",
     description:
-      "A focused website to get your business online professionally.",
+      "A bespoke website shaped around your business, brand and customers.",
     price: "From £695",
-    image: "/images/services/launch.webp",
+    image: "/images/services/launch.png",
     details: [
       {
         label: "One Page",
         price: "From £695",
         description:
-          "A focused single-page website for businesses that need a clear, professional online presence.",
+          "A focused one-page website that brings together what you do, who you help and how customers can contact you.",
       },
       {
         label: "Up to 5 Pages",
         price: "From £1,295",
         description:
-          "A larger business website with room for dedicated services, about, contact and supporting content.",
+          "A complete small-business website with dedicated space for your services, story, work and contact information.",
       },
     ],
   },
   {
+    number: "02",
     name: "Refresh",
     description:
-      "Improve an existing website with a clearer, more polished experience.",
-    price: "From £895",
-    image: "/images/services/refresh.webp",
+      "Improve an existing website with a clearer structure, stronger visual direction and better experience.",
+    price: "Quoted after review",
+    image: "/images/services/refresh.png",
     details: [
       {
         label: "Website Refresh",
-        price: "From £895",
+        price: "Quoted after review",
         description:
-          "Final pricing is confirmed following an initial review of your existing website.",
+          "Final scope and pricing are confirmed following an initial review of your existing website.",
       },
     ],
   },
   {
+    number: "03",
     name: "Care",
     description:
       "Ongoing maintenance, monitoring and technical support for your website.",
-    price: "From £89/month",
-    image: "/images/services/care.webp",
+    price: "From £59/month",
+    image: "/images/services/care.png",
     details: [
       {
-        label: "Essential",
-        price: "£89/month",
+        label: "Site Check-up",
+        price: "£149",
         description:
-          "Core technical maintenance, monitoring, security checks and regular site health reviews.",
+          "A focused check and tidy-up for an existing website, including core updates, basic health checks and small maintenance fixes.",
       },
       {
-        label: "Standard",
-        price: "£179/month",
+        label: "Core Care",
+        price: "£59/month or £590/year",
         description:
-          "Everything in Essential, plus up to two hours of small content or website changes each month.",
+          "Routine updates, uptime checks, key link and form checks, minor maintenance fixes and an initial support response within three working days.",
       },
       {
-        label: "Priority",
-        price: "£329/month",
+        label: "Growth Care",
+        price: "£119/month or £1,190/year",
         description:
-          "Ongoing technical support with up to four hours of monthly changes, higher priority and proactive improvement recommendations.",
+          "Everything in Core Care, plus up to one hour of content or design updates each month, regular performance checks and an initial support response within two working days.",
+      },
+      {
+        label: "Priority Care",
+        price: "£229/month or £2,290/year",
+        description:
+          "Everything in Growth Care, plus up to two and a half hours of ongoing website improvements each month, proactive recommendations and an initial support response within one working day.",
       },
     ],
   },
@@ -243,7 +269,7 @@ export default function Services() {
           {/* Custom Project text */}
           <div className="services__custom-text">
             <p className="services__custom-label">
-              Custom Project
+              04 · Custom Project
             </p>
 
             <h2>
@@ -254,6 +280,10 @@ export default function Services() {
               Custom applications, integrations and more complex builds
               are scoped around what your project actually needs.
             </p>
+
+            <p className="services__custom-price">
+              Quoted after discovery
+            </p>
           </div>
 
           {/* Custom Project image */}
@@ -262,7 +292,7 @@ export default function Services() {
             aria-hidden="true"
           >
             <Image
-              src="/images/services/custom.webp"
+              src="/images/services/custom.png"
               alt=""
               fill
               sizes="(max-width: 768px) 100vw, 35vw"

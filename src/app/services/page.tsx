@@ -1,15 +1,65 @@
 import Link from "next/link";
 
+const careOptions = [
+  {
+    name: "Core Care",
+    description:
+      "Routine updates, uptime checks, key link and form checks, minor maintenance fixes and an initial support response within three working days.",
+    monthly: 59,
+    annual: 590,
+  },
+  {
+    name: "Growth Care",
+    description:
+      "Everything in Core Care, plus up to one hour of content or design updates each month, regular performance checks and an initial support response within two working days.",
+    monthly: 119,
+    annual: 1190,
+  },
+  {
+    name: "Priority Care",
+    description:
+      "Everything in Growth Care, plus up to two and a half hours of ongoing website improvements each month, proactive recommendations and an initial support response within one working day.",
+    monthly: 229,
+    annual: 2290,
+  },
+];
+
 const services = [
+  {
+    number: "00",
+    name: "Essentials",
+    heading: "A clear starting point for getting your business online.",
+    description:
+      "For independent businesses that need a simple, professional website using a streamlined structure, existing branding and client-supplied content.",
+    options: [
+      [
+        "Website Essentials",
+        "One streamlined responsive page with up to four focused sections, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
+        "£495",
+      ],
+    ],
+    note:
+      "Best suited to straightforward brochure-style websites. Additional pages, branding, copywriting, custom booking systems, ecommerce and larger functionality are quoted separately.",
+    goodFor:
+      "New businesses · Social-media-only businesses · Simple services · Local independents",
+  },
   {
     number: "01",
     name: "Launch",
-    heading: "A professional home for your business online.",
+    heading: "A bespoke website shaped around your business.",
     description:
-      "For new businesses or existing businesses that need a clear, modern website built around their brand and customers.",
+      "For new or growing businesses that need a more flexible website with structure, visual direction and content flow designed around their brand and customers.",
     options: [
-      ["One Page", "Focused one-page website for a professional online presence.", "From £695"],
-      ["Up to 5 Pages", "Perfect for small businesses that need a more comprehensive online presence.", "From £1,295"],
+      [
+        "One Page",
+        "A focused one-page website that brings together what you do, who you help and how customers can contact you in one clear, responsive experience.",
+        "From £695",
+      ],
+      [
+        "Up to 5 Pages",
+        "A complete small-business website with dedicated space for your services, story, work and contact information. Clear navigation and a consistent responsive design help customers understand your business and take the next step.",
+        "From £1,295",
+      ],
     ],
     note: null,
     goodFor:
@@ -20,8 +70,14 @@ const services = [
     name: "Refresh",
     heading: "Make your existing website work harder.",
     description:
-      "For websites that already exist but need a clearer structure, stronger visual direction or a better experience across desktop and mobile.",
-    options: [["Website Refresh", "A considered update and improvements to your existing website.", "From £895"]],
+      "A considered update for an existing website that no longer represents the business or works well for its customers. I’ll improve its structure, visual direction and desktop and mobile experience while retaining the parts that still work.",
+    options: [
+      [
+        "Website Refresh",
+        "A considered update and improvement process for your existing website. Final scope and pricing are confirmed after an initial review.",
+        "Quoted after review",
+      ],
+    ],
     note: null,
     goodFor:
       "Older websites · Mobile improvements · UX improvements · Visual redesigns",
@@ -33,12 +89,14 @@ const services = [
     description:
       "Ongoing maintenance, monitoring and technical support for businesses that would rather have someone keeping an eye on their website.",
     options: [
-      ["Essential", "Routine dependency and security updates, uptime monitoring, monthly checks of important links and enquiry forms, and minor maintenance-related fixes. Includes an initial support response within three working days.", "£89/month"],
-      ["Standard", "Everything in Essential, plus up to one hour of content or design updates each month, regular performance and accessibility checks, and an initial support response within two working days.", "£179/month"],
-      ["Priority", "Everything in Standard, plus up to two and a half hours of ongoing website improvements each month, proactive recommendations and an initial support response within one working day.", "£329/month"],
+      [
+        "Site Check-up",
+        "A focused check and tidy-up for an existing website, including core updates, basic health checks and small maintenance fixes.",
+        "£149",
+      ],
     ],
     note:
-  "Included update time resets each month and does not roll over. Hosting, domain renewals, paid third-party services, new pages, larger features and emergency or out-of-hours work are quoted separately.",
+      "Included update time resets each month and does not roll over. Hosting, domain renewals, paid third-party services, new pages, larger features and emergency or out-of-hours work are quoted separately.",
     goodFor:
       "Maintenance · Monitoring · Small updates · Ongoing technical support",
   },
@@ -48,11 +106,8 @@ export default function ServicesPage() {
   return (
     <main className="services-page">
       <div className="site-container">
-
         <section className="services-page__hero">
-          <p className="services-page__eyebrow">
-            Services
-          </p>
+          <p className="services-page__eyebrow">Services</p>
 
           <h1>
             Websites and digital products, built around what you actually need.
@@ -100,6 +155,29 @@ export default function ServicesPage() {
                       </p>
                     </div>
                   ))}
+
+                  {service.name === "Care" &&
+                    careOptions.map((option) => (
+                      <div key={option.name}>
+                        <div className="services-page__pricing-details">
+                          <span>{option.name}</span>
+
+                          <p className="services-page__pricing-description">
+                            {option.description}
+                          </p>
+                        </div>
+
+                        <div className="care-pricing">
+                          <p className="care-pricing__monthly">
+                            £{option.monthly.toLocaleString("en-GB")}/month
+                          </p>
+
+                          <p className="care-pricing__annual">
+                            £{option.annual.toLocaleString("en-GB")}/year
+                          </p>
+                        </div>
+                      </div>
+                    ))}
                 </div>
 
                 <div className="services-page__good-for">
@@ -131,13 +209,15 @@ export default function ServicesPage() {
           </div>
 
           <div>
-            <h2>
-              Need something beyond a standard website?
-            </h2>
+            <h2>Need something beyond a standard website?</h2>
 
             <p>
               Some projects don&apos;t fit neatly into a package. I also design
               and build custom digital products around specific business needs.
+            </p>
+
+            <p className="services-page__custom-price">
+              Quoted after discovery
             </p>
 
             <ul>
@@ -159,9 +239,7 @@ export default function ServicesPage() {
         </section>
 
         <section className="services-page__process">
-          <p className="services-page__eyebrow">
-            How it works
-          </p>
+          <p className="services-page__eyebrow">How it works</p>
 
           <div className="services-page__process-list">
             <div>
@@ -169,9 +247,10 @@ export default function ServicesPage() {
 
               <div className="services-page__process-content">
                 <h3>Tell me about your project</h3>
+
                 <p>
-                  Share what you&apos;re trying to achieve, who it is for and any
-                  challenges with your current setup.
+                  Share what you&apos;re trying to achieve, who it is for and
+                  any challenges with your current setup.
                 </p>
               </div>
             </div>
@@ -181,9 +260,10 @@ export default function ServicesPage() {
 
               <div className="services-page__process-content">
                 <h3>I work out what you actually need</h3>
+
                 <p>
-                  I&apos;ll discuss your priorities and decide on the most appropriate
-                  approach, features and scope.
+                  I&apos;ll discuss your priorities and decide on the most
+                  appropriate approach, features and scope.
                 </p>
               </div>
             </div>
@@ -193,9 +273,10 @@ export default function ServicesPage() {
 
               <div className="services-page__process-content">
                 <h3>You receive a clear scope and proposal</h3>
+
                 <p>
-                  I&apos;ll outline the deliverables, timeline and cost so you know what
-                  is included before work begins.
+                  I&apos;ll outline the deliverables, timeline and cost so you
+                  know what is included before work begins.
                 </p>
               </div>
             </div>
@@ -205,9 +286,10 @@ export default function ServicesPage() {
 
               <div className="services-page__process-content">
                 <h3>Design, development and launch</h3>
+
                 <p>
-                  I&apos;ll build, test and refine the project with regular updates before
-                  preparing everything for launch.
+                  I&apos;ll build, test and refine the project with regular
+                  updates before preparing everything for launch.
                 </p>
               </div>
             </div>
@@ -217,15 +299,17 @@ export default function ServicesPage() {
         <section className="services-page__closing">
           <p>Not sure which service fits?</p>
 
-          <h2>
-            Let's figure it out together.
-          </h2>
+          <h2>Let&apos;s figure it out together.</h2>
 
           <p>
-            No need to pick the "right" package upfront — I can help you land on the right approach first.
+            No need to pick the &quot;right&quot; package upfront — I can help
+            you land on the right approach first.
           </p>
 
-          <Link href="/contact" className="services-page__closing-link">
+          <Link
+            href="/contact"
+            className="services-page__closing-link"
+          >
             Start a project →
           </Link>
         </section>

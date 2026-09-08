@@ -1386,7 +1386,7 @@ body {
   }
 
   .selected-work__image {
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 16 / 9;
   }
 
   .selected-work__details {
@@ -1866,8 +1866,57 @@ body {
 ======================================== */
 
 @media (max-width: 48rem) {
+  .services__summary {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
 
+  .services__media {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .services__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0.55;
+  }
+
+  .services__media::after {
+    background: linear-gradient(
+      to bottom,
+      var(--colour-background) 0%,
+      transparent 12%,
+      transparent 88%,
+      var(--colour-background) 100%
+    );
+  }
+
+  .services__action {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding:
+      1.25rem
+      0
+      1.5rem;
+
+    text-align: left;
+  }
+}
+
+@media (max-width: 48rem) {
   /* Expanded service layout */
+
   .services__item--open .services__summary {
     grid-template-columns: 1fr;
   }
@@ -2173,6 +2222,41 @@ body {
 }
 
 /* ========================================
+   Services Page — Care Pricing
+======================================== */
+
+.care-pricing {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 0.25rem;
+
+  text-align: right;
+  white-space: nowrap;
+}
+
+.services-page__pricing .care-pricing__monthly {
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.services-page__pricing .care-pricing__annual {
+  margin: 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ========================================
    Services Page — Good For
 ======================================== */
 
@@ -2275,7 +2359,7 @@ body {
 .services-page__custom > div:first-child span {
   opacity: 0.65;
 
-  font-size: qrem;
+  font-size: 1rem;
 }
 
 .services-page__custom > div:first-child p {
@@ -2296,7 +2380,7 @@ body {
   color: inherit;
 
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 55rem);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
   font-weight: 400;
 
   line-height: 1;
@@ -2307,11 +2391,24 @@ body {
 
   margin: 2rem 0 0;
 
+  font-size: 1.15rem;
   line-height: 1.7;
 
-  font-size: 1.15rem;
-
   opacity: 0.8;
+}
+
+/* Single pricing message for custom work */
+
+.services-page__custom > div:last-child > .services-page__custom-price {
+  margin: 1.5rem 0 0;
+
+  color: var(--colour-background);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+
+  opacity: 1;
 }
 
 .services-page__custom ul {
@@ -2321,9 +2418,7 @@ body {
 
   max-width: 42rem;
 
-  font-size: 1.15rem;
-
-  margin: 3rem 0 0;
+  margin: 1.75rem 0 0;
   padding: 0;
 
   border-top: 1px solid
@@ -2332,6 +2427,8 @@ body {
       var(--colour-background) 25%,
       transparent
     );
+
+  font-size: 1.15rem;
 
   list-style: none;
 }
@@ -3414,12 +3511,15 @@ body {
 
 .faq__answer {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
 
   padding:
     0
     0
     1.75rem;
+
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .faq__answer p {
@@ -3429,13 +3529,8 @@ body {
 
   font-size: 1.05rem;
   line-height: 1.7;
-}
 
-/* Desktop only */
-@media (min-width: 48.01rem) {
-  .faq__answer p {
-    white-space: nowrap;
-  }
+  white-space: normal;
 }
 
 /* ========================================
@@ -3603,6 +3698,7 @@ body {
   color: #8a2f2f;
 }
 
+
 /* ========================================
    Client Journey — Progress
 ======================================== */
@@ -3614,7 +3710,7 @@ body {
 .journey-progress__status {
   margin: 0 0 1rem;
 
-  color: var(--color-text-secondary);
+  color: var(--colour-text-secondary);
 
   font-size: 1.125rem;
   font-weight: 600;
@@ -3652,8 +3748,7 @@ body {
   width: 1.75rem;
   height: 1.75rem;
 
-  border: var(--colour-text-secondary);
-
+  border: 1px solid var(--colour-text-secondary);
   border-radius: 50%;
 
   font-size: 0.8rem;
@@ -3676,6 +3771,7 @@ body {
   background: var(--colour-brand-primary);
   color: var(--colour-background);
 }
+
 
 /* ========================================
    Client Journey — Open Form Action
@@ -3712,6 +3808,7 @@ body {
   outline-offset: 4px;
 }
 
+
 /* ========================================
    Client Journey — Expanded Area
 ======================================== */
@@ -3732,9 +3829,9 @@ body {
     rgba(20, 35, 28, 0.12);
 }
 
-/* Close icon */
 .client-journey__close {
   position: absolute;
+
   top: 1.25rem;
   right: 1.25rem;
 
@@ -3760,6 +3857,7 @@ body {
   outline: 3px solid var(--colour-focus);
   outline-offset: 3px;
 }
+
 
 /* ========================================
    Client Journey — Form
@@ -3870,6 +3968,7 @@ body {
     );
 }
 
+
 /* ========================================
    Client Journey — Project Field Spacing
 ======================================== */
@@ -3882,6 +3981,7 @@ body {
 .journey-step > .form-grid + .form-field {
   margin-top: 1.5rem;
 }
+
 
 /* ========================================
    Client Journey — Navigation
@@ -3902,6 +4002,7 @@ body {
   justify-content: flex-end;
 }
 
+
 /* ========================================
    Client Journey — Form Hint
 ======================================== */
@@ -3920,15 +4021,31 @@ body {
   line-height: 1.6;
 }
 
+
 /* ========================================
    Client Journey — Service Choices
 ======================================== */
 
 .service-options {
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
   gap: 1rem;
+}
+
+.choice-card--essentials {
+  grid-column: 1 / -1;
+
+  padding: 1.75rem;
+}
+
+.choice-card--essentials strong {
+  font-size: 1.75rem;
+}
+
+.choice-card--essentials small {
+  max-width: 42rem;
 }
 
 .choice-card {
@@ -4015,6 +4132,149 @@ body {
   cursor: not-allowed;
 }
 
+
+/* ========================================
+   Client Journey — Website Essentials
+======================================== */
+
+.essentials-enquiry {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* ========================================
+   Website Essentials — Package Summary
+======================================== */
+
+.essentials-enquiry__summary {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: start;
+
+  gap: 3rem;
+
+  padding: 2rem;
+
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--colour-brand-primary) 3%,
+      var(--colour-background)
+    );
+}
+
+.essentials-enquiry__eyebrow {
+  margin: 0 0 0.75rem;
+
+  color: var(--colour-brand-secondary);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.essentials-enquiry__summary h3 {
+  max-width: 34rem;
+
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.essentials-enquiry__summary
+  > div:first-child
+  > p:last-child {
+  max-width: 44rem;
+
+  margin: 1rem 0 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+
+/* ========================================
+   Website Essentials — Price
+======================================== */
+
+.essentials-enquiry__price {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 0.35rem;
+
+  min-width: 7rem;
+
+  text-align: right;
+}
+
+.essentials-enquiry__price span {
+  color: var(--colour-text-secondary);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.essentials-enquiry__price strong {
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   Website Essentials — Questions
+======================================== */
+
+.essentials-enquiry__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.5rem;
+
+  margin-top: 1.5rem;
+}
+
+.essentials-enquiry__grid .form-field {
+  min-width: 0;
+
+  margin: 0;
+}
+
+.essentials-enquiry__grid select {
+  width: 100%;
+}
+
+
 /* ========================================
    Client Journey — Review
 ======================================== */
@@ -4023,6 +4283,10 @@ body {
   max-width: 48rem;
 
   margin-bottom: 3rem;
+}
+
+.review-header .client-journey__eyebrow {
+  color: var(--colour-brand-secondary);
 }
 
 .review-header h2,
@@ -4049,6 +4313,7 @@ body {
   font-size: 1rem;
   line-height: 1.7;
 }
+
 
 /* ========================================
    Client Journey — Review Sections
@@ -4108,6 +4373,7 @@ body {
   color: var(--colour-brand-primary);
 }
 
+
 /* ========================================
    Client Journey — Review List
 ======================================== */
@@ -4147,6 +4413,7 @@ body {
 
   overflow-wrap: anywhere;
 }
+
 
 /* ========================================
    Client Journey — Final Submit
@@ -4218,129 +4485,6 @@ body {
   text-decoration-thickness: 2px;
 }
 
-/* ========================================
-   Client Journey — Submission States
-======================================== */
-
-.client-journey__error {
-  margin: 2rem 0 0;
-
-  color: #8a2f2f;
-
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.client-journey__error a {
-  color: inherit;
-
-  font-weight: 600;
-}
-
-.client-journey__success {
-  max-width: 42rem;
-
-  padding-block: 2rem;
-}
-
-.client-journey__success h2 {
-  margin: 0;
-
-  color: var(--colour-brand-primary);
-
-  font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 4vw, 3.5rem);
-  font-weight: 400;
-
-  line-height: 1.1;
-}
-
-.client-journey__success p {
-  margin: 1.25rem 0 0;
-
-  color: var(--colour-text-secondary);
-
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.client-journey__success .button {
-  margin-top: 2rem;
-}
-
-/* ========================================
-   Client Journey — Mobile
-======================================== */
-
-@media (max-width: 48rem) {
-  .client-journey {
-    padding-block: 4rem;
-  }
-
-  .client-journey__title {
-    max-width: none;
-
-    font-size: 2.5rem;
-  }
-
-  .client-journey__placeholder {
-    margin-top: 2.5rem;
-  }
-
-  .journey-progress__list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .client-journey__expanded {
-    margin-top: 2.5rem;
-    padding: 2rem 1.25rem;
-  }
-
-  .client-journey__close {
-    top: 0.8rem;
-    right: 0.9rem;
-  }
-
-  .form-grid--two {
-    grid-template-columns: 1fr;
-  }
-
-  .service-options {
-    grid-template-columns: 1fr;
-  }
-
-  .choice-card {
-    padding: 1.25rem;
-  }
-
-  .choice-card strong {
-    font-size: 1.4rem;
-  }
-
-  .review-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .review-list > div {
-    grid-template-columns: 1fr;
-
-    gap: 0.25rem;
-  }
-
-  .review-submit-intro {
-    margin-top: 3rem;
-  }
-
-  .form-actions {
-    grid-template-columns: 1fr;
-
-    gap: 1.25rem;
-  }
-
-  .form-actions .button {
-    justify-self: start;
-  }
-}
 
 /* ========================================
    Client Journey — Submission States
@@ -4390,6 +4534,116 @@ body {
 
 .client-journey__success .button {
   margin-top: 2rem;
+}
+
+
+/* ========================================
+   Client Journey — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .client-journey {
+    padding-block: 4rem;
+  }
+
+  .client-journey__title {
+    max-width: none;
+
+    font-size: 2.5rem;
+  }
+
+  .client-journey__placeholder {
+    margin-top: 2.5rem;
+  }
+
+  .journey-progress__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .client-journey__expanded {
+    margin-top: 2.5rem;
+
+    padding: 2rem 1.25rem;
+  }
+
+  .client-journey__close {
+    top: 0.8rem;
+    right: 0.9rem;
+  }
+
+  .form-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .service-options {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-card {
+    padding: 1.25rem;
+  }
+
+  .choice-card strong {
+    font-size: 1.4rem;
+  }
+
+  /* Website Essentials */
+
+  .essentials-enquiry {
+    margin-top: 0;
+  }
+
+  .essentials-enquiry__summary {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+    padding: 1.5rem;
+  }
+
+  .essentials-enquiry__summary h3 {
+    max-width: none;
+  }
+
+  .essentials-enquiry__price {
+    align-items: flex-start;
+
+    min-width: 0;
+
+    text-align: left;
+  }
+
+  .essentials-enquiry__grid {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+  }
+
+  /* Review */
+
+  .review-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .review-list > div {
+    grid-template-columns: 1fr;
+
+    gap: 0.25rem;
+  }
+
+  .review-submit-intro {
+    margin-top: 3rem;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+  }
+
+  .form-actions .button {
+    justify-self: start;
+  }
 }
 
 /* ========================================
@@ -4743,6 +4997,29 @@ body {
 
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+/* ========================================
+   Work Page — Small Laptop
+   769px–1024px
+======================================== */
+
+@media (min-width: 48.01rem) and (max-width: 64rem) {
+  .work-page__project-image {
+    min-height: 0;
+
+    aspect-ratio: 16 / 9;
+
+    align-self: center;
+  }
+
+  .work-page__project-screenshot {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 /* ========================================
@@ -5113,13 +5390,14 @@ body {
 
 .case-study__section--accent {
   position: relative;
-  left: 50%;
-
-  width: 100vw;
-  margin-left: -50vw;
 
   background: #070b14e0;
   color: var(--colour-background);
+
+  box-shadow:
+    0 0 0 100vmax #070b14e0;
+
+  clip-path: inset(0 -100vmax);
 }
 
 .case-study__section--accent .case-study__section-number,

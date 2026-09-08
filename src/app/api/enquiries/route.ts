@@ -4,13 +4,148 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 type EnquiryRequest = {
-  service?: "launch" | "refresh" | "care" | "custom";
+  service?: "essentials" | "launch" | "refresh" | "care" | "custom";
+
   name?: string;
   email?: string;
+
+  organisation?: string;
+  organisationType?: string;
+
+  // Essentials / Launch
+  hasBrand?: string;
+
+  // Essentials
+  contentReady?: string;
+
+  // Launch
+  pageCount?: string;
+
+  // Refresh
+  currentWebsiteUrl?: string;
+  refreshProblem?: string;
+
+  // Care
+  currentPlatform?: string;
+  supportType?: string;
+
+  // Custom
+  customBuild?: string;
+  integrations?: string;
+
+  // Shared
   project?: string;
   budget?: string;
   timeline?: string;
+  additionalInformation?: string;
 };
+
+/* ========================================
+   Helpers
+======================================== */
+
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+const formatOptionalValue = (
+  value: string | undefined,
+  labels: Record<string, string> = {}
+) => {
+  if (!value) {
+    return "Not provided";
+  }
+
+  return labels[value] ?? value;
+};
+
+/* ========================================
+   Display Labels
+======================================== */
+
+const serviceLabels = {
+  essentials: "Website Essentials",
+  launch: "Launch",
+  refresh: "Refresh",
+  care: "Care",
+  custom: "Custom Project",
+};
+
+const organisationTypeLabels: Record<string, string> = {
+  individual: "An Individual",
+  "sole-trader": "A Sole Trader",
+  startup: "A Startup",
+  "small-business": "A Small Business",
+  "medium-business": "A Medium-Sized Business",
+  charity: "A Charity",
+  "community-organisation": "A Community Organisation",
+};
+
+const yesNoLabels: Record<string, string> = {
+  yes: "Yes",
+  no: "No",
+  partial: "Partially / still working on it",
+};
+
+const pageCountLabels: Record<string, string> = {
+  "one-page": "One page",
+  "2-5-pages": "2–5 pages",
+  "more-than-5": "More than 5 pages",
+  unsure: "I'm not sure yet",
+};
+
+const platformLabels: Record<string, string> = {
+  wordpress: "WordPress",
+  squarespace: "Squarespace",
+  shopify: "Shopify",
+  custom: "Custom-built",
+  other: "Other",
+  unsure: "I'm not sure",
+};
+
+const supportTypeLabels: Record<string, string> = {
+  maintenance: "Maintenance and security",
+  "content-changes": "Small website or content changes",
+  "technical-support": "Ongoing technical support",
+  improvements: "Performance or accessibility improvements",
+  unsure: "I'm not sure yet",
+};
+
+const budgetLabels: Record<string, string> = {
+  // Website Essentials
+  "within-budget": "Yes",
+  "budget-flexible": "Yes, with some flexibility",
+  "budget-unsure": "I'm not sure yet",
+
+  // Existing Custom enquiry modal
+  "under-1000": "Under £1,000",
+  "1000-2500": "£1,000–£2,500",
+  "2500-5000": "£2,500–£5,000",
+  "5000-plus": "£5,000+",
+  unsure: "Not sure yet",
+};
+
+const timelineLabels: Record<string, string> = {
+  asap: "As soon as possible",
+
+  // Client Journey
+  "1-3-months": "Within 1–3 months",
+  "3-6-months": "Within 3–6 months",
+  exploring: "Just exploring ideas",
+  flexible: "My timeline is flexible",
+  unsure: "I'm not sure yet",
+
+  // Existing Custom enquiry modal
+  "1-2-months": "1–2 months",
+};
+
+/* ========================================
+   POST
+======================================== */
 
 export async function POST(request: Request) {
   try {
@@ -20,9 +155,27 @@ export async function POST(request: Request) {
       service,
       name,
       email,
+
+      organisation,
+      organisationType,
+
+      hasBrand,
+      contentReady,
+      pageCount,
+
+      currentWebsiteUrl,
+      refreshProblem,
+
+      currentPlatform,
+      supportType,
+
+      customBuild,
+      integrations,
+
       project,
       budget,
       timeline,
+      additionalInformation,
     } = body;
 
     /* ========================================
@@ -39,51 +192,160 @@ export async function POST(request: Request) {
       );
     }
 
-    const serviceLabels = {
-      launch: "Launch",
-      refresh: "Refresh",
-      care: "Care",
-      custom: "Custom Project",
-    };
-
     const serviceName =
       service && serviceLabels[service]
         ? serviceLabels[service]
         : "General";
 
-    const budgetLabels: Record<string, string> = {
-      "under-1000": "Under £1,000",
-      "1000-2500": "£1,000-£2,500",
-      "2500-5000": "£2,500-£5,000",
-      "5000-plus": "£5,000+",
-      unsure: "Not sure yet",
-    };
+    const formattedBudget = formatOptionalValue(
+      budget,
+      budgetLabels
+    );
 
-    const timelineLabels: Record<string, string> = {
-      asap: "As soon as possible",
-      "1-2-months": "1-2 Months",
-      "3-6-months": "3-6 Months",
-      flexible: "Flexible",
-    };    
+    const formattedTimeline = formatOptionalValue(
+      timeline,
+      timelineLabels
+    );
 
-    const enquiry = {
-      service: serviceName,
-      name,
-      email,
-      project,
-      budget: 
-        budget && budgetLabels[budget]
-          ? budgetLabels[budget]
-          : "Not provided",
-      timeline:
-        timeline && timelineLabels[timeline]
-          ? timelineLabels[timeline]
-          : "Not provided",
-    };
+    /* ========================================
+       Escape User Content For Email HTML
+    ======================================== */
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeOrganisation = escapeHtml(
+      formatOptionalValue(organisation)
+    );
+
+    const safeOrganisationType = escapeHtml(
+      formatOptionalValue(
+        organisationType,
+        organisationTypeLabels
+      )
+    );
+
+    const safeProject = escapeHtml(project);
+
+    const safeBudget = escapeHtml(formattedBudget);
+    const safeTimeline = escapeHtml(formattedTimeline);
+
+    const safeAdditionalInformation = escapeHtml(
+      formatOptionalValue(additionalInformation)
+    );
+
+    /* ========================================
+       Service-specific Email Content
+    ======================================== */
+
+    let serviceDetailsHtml = "";
+
+    if (service === "essentials") {
+      serviceDetailsHtml = `
+        <p>
+          <strong>Existing brand / logo</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(hasBrand, yesNoLabels)
+          )}
+        </p>
+
+        <p>
+          <strong>Content ready</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(contentReady, yesNoLabels)
+          )}
+        </p>
+      `;
+    }
+
+    if (service === "launch") {
+      serviceDetailsHtml = `
+        <p>
+          <strong>Existing brand / logo</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(hasBrand, yesNoLabels)
+          )}
+        </p>
+
+        <p>
+          <strong>Estimated pages</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(pageCount, pageCountLabels)
+          )}
+        </p>
+      `;
+    }
+
+    if (service === "refresh") {
+      serviceDetailsHtml = `
+        <p>
+          <strong>Current website</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(currentWebsiteUrl)
+          )}
+        </p>
+
+        <p>
+          <strong>What isn't working</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(refreshProblem)
+          )}
+        </p>
+      `;
+    }
+
+    if (service === "care") {
+      serviceDetailsHtml = `
+        <p>
+          <strong>Current platform</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(
+              currentPlatform,
+              platformLabels
+            )
+          )}
+        </p>
+
+        <p>
+          <strong>Support needed</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(
+              supportType,
+              supportTypeLabels
+            )
+          )}
+        </p>
+      `;
+    }
+
+    if (service === "custom") {
+      serviceDetailsHtml = `
+        ${
+          customBuild
+            ? `
+              <p>
+                <strong>What they're trying to build</strong><br />
+                ${escapeHtml(customBuild)}
+              </p>
+            `
+            : ""
+        }
+
+        ${
+          integrations
+            ? `
+              <p>
+                <strong>Integrations</strong><br />
+                ${escapeHtml(integrations)}
+              </p>
+            `
+            : ""
+        }
+      `;
+    }
 
     /* ========================================
        Email 1
-       Send enquiry to Iris & Oak
+       Send Enquiry To Iris & Oak
     ======================================== */
 
     const businessEmail = await resend.emails.send({
@@ -142,14 +404,22 @@ export async function POST(request: Request) {
 
           <p>
             <strong>Name</strong><br />
-            ${name}
+            ${safeName}
           </p>
 
           <p>
             <strong>Email</strong><br />
-            <a href="mailto:${email}">
-              ${email}
-            </a>
+            ${safeEmail}
+          </p>
+
+          <p>
+            <strong>Business name</strong><br />
+            ${safeOrganisation}
+          </p>
+
+          <p>
+            <strong>Reaching out as</strong><br />
+            ${safeOrganisationType}
           </p>
 
           <p>
@@ -157,19 +427,34 @@ export async function POST(request: Request) {
             ${serviceName}
           </p>
 
-          <p>
-            <strong>Budget</strong><br />
-            ${enquiry.budget}
-          </p>
+          ${serviceDetailsHtml}
 
           <p>
             <strong>Timeline</strong><br />
-            ${enquiry.timeline}
+            ${safeTimeline}
           </p>
 
           <p>
-            <strong>Project details</strong><br />
-            ${project}
+            <strong>Budget</strong><br />
+            ${safeBudget}
+          </p>
+
+          <p>
+            <strong>Additional information</strong><br />
+            ${safeAdditionalInformation}
+          </p>
+
+          <hr
+            style="
+              border: 0;
+              border-top: 1px solid #d7d3ca;
+              margin: 24px 0;
+            "
+          />
+
+          <p>
+            <strong>Project summary</strong><br />
+            ${safeProject}
           </p>
         </div>
       `,
@@ -191,8 +476,8 @@ export async function POST(request: Request) {
     }
 
     /* ========================================
-      Email 2
-      Confirmation to the client
+       Email 2
+       Confirmation To Client
     ======================================== */
 
     const clientEmail = await resend.emails.send({
@@ -216,12 +501,20 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+    });
   } catch (error) {
-    console.error("Enquiry submission failed:", error);
+    console.error(
+      "Enquiry submission failed:",
+      error
+    );
 
     return NextResponse.json(
-      { error: "The enquiry could not be delivered." },
+      {
+        error:
+          "The enquiry could not be delivered.",
+      },
       { status: 500 }
     );
   }
