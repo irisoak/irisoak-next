@@ -26,7 +26,7 @@ export default function PrivacyPage() {
           </p>
 
           <p className="privacy-page__updated">
-            Last updated: 28 August 2026
+            Last updated: 9 September 2026
           </p>
         </header>
 
@@ -214,17 +214,17 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2>8. Analytics and tracking</h2>
+            <h2>8. Cookies, analytics and tracking</h2>
 
             <p>
-              Iris & Oak does not currently use analytics, advertising pixels
-              or behavioural tracking technologies on this website.
+              Iris & Oak does not currently set non-essential cookies or use analytics,
+              advertising pixels or behavioural tracking technologies on this website.
             </p>
 
             <p>
-              If analytics or similar technologies are introduced in the
-              future, this Privacy Policy and any necessary privacy or cookie
-              controls will be updated before or alongside their introduction.
+              If cookies, analytics or similar technologies are introduced in the
+              future, this Privacy Policy and any necessary privacy or cookie controls
+              will be updated before or alongside their introduction.
             </p>
           </section>
 
