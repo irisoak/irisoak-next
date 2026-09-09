@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import ClientJourney from "@/components/home/ClientJourney";
+
+export const metadata: Metadata = {
+  title: "Start Your Website Project",
+  description:
+    "Tell Iris & Oak about your business, website needs, timeline and project goals through a guided enquiry journey.",
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 type ContactPageProps = {
   searchParams: Promise<{

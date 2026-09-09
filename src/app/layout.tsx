@@ -17,8 +17,50 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Iris & Oak",
-  description: "Thoughtfully Engineered Websites & Web Apps",
+  metadataBase: new URL("https://www.irisoak.dev"),
+
+  title: {
+    default: "Websites & Digital Products for Independent Businesses | Iris & Oak",
+    template: "%s | Iris & Oak",
+  },
+
+  description:
+    "Iris & Oak designs and builds professional websites and digital products for independent businesses, from focused website launches to refreshes, ongoing care and custom development.",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: "https://www.irisoak.dev",
+    siteName: "Iris & Oak",
+    title: "Websites & Digital Products for Independent Businesses | Iris & Oak",
+    description:
+      "Professional websites and digital products for independent businesses.",
+    images: [
+      {
+        url: "/images/iris-oak-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Iris & Oak — websites and digital products for independent businesses",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Websites & Digital Products for Independent Businesses | Iris & Oak",
+    description:
+      "Professional websites and digital products for independent businesses.",
+    images: ["/images/iris-oak-og.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

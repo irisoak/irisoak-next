@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Selected Web Design & Development Work",
+  description:
+    "Explore selected Iris & Oak website and digital product projects, including consultancy websites and full-stack application work.",
+  alternates: {
+    canonical: "/work",
+  },
+};
 
 const projects = [
   {

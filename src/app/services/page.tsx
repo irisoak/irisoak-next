@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Website Design & Development Services",
+  description:
+    "Explore Iris & Oak website services for independent businesses, including streamlined one-page websites, larger launches, website refreshes, ongoing care and custom development.",
+  alternates: {
+    canonical: "/services",
+  },
+};
 
 const careOptions = [
   {

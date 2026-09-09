@@ -1,11 +1,13 @@
 import Link from "next/link";
-
 import Container from "@/components/layout/Container";
 
 export const metadata = {
-  title: "Privacy Policy | Iris & Oak",
+  title: "Privacy Policy",
   description:
-    "Learn how Iris & Oak collects, uses and protects personal information.",
+    "Learn how Iris & Oak collects, uses and protects personal information when you visit the website, submit an enquiry or become a client.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {

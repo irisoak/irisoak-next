@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "PartsPilot | Iris & Oak",
+  title: "PartsPilot Full-Stack Platform Case Study",
   description:
-    "PartsPilot is a full-stack automotive inventory management and analytics platform designed and built by Iris & Oak.",
+    "PartsPilot is a full-stack automotive inventory management and analytics platform designed and built by Iris & Oak using React, TypeScript, FastAPI and PostgreSQL.",
+  alternates: {
+    canonical: "/work/partspilot",
+  },
 };
 
 const capabilities = [

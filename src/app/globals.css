@@ -37,6 +37,8 @@
    Tailwind Theme Mapping
 ======================================== */
 
+/* Tailwind CSS v4 at-rule; not recognized by the built-in CSS validator. */
+/* css-languageservice-disable-next-line unknownAtRules */
 @theme inline {
   --color-background: var(--colour-background);
   --color-surface: var(--colour-surface);
