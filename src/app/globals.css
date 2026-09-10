@@ -3536,6 +3536,183 @@ body {
 }
 
 /* ========================================
+   FAQ — Essentials Preview Link
+======================================== */
+
+.faq__preview-button {
+  margin-top: 1rem;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-brand-primary);
+
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+
+  cursor: pointer;
+}
+
+.faq__preview-button:hover {
+  opacity: 0.65;
+}
+
+
+/* ========================================
+   FAQ — Essentials Preview Modal
+======================================== */
+
+.faq-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 2rem;
+}
+
+.faq-preview__backdrop {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  background: rgba(7, 11, 20, 0.72);
+
+  cursor: pointer;
+}
+
+.faq-preview__modal {
+  position: relative;
+  z-index: 1;
+
+  width: min(72rem, 100%);
+  max-height: calc(100vh - 4rem);
+
+  padding: 2rem;
+
+  overflow-y: auto;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--colour-background);
+}
+
+.faq-preview__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-bottom: 2rem;
+}
+
+.faq-preview__eyebrow {
+  margin: 0 0 0.5rem;
+
+  color: var(--colour-brand-secondary);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.faq-preview__header h2 {
+  margin: 0;
+
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.faq-preview__header p:last-child {
+  max-width: 38rem;
+
+  margin: 1rem 0 0;
+
+  color: var(--colour-text-secondary);
+
+  line-height: 1.6;
+}
+
+.faq-preview__close {
+  flex: 0 0 auto;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-text-primary);
+
+  font-size: 2rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   FAQ — Service Comparison Image
+======================================== */
+
+.faq-preview__comparison {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-sm);
+}
+
+.faq-preview__comparison img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* ========================================
+   FAQ — Essentials Preview Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .faq-preview {
+    align-items: end;
+
+    padding: 0;
+  }
+
+  .faq-preview__modal {
+    width: 100%;
+    max-height: 90vh;
+
+    padding: 1.5rem;
+
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  .faq-preview__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
    FAQ — Hover / Focus
 ======================================== */
 
@@ -3582,6 +3759,29 @@ body {
 
     padding-bottom: 1.5rem;
   }
+
+  .faq-preview {
+    align-items: end;
+    padding: 0;
+  }
+
+  .faq-preview__modal {
+    width: 100%;
+    max-height: 92vh;
+    padding: 1.25rem;
+
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  .faq-preview__comparison {
+    overflow-x: auto;
+  }
+
+  .faq-preview__comparison img {
+    width: auto;
+    min-width: 55rem;
+    max-width: none;
+  }  
 }
 
 /* ========================================
@@ -4134,7 +4334,6 @@ body {
   cursor: not-allowed;
 }
 
-
 /* ========================================
    Client Journey — Website Essentials
 ======================================== */
@@ -4151,11 +4350,7 @@ body {
 
 .essentials-enquiry__summary {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    auto;
-
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
 
   gap: 3rem;
@@ -4214,12 +4409,11 @@ body {
 
 
 /* ========================================
-   Website Essentials — Price
+   Website Essentials — Starting Price
 ======================================== */
 
 .essentials-enquiry__price {
   display: flex;
-
   flex-direction: column;
   align-items: flex-end;
 
@@ -4252,14 +4446,179 @@ body {
 
 
 /* ========================================
+   Website Essentials — Package Choice
+======================================== */
+
+.essentials-package-choice {
+  margin: 1.5rem 0 0;
+  padding: 0;
+
+  border: 0;
+}
+
+.essentials-package-choice legend {
+  margin-bottom: 1rem;
+
+  color: var(--colour-text-primary);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.essentials-package-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+/* "I'm not sure yet" spans the full row */
+.essentials-package-options
+  .choice-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.essentials-option-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+
+  gap: 1.5rem;
+
+  min-width: 0;
+  padding: 1.4rem;
+
+  cursor: pointer;
+}
+
+.essentials-option-card__content {
+  display: grid;
+
+  gap: 0.65rem;
+
+  min-width: 0;
+}
+
+.essentials-option-card__content strong {
+  display: block;
+
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+.essentials-option-card__content small {
+  display: block;
+
+  margin: 0;
+
+  color: var(--colour-text-secondary);
+
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.essentials-option-card__price {
+  align-self: start;
+  justify-self: end;
+
+  margin: 0;
+
+  color: var(--colour-brand-primary);
+
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 400;
+
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.essentials-option-card--full {
+  grid-column: 1 / -1;
+}
+
+
+/* ========================================
+   Website Essentials — Selected Package
+======================================== */
+
+.essentials-package-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-top: 1.5rem;
+  padding: 1.15rem 1.25rem;
+
+  border-top: 1px solid var(--colour-border);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.essentials-package-selected > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.3rem;
+}
+
+.essentials-package-selected__label {
+  color: var(--colour-text-secondary);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.essentials-package-selected strong {
+  color: var(--colour-text-primary);
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.essentials-package-selected__amend {
+  flex: 0 0 auto;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--colour-brand-primary);
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+
+  cursor: pointer;
+}
+
+.essentials-package-selected__amend:hover {
+  opacity: 0.65;
+}
+
+
+/* ========================================
    Website Essentials — Questions
 ======================================== */
 
 .essentials-enquiry__grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   gap: 1.5rem;
 
@@ -4268,7 +4627,6 @@ body {
 
 .essentials-enquiry__grid .form-field {
   min-width: 0;
-
   margin: 0;
 }
 
@@ -4276,6 +4634,62 @@ body {
   width: 100%;
 }
 
+
+/* ========================================
+   Website Essentials — Mobile
+======================================== */
+
+@media (max-width: 48rem) {
+  .essentials-enquiry__summary {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+    padding: 1.5rem;
+  }
+
+  .essentials-enquiry__price {
+    align-items: flex-start;
+
+    min-width: 0;
+
+    text-align: left;
+  }
+
+  .essentials-package-options {
+    grid-template-columns: 1fr;
+  }
+
+  .essentials-option-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    gap: 1rem;
+
+    padding: 1.25rem;
+  }
+
+  .essentials-option-card--full {
+    grid-column: auto;
+  }
+
+  .essentials-option-card__price {
+    justify-self: end;
+
+    font-size: 1.25rem;
+  }
+
+  .essentials-package-selected {
+    gap: 1rem;
+
+    padding-inline: 0;
+  }
+
+  .essentials-enquiry__grid {
+    grid-template-columns: 1fr;
+
+    gap: 1.25rem;
+  }
+}
 
 /* ========================================
    Client Journey — Review

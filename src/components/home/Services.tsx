@@ -25,15 +25,21 @@ const services: Service[] = [
     number: "00",
     name: "Essentials",
     description:
-      "A streamlined one-page website for independent businesses that need a professional presence online without a larger custom build.",
-    price: "£495",
+      "Clear, professional starting points for new and independent businesses getting online.",
+    price: "From £295",
     image: "/images/services/essentials.png",
     details: [
+      {
+        label: "Starter Presence",
+        price: "£295",
+        description:
+          "A simple responsive landing page for new and early-stage businesses that need a professional place to send customers, with core business information, contact details and social or booking links.",
+      },
       {
         label: "Website Essentials",
         price: "£495",
         description:
-          "One streamlined responsive page with up to four focused sections, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
+          "A more complete one-page website with up to four focused sections, tailored structure, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
       },
     ],
   },

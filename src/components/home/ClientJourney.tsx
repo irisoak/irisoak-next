@@ -15,6 +15,7 @@ type JourneyData = {
   hasBrand: string;
 
   // Essentials
+  essentialsPackage: string;
   contentReady: string;
 
   // Launch
@@ -52,6 +53,7 @@ const initialJourneyData: JourneyData = {
   service: "",
 
   hasBrand: "",
+  essentialsPackage: "",
   contentReady: "",
   pageCount: "",
 
@@ -268,6 +270,7 @@ export default function ClientJourney({
       organisationType: journeyData.organisationType,
 
       hasBrand: journeyData.hasBrand,
+      essentialsPackage: journeyData.essentialsPackage,
       contentReady: journeyData.contentReady,
       pageCount: journeyData.pageCount,
 
@@ -668,9 +671,8 @@ export default function ClientJourney({
                         <strong>Website Essentials</strong>
 
                         <small>
-                          A streamlined one-page website for independent
-                          businesses that need a clear, professional presence
-                          online.
+                          Clear, professional one-page website options for new
+                          and independent businesses, starting from £295.
                         </small>
                       </span>
                     </label>
@@ -822,6 +824,14 @@ export default function ClientJourney({
                 className="client-journey-form"
                 onSubmit={(event) => {
                   event.preventDefault();
+
+                  if (
+                    journeyData.service === "essentials" &&
+                    !journeyData.essentialsPackage
+                  ) {
+                    return;
+                  }
+
                   setCurrentStep(4);
                 }}
               >
@@ -846,23 +856,156 @@ export default function ClientJourney({
                           </p>
 
                           <h3>
-                            A simple, professional website for getting your
-                            business online.
+                            Choose the starting point that fits your business.
                           </h3>
 
                           <p>
-                            One streamlined responsive page with up to four
-                            focused sections, contact details, social or booking
-                            links, essential SEO setup and one consolidated
-                            revision round.
+                            Two simple one-page website options for new and independent
+                            businesses, depending on how much structure and flexibility you need.
                           </p>
                         </div>
 
                         <div className="essentials-enquiry__price">
-                          <span>Fixed scope</span>
-                          <strong>£495</strong>
+                          <span>From</span>
+                          <strong>£295</strong>
                         </div>
                       </div>
+
+                      {/* ========================================
+                          Essentials Package Choice
+                      ======================================== */}
+
+                      {!journeyData.essentialsPackage ? (
+                        <fieldset className="essentials-package-choice">
+                          <legend>
+                            Which Website Essentials option are you interested in?
+                          </legend>
+
+                          <div className="essentials-package-options">
+                            {/* Starter Presence */}
+
+                            <label className="choice-card">
+                              <input
+                                type="radio"
+                                name="essentialsPackage"
+                                value="starter-presence"
+                                checked={
+                                  journeyData.essentialsPackage === "starter-presence"
+                                }
+                                onChange={(event) =>
+                                  setJourneyData((current) => ({
+                                    ...current,
+                                    essentialsPackage: event.target.value,
+                                  }))
+                                }
+                              />
+
+                              <span>
+                                <strong>Starter Presence</strong>
+
+                                <small>
+                                  A simple responsive landing page for new and early-stage
+                                  businesses that need a professional place to send customers.
+                                </small>
+                              </span>
+
+                              <strong>£295</strong>
+                            </label>
+
+                            {/* Website Essentials */}
+
+                            <label className="choice-card">
+                              <input
+                                type="radio"
+                                name="essentialsPackage"
+                                value="website-essentials"
+                                checked={
+                                  journeyData.essentialsPackage === "website-essentials"
+                                }
+                                onChange={(event) =>
+                                  setJourneyData((current) => ({
+                                    ...current,
+                                    essentialsPackage: event.target.value,
+                                  }))
+                                }
+                              />
+
+                              <span>
+                                <strong>Website Essentials</strong>
+
+                                <small>
+                                  A more complete one-page website with up to four focused
+                                  sections and a structure shaped around your business.
+                                </small>
+                              </span>
+
+                              <strong>£495</strong>
+                            </label>
+
+                            {/* Not Sure */}
+
+                            <label className="choice-card">
+                              <input
+                                type="radio"
+                                name="essentialsPackage"
+                                value="unsure"
+                                checked={journeyData.essentialsPackage === "unsure"}
+                                onChange={(event) =>
+                                  setJourneyData((current) => ({
+                                    ...current,
+                                    essentialsPackage: event.target.value,
+                                  }))
+                                }
+                              />
+
+                              <span>
+                                <strong>I&apos;m not sure yet</strong>
+
+                                <small>
+                                  Tell me a little about your business and I can help you
+                                  choose the most suitable option.
+                                </small>
+                              </span>
+                            </label>
+                          </div>
+                        </fieldset>
+                      ) : (
+                        <div className="essentials-package-selected">
+                          <div>
+                            <span className="essentials-package-selected__label">
+                              Selected option
+                            </span>
+
+                            <strong>
+                              {journeyData.essentialsPackage === "starter-presence" &&
+                                "Starter Presence — £295"}
+
+                              {journeyData.essentialsPackage === "website-essentials" &&
+                                "Website Essentials — £495"}
+
+                              {journeyData.essentialsPackage === "unsure" &&
+                                "I'm not sure yet — help me decide"}
+                            </strong>
+                          </div>
+
+                          <button
+                            type="button"
+                            className="essentials-package-selected__amend"
+                            onClick={() =>
+                              setJourneyData((current) => ({
+                                ...current,
+                                essentialsPackage: "",
+                              }))
+                            }
+                          >
+                            Amend
+                          </button>
+                        </div>
+                      )}
+
+                      {/* ========================================
+                          Essentials Project Details
+                      ======================================== */}
 
                       <div className="essentials-enquiry__grid">
                         <div className="form-field">
@@ -881,18 +1024,9 @@ export default function ClientJourney({
                               }))
                             }
                           >
-                            <option value="">
-                              Select an option
-                            </option>
-
-                            <option value="yes">
-                              Yes
-                            </option>
-
-                            <option value="no">
-                              No
-                            </option>
-
+                            <option value="">Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                             <option value="partial">
                               Partially / still working on it
                             </option>
@@ -901,8 +1035,7 @@ export default function ClientJourney({
 
                         <div className="form-field">
                           <label htmlFor="journey-essentials-content">
-                            Do you already have the text and images you&apos;d
-                            like to use?
+                            Do you already have the text and images you&apos;d like to use?
                           </label>
 
                           <select
@@ -911,23 +1044,14 @@ export default function ClientJourney({
                             value={journeyData.contentReady}
                             onChange={(event) =>
                               setJourneyData((current) => ({
-                                ...current,
+                              ...current,
                                 contentReady: event.target.value,
                               }))
                             }
                           >
-                            <option value="">
-                              Select an option
-                            </option>
-
-                            <option value="yes">
-                              Yes
-                            </option>
-
-                            <option value="no">
-                              No
-                            </option>
-
+                            <option value="">Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                             <option value="partial">
                               Partially / still working on it
                             </option>
@@ -950,39 +1074,19 @@ export default function ClientJourney({
                               }))
                             }
                           >
-                            <option value="">
-                              Select an option
-                            </option>
-
-                            <option value="asap">
-                              As soon as possible
-                            </option>
-
-                            <option value="1-3-months">
-                              Within 1–3 months
-                            </option>
-
-                            <option value="3-6-months">
-                              Within 3–6 months
-                            </option>
-
-                            <option value="exploring">
-                              Just exploring ideas
-                            </option>
-
-                            <option value="flexible">
-                              My timeline is flexible
-                            </option>
-
-                            <option value="unsure">
-                              I&apos;m not sure yet
-                            </option>
+                            <option value="">Select an option</option>
+                            <option value="asap">As soon as possible</option>
+                            <option value="1-3-months">Within 1–3 months</option>
+                            <option value="3-6-months">Within 3–6 months</option>
+                            <option value="exploring">Just exploring ideas</option>
+                            <option value="flexible">My timeline is flexible</option>
+                            <option value="unsure">I&apos;m not sure yet</option>
                           </select>
                         </div>
 
                         <div className="form-field">
                           <label htmlFor="journey-essentials-budget">
-                            Is £495 within the budget you had in mind?
+                            Does this budget range work for you?
                           </label>
 
                           <select
@@ -996,18 +1100,13 @@ export default function ClientJourney({
                               }))
                             }
                           >
-                            <option value="">
-                              Select an option
-                            </option>
-
+                            <option value="">Select an option</option>
                             <option value="within-budget">
                               Yes
                             </option>
-
                             <option value="budget-flexible">
                               Yes, with some flexibility
                             </option>
-
                             <option value="budget-unsure">
                               I&apos;m not sure yet
                             </option>
@@ -1527,6 +1626,19 @@ export default function ClientJourney({
 
                       {journeyData.service === "essentials" && (
                         <>
+                          <div>
+                            <dt>Selected option</dt>
+                            <dd>
+                              {journeyData.essentialsPackage === "starter-presence"
+                                ? "Starter Presence — £295"
+                                : journeyData.essentialsPackage === "website-essentials"
+                                  ? "Website Essentials — £495"
+                                  : journeyData.essentialsPackage === "unsure"
+                                    ? "I'm not sure yet — help me choose"
+                                    : "—"}
+                            </dd>
+                          </div>
+
                           <div>
                             <dt>Existing brand / logo</dt>
                             <dd>

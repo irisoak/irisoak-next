@@ -40,18 +40,23 @@ const services = [
     name: "Essentials",
     heading: "A clear starting point for getting your business online.",
     description:
-      "For independent businesses that need a simple, professional website using a streamlined structure, existing branding and client-supplied content.",
+      "For new and independent businesses that need a simple, professional website with a clear scope, existing branding and client-supplied content.",
     options: [
       [
+        "Starter Presence",
+        "A simple responsive landing page for new and early-stage businesses that need a professional place to send customers, with essential business information, contact details and social or booking links.",
+        "£295",
+      ],
+      [
         "Website Essentials",
-        "One streamlined responsive page with up to four focused sections, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
+        "A more complete one-page website with up to four focused sections, a structure shaped around your business, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
         "£495",
       ],
     ],
     note:
-      "Best suited to straightforward brochure-style websites. Additional pages, branding, copywriting, custom booking systems, ecommerce and larger functionality are quoted separately.",
+      "Starter Presence is deliberately streamlined and uses a predefined structure with client-supplied branding, copy and images. Branding, copywriting, multiple pages, custom functionality, ecommerce, custom booking systems and larger features are quoted separately.",
     goodFor:
-      "New businesses · Social-media-only businesses · Simple services · Local independents",
+      "New businesses · Early-stage independents · Social-media-only businesses · Simple services · Local independents",
   },
   {
     number: "01",

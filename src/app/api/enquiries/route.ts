@@ -16,6 +16,7 @@ type EnquiryRequest = {
   hasBrand?: string;
 
   // Essentials
+  essentialsPackage?: string;
   contentReady?: string;
 
   // Launch
@@ -73,6 +74,12 @@ const serviceLabels = {
   refresh: "Refresh",
   care: "Care",
   custom: "Custom Project",
+};
+
+const essentialsPackageLabels: Record<string, string> = {
+  "starter-presence": "Starter Presence — £295",
+  "website-essentials": "Website Essentials — £495",
+  unsure: "I'm not sure yet — help me choose",
 };
 
 const organisationTypeLabels: Record<string, string> = {
@@ -160,6 +167,7 @@ export async function POST(request: Request) {
       organisationType,
 
       hasBrand,
+      essentialsPackage,
       contentReady,
       pageCount,
 
@@ -241,6 +249,16 @@ export async function POST(request: Request) {
 
     if (service === "essentials") {
       serviceDetailsHtml = `
+        <p>
+          <strong>Website Essentials option</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(
+              essentialsPackage,
+              essentialsPackageLabels
+            )
+          )}
+        </p>
+
         <p>
           <strong>Existing brand / logo</strong><br />
           ${escapeHtml(
