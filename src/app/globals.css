@@ -5226,6 +5226,37 @@ body {
   }
 }
 
+.privacy-page__analytics-control {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.privacy-page__analytics-control p {
+  margin: 0 0 0.75rem;
+}
+
+.privacy-page__analytics-control button {
+  appearance: none;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.privacy-page__analytics-control button:hover {
+  opacity: 0.75;
+}
+
+.privacy-page__analytics-control button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 /* ========================================
    Client Journey — Mobile
 ======================================== */

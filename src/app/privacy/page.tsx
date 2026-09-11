@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
+import AnalyticsPreference from "@/components/privacy/AnalyticsPreference";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -26,7 +27,7 @@ export default function PrivacyPage() {
           </p>
 
           <p className="privacy-page__updated">
-            Last updated: 9 September 2026
+            Last updated: 11 September 2026
           </p>
         </header>
 
@@ -127,9 +128,17 @@ export default function PrivacyPage() {
               <h3>Vercel</h3>
 
               <p>
-                The Iris & Oak Next.js website is hosted using Vercel.
-                Technical information may be processed as part of hosting,
-                securing and delivering the website.
+                The Iris & Oak Next.js website is hosted using Vercel. Vercel
+                may process technical information as part of hosting, securing
+                and delivering the website.
+              </p>
+
+              <p>
+                Iris & Oak also uses Vercel Web Analytics to understand how the
+                website is used and to help improve its content, performance and
+                user experience. The analytics service provides aggregated website
+                statistics such as page views, referring websites, approximate
+                geographic location, browser, operating system and device type.
               </p>
             </div>
 
@@ -217,15 +226,37 @@ export default function PrivacyPage() {
             <h2>8. Cookies, analytics and tracking</h2>
 
             <p>
-              Iris & Oak does not currently set non-essential cookies or use analytics,
-              advertising pixels or behavioural tracking technologies on this website.
+              Iris & Oak uses Vercel Web Analytics to understand how visitors
+              use this website and to help improve its content, performance and
+              user experience.
+            </p>
+
+             <p>
+              Vercel Web Analytics does not use cookies for visitor analytics.
+              It provides Iris & Oak with aggregated statistics such as page
+              views, referring websites, approximate geographic location,
+              browser, operating system and device type.
             </p>
 
             <p>
-              If cookies, analytics or similar technologies are introduced in the
-              future, this Privacy Policy and any necessary privacy or cookie controls
-              will be updated before or alongside their introduction.
+              Vercel Web Analytics uses a temporary identifier generated from
+              an incoming request rather than a persistent visitor identifier.
+              Vercel states that this identifier is automatically reset after
+              24 hours and is not used to track visitors across different websites.
             </p>
+
+            <p>
+              Analytics information is used only to understand website usage
+              and improve the Iris & Oak website. It is not used for behavioural
+              advertising or cross-site advertising tracking.
+            </p>
+
+            <p>
+              You can object to the use of Vercel Web Analytics on this website
+              using the analytics opt-out control provided below.
+            </p>
+
+            <AnalyticsPreference />
           </section>
 
           <section>
