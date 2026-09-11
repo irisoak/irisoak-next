@@ -135,7 +135,7 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              Inventory shouldn't become harder to understand as it grows.
+              Inventory shouldn&apos;t become harder to understand as it grows.
             </h2>
 
             <p>
