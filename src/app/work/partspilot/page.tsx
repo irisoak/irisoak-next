@@ -21,6 +21,7 @@ const capabilities = [
   "Inventory value and category analytics",
   "Reports and CSV export",
   "Power BI business intelligence",
+  "Authenticated read-only public demo",
   "Responsive desktop and mobile experience",
 ];
 
@@ -51,7 +52,7 @@ const technologies = [
   },
   {
     area: "Deployment",
-    value: "Vercel",
+    value: "Vercel, Railway",
   },
 ];
 
@@ -95,15 +96,13 @@ export default function PartsPilotPage() {
 
             <div>
               <span>Status</span>
-              <p>Feature Complete</p>
-
               <a
                 href="https://www.partspilot.uk"
                 target="_blank"
                 rel="noreferrer"
                 className="case-study__meta-link"
               >
-                View Frontend Demo ↗
+                Live full-stack demo ↗
               </a>
             </div>
           </div>
@@ -195,6 +194,7 @@ export default function PartsPilotPage() {
               alt="PartsPilot inventory management interface with search, filtering and stock controls"
               width={1600}
               height={900}
+              loading="eager"
               className="case-study__screenshot"
             />
           </div>
@@ -306,20 +306,21 @@ export default function PartsPilotPage() {
             </div>
 
             <div className="case-study__architecture">
-              <p>React + TypeScript</p>
+              <p>React + TypeScript · Vercel</p>
               <span>↓ REST API</span>
-              <p>FastAPI</p>
+              <p>FastAPI · Railway</p>
               <span>↓ SQLAlchemy</span>
-              <p>PostgreSQL</p>
+              <p>PostgreSQL · Railway</p>
             </div>
 
             <div className="case-study__deployment-note">
               <span>Deployment</span>
               <p>
-                The React frontend is deployed on Vercel. The FastAPI API and
-                PostgreSQL database currently run within the local development
-                environment, with public backend deployment remaining a separate
-                infrastructure step.
+                PartsPilot is deployed as a complete full-stack application, with
+                the React frontend hosted on Vercel and the FastAPI API and
+                PostgreSQL database hosted on Railway. The live environment uses
+                persistent production data, JWT authentication and read-only demo
+                access to protect the shared dataset.
               </p>
             </div>
           </div>
@@ -338,7 +339,7 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              A feature-complete full-stack product built from end to end.
+              A feature-complete full-stack product, deployed end to end.
             </h2>
 
             <p>
@@ -349,11 +350,18 @@ export default function PartsPilotPage() {
             </p>
 
             <p>
-              The project now moves into maintenance, with future work focused
-              on reliability, testing, documentation and infrastructure rather
-              than continued feature expansion. The frontend is available as a
-              public Vercel demonstration, while public backend deployment
-              remains a separate infrastructure step.
+              The application is now deployed as a full-stack public demo, with
+              the React and TypeScript frontend hosted on Vercel, the FastAPI
+              backend deployed on Railway, and PostgreSQL providing persistent
+              production data. The public demo uses authenticated read-only
+              access, allowing visitors to explore inventory, suppliers, reports
+              and analytics without modifying the shared demo dataset.
+            </p>
+
+            <p>
+              PartsPilot is in maintenance, with future work focused on
+              reliability, automated testing, documentation, monitoring and
+              infrastructure improvements rather than continued feature expansion.
             </p>
 
             <a
@@ -362,7 +370,7 @@ export default function PartsPilotPage() {
               rel="noreferrer"
               className="case-study__external-link"
             >
-              View frontend demo ↗
+              View live demo ↗
             </a>
           </div>
         </div>

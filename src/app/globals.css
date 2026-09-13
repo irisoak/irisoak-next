@@ -6030,12 +6030,12 @@ body {
 
 .case-study__navigation {
   padding-block: 2rem 4rem;
-
   border-top: 1px solid currentColor;
+  background: #070b14e0;
 }
 
 .case-study__navigation a {
-  color: inherit;
+  color: #f5f1e8;
   font-size: 1.055rem;
   font-weight: 600;
   text-decoration: none;
