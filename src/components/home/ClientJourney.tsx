@@ -672,7 +672,11 @@ export default function ClientJourney({
 
                         <small>
                           Clear, professional one-page website options for new
-                          and independent businesses, starting from £295.
+                          and independent businesses.
+                        </small>
+                        <small>
+                          Starter Presence — £295 · or ·
+                          Essentials — £495
                         </small>
                       </span>
                     </label>

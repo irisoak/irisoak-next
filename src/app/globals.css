@@ -1689,6 +1689,8 @@ body {
   color: var(--colour-text-secondary);
 
   font-size: 0.9rem;
+
+  white-space: pre-line;
 }
 
 .services__explore {

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 
-type ServiceName = "Essentials" | "Launch" | "Refresh" | "Care";
+type ServiceName = "Website Essentials" | "Launch" | "Refresh" | "Care";
 
 type Service = {
   number: string;
@@ -23,10 +23,10 @@ type Service = {
 const services: Service[] = [
   {
     number: "00",
-    name: "Essentials",
+    name: "Website Essentials",
     description:
       "Clear, professional starting points for new and independent businesses getting online.",
-    price: "From £295",
+    price: "Starter £295\nEssentials £495",
     image: "/images/services/essentials.png",
     details: [
       {
@@ -36,7 +36,7 @@ const services: Service[] = [
           "A simple responsive landing page for new and early-stage businesses that need a professional place to send customers, with core business information, contact details and social or booking links.",
       },
       {
-        label: "Website Essentials",
+        label: "Essentials",
         price: "£495",
         description:
           "A more complete one-page website with up to four focused sections, tailored structure, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
