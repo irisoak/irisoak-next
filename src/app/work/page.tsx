@@ -14,21 +14,21 @@ export const metadata: Metadata = {
 const projects = [
   {
     title: "Kawari Company",
-    category: "Web Design & Development",
+    category: "Client Website · Design & Development",
     description:
-      "A consultancy website in development for a specialist safeguarding, regulation and independent review practice.",
+      "A live consultancy website designed and developed for a specialist practice working across safeguarding, regulation, education and independent review.",
     href: "/work/kawari-company",
     image: "/images/work/kawari-company/kawari-homepage.png",
-    imageAlt: "Kawari Company homepage",
+    imageAlt: "Kawari Company live consultancy website homepage",
     status: null,
   },
   {
     title: "PartsPilot",
-    category: "Automotive Inventory Intelligence Platform",
+    category: "Full-Stack Product · Automotive",
     description:
-      "A full-stack inventory platform built to manage automotive parts, stock levels and operational data.",
+      "A production-deployed inventory management and analytics platform for automotive stock, suppliers, reporting and operational insight.",
     href: "/work/partspilot",
-    image: "/images/work/partspilot/dashboard.png",
+    image: "/images/work/partspilot/overview.png",
     imageAlt:
       "PartsPilot dashboard showing inventory metrics and recent activity",
     status: null,

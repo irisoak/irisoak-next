@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -14,52 +15,74 @@ export default function KawariCompanyPage() {
   return (
     <main className="case-study">
       <div className="site-container">
+        {/* Hero */}
         <section className="case-study__hero">
           <Link href="/work" className="case-study__back">
             ← Back to work
           </Link>
 
           <p className="case-study__eyebrow">
-            Web Design & Development
+            Client Website · Design & Development
           </p>
 
           <h1>Kawari Company</h1>
 
           <p className="case-study__lead">
-            A custom consultancy website for a specialist practice working
-            across safeguarding, regulation, education and independent review.
+            A live consultancy website designed and developed for Kawari Company,
+            a specialist practice working across safeguarding, regulation,
+            education and independent review.
           </p>
 
           <div className="case-study__meta">
             <div>
-              <span>Status</span>
-              <p>Live</p>
-            </div>
-
-            <div>
               <span>Project</span>
-              <p>Business Website</p>
+              <p>Client Website</p>
             </div>
 
             <div>
-              <span>Focus</span>
+              <span>Industry</span>
               <p>Professional Services</p>
             </div>
 
             <div>
-              <span>Delivery</span>
-              <p>Responsive Web</p>
+              <span>My Role</span>
+              <p>Designer & Developer</p>
+            </div>
+
+            <div>
+              <span>Status</span>
+              <a
+                href="https://www.kawaricompany.com"
+                target="_blank"
+                rel="noreferrer"
+                className="case-study__meta-link"
+              >
+                Live website ↗
+              </a>
             </div>
           </div>
         </section>
 
+        {/* Main website image */}
+        <section className="case-study__visual">
+          <div className="case-study__image">
+            <Image
+              src="/images/work/kawari-company/kawari-homepage.png"
+              alt="Kawari Company live consultancy website homepage"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
+              priority
+            />
+          </div>
+        </section>
+
+        {/* Section 01 - Project */}
         <section className="case-study__section case-study__section--accent">
           <div className="case-study__section-grid">
             <div>
               <p className="case-study__section-number">01</p>
-              <p className="case-study__section-label">
-                The Project
-              </p>
+              <p className="case-study__section-label">The Project</p>
             </div>
 
             <div className="case-study__section-content">
@@ -84,13 +107,12 @@ export default function KawariCompanyPage() {
           </div>
         </section>
 
+        {/* Section 02 - Approach */}
         <section className="case-study__section">
           <div className="case-study__section-grid">
             <div>
               <p className="case-study__section-number">02</p>
-              <p className="case-study__section-label">
-                The Approach
-              </p>
+              <p className="case-study__section-label">The Approach</p>
             </div>
 
             <div className="case-study__section-content">
@@ -114,64 +136,90 @@ export default function KawariCompanyPage() {
           </div>
         </section>
 
+        {/* Services / content image */}
+        <section className="case-study__visual">
+          <div className="case-study__image">
+            <Image
+              src="/images/work/kawari-company/services.png"
+              alt="Kawari Company consultancy services and content layout"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
+            />
+          </div>
+        </section>
+
+        {/* Section 03 - Delivered */}
         <section className="case-study__section case-study__section--accent">
-          <div className="site-container">
-            <div className="case-study__section-grid">
-              <div>
-                <p className="case-study__section-number">03</p>
-                <p className="case-study__section-label">
-                  Delivered
-                </p>
-              </div>
+          <div className="case-study__section-grid">
+            <div>
+              <p className="case-study__section-number">03</p>
+              <p className="case-study__section-label">Delivered</p>
+            </div>
 
-              <div className="case-study__section-content">
-                <h2>
-                  More than a one-page brochure website.
-                </h2>
+            <div className="case-study__section-content">
+              <h2>
+                More than a one-page brochure website.
+              </h2>
 
-                <p>
-                  The finished project combines the public-facing website with
-                  the practical pieces needed to support a real business launch.
-                </p>
+              <p>
+                The finished project combines the public-facing website with
+                the practical pieces needed to support a real business launch.
+              </p>
 
-                <div className="case-study__capabilities">
-                  <div className="case-study__capability">
-                    <span>01</span>
-                    <p>Custom responsive website</p>
-                  </div>
+              <div className="case-study__capabilities">
+                <div className="case-study__capability">
+                  <span>01</span>
+                  <p>Custom responsive website</p>
+                </div>
 
-                  <div className="case-study__capability">
-                    <span>02</span>
-                    <p>Contact form and email delivery integration</p>
-                  </div>
+                <div className="case-study__capability">
+                  <span>02</span>
+                  <p>Contact form and email delivery integration</p>
+                </div>
 
-                  <div className="case-study__capability">
-                    <span>03</span>
-                    <p>Custom domain and production deployment</p>
-                  </div>
+                <div className="case-study__capability">
+                  <span>03</span>
+                  <p>Custom domain and production deployment</p>
+                </div>
 
-                  <div className="case-study__capability">
-                    <span>04</span>
-                    <p>Digital contact card with QR code and downloadable vCard</p>
-                  </div>
+                <div className="case-study__capability">
+                  <span>04</span>
+                  <p>
+                    Digital contact card with QR code and downloadable vCard
+                  </p>
+                </div>
 
-                  <div className="case-study__capability">
-                    <span>05</span>
-                    <p>Privacy page and production-ready contact journey</p>
-                  </div>
+                <div className="case-study__capability">
+                  <span>05</span>
+                  <p>
+                    Privacy page and production-ready contact journey
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="case-study__section ">
+        {/* Contact image */}
+        <section className="case-study__visual">
+          <div className="case-study__image">
+            <Image
+              src="/images/work/kawari-company/contact.png"
+              alt="Kawari Company client enquiry and contact experience"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
+            />
+          </div>
+        </section>
+
+        {/* Section 04 - Technology */}
+        <section className="case-study__section">
           <div className="case-study__section-grid">
             <div>
               <p className="case-study__section-number">04</p>
-              <p className="case-study__section-label">
-                Technology
-              </p>
+              <p className="case-study__section-label">Technology</p>
             </div>
 
             <div className="case-study__section-content">
@@ -204,13 +252,12 @@ export default function KawariCompanyPage() {
           </div>
         </section>
 
-        <section className="case-study__section case-study__section--result">
+        {/* Section 05 - Outcome */}
+        <section className="case-study__section case-study__section--accent case-study__section--result">
           <div className="case-study__section-grid">
             <div>
               <p className="case-study__section-number">05</p>
-              <p className="case-study__section-label">
-                Outcome
-              </p>
+              <p className="case-study__section-label">Outcome</p>
             </div>
 
             <div className="case-study__section-content">
@@ -241,13 +288,16 @@ export default function KawariCompanyPage() {
             </div>
           </div>
         </section>
+      </div>
 
-        <nav className="case-study__navigation">
+      {/* Navigation */}
+      <nav className="case-study__navigation">
+        <div className="site-container">
           <Link href="/contact">
             Start a project →
           </Link>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </main>
   );
 }

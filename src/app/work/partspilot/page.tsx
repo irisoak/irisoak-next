@@ -73,8 +73,8 @@ export default function PartsPilotPage() {
           <h1>PartsPilot</h1>
 
           <p className="case-study__lead">
-            A full-stack automotive inventory management and analytics
-            platform designed to bring stock control, supplier management,
+            A production-deployed full-stack automotive inventory management
+            and analytics platform bringing stock control, supplier management,
             reporting and operational insight into one clear product experience.
           </p>
 
@@ -102,7 +102,7 @@ export default function PartsPilotPage() {
                 rel="noreferrer"
                 className="case-study__meta-link"
               >
-                Live full-stack demo ↗
+                Live · Public demo ↗
               </a>
             </div>
           </div>
@@ -118,6 +118,7 @@ export default function PartsPilotPage() {
               alt="PartsPilot dashboard showing inventory metrics and recent activity"
               width={1600}
               height={900}
+              loading="eager"
               className="case-study__screenshot"
             />
           </div>
@@ -194,7 +195,6 @@ export default function PartsPilotPage() {
               alt="PartsPilot inventory management interface with search, filtering and stock controls"
               width={1600}
               height={900}
-              loading="eager"
               className="case-study__screenshot"
             />
           </div>
@@ -228,6 +228,21 @@ export default function PartsPilotPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Reports image */}
+      <section className="case-study__visual">
+        <div className="site-container">
+          <div className="case-study__image">
+            <Image
+              src="/images/work/partspilot/reports.png"
+              alt="PartsPilot reports interface showing inventory and operational analytics"
+              width={1600}
+              height={900}
+              className="case-study__screenshot"
+            />
           </div>
         </div>
       </section>
@@ -370,7 +385,7 @@ export default function PartsPilotPage() {
               rel="noreferrer"
               className="case-study__external-link"
             >
-              View live demo ↗
+              View live public demo ↗
             </a>
           </div>
         </div>
