@@ -1,4 +1,4 @@
-import Hero from "@/components/sections/Hero";
+import HomeHero from "@/components/home/HomeHero";
 import SelectedWork from "@/components/home/SelectedWork";
 import MyApproach from "@/components/home/MyApproach";
 import Services from "@/components/home/Services";
@@ -16,7 +16,7 @@ export default function Home() {
         }}
       />
 
-      <Hero />
+      <HomeHero />
       <TechnologyApproach />
       <MyApproach />
       <SelectedWork />

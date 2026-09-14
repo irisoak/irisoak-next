@@ -4,7 +4,7 @@ import SiteAnalytics from "@/components/analytics/SiteAnalytics";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import Header from "@/components/layout/Header";
+import HeaderGate from "@/components/layout/HeaderGate";
 import Footer from "@/components/layout/Footer";
 import MobileNav from "@/components/layout/MobileNav";
 
@@ -72,7 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body>
-        <Header />
+        <HeaderGate />
 
         <main>
           {children}

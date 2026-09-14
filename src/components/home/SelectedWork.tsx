@@ -15,7 +15,7 @@ const projects = [
     title: "PartsPilot",
     category: "Automotive Inventory Intelligence Platform",
     href: "/work/partspilot",
-    image: "/images/work/partspilot/dashboard.png",
+    image: "/images/work/partspilot/overview.png",
     loading: "eager",
     imageAlt: "PartsPilot dashboard showing inventory metrics and recent activity",
     status: null,

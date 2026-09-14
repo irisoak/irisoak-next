@@ -29,10 +29,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        <Link
-          href="/contact" className="header-cta"
-        >
-          WORK WITH ME
+        <Link href="/contact" className="header-cta">
+          LET&apos;S BUILD TOGETHER
+          <span aria-hidden="true">→</span>
         </Link>
       </Container>
     </header>
