@@ -134,6 +134,27 @@ export default function ServicesPage() {
           </p>
         </section>
 
+        <section className="services__payment-banner" aria-labelledby="payment-options-title">
+          <div className="services__payment-banner-inner">
+            <p className="services__payment-eyebrow">
+              Flexible payment options
+            </p>
+
+            <div className="services__payment-content">
+              <h2 id="payment-options-title">
+                Pay in full, or split the project fee.
+              </h2>
+
+              <p>
+                For most websites, web apps and custom projects, you can <strong>pay in full</strong> or
+                split the project fee into <strong>2, 3 or 4 instalments</strong>. 
+                <br />
+                <strong>Care plans</strong> have separate one-off, monthly and annual options.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <div className="services-page__list">
           {services.map((service) => (
             <section
