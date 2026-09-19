@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Iris & Oak designs and builds professional websites and digital products for independent businesses, from focused website launches to refreshes, ongoing care and custom development.",
+    "Professional websites and digital products for independent businesses, from focused website launches to refreshes, ongoing care and custom development.",
 
   alternates: {
     canonical: "/",

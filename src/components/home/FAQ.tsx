@@ -65,7 +65,7 @@ const faqItems: FAQItem[] = [
         <strong> This includes projects such as APIs and integrations, automation, dashboards and accessibility improvements.</strong> 
         <br />
         Your payment schedule is confirmed clearly in your proposal before work begins, 
-        so you always know what's due and when.
+        so you always know what&apos;s due and when.
         <br />
         <strong>Care plans work differently</strong> and have their own one-off, monthly and annual payment options.
       </>

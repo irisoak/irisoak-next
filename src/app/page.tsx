@@ -33,7 +33,7 @@ const organizationJsonLd = {
   name: "Iris & Oak",
   url: "https://www.irisoak.dev",
   description:
-    "Iris & Oak designs and builds professional websites and digital products for independent businesses.",
+    "Professional websites and digital products for independent businesses.",
   sameAs: [
     "https://www.linkedin.com/company/irisandoak",
     "https://www.instagram.com/irisoakdev/",
