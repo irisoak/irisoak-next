@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 
-type ServiceName = "Website Essentials" | "Launch" | "Refresh" | "Care";
+type ServiceName = "Foundations" | "Launch" | "Refresh" | "Care";
 
 type Service = {
   number: string;
@@ -23,9 +23,9 @@ type Service = {
 const services: Service[] = [
   {
     number: "00",
-    name: "Website Essentials",
+    name: "Foundations",
     description:
-      "Clear, professional starting points for new and independent businesses getting online.",
+      "Simple starting points for getting your business online.",
     price: "Starter £295\nEssentials £495",
     image: "/images/services/essentials.png",
     details: [
@@ -33,13 +33,13 @@ const services: Service[] = [
         label: "Starter Presence",
         price: "£295",
         description:
-          "A simple responsive landing page for new and early-stage businesses that need a professional place to send customers, with core business information, contact details and social or booking links.",
+          "A simple, polished place for your business to be found online.",
       },
       {
-        label: "Essentials",
+        label: "Website Essentials",
         price: "£495",
         description:
-          "A more complete one-page website with up to four focused sections, tailored structure, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
+          "A fuller one-page website, built and structured around your business.", 
       },
     ],
   },
@@ -55,13 +55,13 @@ const services: Service[] = [
         label: "One Page",
         price: "From £695",
         description:
-          "A focused one-page website that brings together what you do, who you help and how customers can contact you.",
+          "A focused one-page website that brings together what you do, who you help and how customers can reach you.",
       },
       {
         label: "Up to 5 Pages",
         price: "From £1,295",
         description:
-          "A complete small-business website with dedicated space for your services, story, work and contact information.",
+          "A fuller website with dedicated space for your services, story, work and contact information.",
       },
     ],
   },
@@ -69,7 +69,7 @@ const services: Service[] = [
     number: "02",
     name: "Refresh",
     description:
-      "Improve an existing website with a clearer structure, stronger visual direction and better experience.",
+      "Give an existing website a clearer structure, stronger visual direction and a better experience.",
     price: "Quoted after review",
     image: "/images/services/refresh.png",
     details: [
@@ -77,7 +77,7 @@ const services: Service[] = [
         label: "Website Refresh",
         price: "Quoted after review",
         description:
-          "Final scope and pricing are confirmed following an initial review of your existing website.",
+          "For websites that no longer feel quite right for the business behind them. Scope and pricing are confirmed after an initial review.",
       },
     ],
   },
@@ -283,12 +283,13 @@ export default function Services() {
             </h2>
 
             <p className="services__custom-description">
-              Custom applications, integrations and more complex builds
-              are scoped around what your project actually needs.
+              From web apps to internal tools and automation — 
+              every custom project is scoped around what you actually need, 
+              not a fixed package.
             </p>
 
             <p className="services__custom-price">
-              Quoted after discovery
+              ⤷ Quoted after discovery ⤶
             </p>
           </div>
 

@@ -332,8 +332,7 @@ export default function ClientJourney({
 
           <p className="client-journey__intro">
             I&apos;ll guide you through a few short steps so I can understand
-            your business, your project and what would make the most sense for
-            you.
+            your business, your project and what you actually need.
           </p>
 
           <p className="client-journey__email">
@@ -351,7 +350,7 @@ export default function ClientJourney({
               aria-controls="client-journey-form"
               onClick={() => setIsJourneyOpen(true)}
             >
-              Start the Conversation{" "}
+              Let's Get Started{" "}
               <span aria-hidden="true">→</span>
             </button>
           )}

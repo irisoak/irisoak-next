@@ -241,7 +241,7 @@ body {
   border-radius: 0;
 
   background: transparent;
-  color: var(--colour-background);
+  color: var(--colour-text-primary);
 
   font-size: 0.75rem;
   font-weight: 600;
@@ -648,7 +648,7 @@ body {
 
   width: 62vw;
 
-  background: #59635c;;
+  background: #59635c;
 
   clip-path: polygon(
     39% 0,
@@ -1219,6 +1219,14 @@ body {
 
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.page-hero-image {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 32vw, 460px);
+  margin-top: 3rem;
+  object-fit: cover;
 }
 
 /* ========================================
@@ -2079,18 +2087,40 @@ body {
 ======================================== */
 
 .services-page__hero {
-  max-width: 68rem;
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  max-width: none;
 
   padding-block: 6rem 4rem;
 
-  background: #59635c;
   color: var(--colour-background);
+}
 
-  box-shadow:
-    0 0 0 100vmax
-    #59635c;
+.services-page__hero::before {
+  content: "";
 
-  clip-path: inset(0 -100vmax);
+  position: absolute;
+  z-index: -1;
+
+  inset-block: 0;
+
+  left: 50%;
+  width: 100vw;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      rgba(20, 27, 22, 0.58),
+      rgba(20, 27, 22, 0.68)
+    ),
+    url("/images/services/services-hero.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .services-page__eyebrow {
@@ -2179,7 +2209,7 @@ body {
 
   margin: 2.5rem 0 0;
 
-  color: #dcd7cc;;
+  color: #dcd7cc;
 
   font-size: 1.25rem;
   line-height: 1.7;
@@ -3901,7 +3931,7 @@ body {
 
   padding-block: 6rem;
 
-  background: #59635c;;
+  background: #59635c;
   color: var(--colour-background);
 }
 
@@ -5430,17 +5460,55 @@ body {
 ======================================== */
 
 .work-page {
-  padding-block: 7rem;
+  padding-block: 0 7rem;
 }
 
+/* ========================================
+   Work Page — Hero
+======================================== */
+
 .work-page__header {
-  max-width: 50rem;
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  max-width: none;
 
   margin-bottom: 6rem;
+  padding-block: 7rem 6rem;
+
+  color: var(--colour-background);
+}
+
+.work-page__header::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  inset-block: 0;
+
+  left: 50%;
+  width: 100vw;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      rgba(20, 27, 22, 0.42),
+      rgba(20, 27, 22, 0.52)
+    ),
+    url("/images/work/work-hero.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .work-page__eyebrow {
   margin: 0 0 1.5rem;
+
+  color: #dcd7cc;
 
   font-size: 0.85rem;
 
@@ -5453,6 +5521,8 @@ body {
 
   margin: 0;
 
+  color: var(--colour-background);
+
   font-family: var(--font-heading);
   font-size: clamp(3.5rem, 7vw, 6.5rem);
   font-weight: 400;
@@ -5464,6 +5534,8 @@ body {
   max-width: 40rem;
 
   margin: 2rem 0 0;
+
+  color: #dcd7cc;
 
   font-size: 1.05rem;
   line-height: 1.7;

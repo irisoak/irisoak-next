@@ -37,19 +37,19 @@ const careOptions = [
 const services = [
   {
     number: "00",
-    name: "Essentials",
+    name: "Foundations",
     heading: "A clear starting point for getting your business online.",
     description:
       "For new and independent businesses that need a simple, professional website with a clear scope, existing branding and client-supplied content.",
     options: [
       [
         "Starter Presence",
-        "A simple responsive landing page for new and early-stage businesses that need a professional place to send customers, with essential business information, contact details and social or booking links.",
+        "A simple responsive landing page for new and early-stage businesses, bringing together your essential information, contact details and social or booking links.",
         "£295",
       ],
       [
         "Website Essentials",
-        "A more complete one-page website with up to four focused sections, a structure shaped around your business, contact details, social or booking links, essential SEO setup and one consolidated revision round.",
+        "A more complete one-page website with up to four focused sections, shaped around your business with contact or booking links, essential SEO setup and one consolidated revision.",
         "£495",
       ],
     ],
@@ -63,7 +63,7 @@ const services = [
     name: "Launch",
     heading: "A bespoke website shaped around your business.",
     description:
-      "For new or growing businesses that need a more flexible website with structure, visual direction and content flow designed around their brand and customers.",
+      "For growing businesses that need a more flexible website with structure, visual direction and content flow designed around their brand and customers.",
     options: [
       [
         "One Page",
@@ -72,7 +72,7 @@ const services = [
       ],
       [
         "Up to 5 Pages",
-        "A complete small-business website with dedicated space for your services, story, work and contact information. Clear navigation and a consistent responsive design help customers understand your business and take the next step.",
+        "A fuller multi-page website with dedicated space for your services, story, work and contact information.",
         "From £1,295",
       ],
     ],
@@ -85,7 +85,7 @@ const services = [
     name: "Refresh",
     heading: "Make your existing website work harder.",
     description:
-      "A considered update for an existing website that no longer represents the business or works well for its customers. I’ll improve its structure, visual direction and desktop and mobile experience while retaining the parts that still work.",
+      "A considered update for an existing website that no longer represents the business or works well for its customers. The focus is on improving its structure, visual direction and experience across mobile, tablet and desktop while retaining the parts that still work.",
     options: [
       [
         "Website Refresh",
@@ -131,6 +131,10 @@ export default function ServicesPage() {
           <p className="services-page__lead">
             From launching something new to improving an existing website or
             building something more specific.
+          </p>
+
+          <p className="services-page__lead">
+            Every website is built to work beautifully across mobile, tablet and desktop.
           </p>
         </section>
 
@@ -257,12 +261,12 @@ export default function ServicesPage() {
             </p>
 
             <ul>
-              <li>Web applications</li>
-              <li>Internal tools</li>
-              <li>APIs &amp; integrations</li>
+              <li>Web Applications</li>
+              <li>Internal Tools</li>
+              <li>APIs &amp; Integrations</li>
               <li>Automation</li>
               <li>Dashboards</li>
-              <li>Accessibility improvements</li>
+              <li>Accessibility Improvements</li>
             </ul>
 
             <Link

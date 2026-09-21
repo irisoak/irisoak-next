@@ -23,7 +23,7 @@ const faqItems: FAQItem[] = [
         <br />
         <strong>Launch</strong> projects start from £695, while{" "}
         <strong>Refresh</strong> and <strong>Custom</strong> projects are
-        quoted according to the scope, support and requirements involved.
+        quoted based on the scope and support required.
       </>
     ),
   },
@@ -32,14 +32,12 @@ const faqItems: FAQItem[] = [
       "What's the difference between Starter Presence and Website Essentials?",
     answer: (
       <>
-        <strong>Starter Presence</strong> is a lighter starting point using a
-        streamlined structure and client-supplied branding, copy and images.
-        It&apos;s designed for businesses that need a simple, professional
-        place to send customers.
+        <strong>Starter Presence</strong> is a lighter starting point, using a streamlined structure 
+        and your own branding, copy and images. It's designed for businesses that need a simple, professional place to send customers.
         <br />
-        <strong>Website Essentials</strong> provides a more complete one-page
-        website with up to four focused sections and a structure shaped more
-        closely around your business.
+        <br />
+        <strong>Website Essentials</strong> goes further, with a more complete one-page website: 
+        up to four focused sections and a structure shaped specifically around your business.
       </>
     ),
     showEssentialsPreview: true,
@@ -48,7 +46,7 @@ const faqItems: FAQItem[] = [
     question: "How much does care and maintenance cost?",
     answer: (
       <>
-        <strong>Site Check-up</strong> is a one-time payment of £149.
+        Site Check-up is a <strong>one-time payment of £149</strong>.
         <br />
         Ongoing <strong>Core Care</strong> starts from{" "}
         <strong>£59/month</strong> or £590/year, with{" "}
@@ -61,8 +59,8 @@ const faqItems: FAQItem[] = [
     question: "Do you offer payment plans?",
     answer: (
       <>
-        Yes. For most websites, web apps, internal tools and other custom projects, you can <strong>pay in full</strong> or split the project fee into <strong>2, 3 or 4</strong> instalments.
-        <strong> This includes projects such as APIs and integrations, automation, dashboards and accessibility improvements.</strong> 
+        <strong>Absolutely</strong>. For most websites, web apps, internal tools and custom projects
+        — you can <strong>pay in full</strong> or split the project fee into <strong>2, 3 or 4</strong> instalments.
         <br />
         Your payment schedule is confirmed clearly in your proposal before work begins, 
         so you always know what&apos;s due and when.
@@ -77,11 +75,12 @@ const faqItems: FAQItem[] = [
       <>
         Timelines depend on the size of the project.
         <br />
-        <strong>Website Essentials</strong> projects are typically completed
+        <strong>Starter Presence</strong> projects are typically completed
+        within <strong>5–10 days</strong>, <strong>Website Essentials</strong> projects are typically completed
         within <strong>7–14 days</strong>, while <strong>Launch</strong>{" "}
         projects usually take <strong>7–21 days</strong> depending on scope.
         <br />
-        <strong>Refresh</strong>, larger or more custom projects may take
+        <strong>Refresh, larger and more custom projects</strong> may take
         longer, but I&apos;ll always confirm a realistic timeline with you
         before any work begins.
       </>
@@ -91,9 +90,9 @@ const faqItems: FAQItem[] = [
     question: "How much does a refresh for my existing website typically cost?",
     answer: (
       <>
-        <strong>Refresh</strong> projects are quoted after an initial review of
-        your existing website, so the scope and price will reflect what
-        actually needs improving or updating.
+        Refresh projects are quoted after <strong>an initial review of
+        your existing website</strong>, so the scope and price reflect exactly
+        what needs improving or updating.
       </>
     ),
   },
@@ -101,7 +100,7 @@ const faqItems: FAQItem[] = [
     question: "What happens after I get in touch?",
     answer: (
       <>
-        I&apos;ll review your enquiry and follow up by email to talk through
+        I&apos;ll read through your enquiry and follow up by email to talk through
         your goals, requirements, timeline and next steps.
         <br />
         If it feels like a good fit, I&apos;ll send over a clear proposal
@@ -208,7 +207,7 @@ export default function FAQ() {
                         setIsEssentialsPreviewOpen(true)
                       }
                     >
-                      Click here to see →
+                      Show me the difference →
                     </button>
                   )}
                 </div>

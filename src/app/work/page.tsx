@@ -47,8 +47,8 @@ export default function WorkPage() {
           <h1>A selection of recent work.</h1>
 
           <p className="work-page__intro">
-            Websites, applications and digital tools designed around
-            real requirements, with a focus on clarity, maintainability
+            Websites, applications and digital tools built around what each 
+            project actually needs, with a focus on clarity, maintainability 
             and thoughtful engineering.
           </p>
         </header>
@@ -128,7 +128,7 @@ export default function WorkPage() {
           <p>Have a project in mind?</p>
 
           <Link href="/contact">
-            Start a conversation{" "}
+            Let's Get Started{" "}
             <span aria-hidden="true">→</span>
           </Link>
         </div>
