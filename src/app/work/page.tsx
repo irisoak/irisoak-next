@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+
 export const metadata: Metadata = {
   title: "Selected Web Design & Development Work",
   description:
@@ -124,12 +125,37 @@ export default function WorkPage() {
           })}
         </div>
 
+        <section className="work-page__concept-studio">
+          <Link
+            href="/concepts"
+            className="work-page__concept-studio-link"
+          >
+            <div className="work-page__concept-studio-label">
+              Concept Studio
+            </div>
+
+            <div className="work-page__concept-studio-content">
+              <div>
+                <h2>Exploring what your website could become?</h2>
+                <p>View industry concepts</p>
+              </div>
+
+              <span
+                className="work-page__concept-studio-arrow"
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </div>
+          </Link>
+        </section>
+
         <div className="work-page__contact">
           <p>Have a project in mind?</p>
 
           <Link href="/contact">
             Let's Get Started{" "}
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true">⊹</span>
           </Link>
         </div>
       </div>

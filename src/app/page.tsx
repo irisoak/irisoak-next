@@ -5,6 +5,7 @@ import Services from "@/components/home/Services";
 import TechnologyApproach from "@/components/home/TechnologyApproach";
 import FAQ from "@/components/home/FAQ";
 import ClientJourney from "@/components/home/ClientJourney";
+import FeaturedConcepts from "@/components/concepts/FeaturedConcepts";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <MyApproach />
       <SelectedWork />
       <Services />
+      <FeaturedConcepts />
       <FAQ />
       <ClientJourney />
     </>

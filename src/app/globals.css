@@ -1,3 +1,34 @@
+/* ========================================
+   Iris & Oak
+   global.css — Stylesheet Contents
+
+   01. Imports / Theme
+   02. Root / Design Tokens
+   03. HTML / Body
+   04. Base Elements
+   05. Form Controls
+   06. Images
+   07. Selection
+   08. Focus States
+   09. Hero
+   10. Technology Approach
+   11. My Approach
+   12. Selected Work
+   13. Work Page
+   14. Concepts Page
+   15. Concept Bar
+   16. Featured Concepts
+   17. Services
+   18. FAQ
+   19. Client Journey
+   20. Forms
+   21. Buttons / Controls
+   22. Footer
+   23. Responsive
+   24. Accessibility
+   25. Reduced Motion
+======================================== */
+
 @import "tailwindcss";
 
 /* ========================================
@@ -71,6 +102,12 @@ html {
 
   /* Smooth anchor navigation such as /#services */
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -1520,6 +1557,997 @@ body {
   }
 }
 
+/* ========================================
+   Work Page — Concept Studio
+======================================== */
+
+.work-page__concept-studio {
+  width: 100%;
+
+  border-top: 1px solid rgba(32, 33, 31, 0.16);
+  border-bottom: 1px solid rgba(32, 33, 31, 0.16);
+
+  background: var(--colour-background);
+}
+
+.work-page__concept-studio-link {
+  display: block;
+
+  width: 100%;
+
+  padding:
+    clamp(3rem, 5vw, 5rem)
+    clamp(2rem, 4vw, 4rem);
+
+  color: var(--colour-text-primary);
+
+  text-decoration: none;
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.work-page__concept-studio-label {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+
+  color: var(--colour-text-primary);
+
+  font-size: 0.86rem;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  opacity: 0.6;
+}
+
+.work-page__concept-studio-content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 3rem;
+}
+
+.work-page__concept-studio-content > div {
+  min-width: 0;
+}
+
+.work-page__concept-studio-content h2 {
+  max-width: 900px;
+
+  margin: 0;
+
+  color: var(--colour-text-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4vw, 4.5rem);
+  font-weight: 400;
+
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.work-page__concept-studio-content p {
+  margin: 1.25rem 0 0;
+
+  color: var(--colour-text-primary);
+
+  font-size: 1rem;
+
+  opacity: 0.65;
+}
+
+.work-page__concept-studio-arrow {
+  flex-shrink: 0;
+
+  padding-bottom: 0.25rem;
+
+  color: var(--colour-text-primary);
+
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  font-weight: 300;
+
+  transform: translateX(0);
+
+  transition: transform 200ms ease;
+}
+
+.work-page__concept-studio-link:hover {
+  background: rgba(32, 33, 31, 0.035);
+}
+
+.work-page__concept-studio-link:hover
+  .work-page__concept-studio-arrow {
+  transform: translateX(0.65rem);
+}
+
+.work-page__concept-studio-link:focus-visible {
+  outline: 2px solid var(--colour-text-primary);
+  outline-offset: -2px;
+}
+
+
+/* ========================================
+   Work Page — Concept Studio Mobile
+======================================== */
+
+@media (max-width: 760px) {
+  .work-page__concept-studio-link {
+    padding:
+      2.75rem
+      1.25rem;
+  }
+
+  .work-page__concept-studio-label {
+    margin-bottom: 2rem;
+  }
+
+  .work-page__concept-studio-content {
+    align-items: flex-start;
+
+    gap: 1.5rem;
+  }
+
+  .work-page__concept-studio-content h2 {
+    font-size: clamp(2rem, 9vw, 3.25rem);
+  }
+
+  .work-page__concept-studio-content p {
+    margin-top: 1rem;
+  }
+
+  .work-page__concept-studio-arrow {
+    padding-top: 0.2rem;
+
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+   Concepts Page
+======================================== */
+
+.concepts-page {
+  min-height: 100vh;
+
+  background: var(--colour-background, #f3f1eb);
+  color: var(--colour-text-primary, #20211f);
+}
+
+.concepts-page__intro {
+  padding:
+    clamp(6rem, 10vw, 10rem)
+    clamp(1.25rem, 4vw, 4rem)
+    clamp(4rem, 7vw, 7rem);
+}
+
+.concepts-page__eyebrow {
+  margin: 0 0 2rem;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  opacity: 0.6;
+}
+
+.concepts-page__intro h1 {
+  max-width: 1050px;
+
+  margin: 0;
+
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 400;
+
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.concepts-page__intro-copy {
+  max-width: 650px;
+
+  margin: 2.5rem 0 0;
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+
+  opacity: 0.65;
+}
+
+/* ========================================
+   Concepts Page — Grid
+======================================== */
+
+.concepts-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap:
+    clamp(3rem, 6vw, 6rem)
+    clamp(1.25rem, 3vw, 3rem);
+
+  padding:
+    0
+    clamp(1.25rem, 4vw, 4rem)
+    clamp(6rem, 10vw, 10rem);
+}
+
+.concepts-page__card {
+  min-width: 0;
+}
+
+.concepts-page__card-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.concepts-page__visual {
+  position: relative;
+
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  background: #ddd;
+
+  transition:
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.concepts-page__card-link:hover
+  .concepts-page__visual {
+  transform: scale(0.985);
+}
+
+.concepts-page__visual::after {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.08);
+
+  content: "";
+
+  opacity: 0;
+
+  transition: opacity 250ms ease;
+}
+
+.concepts-page__card-link:hover
+  .concepts-page__visual::after {
+  opacity: 1;
+}
+
+.concepts-page__visual-label {
+  position: absolute;
+  z-index: 2;
+
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 0.65rem 1rem;
+
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+
+  color: #20211f;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translateY(0.5rem);
+
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.concepts-page__card-link:hover
+  .concepts-page__visual-label {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* ========================================
+   Concepts Page — Concept Visuals & Images
+======================================== */
+
+.concepts-page__image {
+  object-fit: cover;
+  object-position: top;
+
+  transition: transform 350ms ease;
+}
+
+.concepts-page__card-link:hover
+  .concepts-page__image {
+  transform: scale(1.015);
+}
+
+.concepts-page__visual--salon {
+  background:
+    linear-gradient(
+      145deg,
+      #e7ddd7,
+      #b59d92
+    );
+}
+
+.concepts-page__visual--hotel {
+  background:
+    linear-gradient(
+      145deg,
+      #5d6558,
+      #c9bda9
+    );
+}
+
+/* ========================================
+   Concepts Page — Card Details
+======================================== */
+
+.concepts-page__card-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding-top: 1.25rem;
+}
+
+.concepts-page__number {
+  display: block;
+
+  margin-bottom: 0.7rem;
+
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+  opacity: 0.5;
+}
+
+.concepts-page__card-meta h2 {
+  margin: 0;
+
+  font-size: clamp(1.5rem, 2.3vw, 2.25rem);
+  font-weight: 400;
+
+  letter-spacing: -0.03em;
+}
+
+.concepts-page__card-meta p {
+  margin: 0.55rem 0 0;
+
+  font-size: 0.8rem;
+
+  opacity: 0.58;
+}
+
+.concepts-page__arrow {
+  flex-shrink: 0;
+
+  padding-top: 1.4rem;
+
+  font-size: 1.6rem;
+
+  transform: translate(0, 0);
+
+  transition: transform 200ms ease;
+}
+
+.concepts-page__card-link:hover
+  .concepts-page__arrow {
+  transform: translate(0.3rem, -0.3rem);
+}
+
+/* ========================================
+   Concepts Page — Coming Soon
+======================================== */
+
+.concepts-page__card--coming-soon
+  .concepts-page__visual {
+  filter: saturate(0.55);
+}
+
+.concepts-page__card--coming-soon
+  .concepts-page__visual-label {
+  opacity: 1;
+
+  transform: none;
+}
+
+.concepts-page__status {
+  flex-shrink: 0;
+
+  margin-top: 1.35rem;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  opacity: 0.45;
+}
+
+/* ========================================
+   Concepts Page — Footer CTA
+======================================== */
+
+.concepts-page__footer-cta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 3rem;
+
+  padding:
+    clamp(4rem, 7vw, 7rem)
+    clamp(1.25rem, 4vw, 4rem);
+
+  border-top: 1px solid rgba(32, 33, 31, 0.16);
+}
+
+.concepts-page__footer-cta p {
+  margin: 0 0 1.2rem;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  opacity: 0.55;
+}
+
+.concepts-page__footer-cta h2 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.concepts-page__footer-cta > a {
+  flex-shrink: 0;
+
+  padding: 0.9rem 1.3rem;
+
+  border: 1px solid currentColor;
+  border-radius: 999px;
+
+  color: inherit;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.concepts-page__footer-cta > a:hover {
+  background: var(--colour-text-primary, #20211f);
+
+  color: var(--colour-background, #f3f1eb);
+}
+
+/* ========================================
+   Concepts Page — Mobile
+======================================== */
+
+@media (max-width: 760px) {
+  .concepts-page__intro {
+    padding-top: 5rem;
+  }
+
+  .concepts-page__intro h1 {
+    font-size: clamp(3.5rem, 15vw, 5.5rem);
+  }
+
+  .concepts-page__grid {
+    grid-template-columns: 1fr;
+
+    gap: 4rem;
+  }
+
+  .concepts-page__visual-label {
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .concepts-page__footer-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ========================================
+   Concepts Page — Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .concepts-page__visual,
+  .concepts-page__visual::after,
+  .concepts-page__visual-label,
+  .concepts-page__arrow,
+  .concepts-page__footer-cta > a {
+    transition: none;
+  }
+
+  .concepts-page__card-link:hover
+    .concepts-page__visual {
+    transform: none;
+  }
+
+  .concepts-page__card-link:hover
+    .concepts-page__arrow {
+    transform: none;
+  }
+}
+
+/* ========================================
+   Concept Bar
+======================================== */
+
+.concept-bar {
+  position: relative;
+  z-index: 50;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  gap: 2rem;
+
+  width: 100%;
+
+  padding:
+    0.85rem
+    clamp(1.25rem, 4vw, 4rem);
+
+  background: #f3f1eb;
+
+  border-top: 1px solid rgba(32, 33, 31, 0.14);
+  border-bottom: 1px solid rgba(32, 33, 31, 0.14);
+
+  color: #20211f;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.concept-bar__back {
+  justify-self: start;
+
+  color: inherit;
+  text-decoration: none;
+
+  opacity: 0.7;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.concept-bar__back:hover {
+  opacity: 1;
+
+  transform: translateX(-0.2rem);
+}
+
+.concept-bar__identity {
+  justify-self: center;
+
+  white-space: nowrap;
+}
+
+.concept-bar__package {
+  justify-self: end;
+
+  opacity: 0.6;
+
+  white-space: nowrap;
+}
+
+.concept-bar__back:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   Concept Bar — Mobile
+======================================== */
+
+@media (max-width: 760px) {
+  .concept-bar {
+    grid-template-columns: 1fr auto;
+
+    gap: 1rem;
+
+    padding:
+      0.8rem
+      1rem;
+  }
+
+  .concept-bar__identity {
+    display: none;
+  }
+
+  .concept-bar__package {
+    justify-self: end;
+
+    font-size: 0.62rem;
+  }
+}
+
+/* ========================================
+   Featured Concepts
+======================================== */
+
+.featured-concepts {
+  padding:
+    clamp(3.5rem, 6vw, 5.5rem)
+    clamp(1.25rem, 4vw, 4rem);
+
+  background: var(--colour-background, #f3f1eb);
+  color: var(--colour-text-primary, #20211f);
+
+  border-top: 1px solid rgba(32, 33, 31, 0.14);
+}
+
+
+/* ========================================
+   Featured Concepts — Header
+======================================== */
+
+.featured-concepts__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 3rem;
+
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.featured-concepts__eyebrow {
+  margin: 0 0 0.7rem;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  opacity: 0.55;
+}
+
+.featured-concepts__description {
+  max-width: 520px;
+
+  margin: 0;
+
+  font-size: 0.9rem;
+
+  line-height: 1.6;
+
+  opacity: 0.6;
+}
+
+
+/* ========================================
+   Featured Concepts — Grid
+======================================== */
+
+.featured-concepts__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+
+.featured-concepts__card {
+  min-width: 0;
+}
+
+.featured-concepts__card-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   Featured Concepts — Visual
+======================================== */
+
+.featured-concepts__visual {
+  position: relative;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  opacity: 0.88;
+
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.featured-concepts__card-link:hover
+  .featured-concepts__visual {
+  opacity: 1;
+
+  transform: scale(0.99);
+}
+
+.featured-concepts__visual--automotive {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(218, 223, 98, 0.14),
+      transparent 48%
+    ),
+    #121412;
+}
+
+.featured-concepts__visual--cafe {
+  background:
+    linear-gradient(
+      180deg,
+      #d9652c 0%,
+      #d9652c 56%,
+      #f4f0e5 56%,
+      #f4f0e5 100%
+    );
+}
+
+
+/* ========================================
+   Featured Concepts — View Label
+======================================== */
+
+.featured-concepts__view {
+  position: absolute;
+
+  right: 0.85rem;
+  bottom: 0.85rem;
+
+  padding: 0.55rem 0.85rem;
+
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+
+  color: #20211f;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translateY(0.35rem);
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.featured-concepts__card-link:hover
+  .featured-concepts__view {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* ========================================
+   Featured Concepts — Metadata
+======================================== */
+
+.featured-concepts__meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  padding-top: 1rem;
+}
+
+.featured-concepts__number {
+  display: block;
+
+  margin-bottom: 0.45rem;
+
+  font-size: 0.6rem;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  opacity: 0.4;
+}
+
+.featured-concepts__meta h3 {
+  margin: 0;
+
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-weight: 400;
+
+  letter-spacing: -0.025em;
+}
+
+.featured-concepts__meta p {
+  margin: 0.4rem 0 0;
+
+  font-size: 0.72rem;
+
+  opacity: 0.5;
+}
+
+.featured-concepts__arrow {
+  flex-shrink: 0;
+
+  padding-top: 0.9rem;
+
+  font-size: 1.2rem;
+
+  opacity: 0.65;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.featured-concepts__card-link:hover
+  .featured-concepts__arrow {
+  opacity: 1;
+
+  transform: translate(0.2rem, -0.2rem);
+}
+
+/* ========================================
+   Featured Concepts — Images
+======================================== */
+
+
+.featured-concepts__image {
+  object-fit: cover;
+  object-position: top;
+
+  transition: transform 350ms ease;
+}
+
+.featured-concepts__card-link:hover
+  .featured-concepts__image {
+  transform: scale(1.02);
+}
+
+
+/* ========================================
+   Featured Concepts — View All
+======================================== */
+
+.featured-concepts__all-link {
+  display: inline-flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 0.8rem;
+
+  padding-bottom: 0.25rem;
+
+  border-bottom: 1px solid currentColor;
+
+  color: inherit;
+
+  font-size: 0.74rem;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.featured-concepts__all-link span:last-child {
+  transition: transform 200ms ease;
+}
+
+.featured-concepts__all-link:hover span:last-child {
+  transform: translateX(0.3rem);
+}
+
+
+/* ========================================
+   Featured Concepts — Mobile
+======================================== */
+
+@media (max-width: 760px) {
+  .featured-concepts {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .featured-concepts__header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 1.5rem;
+  }
+
+  .featured-concepts__grid {
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+  }
+
+  .featured-concepts__view {
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .featured-concepts__visual {
+    opacity: 1;
+  }
+}
+
+
+/* ========================================
+   Featured Concepts — Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-concepts__visual,
+  .featured-concepts__view,
+  .featured-concepts__arrow,
+  .featured-concepts__all-link span:last-child {
+    transition: none;
+  }
+
+  .featured-concepts__card-link:hover
+    .featured-concepts__visual,
+  .featured-concepts__card-link:hover
+    .featured-concepts__arrow,
+  .featured-concepts__all-link:hover
+    span:last-child {
+    transform: none;
+  }
+}
 
 /* ========================================
    Services
@@ -5752,9 +6780,7 @@ body {
   gap: 2rem;
 
   margin-top: 5rem;
-  padding-top: 2rem;
-
-  border-top: 1px solid var(--colour-border);
+  padding-top: 0.5rem;
 }
 
 .work-page__contact p {
