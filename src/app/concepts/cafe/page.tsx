@@ -8,6 +8,7 @@ import {
 } from "react-icons/lu";
 import styles from "./cafe.module.css";
 import ConceptBar from "@/components/concepts/ConceptBar";
+import Image from "next/image";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -129,11 +130,15 @@ export default function CafeConceptPage() {
 
       <div className={styles.photoWrap}>
         <figure className={styles.heroPhoto}>
-          <div
-            className={styles.photoPlaceholder}
-            role="img"
-            aria-label="Marlow & Bean café interior"
-          >
+          <div className={styles.highlightImage}>
+            <Image
+              src="/images/concepts/marlow-bean/homepage-hero.jpg"
+              alt="Marlow & Bean Interior"
+              fill
+              priority
+              className={styles.highlightPhoto}
+              sizes="(max-width: 760px) 100vw, 33vw"
+            />
             <span>CAFÉ INTERIOR / HERO IMAGE</span>
           </div>
 
@@ -171,17 +176,36 @@ export default function CafeConceptPage() {
 
           <div className={styles.highlights}>
             <article className={styles.highlight}>
+             <div className={styles.highlightImage}>
+                <Image
+                  src="/images/concepts/marlow-bean/coffee.png"
+                  alt="Coffee at Marlow & Bean"
+                  fill
+                  className={styles.highlightPhoto}
+                  sizes="(max-width: 760px) 100vw, 33vw"
+                />
+              </div>
+
               <span className={styles.highlightNumber}>01</span>
 
               <h3>Coffee</h3>
 
               <p>
-                Espresso, flat whites, filter coffee and rotating
-                seasonal favourites.
+                Espresso, flat whites, filter and seasonal favourites.
               </p>
             </article>
 
             <article className={styles.highlight}>
+              <div className={styles.highlightImage}>
+                <Image
+                  src="/images/concepts/marlow-bean/brunch.png"
+                  alt="Brunch at Marlow & Bean"
+                  fill
+                  className={styles.highlightPhoto}
+                  sizes="(max-width: 760px) 100vw, 33vw"
+                />
+              </div>
+
               <span className={styles.highlightNumber}>02</span>
 
               <h3>Brunch</h3>
@@ -193,6 +217,16 @@ export default function CafeConceptPage() {
             </article>
 
             <article className={styles.highlight}>
+              <div className={styles.highlightImage}>
+                <Image
+                  src="/images/concepts/marlow-bean/sweet.png"
+                  alt="Pastries and something sweet at Marlow & Bean"
+                  fill
+                  className={styles.highlightPhoto}
+                  sizes="(max-width: 760px) 100vw, 33vw"
+                />
+              </div>
+
               <span className={styles.highlightNumber}>03</span>
 
               <h3>Something sweet</h3>

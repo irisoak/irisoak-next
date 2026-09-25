@@ -56,6 +56,43 @@ html {
   overflow: hidden;
 }
 
+/* Hero Image
+======================================== */
+
+.heroBackground {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+}
+
+.heroBackgroundImage {
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0.48;
+}
+
+.heroBackground::after {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 20, 18, 0.74) 0%,
+      rgba(18, 20, 18, 0.58) 42%,
+      rgba(18, 20, 18, 0.2) 72%,
+      rgba(18, 20, 18, 0.18) 100%
+    );
+
+  content: "";
+
+  pointer-events: none;
+}
+
 
 /* ========================================
    Navigation
@@ -622,7 +659,8 @@ html {
 .aboutImage {
   position: relative;
 
-  min-height: 620px;
+  width: 100%;
+  min-height: 520px;
 
   background:
     linear-gradient(
@@ -637,6 +675,30 @@ html {
     );
 
   overflow: hidden;
+}
+
+.aboutImage::after {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 20, 18, 0.74) 0%,
+      rgba(18, 20, 18, 0.58) 42%,
+      rgba(18, 20, 18, 0.2) 72%,
+      rgba(18, 20, 18, 0.18) 100%
+    );
+
+  content: "";
+
+  pointer-events: none;
+}
+
+.aboutPhoto {
+  object-fit: cover;
+  object-position: center;
 }
 
 .imageLabel {
@@ -1127,7 +1189,7 @@ html {
   }
 
   .aboutImage {
-    min-height: 420px;
+    min-height: 380px;
   }
 
   .aboutContent {

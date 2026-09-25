@@ -1,0 +1,1573 @@
+/* ========================================
+   Atelier Rue
+   hair.module.css — Stylesheet Contents
+
+   01. Page
+   02. Hero
+   03. Navigation
+   04. Hero Layout
+   05. Hero Copy
+   06. Hero CTA
+   07. Hero Visual
+   08. Services
+   09. Team / Meet The Stylists
+   10. Visit / Booking
+   11. Footer
+   12. Tablet
+   13. Mobile
+   14. Reduced Motion
+======================================== */
+
+
+/* ========================================
+   01. Page
+======================================== */
+
+.page {
+  min-height: 100vh;
+
+  background: #f4f0ea;
+  color: #2b211d;
+
+  font-family:
+    var(--font-atelier-body),
+    sans-serif;
+}
+
+
+/* ========================================
+   02. Hero
+======================================== */
+
+.hero {
+  min-height: calc(100svh - 42px);
+
+  background: #f4f0ea;
+}
+
+
+/* ========================================
+   03. Navigation
+======================================== */
+
+.nav {
+  position: relative;
+  z-index: 20;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  gap: 2rem;
+
+  min-height: 88px;
+
+  padding:
+    1rem
+    clamp(1.5rem, 4vw, 4.5rem);
+
+  border-bottom:
+    1px solid
+    rgba(43, 33, 29, 0.12);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.brandName {
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size: 1.65rem;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brandDescriptor {
+  margin-top: 0.4rem;
+
+  color: #8e8178;
+
+  font-size: 0.52rem;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.navLinks a {
+  position: relative;
+
+  padding: 0.25rem 0;
+
+  color: #2b211d;
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navLinks a::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -0.15rem;
+  left: 0;
+
+  height: 1px;
+
+  background: #2b211d;
+
+  content: "";
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition:
+    transform 250ms ease;
+}
+
+.navLinks a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+
+  gap: 0.75rem;
+
+  min-height: 46px;
+
+  padding:
+    0.8rem
+    1.35rem;
+
+  background: #b58f86;
+
+  border-radius: 999px;
+
+  color: #fffaf6;
+
+  font-size: 0.66rem;
+  font-weight: 650;
+
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.navCta:hover {
+  background: #2b211d;
+
+  transform: translateY(-1px);
+}
+
+.nav a:focus-visible {
+  outline:
+    2px solid
+    #b58f86;
+
+  outline-offset: 4px;
+}
+
+
+/* ========================================
+   04. Hero Layout
+======================================== */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  min-height: calc(100svh - 130px);
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding:
+    clamp(4rem, 8vw, 8rem)
+    clamp(2rem, 6vw, 6.5rem);
+}
+
+
+/* ========================================
+   05. Hero Copy
+======================================== */
+
+.eyebrow {
+  margin: 0 0 2rem;
+
+  color: #8e8178;
+
+  font-size: 0.63rem;
+  font-weight: 650;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size:
+    clamp(4.75rem, 7.5vw, 8.5rem);
+
+  font-weight: 500;
+
+  line-height: 0.75;
+  letter-spacing: -0.055em;
+}
+
+.title span,
+.title em {
+  display: block;
+}
+
+.title span {
+  color: #2b211d;
+
+  font-style: normal;
+}
+
+.title em {
+  margin-left: clamp(1rem, 2.5vw, 2.5rem);
+
+  color: #b58f86;
+
+  font-weight: 400;
+}
+
+.intro {
+  max-width: 390px;
+
+  margin:
+    clamp(2rem, 4vw, 3rem)
+    0
+    0;
+
+  color: #625650;
+
+  font-size: 0.9rem;
+
+  line-height: 1.75;
+}
+
+
+/* ========================================
+   06. Hero CTA
+======================================== */
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  gap: 1rem;
+
+  margin-top: 2rem;
+
+  padding:
+    0.9rem
+    1.45rem;
+
+  background: #b58f86;
+
+  border:
+    1px solid
+    #b58f86;
+
+  border-radius: 999px;
+
+  color: #fffaf6;
+
+  font-size: 0.66rem;
+  font-weight: 650;
+
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.primaryButton:hover {
+  background: transparent;
+
+  border-color: #2b211d;
+
+  color: #2b211d;
+
+  transform: translateY(-2px);
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  width: min(260px, 100%);
+
+  margin-top: auto;
+  padding-top: 4rem;
+
+  color: #756861;
+
+  font-size: 0.58rem;
+  font-weight: 650;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.metaLine {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    rgba(43, 33, 29, 0.25);
+}
+
+
+/* ========================================
+   07. Hero Visual
+======================================== */
+
+.heroVisual {
+  position: relative;
+
+  min-height: 680px;
+
+  overflow: hidden;
+
+  background: #cfc6be;
+}
+
+.heroImage {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+}
+
+.heroPhoto {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.heroImage::after {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(43, 33, 29, 0.02),
+      rgba(43, 33, 29, 0.22)
+    );
+
+  content: "";
+
+  pointer-events: none;
+}
+
+.imageStatement {
+  position: absolute;
+
+  right: clamp(2.5rem, 5vw, 5rem);
+  bottom: clamp(4rem, 9vw, 8rem);
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #fffaf6;
+
+  font-size: 0.62rem;
+  font-weight: 650;
+
+  line-height: 1.55;
+
+  letter-spacing: 0.18em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.statementLine {
+  width: 1px;
+  height: 70px;
+
+  margin:
+    1.5rem
+    0
+    0
+    auto;
+
+  background:
+    rgba(255, 250, 246, 0.7);
+}
+
+/* ========================================
+   08. Services
+======================================== */
+
+.services {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  min-height: 760px;
+
+  background: #fbf8f4;
+  color: #2b211d;
+}
+
+
+/* Services Image
+======================================== */
+
+.servicesVisual {
+  position: relative;
+
+  min-height: 760px;
+
+  overflow: hidden;
+
+  background: #cfc6be;
+}
+
+.servicesImage {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+}
+
+.servicesPhoto {
+  object-fit: cover;
+  object-position: center;
+}
+
+.servicesImage::after {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(43, 33, 29, 0),
+      rgba(43, 33, 29, 0.28)
+    );
+
+  content: "";
+
+  pointer-events: none;
+}
+
+.servicesImageLabel {
+  position: absolute;
+
+  bottom: 3rem;
+  left: 2.5rem;
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 1.25rem;
+
+  border-left:
+    1px solid
+    rgba(255, 250, 246, 0.65);
+
+  color: #fffaf6;
+
+  font-size: 0.6rem;
+  font-weight: 650;
+
+  line-height: 1.7;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+
+/* Services Content
+======================================== */
+
+.servicesContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding:
+    clamp(4rem, 8vw, 8rem)
+    clamp(2rem, 6vw, 6rem);
+}
+
+.servicesHeading {
+  margin-bottom:
+    clamp(3rem, 6vw, 5rem);
+}
+
+.servicesEyebrow {
+  margin: 0 0 1rem;
+
+  color: #a47f76;
+
+  font-size: 0.62rem;
+  font-weight: 650;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.servicesHeading h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size:
+    clamp(3.5rem, 5.5vw, 6rem);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.servicesHeading h2 em {
+  color: #b58f86;
+
+  font-weight: 400;
+}
+
+
+/* Service Rows
+======================================== */
+
+.serviceList {
+  border-top:
+    1px solid
+    rgba(43, 33, 29, 0.18);
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns:
+    50px
+    minmax(0, 1fr)
+    auto
+    30px;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  min-height: 74px;
+
+  border-bottom:
+    1px solid
+    rgba(43, 33, 29, 0.18);
+
+  color: inherit;
+
+  text-decoration: none;
+
+  transition:
+    border-color 200ms ease,
+    opacity 200ms ease;
+}
+
+.serviceRow:hover {
+  border-color:
+    rgba(43, 33, 29, 0.4);
+}
+
+.serviceNumber,
+.serviceName,
+.servicePrice,
+.serviceArrow {
+  transition:
+    color 200ms ease,
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+.serviceNumber {
+  color: #9a8b82;
+}
+
+.serviceName {
+  font-size: 0.8rem;
+  font-weight: 650;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.servicePrice {
+  color: #796c65;
+
+  font-size: 0.78rem;
+
+  white-space: nowrap;
+}
+
+.serviceArrow {
+  justify-self: end;
+
+  font-size: 1rem;
+}
+
+.serviceRow:hover .serviceName {
+  transform: translateX(0.15rem);
+}
+
+.serviceRow:hover .serviceArrow {
+  transform: translateX(0.25rem);
+}
+
+.serviceRow:hover .serviceNumber {
+  color: #b58f86;
+}
+
+.serviceRow:hover .servicePrice {
+  color: #2b211d;
+}
+
+.serviceRow:focus-visible {
+  outline:
+    2px solid
+    #b58f86;
+
+  outline-offset: -2px;
+}
+
+
+/* Services Note
+======================================== */
+
+.servicesNote {
+  max-width: 500px;
+
+  margin: 1.5rem 0 0;
+
+  color: #8e8178;
+
+  font-size: 0.68rem;
+
+  line-height: 1.6;
+}
+
+/* ========================================
+   09. Team / Meet The Stylists
+======================================== */
+
+.team {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.82fr)
+    minmax(0, 1.18fr);
+
+  align-items: center;
+
+  gap: clamp(3rem, 7vw, 7rem);
+
+  padding:
+    clamp(5rem, 9vw, 9rem)
+    clamp(2rem, 5vw, 5rem);
+
+  background: var(--atelier-ivory);
+  color: var(--atelier-espresso);
+}
+
+
+/* Team Copy
+======================================== */
+
+.teamCopy {
+  max-width: 580px;
+}
+
+.teamCopy h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size:
+    clamp(3.75rem, 6vw, 6.5rem);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.teamCopy h2 em {
+  color: var(--atelier-rose);
+
+  font-weight: 400;
+}
+
+.studioEyebrow {
+  margin: 0 0 1.25rem;
+
+  color: var(--atelier-rose-dark);
+
+  font-size: 0.62rem;
+  font-weight: 650;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.studioIntro {
+  max-width: 460px;
+
+  margin: 1.75rem 0 0;
+
+  color: var(--atelier-muted);
+
+  font-size: 0.88rem;
+
+  line-height: 1.75;
+}
+
+/* Team Grid
+======================================== */
+
+.teamGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    clamp(1.25rem, 2.5vw, 2rem);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.teamMember {
+  min-width: 0;
+}
+
+.teamMember:nth-child(even) {
+  margin-top: 3rem;
+}
+
+
+/* Team Images
+======================================== */
+
+.teamImage {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  aspect-ratio: 4 / 5;
+
+  padding: 1rem;
+
+  overflow: hidden;
+
+  color:
+    rgba(255, 250, 246, 0.72);
+
+  font-size: 0.5rem;
+  font-weight: 650;
+
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  transition:
+    transform 250ms ease;
+}
+
+.teamImage {
+  position: relative;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: #cfc6be;
+}
+
+.teamPhoto {
+  object-fit: cover;
+  object-position: center top;
+
+  transition:
+    transform 400ms ease,
+    filter 400ms ease;
+}
+
+.teamMember:hover .teamPhoto {
+  transform: scale(1.015);
+}
+
+.teamMember:hover .teamImage {
+  transform: translateY(-0.15rem);
+}
+
+
+/* Team Details
+======================================== */
+
+.teamName {
+  margin: 1.1rem 0 0;
+
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size:
+    clamp(1.35rem, 2vw, 1.75rem);
+
+  font-weight: 500;
+
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.teamRole {
+  margin: 0.55rem 0 0;
+
+  color: var(--atelier-rose-dark);
+
+  font-size: 0.58rem;
+  font-weight: 650;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.teamSpecialism {
+  margin: 0.6rem 0 0;
+
+  color: var(--atelier-muted);
+
+  font-size: 0.8rem;
+
+  line-height: 1.6;
+}
+
+/* ========================================
+   10. Visit / Booking
+======================================== */
+
+.visit {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(0, 0.9fr);
+
+  gap: clamp(4rem, 8vw, 8rem);
+
+  padding:
+    clamp(5rem, 9vw, 9rem)
+    clamp(2rem, 5vw, 5rem);
+
+  background: var(--atelier-espresso);
+  color: var(--atelier-white);
+}
+
+
+/* Visit Copy
+======================================== */
+
+.visitCopy {
+  align-self: center;
+
+  max-width: 720px;
+}
+
+.visitEyebrow {
+  margin: 0 0 1.5rem;
+
+  color: var(--atelier-rose);
+
+  font-size: 0.62rem;
+  font-weight: 650;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.visitCopy h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size:
+    clamp(3.75rem, 6vw, 6.5rem);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.visitCopy h2 em {
+  color: var(--atelier-rose);
+
+  font-weight: 400;
+}
+
+.visitIntro {
+  max-width: 500px;
+
+  margin: 2rem 0 0;
+
+  color:
+    rgba(255, 250, 246, 0.68);
+
+  font-size: 0.88rem;
+
+  line-height: 1.75;
+}
+
+
+/* Visit Actions
+======================================== */
+
+.visitActions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.8rem;
+
+  margin-top: 2rem;
+}
+
+.visitPrimary,
+.visitSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.9rem;
+
+  min-height: 48px;
+
+  padding:
+    0.85rem
+    1.3rem;
+
+  border-radius: 999px;
+
+  font-size: 0.64rem;
+  font-weight: 650;
+
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.visitPrimary {
+  background: var(--atelier-rose);
+
+  border:
+    1px solid
+    var(--atelier-rose);
+
+  color: var(--atelier-white);
+}
+
+.visitPrimary:hover {
+  background: var(--atelier-white);
+
+  border-color: var(--atelier-white);
+
+  color: var(--atelier-espresso);
+}
+
+.visitSecondary {
+  background: transparent;
+
+  border:
+    1px solid
+    rgba(255, 250, 246, 0.35);
+
+  color: var(--atelier-white);
+}
+
+.visitSecondary:hover {
+  border-color:
+    var(--atelier-white);
+}
+
+.visitPrimary span,
+.visitSecondary span {
+  transition:
+    transform 200ms ease;
+}
+
+.visitPrimary:hover span {
+  transform: translateX(0.2rem);
+}
+
+.visitSecondary:hover span {
+  transform:
+    translate(0.15rem, -0.15rem);
+}
+
+
+/* Visit Details
+======================================== */
+
+.visitDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.visitRow {
+  display: grid;
+  grid-template-columns:
+    minmax(110px, 0.35fr)
+    minmax(0, 0.65fr);
+
+  gap: 2rem;
+
+  padding:
+    1.6rem
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(255, 250, 246, 0.14);
+}
+
+.visitRow:first-child {
+  border-top:
+    1px solid
+    rgba(255, 250, 246, 0.14);
+}
+
+.visitLabel {
+  color: var(--atelier-rose);
+
+  font-size: 0.58rem;
+  font-weight: 650;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.visitRow p,
+.visitRow a {
+  margin: 0;
+
+  color: #2b211d;
+
+  font-size: 0.82rem;
+
+  line-height: 1.7;
+
+  text-decoration: none;
+}
+
+.visitRow a:hover {
+  color: var(--atelier-white);
+}
+
+.visitPrimary:focus-visible,
+.visitSecondary:focus-visible,
+.visitRow a:focus-visible {
+  outline:
+    2px solid
+    var(--atelier-rose);
+
+  outline-offset: 4px;
+}
+
+/* ========================================
+   11. Footer
+======================================== */
+
+.footer {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  align-items: end;
+
+  gap: 3rem;
+
+  padding:
+    2.5rem
+    clamp(2rem, 5vw, 5rem);
+
+  background: #1f1815;
+
+  border-top:
+    1px solid
+    rgba(255, 250, 246, 0.1);
+
+  color:
+    rgba(255, 250, 246, 0.58);
+}
+
+
+/* Footer Brand
+======================================== */
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 0.45rem;
+}
+
+.footerLogo {
+  color: var(--atelier-white);
+
+  font-family:
+    var(--font-atelier-display),
+    serif;
+
+  font-size: 1.45rem;
+  font-weight: 500;
+
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footerBrand p {
+  margin: 0;
+
+  font-size: 0.52rem;
+  font-weight: 600;
+
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+
+/* Footer Navigation
+======================================== */
+
+.footerLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.footerLinks a {
+  color:
+    rgba(255, 250, 246, 0.62);
+
+  font-size: 0.6rem;
+  font-weight: 600;
+
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    color 200ms ease;
+}
+
+.footerLinks a:hover {
+  color: var(--atelier-white);
+}
+
+
+/* Footer Meta
+======================================== */
+
+.footerMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 0.45rem;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footerMeta a {
+  color:
+    rgba(255, 250, 246, 0.58);
+
+  text-decoration: none;
+
+  transition:
+    color 200ms ease;
+}
+
+.footerMeta a:hover {
+  color: var(--atelier-white);
+}
+
+.footer a:focus-visible {
+  outline:
+    2px solid
+    var(--atelier-rose);
+
+  outline-offset: 4px;
+}
+
+/* ========================================
+   12. Tablet
+======================================== */
+
+@media (max-width: 1000px) {
+  .nav {
+    grid-template-columns:
+      1fr
+      auto;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .heroGrid {
+    grid-template-columns:
+      minmax(0, 0.95fr)
+      minmax(0, 1.05fr);
+  }
+
+  .title {
+    font-size:
+      clamp(4.5rem, 10vw, 7rem);
+  }
+
+  .services {
+    grid-template-columns:
+      minmax(0, 0.85fr)
+      minmax(0, 1.15fr);
+  }
+
+  .servicesContent {
+    padding:
+      5rem
+      2.5rem;
+  }
+
+  .servicesHeading h2 {
+    font-size:
+      clamp(3.5rem, 6vw, 5rem);
+  }
+
+  .visit {
+    gap: 4rem;
+  }
+
+  .visitCopy h2 {
+    font-size:
+      clamp(3.5rem, 7vw, 5.5rem);
+  }
+}
+
+
+/* ========================================
+   13. Mobile - 760px
+======================================== */
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .nav {
+    min-height: 76px;
+
+    padding:
+      0.9rem
+      1.25rem;
+  }
+
+  .brandName {
+    font-size: 1.3rem;
+  }
+
+  .brandDescriptor {
+    font-size: 0.45rem;
+  }
+
+  .navCta {
+    padding:
+      0.75rem
+      1rem;
+
+    font-size: 0.58rem;
+  }
+
+  .navCta span {
+    display: none;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCopy {
+    min-height: 610px;
+
+    padding:
+      5rem
+      1.25rem
+      3rem;
+  }
+
+  .title {
+    font-size:
+      clamp(4.6rem, 20vw, 7rem);
+  }
+
+  .title em {
+    margin-left: 1.25rem;
+  }
+
+  .intro {
+    max-width: 360px;
+  }
+
+  .heroMeta {
+    margin-top: 4rem;
+    padding-top: 0;
+  }
+
+  .heroVisual {
+    min-height: 620px;
+  }
+
+  .imageStatement {
+    right: 1.5rem;
+    bottom: 2rem;
+  }
+
+  .services {
+  grid-template-columns: 1fr;
+
+  min-height: auto;
+}
+
+  .servicesVisual {
+    min-height: 560px;
+  }
+
+  .servicesContent {
+    padding:
+      4.5rem
+      1.25rem;
+  }
+
+  .servicesHeading {
+    margin-bottom: 3rem;
+  }
+
+  .servicesHeading h2 {
+    font-size:
+      clamp(3.5rem, 14vw, 5rem);
+  }
+
+  .serviceRow {
+    grid-template-columns:
+      36px
+      minmax(0, 1fr)
+      auto
+      24px;
+
+    min-height: 70px;
+
+    gap: 0.65rem;
+  }
+
+  .servicePrice {
+    font-size: 0.68rem;
+  }
+
+  .servicesImageLabel {
+    bottom: 2rem;
+    left: 1.5rem;
+  }
+
+  .visit {
+    grid-template-columns: 1fr;
+
+    gap: 4rem;
+
+    padding:
+      5rem
+      1.25rem;
+  }
+
+  .visitCopy h2 {
+    font-size:
+      clamp(3.5rem, 14vw, 5rem);
+  }
+
+  .visitRow {
+    grid-template-columns: 1fr;
+
+    gap: 0.75rem;
+  }
+
+  .visitActions {
+    flex-direction: column;
+  }
+
+  .visitPrimary,
+  .visitSecondary {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   13. Mobile - 480px
+======================================== */
+
+@media (max-width: 480px) {
+  .navCta {
+    font-size: 0;
+  }
+
+  .navCta::before {
+    content: "Book";
+
+    font-size: 0.58rem;
+  }
+
+  .heroCopy {
+    min-height: 560px;
+  }
+
+  .title {
+    font-size:
+      clamp(4.25rem, 21vw, 6rem);
+  }
+
+  .heroVisual {
+    min-height: 520px;
+  }
+
+  .serviceRow {
+    grid-template-columns:
+      28px
+      minmax(0, 1fr)
+      20px;
+  }
+
+  .servicePrice {
+    display: none;
+  }
+}
+
+
+/* ========================================
+   14. Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .navLinks a::after,
+  .navCta,
+  .primaryButton,
+  .serviceRow,
+  .serviceNumber,
+  .serviceName,
+  .servicePrice,
+  .serviceArrow,
+  .teamPhoto,
+  .studioLink,
+  .studioLink span,
+  .visitPrimary,
+  .visitSecondary,
+  .visitPrimary span,
+  .visitSecondary span,
+  .footerLinks a,
+  .footerMeta a {
+    transition: none;
+  }
+
+  .navCta:hover,
+  .primaryButton:hover,
+  .serviceRow:hover .serviceName,
+  .serviceRow:hover .serviceArrow,
+  .teamMember:hover .teamPhoto,
+  .studioLink:hover span,
+  .visitPrimary:hover span,
+  .visitSecondary:hover span {
+    transform: none;
+  }
+}

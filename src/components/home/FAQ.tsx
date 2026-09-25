@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import Container from "@/components/layout/Container";
+import Image from "next/image";
 
 type FAQItem = {
   question: string;
@@ -33,7 +34,7 @@ const faqItems: FAQItem[] = [
     answer: (
       <>
         <strong>Starter Presence</strong> is a lighter starting point, using a streamlined structure 
-        and your own branding, copy and images. It's designed for businesses that need a simple, professional place to send customers.
+        and your own branding, copy and images. It&apos;s designed for businesses that need a simple, professional place to send customers.
         <br />
         <br />
         <strong>Website Essentials</strong> goes further, with a more complete one-page website: 
@@ -274,9 +275,11 @@ export default function FAQ() {
             ======================================== */}
 
             <div className="faq-preview__comparison">
-              <img
+              <Image
                 src="/images/services/previews/service-comparison.png"
                 alt="Visual comparison of Starter Presence, Website Essentials, Launch and an older website suitable for a Refresh"
+                fill
+                sizes="(max-width: 760px) 100vw, 50vw"
               />
             </div>
           </div>

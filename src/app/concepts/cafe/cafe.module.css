@@ -630,6 +630,18 @@
   line-height: 1.7;
 }
 
+.highlightImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+}
+
+.highlightPhoto {
+  object-fit: cover;
+  object-position: center;
+}
+
 
 /* ========================================
    10. Visit
@@ -1041,8 +1053,8 @@
     padding-left: 1rem;
   }
 
-  .photoPlaceholder {
-    min-height: 340px;
+  .highlightImage {
+    aspect-ratio: 4 / 3;
   }
 
   .aboutLabel {

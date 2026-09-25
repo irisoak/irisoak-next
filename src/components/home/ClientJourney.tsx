@@ -350,7 +350,7 @@ export default function ClientJourney({
               aria-controls="client-journey-form"
               onClick={() => setIsJourneyOpen(true)}
             >
-              Let's Get Started{" "}
+              Let&apos;s Get Started{" "}
               <span aria-hidden="true">→</span>
             </button>
           )}

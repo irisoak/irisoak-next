@@ -1,0 +1,300 @@
+/* ========================================
+   Carousel
+   Stylesheet Contents
+
+   01. Carousel
+   02. Viewport
+   03. Track & Slides
+   04. Controls
+   05. Counter
+   06. Pagination
+   07. Navigation Arrows
+   08. Mobile
+   09. Reduced Motion
+======================================== */
+
+
+/* ========================================
+   01. Carousel
+======================================== */
+
+.carousel {
+  --carousel-accent:
+    var(--colour-accent, #dadf62);
+
+  --carousel-text:
+    var(--colour-text-primary, #1a1a1a);
+
+  --carousel-muted:
+    var(--colour-text-muted, #6b6b66);
+
+  --carousel-border:
+    var(--colour-border, #d4d4ce);
+
+  --carousel-ease:
+    cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+
+  width: 100%;
+}
+
+
+/* ========================================
+   02. Viewport
+======================================== */
+
+.viewport {
+  overflow: hidden;
+
+  cursor: grab;
+
+  touch-action: pan-y;
+
+  outline: none;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+.viewport:focus-visible {
+  outline:
+    2px solid
+    var(--carousel-accent);
+
+  outline-offset: 4px;
+}
+
+
+/* ========================================
+   03. Track & Slides
+======================================== */
+
+.track {
+  display: flex;
+
+  transition:
+    transform
+    0.7s
+    var(--carousel-ease);
+
+  will-change: transform;
+}
+
+.dragging {
+  transition: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+
+  min-width: 0;
+
+  user-select: none;
+}
+
+
+/* ========================================
+   04. Controls
+======================================== */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+
+  border-top:
+    1px solid
+    var(--carousel-border);
+}
+
+
+/* ========================================
+   05. Counter
+======================================== */
+
+.counter {
+  display: flex;
+
+  gap: 0.5rem;
+
+  margin: 0;
+
+  color: var(--carousel-muted);
+
+  font-size: 0.8rem;
+
+  font-variant-numeric:
+    tabular-nums;
+
+  letter-spacing: 0.15em;
+}
+
+.counterCurrent {
+  color: var(--carousel-text);
+
+  font-weight: 600;
+}
+
+.counterDivider {
+  opacity: 0.5;
+}
+
+
+/* ========================================
+   06. Pagination
+======================================== */
+
+.dots {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  gap: 0.25rem;
+}
+
+.dot {
+  padding:
+    1rem
+    0.25rem;
+
+  border: none;
+
+  background: none;
+
+  cursor: pointer;
+}
+
+.dotBar {
+  display: block;
+
+  width: 1.75rem;
+  height: 2px;
+
+  background:
+    var(--carousel-border);
+
+  transition:
+    background-color 0.3s ease,
+    width 0.3s
+      var(--carousel-ease);
+}
+
+.dot:hover .dotBar {
+  background:
+    var(--carousel-muted);
+}
+
+.dotActive .dotBar {
+  width: 3rem;
+
+  background:
+    var(--carousel-text);
+}
+
+.dot:focus-visible {
+  outline:
+    2px solid
+    var(--carousel-accent);
+
+  outline-offset: 2px;
+}
+
+
+/* ========================================
+   07. Navigation Arrows
+======================================== */
+
+.arrows {
+  display: flex;
+
+  gap: 0.5rem;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+
+  width: 3rem;
+  height: 3rem;
+
+  padding: 0;
+
+  border:
+    1px solid
+    var(--carousel-border);
+
+  background: transparent;
+
+  color:
+    var(--carousel-text);
+
+  font: inherit;
+  font-size: 1.1rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.arrow:hover {
+  background:
+    var(--carousel-text);
+
+  border-color:
+    var(--carousel-text);
+
+  color:
+    var(--colour-background, #ffffff);
+}
+
+.arrow:focus-visible {
+  outline:
+    2px solid
+    var(--carousel-accent);
+
+  outline-offset: 2px;
+}
+
+
+/* ========================================
+   08. Mobile
+======================================== */
+
+@media (max-width: 640px) {
+  .controls {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .dots {
+    display: none;
+  }
+
+  .arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+
+/* ========================================
+   09. Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .dotBar,
+  .arrow {
+    transition: none;
+  }
+}

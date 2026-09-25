@@ -9,6 +9,7 @@ import {
   LuGauge,
 } from "react-icons/lu";
 import ConceptBar from "@/components/concepts/ConceptBar";
+import Image from "next/image";
 
 export default function AutomotiveConceptPage() {
   return (
@@ -19,6 +20,19 @@ export default function AutomotiveConceptPage() {
     />
 
       <section className={styles.hero}>
+        <div className={styles.heroBackground}>
+          <Image
+            src="/images/concepts/northline-automotive/northline-hero.png"
+            alt=""
+            fill
+            priority
+            quality={95}
+            className={styles.heroBackgroundImage}
+            sizes="100vw"
+          />
+        </div>
+
+        {/* existing Northline hero content */}
         <nav className={styles.nav}>
           <div className={styles.brand}>
             <span className={styles.brandName}>Northline Automotive</span>
@@ -233,7 +247,13 @@ export default function AutomotiveConceptPage() {
 
       <section id="about" className={styles.about}>
         <div className={styles.aboutImage}>
-          <span className={styles.imageLabel}>Northline Workshop</span>
+          <Image
+            src="/images/concepts/northline-automotive/northline-workshop.png"
+            alt="Northline Automotive workshop"
+            fill
+            className={styles.aboutPhoto}
+            sizes="(max-width: 760px) 100vw, 50vw"
+          />
         </div>
 
         <div className={styles.aboutContent}>
