@@ -293,7 +293,7 @@ export default function KawariCompanyPage() {
       {/* Navigation */}
       <nav className="case-study__navigation">
         <div className="site-container">
-          <Link href="/contact">
+          <Link href="#contact">
             Start a project →
           </Link>
         </div>

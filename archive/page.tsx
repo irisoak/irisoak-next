@@ -232,8 +232,9 @@ export default function ServicesPage() {
                 )}
 
                 <Link
-                  href={`/contact?service=${service.name.toLowerCase()}`}
-                  className="services-page__cta"
+                  href={`mailto:iris@irisoak.dev?subject=${encodeURIComponent(
+                    `Enquiry about ${service.name}`
+                  )}`}
                 >
                   Start a project →
                 </Link>
@@ -347,7 +348,7 @@ export default function ServicesPage() {
           </p>
 
           <Link
-            href="/contact"
+            href="#contact"
             className="services-page__closing-link"
           >
             Start a project →

@@ -161,7 +161,7 @@ export default function ConceptsPage() {
           </h2>
         </div>
 
-        <Link href="/contact">
+        <Link href="#contact">
           Start a project →
         </Link>
       </section>
