@@ -8,7 +8,7 @@ const projects = [
     category: "Website design & build",
     description: "A first website for a safeguarding consultancy with over 25 years of experience.",
     href: "/work/kawari-company",
-    image: "/images/work/kawari-company/kawari-homepage.png",
+    image: "/images/kawari-homepage.png",
     imageAlt: "Kawari Company homepage screenshot",
   },
 ];

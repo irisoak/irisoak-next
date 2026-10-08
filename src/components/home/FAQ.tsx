@@ -53,7 +53,7 @@ const faqItems: FAQItem[] = [
     answer: (
       <>
         Yes. I can set up the parts you'd like to edit yourself, such as text,
-        images or opening hours. If you'd prefer not to, a <Link href="/services/#care-plans">Care plan</Link> can cover
+        images or opening hours. If you'd prefer not to, a <Link href="/care">Care plan</Link> can cover
         such updates for you.
       </>
     ),
@@ -63,8 +63,8 @@ const faqItems: FAQItem[] = [
     answer: (
       <>
         I offer Care plans for updates, monitoring and technical support on a 
-        monthly, quarterly or annual basis. See the <Link href="/services">I&O Care page</Link> for
-        the available options.
+        monthly, quarterly or annual basis. See the <Link href="/care">I&O Care page</Link> for
+        the available pacakges.
       </>
     ),
   },
@@ -105,7 +105,7 @@ export default function FAQ() {
                 >
                   <span>{item.question}</span>
                   <span className="faq__icon" aria-hidden="true">
-                    {isOpen ? "−" : "+"}
+                    {isOpen ? "-" : "+"}
                   </span>
                 </button>
 

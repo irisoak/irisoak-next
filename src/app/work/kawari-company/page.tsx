@@ -67,7 +67,7 @@ export default function KawariCompanyPage() {
         <section className="case-study__visual">
           <div className="case-study__image">
             <Image
-              src="/images/work/kawari-company/kawari-homepage.png"
+              src="/images/kawari-homepage.png"
               alt="Kawari Company live consultancy website homepage"
               width={1600}
               height={900}

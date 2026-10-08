@@ -1,22 +1,39 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Container from "./Container";
 
 const navigation = [
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
+  { href: "/care", label: "Care", newTab: true },
 ];
 
 function NavigationLinks() {
+  const pathname = usePathname();
+
   return (
     <ul className="ionav__list">
-      {navigation.map((item) => (
-        <li key={item.href}>
-          <Link className="ionav__link" href={item.href}>
-            {item.label}
-          </Link>
-        </li>
-      ))}
+      {navigation.map((item) => {
+        const isActive =
+          !item.newTab &&
+          (pathname === item.href || pathname.startsWith(`${item.href}/`));
+
+        return (
+          <li key={item.href}>
+            <Link
+              className="ionav__link"
+              href={item.href}
+              aria-current={isActive ? "page" : undefined}
+              target={item.newTab ? "_blank" : undefined}
+              rel={item.newTab ? "noopener noreferrer" : undefined}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }
