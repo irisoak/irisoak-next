@@ -90,9 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
 
         <Footer />
-
-        <MobileNav />
-
+        
         <SiteAnalytics />
       </body>
     </html>

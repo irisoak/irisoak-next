@@ -8,7 +8,7 @@ export default function Hero() {
         <p className="iohero__eyebrow">Digital studio</p>
 
         <h1 className="iohero__title" id="hero-title">
-          Built With Intent.
+          Web Design & Development.
         </h1>
 
         <p className="iohero__text">
@@ -25,7 +25,7 @@ export default function Hero() {
 
       <div className="iohero__art">
         <Image
-          src="/images/hero-hands-scribble.png"
+          src="/images/hero.png"
           alt="Illustrated hands framing a colourful scribble"
           width={900}
           height={700}

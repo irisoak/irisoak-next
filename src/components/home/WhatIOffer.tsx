@@ -5,38 +5,45 @@ import {
   RefreshCw,
   ShieldCheck,
   Code2,
+  BookOpenText,
 } from "lucide-react";
 
 const offerings = [
   {
     icon: Globe,
-    title: "Foundations",
+    title: "Websites",
     description:
-      "Simple, professional one-page websites for new and independent businesses.",
-  },
-  {
-    icon: Rocket,
-    title: "Launch",
-    description:
-      "Bespoke websites shaped around your business, brand and customers.",
+      "Bespoke mobile-friendly websites from one-page to multi-page, for new and established businesses.",
   },
   {
     icon: RefreshCw,
-    title: "Refresh",
+    title: "Website Refresh",
     description:
-      "A clearer structure, stronger visual direction and a better experience for an existing site.",
+      "Improve your site's structure, visual direction and usability while keeping what already works.",
   },
   {
-    icon: ShieldCheck,
-    title: "Care",
+    icon: Rocket,
+    title: "Web apps",
     description:
-      "Ongoing maintenance, monitoring and technical support after launch.",
+      "Custom web apps built around how your customers actually use them.",
+  },
+  {
+    icon: BookOpenText,
+    title: "Booking & integrations",
+    description:
+      "Connect bookings, payments and the tools you already use, so everything works together.",
   },
   {
     icon: Code2,
-    title: "Custom",
+    title: "Business Tools",
     description:
-      "Web apps, internal tools and automation, scoped around what you actually need.",
+      "Dashboards, internal systems and automations that take the admin out of your day.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Care & Maintenance",
+    description:
+      "Ongoing maintenance, regular updates, monitoring and fixes to keep your site running smoothly.",
   },
 ];
 
@@ -45,15 +52,14 @@ export default function WhatIOffer() {
     <section className="iooffer">
       <Container>
         <div className="iooffer__intro">
-          <p className="iooffer__text">
-            From first websites to custom web apps, I build digital
-            products that are designed around how your business actually
-            works, and supported long after launch.
-          </p>
-
-          <h2 className="iooffer__heading">
+          <h1 className="iooffer__heading">
             What I Offer
-          </h2>
+          </h1>
+          
+          <p className="iooffer__text">
+            From websites to custom web apps, I design and build digital products 
+            around how your business actually works, and support them long after launch.
+          </p>
         </div>
 
         <p className="iooffer__label">

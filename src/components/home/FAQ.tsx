@@ -1,164 +1,90 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ReactNode } from "react";
+import Link from "next/link";
 import Container from "@/components/layout/Container";
-import Image from "next/image";
 
 type FAQItem = {
   question: string;
   answer: ReactNode;
-  showEssentialsPreview?: boolean;
 };
 
 const faqItems: FAQItem[] = [
   {
-    question: "How much does a website cost?",
+    question: "How is a project priced?",
     answer: (
       <>
-        <strong>Starter Presence</strong> is £295 for a simple, streamlined
-        landing page for new and early-stage businesses.
-        <br />
-        <strong>Website Essentials</strong> is £495 for a more complete
-        one-page website with greater structure and flexibility.
-        <br />
-        <strong>Launch</strong> projects start from £695, while{" "}
-        <strong>Refresh</strong> and <strong>Custom</strong> projects are
-        quoted based on the scope and support required.
+        Each project is priced on scope, and you can find my guide prices on the {" "}
+        <Link href="/services">Services page</Link>. After a
+        quick chat, I'll send a fixed quote before any work begins.
       </>
     ),
   },
   {
-    question:
-      "What's the difference between Starter Presence and Website Essentials?",
+    question: "How long does a website take?",
     answer: (
       <>
-        <strong>Starter Presence</strong> is a lighter starting point, using a streamlined structure 
-        and your own branding, copy and images. It&apos;s designed for businesses that need a simple, professional place to send customers.
-        <br />
-        <br />
-        <strong>Website Essentials</strong> goes further, with a more complete one-page website: 
-        up to four focused sections and a structure shaped specifically around your business.
-      </>
-    ),
-    showEssentialsPreview: true,
-  },
-  {
-    question: "How much does care and maintenance cost?",
-    answer: (
-      <>
-        Site Check-up is a <strong>one-time payment of £149</strong>.
-        <br />
-        Ongoing <strong>Core Care</strong> starts from{" "}
-        <strong>£59/month</strong> or £590/year, with{" "}
-        <strong>Growth Care</strong> and <strong>Priority Care</strong> options
-        available for businesses that need more regular support.
+        Most one-page websites take one to two weeks. Larger sites can take up
+        to three. For web apps and custom tools, I'll confirm a timeline once we;ve agreed the scope.
       </>
     ),
   },
   {
-    question: "Do you offer payment plans?",
+    question: "Can I pay in instalments?",
     answer: (
       <>
-        <strong>Absolutely</strong>. For most websites, web apps, internal tools and custom projects
-        — you can <strong>pay in full</strong> or split the project fee into <strong>2, 3 or 4</strong> instalments.
-        <br />
-        Your payment schedule is confirmed clearly in your proposal before work begins, 
-        so you always know what&apos;s due and when.
-        <br />
-        <strong>Care plans work differently</strong> and have their own one-off, monthly and annual payment options.
+        Absolutely. You can pay in full or split the project fee into two, three or
+        four instalments. Your payment schedule is agreed before work begins.
       </>
     ),
   },
   {
-    question: "How long does a project usually take?",
+    question: "What do I need to provide?",
     answer: (
       <>
-        Timelines depend on the size of the project.
-        <br />
-        <strong>Starter Presence</strong> projects are typically completed
-        within <strong>5–10 days</strong>, <strong>Website Essentials</strong> projects are typically completed
-        within <strong>7–14 days</strong>, while <strong>Launch</strong>{" "}
-        projects usually take <strong>7–21 days</strong> depending on scope.
-        <br />
-        <strong>Refresh, larger and more custom projects</strong> may take
-        longer, but I&apos;ll always confirm a realistic timeline with you
-        before any work begins.
+        Your logo, text and any photos you'd like to use. If you don't have
+        everything yet, I can help you pull it together.
       </>
     ),
   },
   {
-    question: "How much does a refresh for my existing website typically cost?",
+    question: "Can I update the website myself?",
     answer: (
       <>
-        Refresh projects are quoted after <strong>an initial review of
-        your existing website</strong>, so the scope and price reflect exactly
-        what needs improving or updating.
+        Yes. I can set up the parts you'd like to edit yourself, such as text,
+        images or opening hours. If you'd prefer not to, a <Link href="/services/#care-plans">Care plan</Link> can cover
+        such updates for you.
       </>
     ),
   },
   {
-    question: "What happens after I get in touch?",
+    question: "What happens after launch?",
     answer: (
       <>
-        I&apos;ll read through your enquiry and follow up by email to talk through
-        your goals, requirements, timeline and next steps.
-        <br />
-        If it feels like a good fit, I&apos;ll send over a clear proposal
-        before any work begins.
+        I offer Care plans for updates, monitoring and technical support on a 
+        monthly, quarterly or annual basis. See the <Link href="/services">I&O Care page</Link> for
+        the available options.
       </>
     ),
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const [isEssentialsPreviewOpen, setIsEssentialsPreviewOpen] =
-    useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleItem = (index: number) => {
-    setOpenIndex((current) =>
-      current === index ? null : index
-    );
+    setOpenIndex((current) => (current === index ? null : index));
   };
-
-  const closeEssentialsPreview = () => {
-    setIsEssentialsPreviewOpen(false);
-  };
-
-  /* ========================================
-     Essentials Preview — Escape + Scroll
-  ======================================== */
-
-  useEffect(() => {
-    if (!isEssentialsPreviewOpen) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeEssentialsPreview();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isEssentialsPreviewOpen]);
 
   return (
-    <section className="faq">
+    <section className="faq" aria-labelledby="faq-heading">
       <Container>
-        <p className="faq__eyebrow">
-          Frequently Asked Questions
-        </p>
+        <div className="faq__intro">
+          <h1 className="faq__heading" id="faq-heading">
+            Frequently asked questions
+          </h1>
+        </div>
 
         <div className="faq__list">
           {faqItems.map((item, index) => {
@@ -167,9 +93,7 @@ export default function FAQ() {
 
             return (
               <article
-                className={`faq__item ${
-                  isOpen ? "faq__item--open" : ""
-                }`}
+                className={`faq__item${isOpen ? " faq__item--open" : ""}`}
                 key={item.question}
               >
                 <button
@@ -179,112 +103,24 @@ export default function FAQ() {
                   aria-controls={answerId}
                   onClick={() => toggleItem(index)}
                 >
-                  <span>
-                    {item.question}
-                  </span>
-
-                  <span
-                    className="faq__icon"
-                    aria-hidden="true"
-                  >
-                    {isOpen ? "-" : "+"}
+                  <span>{item.question}</span>
+                  <span className="faq__icon" aria-hidden="true">
+                    {isOpen ? "−" : "+"}
                   </span>
                 </button>
 
                 <div
-                  id={answerId}
                   className="faq__answer"
+                  id={answerId}
                   hidden={!isOpen}
                 >
-                  <p>
-                    {item.answer}
-                  </p>
-
-                  {item.showEssentialsPreview && (
-                    <button
-                      type="button"
-                      className="faq__preview-button"
-                      onClick={() =>
-                        setIsEssentialsPreviewOpen(true)
-                      }
-                    >
-                      Show me the difference →
-                    </button>
-                  )}
+                  <p>{item.answer}</p>
                 </div>
               </article>
             );
           })}
         </div>
       </Container>
-
-      {/* ========================================
-          Website Essentials — Preview Modal
-      ======================================== */}
-
-      {isEssentialsPreviewOpen && (
-        <div
-          className="faq-preview"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="essentials-preview-title"
-        >
-          {/* Backdrop */}
-
-          <button
-            type="button"
-            className="faq-preview__backdrop"
-            aria-label="Close Website Essentials preview"
-            onClick={closeEssentialsPreview}
-          />
-
-          {/* Modal */}
-
-          <div className="faq-preview__modal">
-            {/* Header */}
-
-            <div className="faq-preview__header">
-              <div>
-                <p className="faq-preview__eyebrow">
-                  Website options
-                </p>
-
-                <h2 id="essentials-preview-title">
-                  See the difference.
-                </h2>
-
-                <p>
-                  A visual example of how the website options can grow with your
-                  business, from a simple Starter Presence through to a larger
-                  Launch project.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                className="faq-preview__close"
-                aria-label="Close preview"
-                onClick={closeEssentialsPreview}
-              >
-                x
-              </button>
-            </div>
-
-            {/* ========================================
-                Service Comparison Preview
-            ======================================== */}
-
-            <div className="faq-preview__comparison">
-              <Image
-                src="/images/services/previews/service-comparison.png"
-                alt="Visual comparison of Starter Presence, Website Essentials, Launch and an older website suitable for a Refresh"
-                fill
-                sizes="(max-width: 760px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

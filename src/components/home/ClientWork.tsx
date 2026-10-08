@@ -4,19 +4,12 @@ import Container from "@/components/layout/Container";
 
 const projects = [
   {
-    title: "Kawari Company",
-    category: "Web Design & Development",
+    title: "The Kawari Company",
+    category: "Website design & build",
+    description: "A first website for a safeguarding consultancy with over 25 years of experience.",
     href: "/work/kawari-company",
     image: "/images/work/kawari-company/kawari-homepage.png",
     imageAlt: "Kawari Company homepage screenshot",
-  },
-  {
-    title: "PartsPilot",
-    category: "Automotive Inventory Intelligence Platform",
-    href: "/work/partspilot",
-    image: "/images/work/partspilot/overview.png",
-    imageAlt:
-      "PartsPilot dashboard showing inventory metrics and recent activity",
   },
 ];
 
@@ -24,15 +17,14 @@ export default function ClientWork() {
   return (
     <section className="iowork">
       <Container>
-        <p className="iowork__eyebrow">
-          Client Work
-        </p>
+        <div className="iowork__intro">
+          <h1 className="iowork__heading">Client Work</h1>
 
-        <p className="iowork__intro">
-          From established businesses launching their first website to
-          brands ready for a refresh — here&apos;s a look at that work in
-          practice.
-        </p>
+          <p className="iowork__text">
+            Projects for businesses, designed, 
+            built and supported from start to finish.
+          </p>
+        </div>
 
         <div className="iowork__grid">
           {projects.map((project) => (
@@ -51,22 +43,20 @@ export default function ClientWork() {
               </div>
 
               <div className="iowork__details">
-                <h2>{project.title}</h2>
-                <p>{project.category}</p>
+                <h3>{project.title}</h3>
+                <h4>{project.category}</h4>
+                <p>{project.description}</p>
               </div>
             </Link>
           ))}
 
-          <div
-            className="iowork__card iowork__card--placeholder"
-            aria-label="Maison Vale Events — project underway, not yet available"
-          >
+          <div className="iowork__card iowork__card--placeholder">
             <div className="iowork__image iowork__image--placeholder">
               <span>Coming soon</span>
             </div>
 
             <div className="iowork__details">
-              <h2>Maison Vale Events</h2>
+              <h3>Maison Vale Events</h3>
               <p>Project underway</p>
             </div>
           </div>
@@ -74,7 +64,7 @@ export default function ClientWork() {
 
         <div className="iowork__footer">
           <Link href="/work" className="iowork__view-all">
-            View my work <span aria-hidden="true">→</span>
+            Browse the full portfolio <span aria-hidden="true">→</span>
           </Link>
         </div>
       </Container>

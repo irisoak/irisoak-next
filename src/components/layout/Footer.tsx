@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Container from "./Container";
-import Button from "@/components/ui/Button";
 
 import {
   FaLinkedinIn,
@@ -12,53 +11,27 @@ import {
 const footerNavigation = [
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
+  { href: "/care", label: "Care" },
 ];
 
-export default function SiteFooter() {
+const footerSecondaryNavigation = [
+  { href: "/portfolio-partnership", label: "Portfolio Partnership" },
+  { href: "/privacy", label: "Privacy" },
+];
+
+export default function Footer() {
   return (
     <footer className="iofooter">
-      <Container className="iofooter__partner">
-        <p className="iofooter__eyebrow">
-          Let&apos;s collaborate
-        </p>
-
-        <h2 className="iofooter__heading">
-          Partner with me
-        </h2>
-
-        <Button
-          href="mailto:iris@irisoak.dev"
-          className="iofooter__cta"
-        >
-          iris@irisoak.dev <span aria-hidden="true">→</span>
-        </Button>
-      </Container>
-
       <Container className="iofooter__row">
-        <div className="iofooter__brand">
-          <Link href="/" className="iofooter__logo">
-            iris & oak
-          </Link>
-
-          <div className="iofooter__legal">
-            <p>
-              © {new Date().getFullYear()} Iris & Oak. All rights reserved.
-            </p>
-
-            <Link href="/privacy">
-              Privacy Policy
-            </Link>
-          </div>
-        </div>
+        <Link href="/" className="iofooter__logo">
+          iris &amp; oak
+        </Link>
 
         <nav aria-label="Footer navigation">
           <ul className="iofooter__nav">
             {footerNavigation.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>
-                  {item.label}
-                </Link>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
@@ -69,30 +42,46 @@ export default function SiteFooter() {
             href="https://www.linkedin.com/company/irisandoak"
             aria-label="Iris & Oak on LinkedIn"
           >
-            <FaLinkedinIn size={20} strokeWidth={1.5} />
+            <FaLinkedinIn size={20} aria-hidden="true" />
           </a>
 
           <a
             href="https://www.instagram.com/irisoakdev/"
             aria-label="Iris & Oak on Instagram"
           >
-            <FaInstagram size={20} strokeWidth={1.5} />
+            <FaInstagram size={20} aria-hidden="true" />
           </a>
 
           <a
             href="https://www.facebook.com/profile.php?id=61593802392943"
             aria-label="Iris & Oak on Facebook"
           >
-            <FaFacebook size={20} strokeWidth={1.5} />
+            <FaFacebook size={20} aria-hidden="true" />
           </a>
 
           <a
             href="https://github.com/irisoak/irisoak-next"
-            aria-label="Iris & Oak GitHub"
+            aria-label="Iris & Oak on GitHub"
           >
-            <FaGithub size={20} strokeWidth={1.5} />
+            <FaGithub size={20} aria-hidden="true" />
           </a>
         </div>
+      </Container>
+
+      <Container className="iofooter__bottom">
+        <p className="iofooter__copyright">
+          © {new Date().getFullYear()} Iris &amp; Oak. All rights reserved.
+        </p>
+
+        <nav aria-label="Additional footer links">
+          <ul className="iofooter__secondary-nav">
+            {footerSecondaryNavigation.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </Container>
     </footer>
   );

@@ -3,6 +3,7 @@ import WhyWorkWithMe from "@/components/home/WhyWorkWithMe";
 import ClientWork from "@/components/home/ClientWork";
 import WhatIOffer from "@/components/home/WhatIOffer";
 import FAQ from "@/components/home/FAQ";
+import Contact from "@/components/home/Contact";
 
 export default function Home() {
   return (
@@ -15,10 +16,11 @@ export default function Home() {
       />
 
       <Hero />
-      <ClientWork />
       <WhatIOffer />
+      <ClientWork />
       <WhyWorkWithMe />
       <FAQ />
+      <Contact />
     </>
   );
 }

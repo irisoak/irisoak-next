@@ -19,7 +19,7 @@ const projects = [
     description:
       "A live consultancy website designed and developed for a specialist practice working across safeguarding, regulation, education and independent review.",
     href: "/work/kawari-company",
-    image: "/images/work/kawari-company/kawari-homepage.png",
+    image: "/images/kawari-homepage.png",
     imageAlt: "Kawari Company live consultancy website homepage",
     status: null,
   },
