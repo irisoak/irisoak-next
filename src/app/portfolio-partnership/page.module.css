@@ -1,0 +1,1153 @@
+/*
+ * PORTFOLIO PARTNERSHIP PROGRAMME
+ * 01. Page tokens and shared layout
+ * 02. Header and navigation
+ * 03. Hero
+ * 04. Partnership
+ * 05. Process
+ * 06. Scope
+ * 07. Who it is for
+ * 08. Out-of-pocket costs and ownership
+ * 09. FAQ
+ * 10. Contact
+ * 11. Responsive layouts and reduced motion
+ */
+
+.site {
+  --ppp-plum: #2a1427;
+  --ppp-plum-dark: #1d101c;
+  --ppp-plum-soft: #44243d;
+  --ppp-berry: #8a536b;
+  --ppp-berry-dark: #6f4056;
+  --ppp-blush: #f3e7ed;
+  --ppp-blush-light: #fbf4f7;
+  --ppp-cream: #fcfaf6;
+  --ppp-card: #fffdfa;
+  --ppp-text: #2d2030;
+  --ppp-muted: #5d525c;
+  --ppp-line: #ded5d2;
+  --ppp-heading-font: var(--font-heading-family, "Times New Roman", serif);
+  --ppp-body-font: var(--font-body-family, Arial, sans-serif);
+
+  overflow: clip;
+  background: var(--ppp-cream);
+  color: var(--ppp-text);
+  font-family: var(--ppp-body-font);
+}
+
+:global(body:has(.ppp-route-marker) .ionav) {
+  display: none !important;
+}
+
+.container {
+  width: min(calc(100% - 4rem), 78rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  color: var(--ppp-berry-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.sectionIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.8fr);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sectionIntro h2,
+.process h2,
+.forWho h2,
+.faq h2,
+.contact h2 {
+  margin: 0;
+  color: var(--ppp-text);
+  font-family: var(--ppp-heading-font);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.sectionIntroText {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--ppp-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* 02. Header and navigation */
+
+.header {
+  position: relative;
+  z-index: 60;
+  background: var(--ppp-cream);
+  border-bottom: 1px solid rgb(45 32 48 / 8%);
+}
+
+.headerInner {
+  display: flex;
+  width: min(calc(100% - 4rem), 78rem);
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-inline: auto;
+}
+
+.brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  color: var(--ppp-plum);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brandName {
+  font-family: var(--ppp-heading-font);
+  font-size: 1.45rem;
+  letter-spacing: 0.15em;
+}
+
+.brandDescriptor {
+  margin-top: 0.25rem;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navList a {
+  color: var(--ppp-text);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.navList a:hover {
+  color: var(--ppp-berry-dark);
+}
+
+.headerCta,
+.heroCta,
+.contactCta {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--ppp-berry);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.headerCta:hover,
+.heroCta:hover {
+  background: var(--ppp-berry-dark);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.site a:focus-visible,
+.mobileMenu summary:focus-visible,
+.faqItem summary:focus-visible {
+  outline: 3px solid var(--ppp-berry);
+  outline-offset: 4px;
+}
+
+/* 03. Hero */
+
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 32rem;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ppp-plum-dark);
+  color: #fff;
+}
+
+.heroArt {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 0 34%;
+  background-image: url("/images/portfolio-partnership/hero-flower.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(29 16 28 / 100%) 0%,
+    rgb(29 16 28 / 96%) 37%,
+    rgb(29 16 28 / 73%) 58%,
+    rgb(29 16 28 / 14%) 100%
+  );
+  content: "";
+}
+
+.heroCopy {
+  width: min(100%, 39rem);
+  padding-block: 4.5rem;
+}
+
+.hero .eyebrow,
+.contact .eyebrow {
+  color: #f0dce6;
+}
+
+.hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: #fffafc;
+  font-family: var(--ppp-heading-font);
+  font-size: clamp(3rem, 6vw, 5.25rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.heroText {
+  max-width: 36rem;
+  margin: 1.35rem 0 0;
+  color: #fff;
+  font-size: clamp(0.98rem, 1.25vw, 1.1rem);
+  line-height: 1.65;
+  text-shadow: 0 1px 10px rgb(29 16 28 / 35%);
+}
+
+.heroDetails {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.feeBadge,
+.limitedBadge {
+  display: flex;
+  min-height: 4.15rem;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 0.45rem;
+  background: rgb(255 255 255 / 7%);
+  color: #fff;
+}
+
+.feeBadge {
+  gap: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-color: transparent;
+  background: var(--ppp-berry);
+}
+
+.feeBadge span:first-child {
+  padding-right: 0.9rem;
+  border-right: 1px solid rgb(255 255 255 / 55%);
+  font-family: var(--ppp-heading-font);
+  font-size: 2.65rem;
+  line-height: 1;
+}
+
+.feeBadge span:last-child {
+  max-width: 8rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.limitedBadge {
+  gap: 0.65rem;
+  padding: 0.65rem 0.9rem;
+}
+
+.limitedBadge span {
+  display: grid;
+  gap: 0.1rem;
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.limitedBadge strong {
+  font-size: 0.8rem;
+}
+
+.heroCta {
+  min-height: 3.1rem;
+  margin-top: 1.1rem;
+  padding-inline: 1.5rem;
+}
+
+.heroCta:hover {
+  background: #a46b83;
+}
+
+/* 04. Partnership */
+
+.partnership {
+  padding-block: 4.5rem;
+  background: var(--ppp-cream);
+}
+
+.partnership .sectionIntro h2 {
+  max-width: 16ch;
+}
+
+.partnershipGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.partnershipCard {
+  padding: clamp(1.35rem, 3vw, 2.25rem);
+  border: 1px solid rgb(138 83 107 / 10%);
+  border-radius: 0.7rem;
+  background: var(--ppp-blush-light);
+}
+
+.partnershipCard:nth-child(2) {
+  background: #f8f3ee;
+}
+
+.partnershipCard h3 {
+  margin: 0 0 1.4rem;
+  color: var(--ppp-plum);
+  font-family: var(--ppp-heading-font);
+  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+  font-weight: 400;
+}
+
+.featureList {
+  display: grid;
+  gap: 1.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.featureItem {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.85rem;
+  color: var(--ppp-text);
+}
+
+.featureIcon,
+.fitIcon,
+.costIcon,
+.ownershipIcon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0dfe8;
+  color: var(--ppp-berry-dark);
+}
+
+.featureIcon {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.featureItem strong {
+  display: block;
+  margin: 0.1rem 0 0.25rem;
+  color: var(--ppp-plum);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.featureDescription {
+  display: block;
+  color: var(--ppp-muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+/* 05. Process */
+
+.process {
+  padding-block: 4rem;
+  background: var(--ppp-blush);
+}
+
+.process h2 {
+  max-width: 27ch;
+}
+
+.processIntro {
+  max-width: 50rem;
+  margin: 1rem 0 0;
+  color: var(--ppp-muted);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.processList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.processStep {
+  position: relative;
+  min-width: 0;
+  padding-inline: 0.5rem;
+  text-align: center;
+}
+
+.processStep:not(:last-child)::after {
+  position: absolute;
+  top: 1.2rem;
+  left: calc(50% + 2rem);
+  width: calc(100% - 4rem);
+  border-top: 1px solid rgb(138 83 107 / 50%);
+  content: "";
+}
+
+.processNumber {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  margin: 0 auto 0.8rem;
+  border-radius: 50%;
+  background: var(--ppp-berry);
+  color: white;
+  font-family: var(--ppp-heading-font);
+  font-size: 1.1rem;
+}
+
+.processStep h3 {
+  margin: 0 0 0.4rem;
+  color: var(--ppp-plum);
+  font-family: var(--ppp-heading-font);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.processStep p {
+  max-width: 18rem;
+  margin: 0 auto;
+  color: var(--ppp-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+/* 06. Scope */
+
+.scope {
+  padding-block: 4.5rem;
+  background: var(--ppp-cream);
+}
+
+.scope .sectionIntro h2 {
+  max-width: 18ch;
+}
+
+.scopeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.scopeCard {
+  padding: clamp(1.3rem, 2.7vw, 2rem);
+  border: 1px solid rgb(138 83 107 / 12%);
+  border-radius: 0.65rem;
+  background: var(--ppp-blush-light);
+}
+
+.scopeCardMuted {
+  background: #f8f3ee;
+}
+
+.scopeCard h3 {
+  margin: 0 0 1rem;
+  color: var(--ppp-plum);
+  font-family: var(--ppp-heading-font);
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.scopeList {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scopeList li {
+  display: grid;
+  grid-template-columns: 1.2rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.65rem;
+  color: var(--ppp-text);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.includedIcon {
+  margin-top: 0.1rem;
+  color: var(--ppp-berry-dark);
+}
+
+.excludedIcon {
+  margin-top: 0.1rem;
+  color: var(--ppp-berry);
+}
+
+.scopeNote {
+  margin: 1rem 0 0;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid rgb(138 83 107 / 15%);
+  border-radius: 0.5rem;
+  background: #f8f3ee;
+  color: var(--ppp-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+/* 07. Who it is for */
+
+.forWho {
+  padding-block: 4rem;
+  background: #f8f3ee;
+}
+
+.forWho h2 {
+  max-width: 28ch;
+}
+
+.fitGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fitItem {
+  min-width: 0;
+  padding: 0.25rem 1.25rem;
+  text-align: center;
+}
+
+.fitItem + .fitItem {
+  border-left: 1px solid var(--ppp-line);
+}
+
+.fitIcon {
+  width: 2.8rem;
+  height: 2.8rem;
+  margin: 0 auto 0.75rem;
+}
+
+.fitItem h3 {
+  margin: 0 0 0.35rem;
+  color: var(--ppp-plum);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.fitItem p {
+  max-width: 15rem;
+  margin: 0 auto;
+  color: var(--ppp-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* 08. Out-of-pocket costs and ownership */
+
+.outOfPocket {
+  padding-block: 4.5rem;
+  background: var(--ppp-cream);
+}
+
+.outOfPocket .sectionIntro h2 {
+  max-width: 18ch;
+}
+
+.costGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.costCard {
+  padding: 1.35rem;
+  border: 1px solid rgb(138 83 107 / 12%);
+  border-radius: 0.6rem;
+  background: var(--ppp-blush-light);
+}
+
+.costIcon,
+.ownershipIcon {
+  width: 2.65rem;
+  height: 2.65rem;
+  margin-bottom: 0.8rem;
+}
+
+.costCard h3,
+.ownershipCard h3 {
+  margin: 0 0 0.4rem;
+  color: var(--ppp-plum);
+  font-family: var(--ppp-heading-font);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.costCard p,
+.ownershipCard p {
+  margin: 0;
+  color: var(--ppp-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.ownershipCard {
+  display: grid;
+  grid-template-columns: 2.8rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid rgb(138 83 107 / 12%);
+  border-radius: 0.6rem;
+  background: #f8f3ee;
+}
+
+.ownershipIcon {
+  margin: 0;
+}
+
+/* 09. FAQ */
+
+.faq {
+  padding-block: 4rem 4.5rem;
+  background: var(--ppp-cream);
+  border-top: 1px solid var(--ppp-line);
+}
+
+.faqHeading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.35rem;
+}
+
+.faqHeading h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+}
+
+.faqAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding-bottom: 0.25rem;
+  color: var(--ppp-berry-dark);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.faqList {
+  border-top: 1px solid var(--ppp-line);
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--ppp-line);
+}
+
+.faqItem summary {
+  display: flex;
+  min-height: 3.3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.25rem;
+  color: var(--ppp-text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqToggle {
+  position: relative;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--ppp-berry);
+  border-radius: 50%;
+}
+
+.faqToggle::before,
+.faqToggle::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.48rem;
+  height: 1px;
+  background: var(--ppp-berry-dark);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.faqToggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: transform 160ms ease;
+}
+
+.faqItem[open] .faqToggle::after {
+  transform: translate(-50%, -50%) rotate(0);
+}
+
+.faqItem > p {
+  max-width: 62rem;
+  margin: 0;
+  padding: 0 2rem 1rem 0.25rem;
+  color: var(--ppp-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+/* 10. Contact */
+
+.contact {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding-block: 2.6rem;
+  background: var(--ppp-plum-dark);
+  color: #fff;
+}
+
+.contactArt {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 0 45%;
+  background-image: url("/images/portfolio-partnership/hero-flower.jpg");
+  background-position: center 56%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.32;
+}
+
+.contact::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(29 16 28 / 100%) 0%,
+    rgb(29 16 28 / 92%) 55%,
+    rgb(29 16 28 / 42%) 100%
+  );
+  content: "";
+}
+
+.contactInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.contact h2 {
+  max-width: 19ch;
+  color: #fffafc;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.contactInner > div > p:last-child {
+  max-width: 39rem;
+  margin: 0.8rem 0 0;
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.contactCta {
+  flex: 0 0 auto;
+  min-height: 3rem;
+  padding-inline: 1.4rem;
+  background: var(--ppp-cream);
+  color: var(--ppp-plum);
+}
+
+.contactCta:hover {
+  border-color: #fff;
+  background: transparent;
+  color: #fff;
+}
+
+/* 11. Responsive layouts and reduced motion */
+
+@media (max-width: 64rem) {
+  .container,
+  .headerInner {
+    width: min(calc(100% - 3rem), 78rem);
+  }
+
+  .desktopNav {
+    gap: 1.5rem;
+  }
+
+  .navList {
+    gap: 1.2rem;
+  }
+
+  .fitItem {
+    padding-inline: 0.85rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .container,
+  .headerInner {
+    width: min(calc(100% - 2rem), 78rem);
+  }
+
+  .headerInner {
+    min-height: 4rem;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .mobileMenu {
+    position: relative;
+    display: block;
+  }
+
+  .mobileMenu summary {
+    display: grid;
+    width: 2.7rem;
+    height: 2.7rem;
+    align-content: center;
+    justify-items: center;
+    gap: 0.28rem;
+    border: 1px solid rgb(45 32 48 / 16%);
+    border-radius: 50%;
+    color: var(--ppp-plum);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobileMenu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobileMenu summary span {
+    display: block;
+    width: 1rem;
+    height: 1.5px;
+    background: currentColor;
+    transition:
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
+
+  .mobileMenu[open] summary span:first-child {
+    transform: translateY(0.35rem) rotate(45deg);
+  }
+
+  .mobileMenu[open] summary span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobileMenu[open] summary span:last-child {
+    transform: translateY(-0.35rem) rotate(-45deg);
+  }
+
+  .mobileMenuPanel {
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    right: 0;
+    z-index: 10;
+    width: min(20rem, calc(100vw - 2rem));
+    padding: 1rem;
+    border: 1px solid var(--ppp-line);
+    border-radius: 0.75rem;
+    background: var(--ppp-cream);
+    box-shadow: 0 1rem 2.5rem rgb(29 16 28 / 16%);
+  }
+
+  .mobileMenuPanel .navList {
+    display: grid;
+    gap: 0;
+  }
+
+  .mobileMenuPanel .navList a {
+    display: block;
+    padding: 0.8rem 0.3rem;
+    border-bottom: 1px solid var(--ppp-line);
+    font-size: 0.95rem;
+  }
+
+  .mobileMenuPanel .headerCta {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .hero {
+    min-height: 39rem;
+    align-items: flex-start;
+  }
+
+  .heroArt {
+    inset: 35% 0 0 0;
+    background-position: 68% center;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgb(29 16 28 / 100%) 0%,
+      rgb(29 16 28 / 100%) 42%,
+      rgb(29 16 28 / 82%) 64%,
+      rgb(29 16 28 / 35%) 100%
+    );
+  }
+
+  .heroCopy {
+    width: 100%;
+    padding-block: 3rem 2rem;
+  }
+
+  .hero h1 {
+    max-width: 11ch;
+    font-size: clamp(2.8rem, 11vw, 4.5rem);
+  }
+
+  .heroText {
+    max-width: 35rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .sectionIntro {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .partnership,
+  .scope,
+  .outOfPocket {
+    padding-block: 3.5rem;
+  }
+
+  .partnershipGrid,
+  .scopeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .partnershipCard {
+    padding: 1.4rem;
+  }
+
+  .process {
+    padding-block: 3.5rem;
+  }
+
+  .processList {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .processStep {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    column-gap: 0.9rem;
+    padding: 0;
+    text-align: left;
+  }
+
+  .processStep:not(:last-child)::after {
+    top: 2.75rem;
+    left: 1.22rem;
+    width: 1px;
+    height: calc(100% - 1rem);
+    border-top: 0;
+    border-left: 1px solid rgb(138 83 107 / 50%);
+  }
+
+  .processNumber {
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .processStep h3 {
+    align-self: center;
+    margin: 0 0 0.25rem;
+  }
+
+  .processStep p {
+    grid-column: 2;
+    max-width: none;
+    margin: 0;
+  }
+
+  .fitGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem 0;
+  }
+
+  .fitItem {
+    padding-inline: 0.9rem;
+  }
+
+  .fitItem:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .fitItem:nth-child(even) {
+    border-left: 1px solid var(--ppp-line);
+  }
+
+  .fitItem:nth-child(n + 3) {
+    padding-top: 1rem;
+    border-top: 1px solid var(--ppp-line);
+  }
+
+  .costGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .costCard {
+    display: grid;
+    grid-template-columns: 2.65rem minmax(0, 1fr);
+    column-gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .costIcon {
+    grid-row: span 2;
+    margin: 0;
+  }
+
+  .costCard h3 {
+    align-self: end;
+  }
+
+  .contactInner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contactCta {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 30rem) {
+  .brandName {
+    font-size: 1.35rem;
+  }
+
+  .hero {
+    min-height: 42rem;
+  }
+
+  .heroCopy {
+    padding-top: 2.4rem;
+  }
+
+  .heroDetails {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .feeBadge {
+    width: min(100%, 17rem);
+  }
+
+  .limitedBadge {
+    width: min(100%, 17rem);
+  }
+
+  .faqHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .faqItem summary {
+    font-size: 0.84rem;
+  }
+
+  .ownershipCard {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site *,
+  .site *::before,
+  .site *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

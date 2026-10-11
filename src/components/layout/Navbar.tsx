@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
+import styles from "./page.module.css";
 
 const navigation = [
   { href: "/work", label: "Work" },
@@ -39,8 +40,13 @@ export default function Navbar() {
   return (
     <header className="ionav">
       <Container className="ionav__row">
-        <Link href="/" className="ionav__logo" aria-label="Iris & Oak home">
-          <span>iris ＆ oak</span>
+        <Link
+          className="ionav__logo"
+          href="/"
+          aria-label="Iris & Oak Digital Studio home"
+        >
+          <span className="ionav__brandName">Iris &amp; Oak</span>
+          <span className="ionav__brandDescription">Digital Studio</span>
         </Link>
 
         <nav className="ionav__links" aria-label="Primary navigation">

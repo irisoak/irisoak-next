@@ -61,12 +61,11 @@
 }
 
 .care-eyebrow {
-  margin: 0 0 0.8rem;
-  color: var(--care-green-accent);
-  font-size: 0.72rem;
-  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--colour-brand-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.16em;
-  line-height: 1.4;
   text-transform: uppercase;
 }
 
