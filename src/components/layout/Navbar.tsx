@@ -7,7 +7,7 @@ import Container from "./Container";
 const navigation = [
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
-  { href: "/care", label: "Care", newTab: true },
+  { href: "/care", label: "Care" },
 ];
 
 function NavigationLinks() {
@@ -17,8 +17,7 @@ function NavigationLinks() {
     <ul className="ionav__list">
       {navigation.map((item) => {
         const isActive =
-          !item.newTab &&
-          (pathname === item.href || pathname.startsWith(`${item.href}/`));
+          pathname === item.href || pathname.startsWith(`${item.href}/`);
 
         return (
           <li key={item.href}>
@@ -26,8 +25,6 @@ function NavigationLinks() {
               className="ionav__link"
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              target={item.newTab ? "_blank" : undefined}
-              rel={item.newTab ? "noopener noreferrer" : undefined}
             >
               {item.label}
             </Link>
@@ -38,7 +35,7 @@ function NavigationLinks() {
   );
 }
 
-export default function SiteHeader() {
+export default function Navbar() {
   return (
     <header className="ionav">
       <Container className="ionav__row">

@@ -1,0 +1,531 @@
+/* Contents: Report shell · Toolbar · Header and form · Score · Checks · Preview · Scoring · Print */
+
+.report {
+  --report-ink: #f0f0f0;
+  --report-muted: rgb(240 240 240 / 75%);
+  --report-line: rgb(240 240 240 / 22%);
+  --report-panel: rgb(255 255 255 / 5%);
+  --report-accent: #e9a8c7;
+  --report-good: #c3e7a7;
+  --report-warn: #f3d08a;
+  width: min(100% - 2rem, 92rem);
+  margin: 3rem auto;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  border-radius: 1rem;
+  background: var(--colour-brand-primary);
+  color: var(--report-ink);
+  box-shadow: 0 1.5rem 4rem rgb(33 19 36 / 16%);
+}
+
+.report h1,
+.report h2,
+.report h3,
+.report p {
+  overflow-wrap: anywhere;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--report-line);
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 1.35rem;
+}
+
+.brand span {
+  margin-left: 0.4rem;
+  color: var(--report-muted);
+  font-family: var(--font-body-family);
+  font-size: 0.8rem;
+}
+
+.localNote {
+  margin: 0.35rem 0 0;
+  color: var(--report-muted);
+  font-size: 0.75rem;
+}
+
+.toolbarActions,
+.reportActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.button,
+.secondaryAction {
+  min-height: 2.7rem;
+  padding: 0.6rem 0.95rem;
+  border: 1px solid var(--report-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--report-ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.button:hover,
+.secondaryAction:hover {
+  border-color: var(--report-accent);
+  background: rgb(233 168 199 / 12%);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--report-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.hero > div:first-child > p:last-child {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: var(--report-muted);
+  line-height: 1.65;
+}
+
+.fields {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.fields label,
+.checkControls label,
+.generalNotes {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--report-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.fields input,
+.fields select,
+.checkControls select,
+.checkControls textarea,
+.generalNotes textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--report-line);
+  border-radius: 0.55rem;
+  background: rgb(255 255 255 / 7%);
+  color: var(--report-ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.fields select option,
+.checkControls select option {
+  background: var(--colour-brand-primary);
+  color: var(--report-ink);
+}
+
+.fields input:focus-visible,
+.fields select:focus-visible,
+.checkControls select:focus-visible,
+.checkControls textarea:focus-visible,
+.generalNotes textarea:focus-visible,
+.button:focus-visible,
+.secondaryAction:focus-visible {
+  outline: 3px solid var(--report-accent);
+  outline-offset: 2px;
+}
+
+.fields input[readonly] {
+  color: var(--report-muted);
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1.2fr) repeat(3, minmax(7rem, 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--report-line);
+  border-radius: 0.8rem;
+  background: var(--report-panel);
+}
+
+.gradeBlock,
+.metric {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.gradeLabel,
+.metric span {
+  color: var(--report-muted);
+  font-size: 0.75rem;
+}
+
+.grade {
+  color: var(--report-good);
+  font-family: var(--font-heading-family);
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.gradeBlock > span:last-child {
+  color: var(--report-muted);
+  font-size: 0.8rem;
+}
+
+.metric {
+  padding-left: 1rem;
+  border-left: 1px solid var(--report-line);
+}
+
+.metric strong {
+  font-family: var(--font-heading-family);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.baselineNote,
+.scopeNote {
+  color: var(--report-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding-block: 1.25rem;
+  color: var(--report-muted);
+  font-size: 0.78rem;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+
+.dotGood { background: var(--report-good); }
+.dotIssue { background: var(--report-warn); }
+.dotManaged { background: #b7c5f5; }
+.dotMuted { background: rgb(240 240 240 / 45%); }
+
+.checkGroups {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.group {
+  overflow: hidden;
+  border: 1px solid var(--report-line);
+  border-radius: 0.8rem;
+  background: var(--report-panel);
+}
+
+.group h2 {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: color-mix(in srgb, var(--report-accent) 28%, transparent);
+  font-family: var(--font-heading-family);
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.checkRow {
+  display: grid;
+  grid-template-columns: minmax(13rem, 1fr) minmax(24rem, 1.25fr);
+  gap: 1.25rem;
+  padding: 1rem;
+  border-top: 1px solid var(--report-line);
+}
+
+.checkDescription h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.checkDescription p {
+  margin: 0.35rem 0 0;
+  color: var(--report-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.optional {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 10%);
+  color: var(--report-muted);
+  font-size: 0.65rem;
+  vertical-align: middle;
+}
+
+.checkControls {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.65fr) minmax(12rem, 1fr);
+  align-items: end;
+  gap: 0.75rem;
+}
+
+.noteField {
+  grid-column: 1 / -1;
+}
+
+.checkControls textarea,
+.generalNotes textarea {
+  resize: vertical;
+}
+
+.generalNotes {
+  max-width: 48rem;
+}
+
+.secondaryAction {
+  justify-self: start;
+}
+
+.clientReport {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--report-line);
+  border-radius: 0.8rem;
+  background: var(--report-panel);
+}
+
+.clientReport h2 {
+  margin: 1.5rem 0 0.6rem;
+  font-family: var(--font-heading-family);
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.clientReport h2:first-child {
+  margin-top: 0;
+}
+
+.clientReport p,
+.clientReport li {
+  color: var(--report-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.clientReport ol,
+.clientReport ul {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.clientReport li p {
+  margin: 0.25rem 0 0;
+}
+
+.clientReport li strong {
+  color: var(--report-ink);
+  text-transform: capitalize;
+}
+
+.reportActions {
+  margin-top: 1.5rem;
+}
+
+.scoring {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--report-line);
+  color: var(--report-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.scoring summary {
+  color: var(--report-ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reportFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--report-line);
+  color: var(--report-muted);
+  font-size: 0.75rem;
+}
+
+.announcement {
+  min-height: 1.25rem;
+  margin: 0.5rem 0 0;
+  color: var(--report-good);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 52rem) {
+  .toolbar,
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero {
+    display: grid;
+  }
+
+  .summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gradeBlock {
+    grid-column: 1 / -1;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--report-line);
+  }
+
+  .metric:nth-child(2n) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .checkRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 34rem) {
+  .report {
+    width: calc(100% - 1rem);
+    margin-block: 1rem;
+    padding: 1rem;
+    border-radius: 0.65rem;
+  }
+
+  .toolbarActions {
+    width: 100%;
+  }
+
+  .button {
+    flex: 1 1 auto;
+  }
+
+  .summary {
+    padding: 0.9rem;
+  }
+
+  .checkControls {
+    grid-template-columns: 1fr;
+  }
+
+  .noteField {
+    grid-column: auto;
+  }
+
+  .reportFooter {
+    flex-direction: column;
+  }
+}
+
+@media print {
+  .report {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    color: #211324;
+    box-shadow: none;
+    print-color-adjust: exact;
+  }
+
+  .toolbarActions,
+  .reportActions,
+  .announcement,
+  .checkGroups {
+    display: none !important;
+  }
+
+  .toolbar,
+  .hero,
+  .summary,
+  .clientReport,
+  .scoring,
+  .reportFooter {
+    break-inside: avoid;
+  }
+
+  .clientReport,
+  .summary {
+    border-color: #ccc;
+    background: #fff;
+  }
+
+  .clientReport p,
+  .clientReport li,
+  .scopeNote,
+  .baselineNote,
+  .gradeBlock > span:last-child,
+  .metric span,
+  .reportFooter,
+  .scoring {
+    color: #444;
+  }
+
+  .grade,
+  .clientReport li strong,
+  .scoring summary {
+    color: #211324;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .secondaryAction {
+    transition: none;
+  }
+}

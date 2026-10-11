@@ -178,11 +178,11 @@ export default function WorkPage() {
         <header className="work-page__header">
           <p className="work-page__eyebrow">Work</p>
 
-          <h1>Selected work</h1>
+          <h1>From the Studio</h1>
 
           <p className="work-page__intro">
-            A collection of client projects, portfolio builds and concepts
-            shaped around the people who use them.
+            Client projects, concepts and personal builds, 
+            each shaped around the people who use them.
           </p>
         </header>
 

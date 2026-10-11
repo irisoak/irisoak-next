@@ -1,17 +1,11 @@
-import "./globals.css";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono, Quicksand } from "next/font/google";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-
-import type { Metadata } from "next";
 import SiteAnalytics from "@/components/analytics/SiteAnalytics";
 
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-import MobileNav from "@/components/layout/MobileNav";
-
-import { Quicksand } from "next/font/google";
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -76,7 +70,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
@@ -84,13 +82,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body>
         <Navbar />
-
-        <main>
-          {children}
-        </main>
-
+        <main>{children}</main>
         <Footer />
-        
         <SiteAnalytics />
       </body>
     </html>

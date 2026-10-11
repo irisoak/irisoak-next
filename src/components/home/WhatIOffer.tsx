@@ -6,7 +6,7 @@ import {
   Boxes,
   RefreshCw,
   ShieldCheck,
-  Code2,
+  Settings2,
   Calendar,
 } from "lucide-react";
 
@@ -43,7 +43,7 @@ const offerings: Offering[] = [
       "Connect bookings, payments and the tools you already use, so everything works together.",
   },
   {
-    icon: Code2,
+    icon: Settings2,
     title: "Business Tools",
     description:
       "Dashboards, internal systems and automations that take the admin out of your day.",
