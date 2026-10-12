@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
@@ -10,8 +11,16 @@ const navigation = [
   { href: "/care", label: "Care" },
 ];
 
-function NavigationLinks() {
+function NavigationLinks({
+  closeOnNavigate = false,
+}: {
+  closeOnNavigate?: boolean;
+}) {
   const pathname = usePathname();
+
+  const closeMobileMenu = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.currentTarget.closest("details")?.removeAttribute("open");
+  };
 
   return (
     <ul className="ionav__list">
@@ -25,6 +34,7 @@ function NavigationLinks() {
               className="ionav__link"
               href={item.href}
               aria-current={isActive ? "page" : undefined}
+              onClick={closeOnNavigate ? closeMobileMenu : undefined}
             >
               {item.label}
             </Link>
@@ -36,6 +46,10 @@ function NavigationLinks() {
 }
 
 export default function Navbar() {
+  const closeMobileMenu = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.currentTarget.closest("details")?.removeAttribute("open");
+  };
+
   return (
     <header className="ionav">
       <Container className="ionav__row">
@@ -67,9 +81,13 @@ export default function Navbar() {
           </summary>
 
           <nav className="ionav__mobile-panel" aria-label="Mobile navigation">
-            <NavigationLinks />
+            <NavigationLinks closeOnNavigate />
 
-            <Link href="/#contact" className="ionav__mobile-cta">
+            <Link
+              href="/#contact"
+              className="ionav__mobile-cta"
+              onClick={closeMobileMenu}
+            >
               Get in touch
             </Link>
           </nav>
