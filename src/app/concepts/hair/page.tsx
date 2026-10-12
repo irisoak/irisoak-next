@@ -50,7 +50,7 @@ const team = [
 
 export default function HairConceptPage() {
   return (
-    <main
+    <div
       id="top"
       className={`${styles.page} ${cormorant.variable} ${manrope.variable}`}
     >
@@ -524,6 +524,6 @@ export default function HairConceptPage() {
           </a>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }

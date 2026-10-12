@@ -1,11 +1,9 @@
-import HomeHero from "@/components/home/HomeHero";
-import SelectedWork from "@/components/home/SelectedWork";
-import MyApproach from "@/components/home/MyApproach";
-import Services from "@/components/home/Services";
-import TechnologyApproach from "@/components/home/TechnologyApproach";
+import Hero from "@/components/home/Hero";
+import WhyWorkWithMe from "@/components/home/WhyWorkWithMe";
+import ClientWork from "@/components/home/ClientWork";
+import WhatIOffer from "@/components/home/WhatIOffer";
 import FAQ from "@/components/home/FAQ";
-import ClientJourney from "@/components/home/ClientJourney";
-import FeaturedConcepts from "@/components/concepts/FeaturedConcepts";
+import Contact from "@/components/home/Contact";
 
 export default function Home() {
   return (
@@ -17,14 +15,12 @@ export default function Home() {
         }}
       />
 
-      <HomeHero />
-      <TechnologyApproach />
-      <MyApproach />
-      <SelectedWork />
-      <Services />
-      <FeaturedConcepts />
+      <Hero />
+      <WhatIOffer />
+      <ClientWork />
+      <WhyWorkWithMe />
       <FAQ />
-      <ClientJourney />
+      <Contact />
     </>
   );
 }

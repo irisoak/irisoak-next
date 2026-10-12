@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono, Quicksand } from "next/font/google";
+
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import SiteAnalytics from "@/components/analytics/SiteAnalytics";
 
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import HeaderGate from "@/components/layout/HeaderGate";
-import Footer from "@/components/layout/Footer";
-import MobileNav from "@/components/layout/MobileNav";
+const quicksand = Quicksand({
+  variable: "--font-quicksand",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,23 +70,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${quicksand.variable} h-full antialiased`}
     >
       <body>
-        <HeaderGate />
-
-        <main>
-          {children}
-        </main>
-
+        <Navbar />
+        <main>{children}</main>
         <Footer />
-        
-        <MobileNav />
-
         <SiteAnalytics />
       </body>
     </html>

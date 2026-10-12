@@ -88,7 +88,7 @@ const times = [
 
 export default function AtelierRueBookingPage() {
   return (
-    <main
+    <div
       className={`${styles.page} ${cormorant.variable} ${manrope.variable}`}
     >
       <ConceptBar
@@ -428,6 +428,6 @@ export default function AtelierRueBookingPage() {
           Return to salon →
         </Link>
       </footer>
-    </main>
+    </div>
   );
 }

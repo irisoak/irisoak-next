@@ -22,7 +22,7 @@ const manrope = Manrope({
 
 export default function CafeConceptPage() {
   return (
-    <main
+    <div
       id="top"
       className={`${styles.page} ${fraunces.variable} ${manrope.variable}`}
     >
@@ -359,6 +359,6 @@ export default function CafeConceptPage() {
           Back to top ↑
         </a>
       </footer>
-    </main>
+    </div>
   );
 }

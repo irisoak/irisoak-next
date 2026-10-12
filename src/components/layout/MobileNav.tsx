@@ -14,6 +14,11 @@ export default function MobileNav() {
         <span>Services</span>
       </Link>
 
+      <Link href="/care" className="mobile-nav__link">
+        <Layers3 size={20} strokeWidth={1.5} />
+        <span>Care</span>
+      </Link>
+
       <Link href="/contact" className="mobile-nav__link">
         <Send size={20} strokeWidth={1.5} />
         <span>Contact</span>

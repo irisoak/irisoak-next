@@ -1549,8 +1549,6 @@
   .servicePrice,
   .serviceArrow,
   .teamPhoto,
-  .studioLink,
-  .studioLink span,
   .visitPrimary,
   .visitSecondary,
   .visitPrimary span,
@@ -1565,7 +1563,6 @@
   .serviceRow:hover .serviceName,
   .serviceRow:hover .serviceArrow,
   .teamMember:hover .teamPhoto,
-  .studioLink:hover span,
   .visitPrimary:hover span,
   .visitSecondary:hover span {
     transform: none;

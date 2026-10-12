@@ -701,25 +701,6 @@ html {
   object-position: center;
 }
 
-.imageLabel {
-  position: absolute;
-
-  bottom: 1.5rem;
-  left: 1.5rem;
-
-  padding: 0.55rem 0.75rem;
-
-  background: #121412;
-
-  color: #dadf62;
-
-  font-size: 0.68rem;
-  font-weight: 600;
-
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 .aboutContent {
   display: flex;
   flex-direction: column;

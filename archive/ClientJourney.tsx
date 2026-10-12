@@ -342,6 +342,17 @@ export default function ClientJourney({
             </a>
           </p>
 
+          <p className="client-journey__email">
+            Prefer to chat?{" "}
+            <a
+              href="https://wa.me/message/SRCO2ZNX526LI1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp me →
+            </a>
+          </p>
+
           {!isJourneyOpen && (
             <button
               type="button"

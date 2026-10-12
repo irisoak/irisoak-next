@@ -442,41 +442,6 @@
   padding: 0;
 }
 
-.photoPlaceholder {
-  display: flex;
-  align-items: flex-end;
-
-  width: 100%;
-  min-height: clamp(360px, 52vw, 650px);
-
-  padding: 1.5rem;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(55, 37, 29, 0.1),
-      rgba(55, 37, 29, 0.35)
-    ),
-    linear-gradient(
-      135deg,
-      #b49a72,
-      #70533c 45%,
-      #52603d
-    );
-
-  border-radius: 1.75rem;
-
-  color: rgba(255, 247, 233, 0.85);
-
-  font-size: 0.64rem;
-  font-weight: 750;
-
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-
-  overflow: hidden;
-}
-
 .heroPhoto figcaption {
   display: flex;
   justify-content: flex-end;
@@ -980,12 +945,6 @@
         #f4f0e5 30%,
         #f4f0e5 100%
       );
-  }
-
-  .photoPlaceholder {
-    min-height: 420px;
-
-    border-radius: 1.25rem;
   }
 
   .highlights {

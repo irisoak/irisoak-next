@@ -13,7 +13,7 @@ import Image from "next/image";
 
 export default function AutomotiveConceptPage() {
   return (
-   <main id="top" className={styles.page}>
+   <div id="top" className={styles.page}>
     <ConceptBar
       number="01"
       packageName="Website Essentials"
@@ -398,6 +398,6 @@ export default function AutomotiveConceptPage() {
           </a>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }

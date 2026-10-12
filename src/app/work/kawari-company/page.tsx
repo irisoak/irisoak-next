@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function KawariCompanyPage() {
   return (
-    <main className="case-study">
+    <div className="case-study">
       <div className="site-container">
         {/* Hero */}
         <section className="case-study__hero">
@@ -67,7 +67,7 @@ export default function KawariCompanyPage() {
         <section className="case-study__visual">
           <div className="case-study__image">
             <Image
-              src="/images/work/kawari-company/kawari-homepage.png"
+              src="/images/kawari-homepage.png"
               alt="Kawari Company live consultancy website homepage"
               width={1600}
               height={900}
@@ -293,11 +293,11 @@ export default function KawariCompanyPage() {
       {/* Navigation */}
       <nav className="case-study__navigation">
         <div className="site-container">
-          <Link href="/contact">
+          <Link href="/#contact">
             Start a project →
           </Link>
         </div>
       </nav>
-    </main>
+    </div>
   );
 }

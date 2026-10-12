@@ -15,6 +15,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/care`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/portfolio-partnership`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/work`,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -28,11 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/work/partspilot`,
       changeFrequency: "monthly",
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      changeFrequency: "yearly",
-      priority: 0.6,
     },
     {
       url: `${baseUrl}/privacy`,
