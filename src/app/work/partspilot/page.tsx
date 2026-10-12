@@ -58,7 +58,7 @@ const technologies = [
 
 export default function PartsPilotPage() {
   return (
-    <main className="case-study">
+    <div className="case-study">
       {/* Hero */}
       <section className="case-study__hero">
         <div className="site-container">
@@ -399,6 +399,6 @@ export default function PartsPilotPage() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

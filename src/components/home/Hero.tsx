@@ -17,9 +17,9 @@ export default function Hero() {
         </p>
 
         <div className="iohero__actions">
-          <a className="iohero__primary" href="#services">
+          <Link className="iohero__primary" href="/services">
             Explore services
-          </a>
+          </Link>
         </div>
       </div>
 

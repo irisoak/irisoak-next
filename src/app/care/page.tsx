@@ -277,13 +277,6 @@ export default function CarePage() {
         <p>Tell me your website platform and what you would like help with. I’ll recommend the right starting point.</p>
         <Link className="care-button" href="/#contact">Talk to Iris &amp; Oak <ArrowRight size={17} aria-hidden="true" /></Link>
       </section>
-
-      <footer className="care-footer">
-        <Link className="care-footer__brand" href="/care">Iris &amp; Oak <em>Care</em></Link>
-        <p>Website care from Iris &amp; Oak.</p>
-        <nav aria-label="Care footer navigation"><a href="#overview">Overview</a><a href="#plans">Plans</a><a href="#faqs">FAQs</a><Link href="/privacy">Privacy</Link><Link href="/">Iris &amp; Oak</Link></nav>
-        <small>© {new Date().getFullYear()} Iris &amp; Oak. All rights reserved.</small>
-      </footer>
     </div>
   );
 }

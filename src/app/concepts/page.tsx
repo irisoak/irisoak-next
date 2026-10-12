@@ -38,7 +38,7 @@ const concepts = [
 
 export default function ConceptsPage() {
   return (
-    <main className="concepts-page">
+    <div className="concepts-page">
       <section className="concepts-page__intro">
         <p className="concepts-page__eyebrow">
           Concept Studio
@@ -161,10 +161,10 @@ export default function ConceptsPage() {
           </h2>
         </div>
 
-        <Link href="#contact">
+        <Link href="/#contact">
           Start a project →
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

@@ -18,7 +18,7 @@ export default function ClientWork() {
     <section className="iowork">
       <Container>
         <div className="iowork__intro">
-          <h1 className="iowork__heading">Client Work</h1>
+          <h2 className="iowork__heading">Client Work</h2>
 
           <p className="iowork__text">
             Projects for businesses, designed, 

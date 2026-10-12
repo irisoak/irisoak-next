@@ -359,10 +359,10 @@ export default function Services() {
                     details and follow up by email with next steps.
                     If you have any questions in the meantime, please email me 
                     directly at {" "}
-                    <a href="mailto:iris@irisoak.dev"
+                    <a href="mailto:contact@irisoak.dev"
                        className="enquiry-success__email"
                     >
-                      iris@irisoak.dev
+                      contact@irisoak.dev
                     </a>
                   </p>
 
@@ -526,8 +526,8 @@ export default function Services() {
                         >
                           Something went wrong while sending your enquiry.
                           Please try again or email me directly at{" "}
-                          <a href="mailto:iris@irisoak.dev">
-                            iris@irisoak.dev
+                          <a href="mailto:contact@irisoak.dev">
+                            contact@irisoak.dev
                           </a>.
                         </p>
                       )}

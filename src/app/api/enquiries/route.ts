@@ -6,6 +6,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 type EnquiryRequest = {
   service?: "essentials" | "launch" | "refresh" | "care" | "custom";
 
+  // Set by the contact form when opened from the Portfolio Partnership page
+  type?: "portfolio-partnership";
+
+  // Honeypot field: left empty by people, often filled in by bots
+  website?: string;
+
   name?: string;
   email?: string;
 
@@ -52,6 +58,31 @@ const escapeHtml = (value: string) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+
+/*
+  The custom enquiry modal sends JSON. The homepage contact form sends
+  FormData, which also keeps it working as a plain HTML form submission.
+*/
+const readEnquiryBody = async (
+  request: Request
+): Promise<EnquiryRequest> => {
+  const contentType = request.headers.get("content-type") ?? "";
+
+  if (contentType.includes("application/json")) {
+    return request.json();
+  }
+
+  const formData = await request.formData();
+  const body: Record<string, string> = {};
+
+  formData.forEach((value, key) => {
+    if (typeof value === "string") {
+      body[key] = value;
+    }
+  });
+
+  return body as EnquiryRequest;
+};
 
 const formatOptionalValue = (
   value: string | undefined,
@@ -156,10 +187,12 @@ const timelineLabels: Record<string, string> = {
 
 export async function POST(request: Request) {
   try {
-    const body: EnquiryRequest = await request.json();
+    const body = await readEnquiryBody(request);
 
     const {
       service,
+      type,
+      website,
       name,
       email,
 
@@ -187,6 +220,20 @@ export async function POST(request: Request) {
     } = body;
 
     /* ========================================
+       Spam protection
+    ======================================== */
+
+    /*
+      Report success without sending anything, so bots that fill in
+      the hidden field get no signal that they were filtered out.
+    */
+    if (website) {
+      return NextResponse.json({
+        success: true,
+      });
+    }
+
+    /* ========================================
        Server-side validation
     ======================================== */
 
@@ -200,8 +247,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const serviceName =
-      service && serviceLabels[service]
+    const isPortfolioPartnership = type === "portfolio-partnership";
+
+    const serviceName = isPortfolioPartnership
+      ? "Portfolio Partnership Programme"
+      : service && serviceLabels[service]
         ? serviceLabels[service]
         : "General";
 
@@ -362,79 +412,33 @@ export async function POST(request: Request) {
     }
 
     /* ========================================
-       Email 1
-       Send Enquiry To Iris & Oak
+       Enquiry-type Email Content
     ======================================== */
 
-    const businessEmail = await resend.emails.send({
-      from: "Iris & Oak <iris@irisoak.dev>",
-      to: ["iris@irisoak.dev"],
+    const enquiryHeading = isPortfolioPartnership
+      ? "New Portfolio Partnership enquiry"
+      : "New project enquiry";
 
-      /*
-        Makes Reply automatically address
-        the client who submitted the enquiry.
-      */
-      replyTo: email,
+    const enquirySubject = isPortfolioPartnership
+      ? `New Portfolio Partnership Enquiry - ${name}`
+      : `New ${serviceName} Enquiry - ${name}`;
 
-      subject: `New ${serviceName} Enquiry - ${name}`,
+    const projectLabel = isPortfolioPartnership
+      ? "Business and website goals"
+      : "Project summary";
 
-      html: `
-        <div
-          style="
-            font-family: Arial, Helvetica, sans-serif;
-            color: #252824;
-            line-height: 1.6;
-            max-width: 640px;
-            margin: 0 auto;
-          "
-        >
-          <p
-            style="
-              color: #59635c;
-              font-size: 12px;
-              font-weight: 600;
-              letter-spacing: 0.08em;
-              text-transform: uppercase;
-            "
-          >
-            Iris & Oak — New Enquiry
-          </p>
-
-          <h1
-            style="
-              color: #18352b;
-              font-family: Georgia, 'Times New Roman', serif;
-              font-size: 32px;
-              font-weight: 400;
-              line-height: 1.1;
-            "
-          >
-            New project enquiry
-          </h1>
-
-          <hr
-            style="
-              border: 0;
-              border-top: 1px solid #d7d3ca;
-              margin: 24px 0;
-            "
-          />
-
+    /*
+      The partnership enquiry comes from the short contact form, so the
+      longer service fields are left out rather than shown as "Not provided".
+    */
+    const enquiryDetailsHtml = isPortfolioPartnership
+      ? `
           <p>
-            <strong>Name</strong><br />
-            ${safeName}
+            <strong>Programme</strong><br />
+            ${serviceName}
           </p>
-
-          <p>
-            <strong>Email</strong><br />
-            ${safeEmail}
-          </p>
-
-          <p>
-            <strong>Business name</strong><br />
-            ${safeOrganisation}
-          </p>
-
+        `
+      : `
           <p>
             <strong>Reaching out as</strong><br />
             ${safeOrganisationType}
@@ -461,6 +465,62 @@ export async function POST(request: Request) {
             <strong>Additional information</strong><br />
             ${safeAdditionalInformation}
           </p>
+        `;
+
+    /* ========================================
+       Email 1
+       Send Enquiry To Iris & Oak
+    ======================================== */
+
+    const businessEmail = await resend.emails.send({
+      from: "Iris & Oak <contact@irisoak.dev>",
+      to: ["contact@irisoak.dev"],
+
+      /*
+        Makes Reply automatically address
+        the client who submitted the enquiry.
+      */
+      replyTo: email,
+
+      subject: enquirySubject,
+
+      html: `
+        <div
+          style="
+            font-family: Arial, Helvetica, sans-serif;
+            color: #252824;
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto;
+          "
+        >
+          <p
+            style="
+              color: #59635c;
+              font-size: 12px;
+              font-weight: 600;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+            "
+          >
+            Iris & Oak — ${
+              isPortfolioPartnership
+                ? "Portfolio Partnership Enquiry"
+                : "New Enquiry"
+            }
+          </p>
+
+          <h1
+            style="
+              color: #18352b;
+              font-family: Georgia, 'Times New Roman', serif;
+              font-size: 32px;
+              font-weight: 400;
+              line-height: 1.1;
+            "
+          >
+            ${enquiryHeading}
+          </h1>
 
           <hr
             style="
@@ -471,7 +531,32 @@ export async function POST(request: Request) {
           />
 
           <p>
-            <strong>Project summary</strong><br />
+            <strong>Name</strong><br />
+            ${safeName}
+          </p>
+
+          <p>
+            <strong>Email</strong><br />
+            ${safeEmail}
+          </p>
+
+          <p>
+            <strong>Business name</strong><br />
+            ${safeOrganisation}
+          </p>
+
+          ${enquiryDetailsHtml}
+
+          <hr
+            style="
+              border: 0;
+              border-top: 1px solid #d7d3ca;
+              margin: 24px 0;
+            "
+          />
+
+          <p>
+            <strong>${projectLabel}</strong><br />
             ${safeProject}
           </p>
         </div>
@@ -499,9 +584,9 @@ export async function POST(request: Request) {
     ======================================== */
 
     const clientEmail = await resend.emails.send({
-      from: "Iris & Oak <iris@irisoak.dev>",
+      from: "Iris & Oak <contact@irisoak.dev>",
       to: [email],
-      replyTo: "iris@irisoak.dev",
+      replyTo: "contact@irisoak.dev",
 
       template: {
         id: "c7a0c951-cdc4-449d-a1ef-0915a94a967e",

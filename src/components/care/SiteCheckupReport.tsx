@@ -113,6 +113,8 @@ export default function SiteCheckupReport() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved) as Draft;
+        // Restored after mount so the server render and first client render match.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (parsed && parsed.results && parsed.platform) setDraft(parsed);
       }
     } catch {

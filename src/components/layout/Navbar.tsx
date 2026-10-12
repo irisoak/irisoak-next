@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
-import styles from "./page.module.css";
 
 const navigation = [
   { href: "/work", label: "Work" },
@@ -53,7 +52,7 @@ export default function Navbar() {
           <NavigationLinks />
         </nav>
 
-        <Link href="/contact" className="ionav__cta">
+        <Link href="/#contact" className="ionav__cta">
           Get in touch
         </Link>
 
@@ -70,7 +69,7 @@ export default function Navbar() {
           <nav className="ionav__mobile-panel" aria-label="Mobile navigation">
             <NavigationLinks />
 
-            <Link href="/contact" className="ionav__mobile-cta">
+            <Link href="/#contact" className="ionav__mobile-cta">
               Get in touch
             </Link>
           </nav>

@@ -38,9 +38,9 @@ export default function WhyWorkWithMe() {
     <section className="iowhy" aria-labelledby="iowhy-heading">
       <Container>
         <div className="iowhy__intro">
-          <h1 className="iowhy__heading" id="iowhy-heading">
+          <h2 className="iowhy__heading" id="iowhy-heading">
             Why work with me
-          </h1>
+          </h2>
 
           <p className="iowhy__text">
             Good work comes from clear communication, practical decisions

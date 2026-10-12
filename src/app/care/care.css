@@ -1,15 +1,13 @@
 /*
  * IRIS & OAK CARE — STYLESHEET CONTENTS
  * 01. Care tokens and page base
- * 02. Integrated Care navigation
- * 03. Hero and report preview
- * 04. Plans and pricing
- * 05. Benefits and platform scope
- * 06. Site Check-up checklist
- * 07. Grade and next steps
- * 08. FAQs and closing contact section
- * 09. Integrated Care footer
- * 10. Responsive layouts and accessibility
+ * 02. Hero and report preview
+ * 03. Plans and pricing
+ * 04. Benefits and platform scope
+ * 05. Site Check-up checklist
+ * 06. Grade and next steps
+ * 07. FAQs and closing contact section
+ * 08. Responsive layouts and accessibility
  */
 
 .care-page {
@@ -51,11 +49,9 @@
 
 .care-section,
 .care-hero,
-.care-header,
 .care-benefits,
 .care-grade,
-.care-cta,
-.care-footer {
+.care-cta {
   width: min(calc(100% - 3rem), 82rem);
   margin-inline: auto;
 }
@@ -94,65 +90,6 @@
 .care-page h3 {
   margin: 0;
   font-size: 1.55rem;
-}
-
-/* Integrated Care navigation */
-.care-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  gap: 2rem;
-  min-height: 5rem;
-  border-bottom: 1px solid var(--care-line);
-}
-
-.care-header__brand,
-.care-footer__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  width: fit-content;
-  color: var(--care-forest-deep);
-  font-family: var(--font-heading-family, Georgia, serif);
-  font-size: 1.4rem;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.care-header__brand em,
-.care-footer__brand em {
-  font-weight: 400;
-}
-
-.care-header__leaf {
-  color: var(--care-green-accent);
-  font-family: sans-serif;
-  font-size: 1.3rem;
-}
-
-.care-header__nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 2.75rem);
-}
-
-.care-header__nav a,
-.care-header__main-link {
-  color: var(--care-ink);
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-
-.care-header__nav a[aria-current="page"] {
-  font-weight: 700;
-}
-
-.care-header__main-link {
-  display: inline-flex;
-  align-items: center;
-  justify-self: end;
-  gap: 0.5rem;
-  color: var(--care-green-accent);
 }
 
 /* Hero and report preview */
@@ -765,6 +702,7 @@
 .care-cta {
   display: grid;
   justify-items: center;
+  margin-bottom: 4rem;
   padding: clamp(2.5rem, 7vw, 5rem) 1.5rem;
   border-radius: var(--care-radius);
   background: var(--care-sage-soft);
@@ -780,52 +718,6 @@
   margin: 1rem 0 1.5rem;
   color: var(--care-muted);
   font-size: 0.95rem;
-}
-
-/* Integrated Care footer */
-.care-footer {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 0.8rem 2rem;
-  margin-top: 4rem;
-  padding-block: 1.6rem 2rem;
-  border-top: 1px solid var(--care-line);
-}
-
-.care-footer__brand {
-  font-size: 1.2rem;
-}
-
-.care-footer > p {
-  margin: 0;
-  color: var(--care-muted);
-  font-size: 0.8rem;
-}
-
-.care-footer nav {
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 1 / -1;
-  gap: 0.75rem 1.25rem;
-}
-
-.care-footer nav a {
-  color: var(--care-muted);
-  font-size: 0.78rem;
-  text-decoration: none;
-}
-
-.care-footer nav a:hover {
-  color: var(--care-forest);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-.care-footer small {
-  grid-column: 1 / -1;
-  color: var(--care-muted);
-  font-size: 0.72rem;
 }
 
 /* Responsive layouts and accessibility */
@@ -859,36 +751,10 @@
 @media (max-width: 44rem) {
   .care-section,
   .care-hero,
-  .care-header,
   .care-benefits,
   .care-grade,
-  .care-cta,
-  .care-footer {
+  .care-cta {
     width: min(calc(100% - 2rem), 82rem);
-  }
-
-  .care-header {
-    grid-template-columns: 1fr auto;
-    gap: 0.8rem;
-    min-height: 4.25rem;
-  }
-
-  .care-header__brand {
-    font-size: 1.15rem;
-  }
-
-  .care-header__nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: center;
-    gap: 2rem;
-    padding-bottom: 0.85rem;
-  }
-
-  .care-header__main-link {
-    grid-column: 2;
-    grid-row: 1;
-    font-size: 0.78rem;
   }
 
   .care-hero {
@@ -958,16 +824,6 @@
 
   .care-grade__letter {
     font-size: 3.5rem;
-  }
-
-  .care-footer {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .care-footer nav,
-  .care-footer small {
-    grid-column: auto;
   }
 }
 

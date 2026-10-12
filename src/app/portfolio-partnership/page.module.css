@@ -430,7 +430,7 @@
 
 .processList {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
   margin: 2.5rem 0 0;
   padding: 0;
@@ -546,6 +546,19 @@
   color: var(--ppp-berry);
 }
 
+.scopeList a,
+.faqItem > p a {
+  color: var(--ppp-berry-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.scopeList a:hover,
+.faqItem > p a:hover {
+  color: var(--ppp-plum);
+}
+
 .scopeNote {
   margin: 1rem 0 0;
   padding: 0.95rem 1.1rem;
@@ -570,7 +583,7 @@
 
 .fitGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 2rem 0 0;
   padding: 0;
   list-style: none;
@@ -690,17 +703,6 @@
 
 .faqHeading h2 {
   font-size: clamp(2rem, 3.5vw, 2.8rem);
-}
-
-.faqAllLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding-bottom: 0.25rem;
-  color: var(--ppp-berry-dark);
-  font-size: 0.82rem;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
 }
 
 .faqList {
@@ -835,6 +837,27 @@
 .contactCta:hover {
   border-color: #fff;
   background: transparent;
+  color: #fff;
+}
+
+.contactActions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.contactSecondary {
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.contactSecondary:hover {
   color: #fff;
 }
 
@@ -1048,25 +1071,18 @@
   }
 
   .fitGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.4rem 0;
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
   }
 
   .fitItem {
     padding-inline: 0.9rem;
   }
 
-  .fitItem:nth-child(odd) {
-    border-left: 0;
-  }
-
-  .fitItem:nth-child(even) {
-    border-left: 1px solid var(--ppp-line);
-  }
-
-  .fitItem:nth-child(n + 3) {
-    padding-top: 1rem;
+  .fitItem + .fitItem {
+    padding-top: 1.4rem;
     border-top: 1px solid var(--ppp-line);
+    border-left: 0;
   }
 
   .costGrid {
@@ -1094,8 +1110,8 @@
     flex-direction: column;
   }
 
-  .contactCta {
-    align-self: flex-start;
+  .contactActions {
+    align-items: flex-start;
   }
 }
 

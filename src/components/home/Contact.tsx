@@ -1,10 +1,16 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import Container from "@/components/layout/Container";
-import Button from "../ui/Button";
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+/*
+  Links from the Portfolio Partnership page add ?enquiry=portfolio-partnership
+  so the enquiry email can be identified as a programme application.
+*/
+const PORTFOLIO_PARTNERSHIP_ENQUIRY = "portfolio-partnership";
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
@@ -17,11 +23,20 @@ export default function Contact() {
     setStatus("sending");
     setErrorMessage("");
 
+    const formData = new FormData(form);
+    const enquiryType = new URLSearchParams(window.location.search).get(
+      "enquiry"
+    );
+
+    if (enquiryType === PORTFOLIO_PARTNERSHIP_ENQUIRY) {
+      formData.set("type", PORTFOLIO_PARTNERSHIP_ENQUIRY);
+    }
+
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/enquiries", {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: new FormData(form),
+        body: formData,
       });
 
       const result = await response.json().catch(() => null);
@@ -59,14 +74,14 @@ export default function Contact() {
           </h2>
 
           <p className="iocontact__text">
-            Share a little about what you need and I&apos;ll reply within two
-            business days.
+            Share a little about what you need and I&apos;ll reply within 3
+            working days.
           </p>
         </div>
 
         <form
           className="iocontact__form"
-          action="/api/contact"
+          action="/api/enquiries"
           method="POST"
           onSubmit={handleSubmit}
         >
@@ -83,10 +98,10 @@ export default function Contact() {
           </div>
 
           <div className="iocontact__field">
-            <label htmlFor="contact-company">Business name</label>
+            <label htmlFor="contact-company">Business name (optional)</label>
             <input
               id="contact-company"
-              name="company"
+              name="organisation"
               type="text"
               autoComplete="organization"
               maxLength={100}
@@ -109,7 +124,7 @@ export default function Contact() {
             <label htmlFor="contact-message">Any details you&apos;d like to share.</label>
             <textarea
               id="contact-message"
-              name="message"
+              name="project"
               rows={3}
               maxLength={5000}
               required
@@ -127,15 +142,25 @@ export default function Contact() {
               overflow: "hidden",
             }}
           >
-            <label htmlFor="contact-company">Company</label>
+            <label htmlFor="contact-website">Website</label>
             <input
-              id="contact-company"
-              name="company"
+              id="contact-website"
+              name="website"
               type="text"
               tabIndex={-1}
               autoComplete="off"
             />
           </div>
+
+          <p className="iocontact__privacy">
+            Read how your details are handled in the{" "}
+            <Link
+              href="/privacy"
+              target="_blank"
+            >
+              Privacy Policy
+            </Link>.
+          </p>
 
           <button
             className="iocontact__submit"
@@ -157,7 +182,7 @@ export default function Contact() {
             aria-live="polite"
           >
             {status === "sent" &&
-              "Thank you, your enquiry has been sent. I'll be in touch within two business days."}
+              "Thank you, your enquiry has been sent. I'll reply within 3 working days."}
             {status === "error" && errorMessage}
           </p>
         </form>

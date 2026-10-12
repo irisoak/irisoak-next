@@ -17,7 +17,7 @@ const faqItems: FAQItem[] = [
       <>
         Each project is priced on scope, and you can find my guide prices on the {" "}
         <Link href="/services">Services page</Link>. After a
-        quick chat, I'll send a fixed quote before any work begins.
+        quick chat, I&apos;ll send a fixed quote before any work begins.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const faqItems: FAQItem[] = [
     answer: (
       <>
         Most one-page websites take <strong>one to two weeks</strong>. Larger sites can take <strong>up
-        to three</strong>. For web apps and custom tools, I'll confirm a timeline once we've agreed the scope.
+        to three</strong>. For web apps and custom tools, I&apos;ll confirm a timeline once we&apos;ve agreed the scope.
       </>
     ),
   },
@@ -43,7 +43,7 @@ const faqItems: FAQItem[] = [
     question: "What do I need to provide?",
     answer: (
       <>
-        Your logo, text and any photos you'd like to use. If you don't have
+        Your logo, text and any photos you&apos;d like to use. If you don&apos;t have
         everything yet, I can help you pull it together.
       </>
     ),
@@ -52,8 +52,8 @@ const faqItems: FAQItem[] = [
     question: "Can I update the website myself?",
     answer: (
       <>
-        <strong>Yes</strong>. I can set up the parts you'd like to edit yourself, such as text,
-        images or opening hours. If you'd prefer not to, a <strong><Link href="/care">maintenance plan</Link></strong> can cover
+        <strong>Yes</strong>. I can set up the parts you&apos;d like to edit yourself, such as text,
+        images or opening hours. If you&apos;d prefer not to, a <strong><Link href="/care">maintenance plan</Link></strong> can cover
         such updates for you.
       </>
     ),
@@ -81,9 +81,9 @@ export default function FAQ() {
     <section className="faq" aria-labelledby="faq-heading">
       <Container>
         <div className="faq__intro">
-          <h1 className="faq__heading" id="faq-heading">
+          <h2 className="faq__heading" id="faq-heading">
             Frequently asked questions
-          </h1>
+          </h2>
         </div>
 
         <div className="faq__list">

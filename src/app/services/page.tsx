@@ -7,7 +7,6 @@ import {
   CreditCard,
   Layers,
   Mail,
-  Monitor,
   Settings2,
   Star,
 } from "lucide-react";
@@ -474,10 +473,10 @@ export default function ServicesPage() {
 
           <div className="services-page__contact">
             <div className="services-page__contact-copy">
-              <p className="services-page__eyebrow">Let's work together</p>
+              <p className="services-page__eyebrow">Let&apos;s work together</p>
               <h2>Ready to get started?</h2>
               <p>
-                Tell me a little about your project and I'll recommend the best
+                Tell me a little about your project and I&apos;ll recommend the best
                 option.
               </p>
             </div>

@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
   Briefcase,
   CalendarDays,
   Check,
+  Compass,
   FileText,
   Gift,
   Globe,
-  Heart,
   KeyRound,
-  Layers,
-  Leaf,
+  MessageCircle,
   Palette,
+  Plus,
   Puzzle,
   Server,
-  Settings,
   Star,
   Target,
   Users,
-  X,
   type LucideIcon,
 } from "lucide-react";
-import styles from "./page.module.css";"./globals.css";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Portfolio Partnership Programme | Iris & Oak Digital Studio",
@@ -33,9 +32,12 @@ export const metadata: Metadata = {
   },
 };
 
+const partnershipEnquiryHref = "/?enquiry=portfolio-partnership#contact";
+
 const navigation = [
   { label: "Work", href: "/work" },
   { label: "Services", href: "/services" },
+  { label: "Care", href: "/care" }
 ];
 
 type Feature = {
@@ -55,25 +57,25 @@ const partnershipCards: {
         icon: Gift,
         title: "£0 design & development fee",
         description:
-          "My design and development fee is waived for the scope outlined below.",
+          "My design and development fee is waived for the agreed scope.",
       },
       {
         icon: Palette,
-        title: "Considered, strategic design",
+        title: "Considered, bespoke design",
         description:
           "A website shaped around your business, your audience and your goals.",
       },
       {
-        icon: Settings,
-        title: "A smooth, collaborative process",
+        icon: MessageCircle,
+        title: "Clear communication",
         description:
-          "Clear communication and support from our first conversation to launch.",
+          "You’ll know what’s happening and what comes next, from our first conversation to launch.",
       },
       {
-        icon: Leaf,
-        title: "A complete, high-quality website",
+        icon: Compass,
+        title: "Honest recommendations",
         description:
-          "Thoughtful design and development focused on your business needs.",
+          "Practical advice on platform, structure and content, shaped around your goals.",
       },
     ],
   },
@@ -82,7 +84,7 @@ const partnershipCards: {
     items: [
       {
         icon: Users,
-        title: "Your time and input",
+        title: "Your time and feedback",
         description:
           "Be available for key discussions and share timely feedback.",
       },
@@ -93,16 +95,10 @@ const partnershipCards: {
           "Provide the text, images and other materials needed for the project.",
       },
       {
-        icon: Heart,
-        title: "A collaborative approach",
-        description:
-          "Share your insight and work with me throughout the project.",
-      },
-      {
         icon: Star,
         title: "Permission to feature the work",
         description:
-          "You give permission for me to feature the completed website as a case study, with your approval of the final content.",
+          "You’re happy for me to feature the finished website as a portfolio case study.",
       },
     ],
   },
@@ -111,39 +107,61 @@ const partnershipCards: {
 const processSteps = [
   {
     number: "01",
-    title: "Get in touch",
-    description: "Tell me about your business and your website goals.",
+    title: "Tell me about your business",
+    description: "Share your business and website goals.",
   },
   {
     number: "02",
-    title: "Plan & design",
+    title: "Chat and selection",
     description:
-      "I’ll confirm the platform and scope, then create a tailored plan and design for your feedback.",
+      "Have a short call to check whether the programme is a good fit. I’ll let you know within 3 working days.",
   },
   {
     number: "03",
-    title: "Build & launch",
+    title: "Plan and design",
+    description:
+      "I’ll confirm the platform and agreed scope, then share the design for your feedback.",
+  },
+  {
+    number: "04",
+    title: "Build and launch",
     description:
       "I’ll build the website, refine it with your input, and hand it over with launch support.",
   },
 ];
 
-const includedScope = [
+type ScopeItem = {
+  key: string;
+  content: ReactNode;
+};
+
+const includedScope: ScopeItem[] = [
   "A custom website of up to five pages",
   "One agreed platform, confirmed before work starts",
   "Responsive bespoke design and development",
   "Basic on-page SEO setup",
-  "One consolidated revision round",
-  "Launch support, training and handover",
-];
+  "One round of revisions, with feedback gathered together",
+  "Launch support and handover",
+].map((item) => ({ key: item, content: item }));
 
-const excludedScope = [
-  "E-commerce and online shops",
-  "Complex features or integrations",
-  "Custom web applications",
-  "Additional pages",
-  "Extensive copywriting or content production",
-  "Paid third-party subscriptions and ongoing maintenance",
+const extraCostScope: ScopeItem[] = [
+  ...[
+    "E-commerce and online shops",
+    "Complex features or integrations",
+    "Custom web applications",
+    "Additional pages",
+    "Extensive copywriting or content production",
+    "Third-party subscriptions",
+  ].map((item) => ({ key: item, content: item })),
+  {
+    key: "Ongoing maintenance",
+    content: (
+      <>
+        Ongoing maintenance, available through a{" "}
+        <Link href="/care">Care plan</Link>
+      </>
+    ),
+  },
 ];
 
 const fitCriteria: Feature[] = [
@@ -164,12 +182,6 @@ const fitCriteria: Feature[] = [
     title: "Ready to begin",
     description: "You’re ready to start the project within the next 1–3 months.",
   },
-  {
-    icon: Layers,
-    title: "A focused website project",
-    description:
-      "Your project can be delivered as a website of up to five pages.",
-  },
 ];
 
 const outOfPocketCosts = [
@@ -183,46 +195,55 @@ const outOfPocketCosts = [
     icon: Server,
     title: "Website hosting",
     description:
-      "Hosting is set up under your own account and paid to the provider.",
+      "Paid directly to your hosting provider. On Squarespace or Wix, hosting is part of the platform subscription.",
   },
   {
     icon: Puzzle,
     title: "Third-party tools",
     description:
-      "Any paid plugins, booking tools or other subscriptions remain your cost.",
+      "Any paid plugins, booking tools or other subscriptions are paid directly to their providers.",
   },
 ];
 
-const faqs = [
+const faqs: {
+  question: string;
+  answer: ReactNode;
+}[] = [
   {
-    question: "What does the £0 design and development fee cover?",
+    question: "How do you choose which businesses to work with?",
     answer:
-      "It covers the website work listed in the scope section: a responsive website of up to five pages, on the agreed platform, with basic on-page SEO, one consolidated revision round, and launch support and handover. Anything outside that scope is discussed and quoted separately.",
+      "I’m reviewing a limited number of applications for two or three places. After you get in touch, we’ll have a short call to check whether your business and project are a good fit for the programme and its scope. I’ll let you know within 3 working days.",
   },
   {
-    question: "What costs will I need to cover?",
+    question: "How long does the project take?",
     answer:
-      "You pay for your domain, hosting and any third-party tools or subscriptions directly to their providers. The amounts depend on the providers and services you choose.",
+      "Once the scope, platform and content are confirmed, most projects take up to three weeks. I’ll confirm your timeline before work begins.",
   },
   {
-    question: "Will I own the finished website?",
+    question: "Which platform will my website be built on?",
     answer:
-      "Yes. You retain ownership of the completed website. I’ll hand over the agreed website files, access information and guidance.",
+      "We’ll agree one platform before work starts. I’ll recommend the option that best suits your business, your budget and how you’d like to manage the website.",
   },
   {
-    question: "Can I request extra pages or features?",
+    question: "Will I be able to update the website myself?",
     answer:
-      "Yes. I’ll review the request with you and confirm the additional scope and cost before starting that work.",
+      "Yes. I can set up the parts you’d like to edit yourself, such as text, images or opening hours, and the handover includes guidance on making those updates.",
   },
   {
-    question: "Will my website be featured in your portfolio?",
+    question: "Do I need to sign anything?",
     answer:
-      "Yes. Permission to feature the completed website as a case study is part of the partnership. You’ll approve the final case-study content before it is published.",
+      "Yes. Before work starts, I’ll send you a written agreement to review and sign. It covers the agreed scope, our responsibilities, out-of-pocket costs, ownership and portfolio permission.",
   },
   {
     question: "What happens after launch?",
-    answer:
-      "I’ll hand over your website, access and guidance. You can manage the site yourself or choose an optional Care plan from £59 per month.",
+    answer: (
+      <>
+        I’ll hand over your website, access and guidance. You can manage the
+        website yourself, or choose an optional{" "}
+        <Link href="/care">Care plan</Link> for ongoing maintenance, from £59
+        per month.
+      </>
+    ),
   },
 ];
 
@@ -253,7 +274,7 @@ function SiteHeader() {
 
         <nav className={styles.desktopNav} aria-label="Main navigation">
           <NavigationLinks />
-          <Link className={styles.headerCta} href="/#contact">
+          <Link className={styles.headerCta} href={partnershipEnquiryHref}>
             Tell me about your business
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
@@ -269,7 +290,7 @@ function SiteHeader() {
           <div className={styles.mobileMenuPanel}>
             <nav aria-label="Mobile navigation">
               <NavigationLinks />
-              <Link className={styles.headerCta} href="/#contact">
+              <Link className={styles.headerCta} href={partnershipEnquiryHref}>
                 Tell me about your business
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
@@ -310,17 +331,17 @@ function FeatureCard({
 
 function ScopeList({
   items,
-  excluded = false,
+  extraCost = false,
 }: {
-  items: string[];
-  excluded?: boolean;
+  items: ScopeItem[];
+  extraCost?: boolean;
 }) {
   return (
     <ul className={styles.scopeList}>
       {items.map((item) => (
-        <li key={item}>
-          {excluded ? (
-            <X
+        <li key={item.key}>
+          {extraCost ? (
+            <Plus
               className={styles.excludedIcon}
               size={17}
               strokeWidth={1.8}
@@ -334,7 +355,7 @@ function ScopeList({
               aria-hidden="true"
             />
           )}
-          <span>{item}</span>
+          <span>{item.content}</span>
         </li>
       ))}
     </ul>
@@ -346,7 +367,7 @@ export default function PortfolioPartnershipPage() {
     <div className={`${styles.site} ppp-route-marker`}>
       <SiteHeader />
 
-      <main>
+      <div>
         <section className={styles.hero} aria-labelledby="hero-heading">
           <div className={styles.heroArt} aria-hidden="true" />
           <div className={styles.container}>
@@ -354,16 +375,13 @@ export default function PortfolioPartnershipPage() {
               <p className={styles.eyebrow}>Portfolio Partnership Programme</p>
 
               <h1 id="hero-heading">
-                A website project
-                <br />
-                with shared value
+                A website for your business, a case study for mine
               </h1>
 
               <p className={styles.heroText}>
-                I help independent businesses make their next step online with
-                a carefully scoped website project. In return for the design
-                and development fee being waived, you’ll give permission for me
-                to feature the completed work as a portfolio case study.
+                I’m partnering with two or three independent businesses to
+                create a new website, with my design and development fee
+                waived.
               </p>
 
               <div className={styles.heroDetails}>
@@ -381,7 +399,7 @@ export default function PortfolioPartnershipPage() {
                 </div>
               </div>
 
-              <Link className={styles.heroCta} href="/#contact">
+              <Link className={styles.heroCta} href={partnershipEnquiryHref}>
                 Tell me about your business
                 <ArrowRight size={17} aria-hidden="true" />
               </Link>
@@ -406,10 +424,8 @@ export default function PortfolioPartnershipPage() {
               </div>
 
               <p className={styles.sectionIntroText}>
-                This programme supports an independent business with a
-                high-quality website while giving me the opportunity to create
-                a new portfolio case study. It’s a genuine partnership that
-                creates value for both sides.
+                It’s a genuine partnership that creates value for both sides.
+                Here’s what each of us brings to the project.
               </p>
             </div>
 
@@ -428,9 +444,7 @@ export default function PortfolioPartnershipPage() {
         <section className={styles.process} id="process" aria-labelledby="process-heading">
           <div className={styles.container}>
             <p className={styles.eyebrow}>The process</p>
-            <h2 id="process-heading">
-              A clear and collaborative three-step process
-            </h2>
+            <h2 id="process-heading">How it works</h2>
             <p className={styles.processIntro}>
               From first conversation to launch, we’ll work together to create
               a website that supports your goals and makes a real difference to
@@ -458,7 +472,7 @@ export default function PortfolioPartnershipPage() {
               </div>
 
               <p className={styles.sectionIntroText}>
-                The design and development fee is waived for the items listed
+                My design and development fee is waived for the items listed
                 here. I’ll confirm the platform and project scope with you
                 before work begins.
               </p>
@@ -471,14 +485,14 @@ export default function PortfolioPartnershipPage() {
               </article>
 
               <article className={`${styles.scopeCard} ${styles.scopeCardMuted}`}>
-                <h3>Quoted separately</h3>
-                <ScopeList items={excludedScope} excluded />
+                <h3>Available at extra cost</h3>
+                <ScopeList items={extraCostScope} extraCost />
               </article>
             </div>
 
             <p className={styles.scopeNote}>
               If you need pages or features beyond this scope, I’ll discuss the
-              options and provide a separate quote before taking on the extra
+              options and provide a separate quote before starting any extra
               work.
             </p>
           </div>
@@ -522,9 +536,8 @@ export default function PortfolioPartnershipPage() {
               </div>
 
               <p className={styles.sectionIntroText}>
-                There’s no design or development fee for the agreed scope.
-                You’ll pay any essential third-party costs directly to the
-                relevant provider.
+                Any third-party costs are paid directly by you to the relevant
+                providers.
               </p>
             </div>
 
@@ -547,11 +560,11 @@ export default function PortfolioPartnershipPage() {
               <div>
                 <h3>You own your website</h3>
                 <p>
-                  You retain ownership of the completed website and can make
-                  changes, add to it or move it in the future. As part of this
-                  partnership, you give permission for me to feature the
-                  completed website as a case study. You approve the final
-                  content before it is published.
+                  You have full ownership of the completed website and can
+                  change it, add to it or move it in the future. With your
+                  permission, I’ll feature the finished website as a portfolio
+                  case study, and you’ll approve its final content before it’s
+                  published.
                 </p>
               </div>
             </div>
@@ -592,19 +605,26 @@ export default function PortfolioPartnershipPage() {
               <p className={styles.eyebrow}>Portfolio Partnership Programme</p>
               <h2 id="contact-heading">Tell me about your business</h2>
               <p>
-                If this feels like a good fit, I’d love to hear from you. Share
-                a few details about your business and your website goals, and
-                I’ll be in touch.
+                If this feels like a good fit, I’d love to hear from you. I’m
+                reviewing a limited number of applications, so share a few
+                details about your business and your website goals. I’ll reply
+                within 3 working days.
               </p>
             </div>
 
-            <Link className={styles.contactCta} href="/#contact">
-              Tell me about your business
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+            <div className={styles.contactActions}>
+              <Link className={styles.contactCta} href={partnershipEnquiryHref}>
+                Apply for the partnership
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+
+              <Link className={styles.contactSecondary} href="/work">
+                See recent work
+              </Link>
+            </div>
           </div>
         </section>
-      </main>
+      </div>
 
       {/* The shared Iris & Oak footer is rendered by app/layout.tsx. */}
     </div>

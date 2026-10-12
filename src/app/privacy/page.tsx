@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="privacy-page">
+    <div className="privacy-page">
       <Container>
         <header className="privacy-page__header">
           <p className="privacy-page__eyebrow">Privacy</p>
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
           </p>
 
           <p className="privacy-page__updated">
-            Last updated: 11 September 2026
+            Last updated: 12 October 2026
           </p>
         </header>
 
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
             <p>
               If you have a question about this Privacy Policy or how your
               information is handled, you can contact Iris & Oak at{" "}
-              <a href="mailto:iris@irisoak.dev">iris@irisoak.dev</a>.
+              <a href="mailto:contact@irisoak.dev">contact@irisoak.dev</a>.
             </p>
           </section>
 
@@ -52,21 +52,30 @@ export default function PrivacyPage() {
             <h2>2. Information I may collect</h2>
 
             <p>
-              When you submit an enquiry through the Iris & Oak website, I may
-              collect information that you choose to provide, including:
+              When you submit an enquiry through the contact form on this
+              website, I collect the information you choose to provide:
             </p>
 
             <ul>
               <li>Your name</li>
               <li>Your email address</li>
-              <li>Your business or organisation name</li>
-              <li>Your organisation type</li>
-              <li>The service you are interested in</li>
-              <li>Information about your website or proposed project</li>
-              <li>Your preferred project timeline</li>
-              <li>Your approximate budget</li>
-              <li>Any additional information you include in your enquiry</li>
+              <li>Your business name, if you include it</li>
+              <li>
+                The details you share about your business, website or project
+              </li>
             </ul>
+
+            <p>
+              If you reach the contact form from the Portfolio Partnership
+              Programme page, your enquiry is also marked as a Portfolio
+              Partnership enquiry so that it can be reviewed as an application
+              for the programme.
+            </p>
+
+            <p>
+              If you email Iris & Oak directly, I will receive the information
+              you include in your email.
+            </p>
 
             <p>
               If you become a client, I may also collect information reasonably
@@ -82,6 +91,11 @@ export default function PrivacyPage() {
 
             <ul>
               <li>Review and respond to your enquiry</li>
+              <li>Send you an automatic email confirming your enquiry was received</li>
+              <li>
+                Consider whether your business is a good fit for the Portfolio
+                Partnership Programme, if you apply for it
+              </li>
               <li>Discuss your project or requirements with you</li>
               <li>Prepare estimates, proposals or invoices</li>
               <li>Provide services that you have requested</li>
@@ -90,6 +104,18 @@ export default function PrivacyPage() {
               <li>Meet applicable legal, accounting or tax obligations</li>
               <li>Protect the website and business from misuse or security issues</li>
             </ul>
+
+            <p>
+              Enquiries submitted through the website are sent by email to Iris
+              & Oak. The website itself does not save enquiry details to a
+              database.
+            </p>
+
+            <p>
+              If you take part in the Portfolio Partnership Programme, the
+              completed website may be featured as a portfolio case study. You
+              will approve the final case-study content before it is published.
+            </p>
 
             <p>
               Information submitted through an enquiry will not be added to a
@@ -128,8 +154,8 @@ export default function PrivacyPage() {
               <h3>Vercel</h3>
 
               <p>
-                The Iris & Oak Next.js website is hosted using Vercel. Vercel
-                may process technical information as part of hosting, securing
+                The Iris & Oak Next.js website is hosted on Vercel&apos;s Pro
+                plan. Vercel may process technical information as part of hosting, securing
                 and delivering the website.
               </p>
 
@@ -146,8 +172,27 @@ export default function PrivacyPage() {
               <h3>Resend</h3>
 
               <p>
-                Resend is used to support transactional email delivery,
-                including emails associated with website enquiries.
+                Resend is used to deliver the emails created when you submit
+                an enquiry: a notification to Iris & Oak containing the details
+                you submitted, and a confirmation email to the address you
+                provide.
+              </p>
+
+              <p>
+                Iris & Oak uses Resend&apos;s Free plan. On this plan, Resend
+                states that it keeps the content of these emails, along with
+                delivery events and logs, for 30 days. It stores this
+                information in the United States.
+              </p>
+            </div>
+
+            <div className="privacy-page__provider">
+              <h3>Google Workspace</h3>
+
+              <p>
+                Enquiry emails are received and stored in the Iris & Oak
+                Google Workspace mailbox, where they are kept for the period
+                described in section 7.
               </p>
             </div>
 
@@ -189,14 +234,48 @@ export default function PrivacyPage() {
             <h2>6. International processing</h2>
 
             <p>
-              Some technology providers used by Iris & Oak may process or store
-              information outside the United Kingdom.
+              Vercel and Resend both state that their primary data processing
+              takes place in the United States, and Google Workspace data may
+              be processed in other countries. Information processed by these
+              providers, including enquiry emails, is therefore likely to be
+              processed outside the United Kingdom.
             </p>
 
             <p>
-              Where personal information is transferred internationally, the
-              relevant provider and Iris & Oak are expected to use appropriate
-              safeguards where required by applicable data protection law.
+              Vercel&apos;s data processing terms apply to the Pro plan used
+              for this website. They include the EU Standard Contractual
+              Clauses and, for transfers from the United Kingdom, the UK
+              International Data Transfer Addendum.
+            </p>
+
+            <p>
+              Resend&apos;s data processing terms apply to every Resend
+              account, including the Free plan used by Iris & Oak. Resend
+              states that transfers from the United Kingdom are covered by the
+              UK Addendum to the EU Standard Contractual Clauses.
+            </p>
+
+            {/*
+              CONFIRM: Check that the Google Workspace data processing terms
+              have been accepted in the Admin console (Account > Account
+              settings > Legal and compliance). Until then, the second sentence
+              below describes Google's published terms, not a confirmed
+              safeguard for the Iris & Oak account.
+            */}
+            <p>
+              Google states that Google Workspace data may be processed in any
+              country where Google or its subprocessors maintain facilities.
+              Google&apos;s published data processing terms state that transfers
+              of UK personal data to the United States rely on Google&apos;s
+              certification to the UK Extension to the EU-U.S. Data Privacy
+              Framework, with Standard Contractual Clauses provided for where no
+              such alternative transfer solution applies.
+            </p>
+
+            <p>
+              Where personal information is transferred internationally by
+              other providers, appropriate safeguards will be used where
+              required by applicable data protection law.
             </p>
           </section>
 
@@ -204,10 +283,16 @@ export default function PrivacyPage() {
             <h2>7. How long information is kept</h2>
 
             <p>
-              General enquiries that do not become client projects will
-              normally be retained for no longer than 12 months after the last
-              meaningful communication, unless there is a legitimate reason to
-              retain the information for longer.
+              Enquiry emails for general enquiries that do not become client
+              projects will be deleted from the Iris & Oak Google Workspace
+              mailbox no later than 9 months after the last meaningful
+              communication, unless there is a legitimate reason to retain the
+              information for longer.
+            </p>
+
+            <p>
+              Separately, copies of enquiry and confirmation emails held by
+              Resend are kept for 30 days, as described in section 5.
             </p>
 
             <p>
@@ -231,18 +316,19 @@ export default function PrivacyPage() {
               user experience.
             </p>
 
-             <p>
-              Vercel Web Analytics does not use cookies for visitor analytics.
-              It provides Iris & Oak with aggregated statistics such as page
-              views, referring websites, approximate geographic location,
+            <p>
+              Vercel states that Web Analytics does not use third-party
+              cookies. It provides Iris & Oak with aggregated statistics such as
+              page views, referring websites, approximate geographic location,
               browser, operating system and device type.
             </p>
 
             <p>
-              Vercel Web Analytics uses a temporary identifier generated from
-              an incoming request rather than a persistent visitor identifier.
-              Vercel states that this identifier is automatically reset after
-              24 hours and is not used to track visitors across different websites.
+              Instead of a cookie, Vercel identifies visits using a hash created
+              from the incoming request. Vercel states that visitor sessions are
+              automatically discarded after 24 hours, and that Web Analytics
+              does not collect identifiers that track visitors across different
+              websites.
             </p>
 
             <p>
@@ -254,6 +340,13 @@ export default function PrivacyPage() {
             <p>
               You can object to the use of Vercel Web Analytics on this website
               using the analytics opt-out control provided below.
+            </p>
+
+            <p>
+              If you use this control, your choice is saved in your
+              browser&apos;s local storage on this device so that the website
+              can remember it. The preference is not sent to Iris & Oak, and
+              clearing your browser&apos;s site data will reset it.
             </p>
 
             <AnalyticsPreference />
@@ -282,7 +375,7 @@ export default function PrivacyPage() {
             <p>
               Not every right applies in every situation. If you would like to
               make a request or ask a question about your information, contact{" "}
-              <a href="mailto:iris@irisoak.dev">iris@irisoak.dev</a>.
+              <a href="mailto:contact@irisoak.dev">contact@irisoak.dev</a>.
             </p>
           </section>
 
@@ -297,7 +390,7 @@ export default function PrivacyPage() {
 
             <p>
               To raise an objection, contact{" "}
-              <a href="mailto:iris@irisoak.dev">iris@irisoak.dev</a>.
+              <a href="mailto:contact@irisoak.dev">contact@irisoak.dev</a>.
             </p>
           </section>
 
@@ -349,6 +442,6 @@ export default function PrivacyPage() {
           <Link href="/">← Return to Iris & Oak</Link>
         </footer>
       </Container>
-    </main>
+    </div>
   );
 }

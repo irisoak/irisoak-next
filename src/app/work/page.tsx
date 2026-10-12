@@ -173,7 +173,7 @@ function ProjectSection({
 
 export default function WorkPage() {
   return (
-    <main className="work-page">
+    <div className="work-page">
       <div className="site-container">
         <header className="work-page__header">
           <p className="work-page__eyebrow">Work</p>
@@ -207,6 +207,6 @@ export default function WorkPage() {
           </Link>
         </section>
       </div>
-    </main>
+    </div>
   );
 }
