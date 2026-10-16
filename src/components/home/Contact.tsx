@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import type { FormEvent } from "react";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-
-type Status = "idle" | "sending" | "sent" | "error";
+import EnquiryHoneypot from "@/components/enquiry/EnquiryHoneypot";
+import { useEnquirySubmit } from "@/components/enquiry/useEnquirySubmit";
 
 /*
   Links from the Portfolio Partnership page add ?enquiry=portfolio-partnership
@@ -13,50 +13,21 @@ type Status = "idle" | "sending" | "sent" | "error";
 const PORTFOLIO_PARTNERSHIP_ENQUIRY = "portfolio-partnership";
 
 export default function Contact() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const { status, errorMessage, submitEnquiry } = useEnquirySubmit();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = event.currentTarget;
 
-    setStatus("sending");
-    setErrorMessage("");
-
-    const formData = new FormData(form);
     const enquiryType = new URLSearchParams(window.location.search).get(
       "enquiry"
     );
 
-    if (enquiryType === PORTFOLIO_PARTNERSHIP_ENQUIRY) {
-      formData.set("type", PORTFOLIO_PARTNERSHIP_ENQUIRY);
-    }
-
-    try {
-      const response = await fetch("/api/enquiries", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
-      });
-
-      const result = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        throw new Error(
-          result?.error ?? "Something went wrong. Please try again."
-        );
-      }
-
-      form.reset();
-      setStatus("sent");
-    } catch (error) {
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
-      );
-      setStatus("error");
-    }
+    await submitEnquiry(
+      event.currentTarget,
+      enquiryType === PORTFOLIO_PARTNERSHIP_ENQUIRY
+        ? { type: PORTFOLIO_PARTNERSHIP_ENQUIRY }
+        : {}
+    );
   }
 
   return (
@@ -131,26 +102,7 @@ export default function Contact() {
             />
           </div>
 
-          {/* Honeypot: hidden from people, bots tend to fill it in */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              left: "-9999px",
-              width: "1px",
-              height: "1px",
-              overflow: "hidden",
-            }}
-          >
-            <label htmlFor="contact-website">Website</label>
-            <input
-              id="contact-website"
-              name="website"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-            />
-          </div>
+          <EnquiryHoneypot idPrefix="contact" />
 
           <p className="iocontact__privacy">
             Read how your details are handled in the{" "}

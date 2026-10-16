@@ -393,8 +393,8 @@
 }
 
 .care-button--outline:hover {
-  border-color: var(--care-plum-deep);
-  background: var(--care-plum-deep);
+  border-color: #8a536b;
+  background: #8a536b;
   color: var(--care-paper) !important;
 }
 
@@ -519,6 +519,7 @@
   font-weight: 600;
   cursor: pointer;
   list-style: none;
+
 }
 
 .care-check-group summary::-webkit-details-marker,
@@ -645,30 +646,167 @@
   text-underline-offset: 0.2em;
 }
 
+/* Closing section: Care intro and enquiry form */
 .care-cta {
   display: grid;
-  justify-items: center;
+  gap: 2.25rem;
   margin-bottom: 4rem;
-  padding: clamp(2.5rem, 7vw, 5rem) 1.5rem;
+  padding: clamp(1.75rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3.5rem);
+  border: 1px solid var(--care-line);
   border-radius: var(--care-radius);
-  background: var(--care-sage-soft);
-  text-align: center;
+  background: var(--care-paper);
 }
 
 .care-cta h2 {
   max-width: 18ch;
 }
 
-.care-cta > p:not(.care-eyebrow) {
-  max-width: 38rem;
-  margin: 1rem 0 1.5rem;
+.care-cta__intro > p:not(.care-eyebrow) {
+  max-width: 30rem;
+  margin: 1rem 0 0;
   color: var(--care-muted);
   font-size: 0.95rem;
+  text-wrap: pretty;
+}
+
+.care-enquiry {
+  position: relative;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.care-enquiry__row {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.care-enquiry__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.care-enquiry__field label {
+  color: var(--care-ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.care-enquiry__field input,
+.care-enquiry__field textarea {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--care-line);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--care-ink);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.care-enquiry__field textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.care-enquiry__field input::placeholder {
+  color: var(--care-muted);
+  opacity: 0.75;
+}
+
+.care-enquiry__field input:hover,
+.care-enquiry__field textarea:hover {
+  border-color: var(--care-muted);
+}
+
+.care-enquiry__privacy {
+  margin: 0;
+  color: var(--care-muted);
+  font-size: 0.82rem;
+}
+
+.care-enquiry__privacy a {
+  color: var(--care-plum-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.care-enquiry__submit {
+  justify-self: start;
+  cursor: pointer;
+}
+
+.care-enquiry__submit:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+.care-enquiry__status {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.care-enquiry__status:empty {
+  display: none;
+}
+
+.care-enquiry__status--sent {
+  color: var(--care-green);
+}
+
+.care-enquiry__status-note {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--care-muted);
+  font-weight: 400;
+}
+
+.care-enquiry__status--error {
+  color: #a3333d;
+}
+
+@media (min-width: 40rem) {
+  .care-enquiry__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .care-cta {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
 }
 
 /* Responsive layouts and accessibility */
 /* Desktop: hero heading on two lines and check lists always visible */
 @media (min-width: 64rem) {
+  /* Plan CTAs: Core filled plum; Site Check-up and Growth light, rose on hover. */
+  .care-plan-card__cta--filled {
+    border-color: var(--care-plum-deep);
+    background: var(--care-plum-deep);
+    color: var(--care-paper) !important;
+  }
+
+  .care-plan-card__cta--filled:hover {
+    border-color: #8a536b;
+    background: #8a536b;
+    color: var(--care-paper) !important;
+  }
+
+  .care-plan-card__cta--light {
+    border: 1px solid var(--care-plum-deep);
+    background: var(--care-paper);
+    color: var(--care-plum-deep) !important;
+  }
+
+  .care-plan-card__cta--light:hover {
+    border-color: #8a536b;
+    background: #8a536b;
+    color: var(--care-paper) !important;
+  }
+
   .care-check-group--collapsible {
     display: none;
   }
