@@ -4,10 +4,10 @@ import Container from "@/components/layout/Container";
 
 const projects = [
   {
-    title: "The Kawari Company",
+    title: "Kawari Company",
     category: "Website design & build",
-    description: "A first website for a safeguarding consultancy with over 25 years of experience.",
-    href: "/work/kawari-company",
+    description: "A first website for a safeguarding consultancy with 25 years of experience.",
+    href: "https://www.kawaricompany.com",
     image: "/images/kawari-homepage.png",
     imageAlt: "Kawari Company homepage screenshot",
   },
@@ -18,7 +18,7 @@ export default function ClientWork() {
     <section className="iowork">
       <Container>
         <div className="iowork__intro">
-          <h2 className="iowork__heading">Client Work</h2>
+          <h2 className="iowork__heading">Client work</h2>
 
           <p className="iowork__text">
             Projects for businesses, designed, 
@@ -30,6 +30,8 @@ export default function ClientWork() {
           {projects.map((project) => (
             <Link
               href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="iowork__card"
               key={project.title}
             >

@@ -49,7 +49,7 @@ test.describe("Homepage contact form", () => {
     await form.submit.click();
 
     await expect(form.status).toHaveText(
-      "Thank you, your enquiry has been sent. I'll reply within 3 working days."
+      "Thank you, your enquiry has been sent. I’ll reply within 3 working days."
     );
     await expect(form.name).toHaveValue("");
 

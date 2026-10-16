@@ -31,7 +31,7 @@ test.describe("Portfolio Partnership enquiry flow", () => {
     await form.submit.click();
 
     await expect(form.status).toHaveText(
-      "Thank you, your enquiry has been sent. I'll reply within 3 working days."
+      "Thank you, your enquiry has been sent. I’ll reply within 3 working days."
     );
 
     // The enquiry type is not shown in the form; it is sent with the request.

@@ -234,7 +234,9 @@ a {
   -webkit-backdrop-filter: blur(16px);
 }
 
-.ionav__logo {
+/* The footer brand mark shares the header logo lockup. */
+.ionav__logo,
+.iofooter__logo {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -336,7 +338,8 @@ a {
     padding: 0.45rem 0.55rem 0.45rem 1rem;
   }
 
-  .ionav__logo {
+  .ionav__logo,
+  .iofooter__logo {
     font-size: 1.2rem;
     font-family: var(--font-heading-family);
     letter-spacing: 0.18em;
@@ -352,15 +355,12 @@ a {
     place-items: center;
     width: 2.75rem;
     height: 2.75rem;
+    padding: 0;
     border: 1px solid rgb(33 19 36 / 14%);
     border-radius: 50%;
+    background: transparent;
     color: #211324;
     cursor: pointer;
-    list-style: none;
-  }
-
-  .ionav__menu-button::-webkit-details-marker {
-    display: none;
   }
 
   .ionav__menu-icon {
@@ -393,15 +393,15 @@ a {
     transform: translateY(0.3rem);
   }
 
-  .ionav__mobile[open] .ionav__menu-icon span:nth-child(1) {
+  .ionav__mobile[data-open="true"] .ionav__menu-icon span:nth-child(1) {
     transform: rotate(45deg);
   }
 
-  .ionav__mobile[open] .ionav__menu-icon span:nth-child(2) {
+  .ionav__mobile[data-open="true"] .ionav__menu-icon span:nth-child(2) {
     opacity: 0;
   }
 
-  .ionav__mobile[open] .ionav__menu-icon span:nth-child(3) {
+  .ionav__mobile[data-open="true"] .ionav__menu-icon span:nth-child(3) {
     transform: rotate(-45deg);
   }
 
@@ -427,6 +427,10 @@ a {
     box-shadow: 0 1rem 2.5rem rgb(47 22 54 / 14%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+  }
+
+  .ionav__mobile-panel[hidden] {
+    display: none;
   }
 
   .ionav__mobile-panel .ionav__list {
@@ -1331,8 +1335,6 @@ a.iowork__card:hover {
 
 .iofooter__logo {
   color: var(--colour-background);
-  font-family: var(--font-heading-family);
-  font-size: 1.4rem;
   font-weight: 400;
   text-decoration: none;
 }
@@ -2433,12 +2435,12 @@ Web apps and integrations
   line-height: 1.65;
 }
 
-@media (min-width: 768px) {
-  .faq__answer p,
+/* Keep the Work intro on one line only where it fits without clipping. */
+@media (min-width: 1100px) {
   .work-page__intro {
     white-space: nowrap;
   }
-}  
+}
 
 /* ========================================
    Project Sections
@@ -3002,6 +3004,80 @@ Web apps and integrations
   .privacy-page__rights-callout {
     padding-inline: 1rem 0;
   }
+}
+
+/* ========================================
+   Not Found
+======================================== */
+
+.not-found {
+  padding-block: 5rem 7rem;
+  text-align: center;
+}
+
+.not-found__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--colour-brand-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.not-found h1 {
+  margin: 0;
+  color: var(--colour-text-primary);
+  font-family: var(--font-heading-family);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.not-found__text {
+  max-width: 34rem;
+  margin: 1.5rem auto 0;
+  color: var(--colour-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.25rem;
+}
+
+.not-found__primary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  background: var(--colour-brand-primary);
+  color: var(--colour-background);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+.not-found__primary:hover {
+  background: var(--colour-button-hover);
+}
+
+.not-found__secondary {
+  color: var(--colour-brand-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.not-found__secondary:hover {
+  color: var(--colour-button-hover);
 }
 
 /* ========================================

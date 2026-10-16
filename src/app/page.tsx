@@ -29,7 +29,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Iris & Oak",
-  url: "https://www.irisoak.dev",
+  url: "https://irisoak.dev",
   description:
     "Professional websites and digital products for independent businesses.",
   sameAs: [

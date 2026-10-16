@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SOCIAL_IMAGE } from "@/lib/metadata";
 import { Geist, Geist_Mono, Quicksand } from "next/font/google";
 
 import Navbar from "@/components/layout/Navbar";
@@ -24,7 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.irisoak.dev"),
+  metadataBase: new URL("https://irisoak.dev"),
 
   title: {
     default: "Websites & Digital Products | Iris & Oak Digital Studio",
@@ -46,19 +47,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://www.irisoak.dev",
+    url: "https://irisoak.dev",
     siteName: "Iris & Oak",
-    title: "Websites & Digital Products | Iris & Oak Design Studio",
+    title: "Websites & Digital Products | Iris & Oak Digital Studio",
     description:
       "Professional websites and digital products for independent businesses.",
-    images: [
-      {
-        url: "/images/iris-oak-logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Iris & Oak Digital Studio — websites and digital products for independent businesses",
-      },
-    ],
+    images: [SOCIAL_IMAGE],
   },
 
   twitter: {
@@ -66,7 +60,7 @@ export const metadata: Metadata = {
     title: "Websites & Digital Products for Independent Businesses | Iris & Oak Digital Studio",
     description:
       "Professional websites and digital products for independent businesses.",
-    images: ["/images/iris-oak-logo.png"],
+    images: [SOCIAL_IMAGE],
   },
 };
 

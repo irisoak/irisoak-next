@@ -1,6 +1,6 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
@@ -11,16 +11,10 @@ const navigation = [
   { href: "/care", label: "Care" },
 ];
 
-function NavigationLinks({
-  closeOnNavigate = false,
-}: {
-  closeOnNavigate?: boolean;
-}) {
-  const pathname = usePathname();
+const MOBILE_MENU_ID = "mobile-navigation";
 
-  const closeMobileMenu = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.currentTarget.closest("details")?.removeAttribute("open");
-  };
+function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
+  const pathname = usePathname();
 
   return (
     <ul className="ionav__list">
@@ -34,7 +28,7 @@ function NavigationLinks({
               className="ionav__link"
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              onClick={closeOnNavigate ? closeMobileMenu : undefined}
+              onClick={onNavigate}
             >
               {item.label}
             </Link>
@@ -46,8 +40,17 @@ function NavigationLinks({
 }
 
 export default function Navbar() {
-  const closeMobileMenu = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.currentTarget.closest("details")?.removeAttribute("open");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMobileMenu = () => setIsMenuOpen(false);
+
+  /* Escape closes the menu and returns focus to its button. */
+  const handleMenuKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape" && isMenuOpen) {
+      setIsMenuOpen(false);
+      menuButtonRef.current?.focus();
+    }
   };
 
   return (
@@ -70,18 +73,34 @@ export default function Navbar() {
           Get in touch
         </Link>
 
-        <details className="ionav__mobile">
-          <summary className="ionav__menu-button">
-            <span className="sr-only">Toggle navigation menu</span>
+        <div
+          className="ionav__mobile"
+          data-open={isMenuOpen}
+          onKeyDown={handleMenuKeyDown}
+        >
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="ionav__menu-button"
+            aria-expanded={isMenuOpen}
+            aria-controls={MOBILE_MENU_ID}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="sr-only">Navigation menu</span>
             <span className="ionav__menu-icon" aria-hidden="true">
               <span />
               <span />
               <span />
             </span>
-          </summary>
+          </button>
 
-          <nav className="ionav__mobile-panel" aria-label="Mobile navigation">
-            <NavigationLinks closeOnNavigate />
+          <nav
+            className="ionav__mobile-panel"
+            id={MOBILE_MENU_ID}
+            aria-label="Mobile navigation"
+            hidden={!isMenuOpen}
+          >
+            <NavigationLinks onNavigate={closeMobileMenu} />
 
             <Link
               href="/#contact"
@@ -91,7 +110,7 @@ export default function Navbar() {
               Get in touch
             </Link>
           </nav>
-        </details>
+        </div>
       </Container>
     </header>
   );

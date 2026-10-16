@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Fragment } from "react";
 import Link from "next/link";
 import {
@@ -15,12 +16,12 @@ import {
 } from "lucide-react";
 import "./care.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Website Care & Site Check-ups",
   description:
     "Straightforward website check-ups and ongoing care from Iris & Oak for custom-built and WordPress websites.",
-  alternates: { canonical: "/care" },
-};
+  path: "/care",
+});
 
 const checkGroups = [
   {
@@ -71,27 +72,27 @@ const faqs = [
   {
     question: "What does the £149 Site Check-up include?",
     answer:
-      "A review of up to five key pages across 18 checks, covering speed, security, SEO, accessibility and how your key journeys work. You'll get an overall grade, prioritised findings and clear next steps, with an explanation of what shaped the grade.",
+      "A review of up to five key pages across 18 checks, covering speed, SEO, accessibility and how your key journeys work. You’ll get an overall grade, prioritised findings and clear next steps, with an explanation of what shaped the grade.",
   },
   {
     question: "How soon will I receive the report?",
     answer:
-      "Usually within five working days of receiving your website address and any access we've agreed. I'll let you know if anything might take longer.",
+      "Usually within five working days of receiving your website address and any access we’ve agreed. I’ll let you know if anything might take longer.",
   },
   {
     question: "Which platforms do you support?",
     answer:
-      "I can review websites on most platforms, including custom-built sites, WordPress, Squarespace, Wix, GoDaddy Website Builder, Shopify and Webflow. Some platforms limit what can be checked, and if so, I'll explain that in your report.",
+      "I can review websites on most platforms, including custom-built sites, WordPress, Squarespace, Wix, GoDaddy Website Builder, Shopify and Webflow. Some platforms limit what can be checked, and if so, I’ll explain that in your report.",
   },
   {
     question: "What do you need from me?",
     answer:
-      "Just your website address and the platform it's built on. If a check needs account access, I'll explain exactly what's needed and why. I'll never ask for your password. Instead, you can invite me as a collaborator or team member, which keeps your account secure.",
+      "Just your website address and the platform it’s built on. If a check needs account access, I’ll explain exactly what’s needed and why. I’ll never ask for your password. Instead, you can invite me as a collaborator or team member, which keeps your account secure.",
   },
   {
     question: "What if my website is unavailable during the review?",
     answer:
-      "I'll check everything I can, note when the outage happened and how it affected the review, and arrange a follow-up check with you for anything I couldn't complete.",
+      "I’ll check everything I can, note when the outage happened and how it affected the review, and arrange a follow-up check with you for anything I couldn’t complete.",
   },
   {
     question: "Can I share the report with my developer?",
@@ -99,9 +100,9 @@ const faqs = [
       "Of course. The report is yours to share with your developer, or anyone else who helps with your website.",
   },
   {
-    question: "Can you fix the issues in the site-check up report?",
+    question: "Can you fix the issues in the Site Check-up report?",
     answer:
-      "Yes. I'd be happy to provide a quote for one-off fixes, please reach out to me via email and. If you think your website needs ongoing support, a care plan may suit your needs better.",
+      "Yes. I can quote for one-off fixes. Get in touch with the details from your report. If your website needs regular support, a Care plan may suit you better.",
   },
   {
     question: "How do cancellations and refunds work?",
@@ -112,7 +113,7 @@ const faqs = [
 
 function ReportPreview() {
   return (
-    <aside className="care-report" aria-label="Illustrative site check-up report preview">
+    <section className="care-report" aria-label="Illustrative site check-up report preview">
       <div className="care-report__topline">
         <div>
           <p className="care-report__eyebrow">Example report</p>
@@ -142,7 +143,7 @@ function ReportPreview() {
       <p className="care-report__caption">
         Example layout only. Your findings and grade are based on your website.
       </p>
-    </aside>
+    </section>
   );
 }
 

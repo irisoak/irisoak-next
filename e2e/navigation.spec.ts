@@ -57,13 +57,13 @@ test.describe("Site navigation on mobile", () => {
   test("menu opens, closes and its links work", async ({ page }) => {
     await page.goto("/");
 
-    /*
-      The toggle is a <summary> element. Chromium does not expose it with a
-      button role here, so it is located by element inside the site header.
-    */
-    const toggle = page.getByRole("banner").locator("summary");
-    await expect(toggle).toHaveAccessibleName("Toggle navigation menu");
+    const toggle = page
+      .getByRole("banner")
+      .getByRole("button", { name: "Navigation menu" });
     const menu = page.getByRole("navigation", { name: "Mobile navigation" });
+
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await expect(toggle).toHaveAttribute("aria-controls", "mobile-navigation");
 
     await expect(
       page.getByRole("navigation", { name: "Primary navigation" })
@@ -72,6 +72,7 @@ test.describe("Site navigation on mobile", () => {
 
     await toggle.click();
     await expect(menu).toBeVisible();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
 
     for (const { name } of NAV_LINKS) {
       await expect(menu.getByRole("link", { name, exact: true })).toBeVisible();
@@ -80,10 +81,22 @@ test.describe("Site navigation on mobile", () => {
 
     await toggle.click();
     await expect(menu).toBeHidden();
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+
+    // Keyboard: Enter opens, Escape closes and returns focus to the toggle.
+    await toggle.focus();
+    await page.keyboard.press("Enter");
+    await expect(menu).toBeVisible();
+    await page.keyboard.press("Tab");
+    await expect(menu.getByRole("link", { name: "Work", exact: true })).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(menu).toBeHidden();
+    await expect(toggle).toBeFocused();
 
     await toggle.click();
     await menu.getByRole("link", { name: "Services", exact: true }).click();
     await expect(page).toHaveURL("/services");
+    await expect(menu).toBeHidden();
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Digital services"
     );

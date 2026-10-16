@@ -67,14 +67,14 @@ export default function Contact() {
     >
       <Container className="iocontact__inner">
         <div className="iocontact__intro">
-          <p className="iocontact__eyebrow">Let&apos;s collaborate</p>
+          <p className="iocontact__eyebrow">Let’s collaborate</p>
 
           <h2 className="iocontact__heading" id="contact-heading">
             Get in touch.
           </h2>
 
           <p className="iocontact__text">
-            Share a little about what you need and I&apos;ll reply within 3
+            Share a little about what you need and I’ll reply within 3
             working days.
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function Contact() {
           </div>
 
           <div className="iocontact__field iocontact__field--message">
-            <label htmlFor="contact-message">Any details you&apos;d like to share.</label>
+            <label htmlFor="contact-message">Any details you’d like to share.</label>
             <textarea
               id="contact-message"
               name="project"
@@ -182,7 +182,7 @@ export default function Contact() {
             aria-live="polite"
           >
             {status === "sent" &&
-              "Thank you, your enquiry has been sent. I'll reply within 3 working days."}
+              "Thank you, your enquiry has been sent. I’ll reply within 3 working days."}
             {status === "error" && errorMessage}
           </p>
         </form>

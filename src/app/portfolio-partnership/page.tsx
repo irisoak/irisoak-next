@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,14 +26,12 @@ import {
 } from "lucide-react";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Portfolio Partnership Programme | Iris & Oak Digital Studio",
+export const metadata: Metadata = pageMetadata({
+  title: "Portfolio Partnership Programme",
   description:
     "A carefully scoped website project for an independent business, with the design and development fee waived in return for a portfolio case study.",
-  alternates: {
-    canonical: "/portfolio-partnership",
-  },
-};
+  path: "/portfolio-partnership",
+});
 
 const partnershipEnquiryHref = "/?enquiry=portfolio-partnership#contact";
 
@@ -450,7 +449,7 @@ export default function PortfolioPartnershipPage() {
                   <Users size={21} aria-hidden="true" />
                   <span>
                     Limited to
-                    <strong>2-3 businesses</strong>
+                    <strong>2–3 businesses</strong>
                   </span>
                 </div>
               </div>

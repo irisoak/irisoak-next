@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "PartsPilot Full-Stack Platform Case Study",
   description:
     "PartsPilot is a full-stack automotive inventory management and analytics platform designed and built by Iris & Oak using React, TypeScript, FastAPI and PostgreSQL.",
-  alternates: {
-    canonical: "/work/partspilot",
-  },
-};
+  path: "/work/partspilot",
+});
 
 const capabilities = [
   "Authenticated inventory management",
@@ -135,7 +134,7 @@ export default function PartsPilotPage() {
 
           <div className="case-study__section-content">
             <h2>
-              Inventory shouldn&apos;t become harder to understand as it grows.
+              Inventory shouldn’t become harder to understand as it grows.
             </h2>
 
             <p>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -11,14 +12,12 @@ import {
   Star,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Website Design & Development Services",
   description:
     "Websites, website refreshes, web apps and business tools from Iris & Oak, with clear scope and pricing.",
-  alternates: {
-    canonical: "/services",
-  },
-};
+  path: "/services",
+});
 
 const websitePackages = [
   {
@@ -315,7 +314,7 @@ export default function ServicesPage() {
           >
             <div className="services-page__web-apps-copy">
               <div className="services-page__service-heading">
-                <h2 id="web-apps-heading">Web Apps</h2>
+                <h2 id="web-apps-heading">Web apps</h2>
                 <span className="services-page__heading-rule" />
               </div>
 
@@ -369,7 +368,7 @@ export default function ServicesPage() {
             aria-labelledby="integrations-heading"
           >
             <h2 id="integrations-heading">
-              Bookings, Payments &amp; Integrations
+              Bookings, payments &amp; integrations
             </h2>
             <p>
               Connect your website to the tools you use, so everything works
@@ -393,7 +392,7 @@ export default function ServicesPage() {
           aria-labelledby="business-tools-heading"
         >
           <div className="services-page__business-title">
-            <h2 id="business-tools-heading">Business Tools</h2>
+            <h2 id="business-tools-heading">Business tools</h2>
             <span className="services-page__heading-rule" />
           </div>
 
@@ -462,10 +461,10 @@ export default function ServicesPage() {
 
           <div className="services-page__contact">
             <div className="services-page__contact-copy">
-              <p className="services-page__eyebrow">Let&apos;s work together</p>
+              <p className="services-page__eyebrow">Let’s work together</p>
               <h2>Ready to get started?</h2>
               <p>
-                Tell me a little about your project and I&apos;ll recommend the best
+                Tell me a little about your project and I’ll recommend the best
                 option.
               </p>
             </div>

@@ -26,9 +26,9 @@ const offerings: Offering[] = [
   },
   {
     icon: RefreshCw,
-    title: "Website Refresh",
+    title: "Website refresh",
     description:
-      "Improve your site's structure, visual direction and usability while keeping what already works.",
+      "Improve your site’s structure, visual direction and usability while keeping what already works.",
   },
   {
     icon: Boxes,
@@ -44,13 +44,13 @@ const offerings: Offering[] = [
   },
   {
     icon: Settings2,
-    title: "Business Tools",
+    title: "Business tools",
     description:
       "Dashboards, internal systems and automations that take the admin out of your day.",
   },
   {
     icon: ShieldCheck,
-    title: "Care & Maintenance",
+    title: "Care & maintenance",
     description:
       "Ongoing maintenance, regular updates, monitoring and fixes to keep your site running smoothly.",
     href: "/care",
@@ -62,7 +62,7 @@ export default function WhatIOffer() {
     <section className="iooffer">
       <Container>
         <div className="iooffer__intro">
-          <h2 className="iooffer__heading">What I Offer</h2>
+          <h2 className="iooffer__heading">What I offer</h2>
 
           <p className="iooffer__text">
             From websites to custom web apps, I design and build digital
@@ -92,8 +92,6 @@ export default function WhatIOffer() {
               <Link
                 className="iooffer__item iooffer__item--link"
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
                 key={title}
               >
                 {cardContent}

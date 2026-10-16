@@ -59,6 +59,69 @@ const escapeHtml = (value: string) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
+/* ========================================
+   Validation
+======================================== */
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/*
+  Maximum characters per field. The contact form's maxLength values are
+  name 100, business name 100, email 200 and details 5000; email allows
+  up to 254, the longest valid address.
+*/
+const FIELD_LIMITS: Partial<Record<keyof EnquiryRequest, number>> = {
+  name: 100,
+  email: 254,
+  organisation: 100,
+  project: 5000,
+  additionalInformation: 5000,
+  customBuild: 5000,
+  refreshProblem: 2000,
+  integrations: 2000,
+  currentWebsiteUrl: 500,
+};
+
+const DEFAULT_FIELD_LIMIT = 200;
+
+const FIELD_LABELS: Partial<Record<keyof EnquiryRequest, string>> = {
+  name: "Your name",
+  email: "Email address",
+  organisation: "Business name",
+  project: "Your enquiry details",
+};
+
+const validateEnquiry = (body: EnquiryRequest): string | null => {
+  for (const [key, value] of Object.entries(body)) {
+    if (value === undefined || value === null) continue;
+
+    if (typeof value !== "string") {
+      return "The enquiry details could not be read. Please try again.";
+    }
+
+    const field = key as keyof EnquiryRequest;
+    const limit = FIELD_LIMITS[field] ?? DEFAULT_FIELD_LIMIT;
+
+    if (value.length > limit) {
+      const label = FIELD_LABELS[field];
+
+      return label
+        ? `${label} must be ${limit.toLocaleString("en-GB")} characters or fewer.`
+        : "One of the enquiry fields is too long.";
+    }
+  }
+
+  if (!body.name?.trim() || !body.email?.trim() || !body.project?.trim()) {
+    return "Name, email and project details are required.";
+  }
+
+  if (!EMAIL_PATTERN.test(body.email.trim())) {
+    return "Please enter a valid email address.";
+  }
+
+  return null;
+};
+
 /*
   The custom enquiry modal sends JSON. The homepage contact form sends
   FormData, which also keeps it working as a plain HTML form submission.
@@ -237,10 +300,13 @@ export async function POST(request: Request) {
        Server-side validation
     ======================================== */
 
-    if (!name || !email || !project) {
+    const validationError = validateEnquiry(body);
+
+    if (validationError || !name || !email || !project) {
       return NextResponse.json(
         {
           error:
+            validationError ??
             "Name, email and project details are required.",
         },
         { status: 400 }
