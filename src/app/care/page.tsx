@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { pageMetadata } from "@/lib/metadata";
 import { Fragment } from "react";
 import Link from "next/link";
@@ -69,31 +70,36 @@ const checkGroups = [
   },
 ];
 
-const faqs = [
+type faq = {
+  question: string;
+  answer: ReactNode;
+};
+
+const faqs: faq[] = [
   {
     question: "What does the £149 Site Check-up include?",
     answer:
-      "A review of up to five key pages across 18 checks, covering speed, SEO, accessibility and how your key journeys work. You’ll get an overall grade, prioritised findings and clear next steps, with an explanation of what shaped the grade.",
+      "A review of up to five key pages across 18 checks, covering speed, SEO, accessibility and how your key journeys work. You'll get an overall grade, prioritised findings and clear next steps, with an explanation of what shaped the grade.",
   },
   {
     question: "How soon will I receive the report?",
     answer:
-      "Usually within five working days of receiving your website address and any access we’ve agreed. I’ll let you know if anything might take longer.",
+      "Usually within five working days of receiving your website address and any access we've agreed. I'll let you know if anything might take longer.",
   },
   {
     question: "Which platforms do you support?",
     answer:
-      "I can review websites on most platforms, including custom-built sites, WordPress, Squarespace, Wix, GoDaddy Website Builder, Shopify and Webflow. Some platforms limit what can be checked, and if so, I’ll explain that in your report.",
+      "I can review websites on most platforms, including custom-built sites, WordPress, Squarespace, Wix, GoDaddy Website Builder, Shopify and Webflow. Some platforms limit what can be checked, and if so, I'll explain that in your report.",
   },
   {
     question: "What do you need from me?",
     answer:
-      "Just your website address and the platform it’s built on. If a check needs account access, I’ll explain exactly what’s needed and why. I’ll never ask for your password. Instead, you can invite me as a collaborator or team member, which keeps your account secure.",
+      "Just your website address and the platform it's built on. If a check needs account access, I'll explain exactly what's needed and why. I'll never ask for your password. Instead, you can invite me as a collaborator or team member, which keeps your account secure.",
   },
   {
     question: "What if my website is unavailable during the review?",
     answer:
-      "I’ll check everything I can, note when the outage happened and how it affected the review, and arrange a follow-up check with you for anything I couldn’t complete.",
+      "I'll check everything I can, note when the outage happened and how it affected the review, and arrange a follow-up check with you for anything I couldn't complete.",
   },
   {
     question: "Can I share the report with my developer?",
@@ -102,13 +108,29 @@ const faqs = [
   },
   {
     question: "Can you fix the issues in the Site Check-up report?",
-    answer:
-      "Yes. I can quote for one-off fixes. Get in touch with the details from your report. If your website needs regular support, a Care plan may suit you better.",
+    answer: (
+      <>
+        Absolutely. Just reply to your report email and I'll quote for any one-off
+        fixes. If your website needs regular support, a{" "}
+        <Link href="/care#plans" className="care-faq__link">
+          <strong>Care plan</strong>
+        </Link>{" "}
+        may suit you better. Choose an annual plan within 14 days of your
+        report and <strong>I’ll credit your £149</strong> towards it.
+      </>
+    ),
   },
   {
     question: "How do cancellations and refunds work?",
-    answer:
-      "I will confirm the applicable cancellation and refund terms before you pay or book, so you can review them before the check-up starts.",
+    answer: (
+      <>
+        You can cancel for a <strong>full refund</strong> any time before the
+        review starts, or receive a <strong>50%</strong> refund if you cancel 
+        after it starts but before the report is delivered. Once the report is 
+        delivered, the work is complete. If anything isn't clear, I'll happily 
+        talk it through with you.
+      </>
+    ),
   },
 ];
 
