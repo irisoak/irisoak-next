@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
+import ConceptCarousel from "@/components/work/ConceptCarousel";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Selected Web Design & Development Work",
   description:
     "Explore selected Iris & Oak client work, portfolio projects and website concepts.",
-  alternates: {
-    canonical: "/work",
-  },
-};
+  path: "/work",
+});
 
 type Project = {
   title: string;
@@ -181,7 +181,7 @@ export default function WorkPage() {
           <h1>From the Studio</h1>
 
           <p className="work-page__intro">
-            Client projects, concepts and personal builds, 
+            Client projects, concept websites and personal builds,
             each shaped around the people who use them.
           </p>
         </header>
@@ -189,7 +189,7 @@ export default function WorkPage() {
         <ProjectSection
           id="client-work"
           title="Client work"
-          description="Websites and digital experiences built for independent businesses"
+          description="Websites and digital experiences built for independent businesses."
           projects={clientProjects}
         />
 
@@ -199,6 +199,17 @@ export default function WorkPage() {
           description="Independent builds in product, design and engineering."
           projects={portfolioProjects}
         />
+
+        <section className="work-page__concepts" aria-label="Concepts">
+          <a
+            className="work-page__concepts-link"
+            href="https://concepts.irisoak.dev"
+          >
+            Concept websites <span aria-hidden="true">→</span>
+          </a>
+
+          <ConceptCarousel />
+        </section>
 
         <section className="work-page__contact">
           <p>Have a project in mind?</p>

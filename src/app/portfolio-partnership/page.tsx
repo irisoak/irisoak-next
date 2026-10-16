@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -19,18 +21,17 @@ import {
   Star,
   Target,
   Users,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Portfolio Partnership Programme | Iris & Oak Digital Studio",
+export const metadata: Metadata = pageMetadata({
+  title: "Portfolio Partnership Programme",
   description:
     "A carefully scoped website project for an independent business, with the design and development fee waived in return for a portfolio case study.",
-  alternates: {
-    canonical: "/portfolio-partnership",
-  },
-};
+  path: "/portfolio-partnership",
+});
 
 const partnershipEnquiryHref = "/?enquiry=portfolio-partnership#contact";
 
@@ -90,7 +91,7 @@ const partnershipCards: {
       },
       {
         icon: FileText,
-        title: "Accurate content and assets",
+        title: "Content and assets",
         description:
           "Provide the text, images and other materials needed for the project.",
       },
@@ -99,6 +100,11 @@ const partnershipCards: {
         title: "Permission to feature the work",
         description:
           "You’re happy for me to feature the finished website as a portfolio case study.",
+      },
+      {
+        icon: Wallet,
+        title: "Running costs",
+        description: "Your domain, hosting and any paid tools.",
       },
     ],
   },
@@ -114,7 +120,7 @@ const processSteps = [
     number: "02",
     title: "Chat and selection",
     description:
-      "Have a short call to check whether the programme is a good fit. I’ll let you know within 3 working days.",
+      "Have a short call to check whether the programme is a good fit. I’ll let you know within 3 working days of our call.",
   },
   {
     number: "03",
@@ -189,13 +195,13 @@ const outOfPocketCosts = [
     icon: Globe,
     title: "Domain name",
     description:
-      "Your domain is registered and paid for directly by you.",
+      "Your domain is registered and paid for directly by you. Domains usually cost around £10–£20 per year.",
   },
   {
     icon: Server,
     title: "Website hosting",
     description:
-      "Paid directly to your hosting provider. On Squarespace or Wix, hosting is part of the platform subscription.",
+      "Paid directly to your hosting provider. On Squarespace or Wix, hosting may be included in your platform subscription.",
   },
   {
     icon: Puzzle,
@@ -205,14 +211,63 @@ const outOfPocketCosts = [
   },
 ];
 
+/*
+  Recent work shown near the final CTA. Destinations and images are existing
+  pages and assets; concepts.irisoak.dev has no screenshot in the project, so
+  it is shown as a text tile.
+*/
+const recentWork: {
+  title: string;
+  label: string;
+  href: string;
+  image?: string;
+  newTab?: boolean;
+}[] = [
+  {
+    title: "Kawari Company",
+    label: "Client website",
+    href: "https://www.kawaricompany.com",
+    image: "/images/kawari-company.png",
+  },
+  {
+    title: "Iris & Oak Concepts",
+    label: "concepts.irisoak.dev",
+    href: "https://concepts.irisoak.dev",
+  },
+  {
+    title: "Northline Automotive",
+    label: "Concept website",
+    href: "https://concepts.irisoak.dev/northline-auto",
+    image: "/images/concepts/northline-automotive/northline-automotive-concept.png",
+    newTab: true,
+  },
+  {
+    title: "Marlow & Bean",
+    label: "Café concept",
+    href: "https://concepts.irisoak.dev/marlow-and-bean",
+    image: "/images/concepts/marlow-bean/marlow-bean-concept.png",
+    newTab: true,
+  },
+];
+
 const faqs: {
   question: string;
   answer: ReactNode;
 }[] = [
   {
+    question: "What’s the catch?",
+    answer:
+      "There isn’t a hidden one. My design and development fee is waived for the agreed scope, and in return you give permission for me to feature the finished website as a portfolio case study. You still pay your own running costs, such as your domain, hosting and any paid tools, and any work outside the agreed scope is quoted separately.",
+  },
+  {
     question: "How do you choose which businesses to work with?",
     answer:
-      "I’m reviewing a limited number of applications for two or three places. After you get in touch, we’ll have a short call to check whether your business and project are a good fit for the programme and its scope. I’ll let you know within 3 working days.",
+      "I’m reviewing a limited number of applications for two or three places. After you get in touch, we’ll have a short call to check whether your business and project are a good fit for the programme and its scope. I’ll let you know within 3 working days of our call.",
+  },
+  {
+    question: "What if I’m not selected?",
+    answer:
+      "I’ll let you know either way. If the programme isn’t the right fit, I’d still be happy to talk about your website at my standard pricing, with no obligation.",
   },
   {
     question: "How long does the project take?",
@@ -416,16 +471,11 @@ export default function PortfolioPartnershipPage() {
             <div className={styles.sectionIntro}>
               <div>
                 <p className={styles.eyebrow}>The partnership</p>
-                <h2 id="partnership-heading">
-                  A thoughtful exchange,
-                  <br />
-                  real benefits
-                </h2>
+                <h2 id="partnership-heading">What we each bring</h2>
               </div>
 
               <p className={styles.sectionIntroText}>
-                It’s a genuine partnership that creates value for both sides.
-                Here’s what each of us brings to the project.
+                Here’s what each of us brings to make the project a success.
               </p>
             </div>
 
@@ -446,9 +496,8 @@ export default function PortfolioPartnershipPage() {
             <p className={styles.eyebrow}>The process</p>
             <h2 id="process-heading">How it works</h2>
             <p className={styles.processIntro}>
-              From first conversation to launch, we’ll work together to create
-              a website that supports your goals and makes a real difference to
-              your business.
+              We’ll work together from first conversation to launch. Most
+              projects launch within three weeks.
             </p>
 
             <ol className={styles.processList}>
@@ -520,6 +569,11 @@ export default function PortfolioPartnershipPage() {
                 </li>
               ))}
             </ul>
+
+            <p className={styles.fitNote}>
+              <strong>Not a good fit if</strong> you need an online shop or a
+              website of more than five pages.
+            </p>
           </div>
         </section>
 
@@ -552,6 +606,11 @@ export default function PortfolioPartnershipPage() {
                 </article>
               ))}
             </div>
+
+            <p className={styles.costNote}>
+              Prices are typical examples, not guarantees, and vary by
+              provider.
+            </p>
 
             <div className={styles.ownershipCard}>
               <span className={styles.ownershipIcon}>
@@ -595,6 +654,56 @@ export default function PortfolioPartnershipPage() {
         </section>
 
         <section
+          className={styles.recentWork}
+          aria-labelledby="recent-work-heading"
+        >
+          <div className={styles.container}>
+            <h2 className={styles.eyebrow} id="recent-work-heading">
+              Recent work
+            </h2>
+
+            <ul className={styles.recentWorkGrid}>
+              {recentWork.map(({ title, label, href, image, newTab }) => (
+                <li key={title}>
+                  <Link
+                    className={styles.recentWorkItem}
+                    href={href}
+                    {...(newTab && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
+                  >
+                    <span
+                      className={`${styles.recentWorkMedia}${
+                        image ? "" : ` ${styles.recentWorkMediaText}`
+                      }`}
+                    >
+                      {image ? (
+                        <Image
+                          src={image}
+                          alt=""
+                          fill
+                          sizes="(max-width: 48rem) 50vw, 20vw"
+                        />
+                      ) : (
+                        <span aria-hidden="true">{label}</span>
+                      )}
+                    </span>
+                    <strong>
+                      {title}
+                      {newTab && (
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      )}
+                    </strong>
+                    <span className={styles.recentWorkLabel}>{label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section
           className={styles.contact}
           id="contact"
           aria-labelledby="contact-heading"
@@ -617,6 +726,10 @@ export default function PortfolioPartnershipPage() {
                 Apply for the partnership
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
+
+              <p className={styles.applicationWindow}>
+                Reviewing applications until 30 November 2026.
+              </p>
 
               <Link className={styles.contactSecondary} href="/work">
                 See recent work

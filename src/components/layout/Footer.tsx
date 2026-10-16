@@ -23,8 +23,13 @@ export default function Footer() {
   return (
     <footer className="iofooter">
       <Container className="iofooter__row">
-        <Link href="/" className="iofooter__logo">
-          iris &amp; oak
+        <Link
+          className="iofooter__logo"
+          href="/"
+          aria-label="Iris & Oak Digital Studio home"
+        >
+          <span className="ionav__brandName">Iris &amp; Oak</span>
+          <span className="ionav__brandDescription">Digital Studio</span>
         </Link>
 
         <nav aria-label="Footer navigation">

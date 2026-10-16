@@ -45,7 +45,7 @@ export function contactForm(page: Page) {
     name: section.getByLabel("Your name"),
     business: section.getByLabel("Business name"),
     email: section.getByLabel("Email address"),
-    details: section.getByLabel("Any details you'd like to share."),
+    details: section.getByLabel("Any details you’d like to share."),
     submit: section.getByRole("button", { name: /Send enquiry/ }),
     status: section.getByRole("status"),
   };

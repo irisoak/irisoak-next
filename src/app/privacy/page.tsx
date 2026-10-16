@@ -1,15 +1,15 @@
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import AnalyticsPreference from "@/components/privacy/AnalyticsPreference";
 
-export const metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description:
     "Learn how Iris & Oak collects, uses and protects personal information when you visit the website, submit an enquiry or become a client.",
-  alternates: {
-    canonical: "/privacy",
-  },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
@@ -154,7 +154,7 @@ export default function PrivacyPage() {
               <h3>Vercel</h3>
 
               <p>
-                The Iris & Oak Next.js website is hosted on Vercel&apos;s Pro
+                The Iris & Oak Next.js website is hosted on Vercel’s Pro
                 plan. Vercel may process technical information as part of hosting, securing
                 and delivering the website.
               </p>
@@ -179,7 +179,7 @@ export default function PrivacyPage() {
               </p>
 
               <p>
-                Iris & Oak uses Resend&apos;s Free plan. On this plan, Resend
+                Iris & Oak uses Resend’s Free plan. On this plan, Resend
                 states that it keeps the content of these emails, along with
                 delivery events and logs, for 30 days. It stores this
                 information in the United States.
@@ -242,14 +242,14 @@ export default function PrivacyPage() {
             </p>
 
             <p>
-              Vercel&apos;s data processing terms apply to the Pro plan used
+              Vercel’s data processing terms apply to the Pro plan used
               for this website. They include the EU Standard Contractual
               Clauses and, for transfers from the United Kingdom, the UK
               International Data Transfer Addendum.
             </p>
 
             <p>
-              Resend&apos;s data processing terms apply to every Resend
+              Resend’s data processing terms apply to every Resend
               account, including the Free plan used by Iris & Oak. Resend
               states that transfers from the United Kingdom are covered by the
               UK Addendum to the EU Standard Contractual Clauses.
@@ -259,14 +259,14 @@ export default function PrivacyPage() {
               CONFIRM: Check that the Google Workspace data processing terms
               have been accepted in the Admin console (Account > Account
               settings > Legal and compliance). Until then, the second sentence
-              below describes Google's published terms, not a confirmed
+              below describes Google’s published terms, not a confirmed
               safeguard for the Iris & Oak account.
             */}
             <p>
               Google states that Google Workspace data may be processed in any
               country where Google or its subprocessors maintain facilities.
-              Google&apos;s published data processing terms state that transfers
-              of UK personal data to the United States rely on Google&apos;s
+              Google’s published data processing terms state that transfers
+              of UK personal data to the United States rely on Google’s
               certification to the UK Extension to the EU-U.S. Data Privacy
               Framework, with Standard Contractual Clauses provided for where no
               such alternative transfer solution applies.
@@ -344,9 +344,9 @@ export default function PrivacyPage() {
 
             <p>
               If you use this control, your choice is saved in your
-              browser&apos;s local storage on this device so that the website
+              browser’s local storage on this device so that the website
               can remember it. The preference is not sent to Iris & Oak, and
-              clearing your browser&apos;s site data will reset it.
+              clearing your browser’s site data will reset it.
             </p>
 
             <AnalyticsPreference />
@@ -405,7 +405,7 @@ export default function PrivacyPage() {
 
             <p>
               You also have the right to raise a concern with the UK
-              Information Commissioner&apos;s Office (ICO).
+              Information Commissioner’s Office (ICO).
             </p>
 
             <p>
@@ -416,7 +416,7 @@ export default function PrivacyPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Information Commissioner&apos;s Office
+                Information Commissioner’s Office
               </a>
               .
             </p>

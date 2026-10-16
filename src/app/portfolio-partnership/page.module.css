@@ -9,7 +9,7 @@
  * 07. Who it is for
  * 08. Out-of-pocket costs and ownership
  * 09. FAQ
- * 10. Contact
+ * 10. Recent work and contact
  * 11. Responsive layouts and reduced motion
  */
 
@@ -621,6 +621,18 @@
   line-height: 1.5;
 }
 
+.fitNote {
+  margin: 2rem 0 0;
+  color: var(--ppp-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.fitNote strong {
+  color: var(--ppp-plum);
+}
+
 /* 08. Out-of-pocket costs and ownership */
 
 .outOfPocket {
@@ -667,6 +679,13 @@
   color: var(--ppp-muted);
   font-size: 0.84rem;
   line-height: 1.55;
+}
+
+.costNote {
+  margin: 0.75rem 0 0;
+  color: var(--ppp-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 .ownershipCard {
@@ -770,7 +789,76 @@
   line-height: 1.65;
 }
 
-/* 10. Contact */
+/* 10. Recent work and contact */
+
+.recentWork {
+  padding-block: 3rem;
+  background: var(--ppp-cream);
+  border-top: 1px solid var(--ppp-line);
+}
+
+.recentWorkGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recentWorkItem {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--ppp-text);
+  text-decoration: none;
+}
+
+.recentWorkMedia {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  margin-bottom: 0.55rem;
+  place-items: center;
+  border: 1px solid var(--ppp-line);
+  border-radius: 0.55rem;
+  background: var(--ppp-blush-light);
+}
+
+.recentWorkMedia img {
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 220ms ease;
+}
+
+.recentWorkMediaText {
+  padding: 1rem;
+  border-color: transparent;
+  background: var(--ppp-plum);
+  color: #fffafc;
+  font-family: var(--ppp-heading-font);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  text-align: center;
+}
+
+.recentWorkItem strong {
+  color: var(--ppp-plum);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.recentWorkLabel {
+  color: var(--ppp-muted);
+  font-size: 0.78rem;
+}
+
+.recentWorkItem:hover .recentWorkMedia img {
+  transform: scale(1.03);
+}
+
+.recentWorkItem:hover strong {
+  color: var(--ppp-berry-dark);
+}
 
 .contact {
   position: relative;
@@ -855,6 +943,13 @@
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25em;
+}
+
+.applicationWindow {
+  margin: 0;
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .contactSecondary:hover {
@@ -1112,6 +1207,10 @@
 
   .contactActions {
     align-items: flex-start;
+  }
+
+  .recentWorkGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

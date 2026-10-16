@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Kawari Company Website Case Study",
   description:
     "A custom consultancy website designed and developed by Iris & Oak for Kawari Company, a specialist practice working across safeguarding, regulation, education and independent review.",
-  alternates: {
-    canonical: "/work/kawari-company",
-  },
-};
+  path: "/work/kawari-company",
+});
 
 export default function KawariCompanyPage() {
   return (

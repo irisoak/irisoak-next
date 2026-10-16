@@ -234,7 +234,9 @@ a {
   -webkit-backdrop-filter: blur(16px);
 }
 
-.ionav__logo {
+/* The footer brand mark shares the header logo lockup. */
+.ionav__logo,
+.iofooter__logo {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -336,7 +338,8 @@ a {
     padding: 0.45rem 0.55rem 0.45rem 1rem;
   }
 
-  .ionav__logo {
+  .ionav__logo,
+  .iofooter__logo {
     font-size: 1.2rem;
     font-family: var(--font-heading-family);
     letter-spacing: 0.18em;
@@ -352,15 +355,12 @@ a {
     place-items: center;
     width: 2.75rem;
     height: 2.75rem;
+    padding: 0;
     border: 1px solid rgb(33 19 36 / 14%);
     border-radius: 50%;
+    background: transparent;
     color: #211324;
     cursor: pointer;
-    list-style: none;
-  }
-
-  .ionav__menu-button::-webkit-details-marker {
-    display: none;
   }
 
   .ionav__menu-icon {
@@ -393,15 +393,15 @@ a {
     transform: translateY(0.3rem);
   }
 
-  .ionav__mobile[open] .ionav__menu-icon span:nth-child(1) {
+  .ionav__mobile[data-open="true"] .ionav__menu-icon span:nth-child(1) {
     transform: rotate(45deg);
   }
 
-  .ionav__mobile[open] .ionav__menu-icon span:nth-child(2) {
+  .ionav__mobile[data-open="true"] .ionav__menu-icon span:nth-child(2) {
     opacity: 0;
   }
 
-  .ionav__mobile[open] .ionav__menu-icon span:nth-child(3) {
+  .ionav__mobile[data-open="true"] .ionav__menu-icon span:nth-child(3) {
     transform: rotate(-45deg);
   }
 
@@ -427,6 +427,10 @@ a {
     box-shadow: 0 1rem 2.5rem rgb(47 22 54 / 14%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+  }
+
+  .ionav__mobile-panel[hidden] {
+    display: none;
   }
 
   .ionav__mobile-panel .ionav__list {
@@ -1331,8 +1335,6 @@ a.iowork__card:hover {
 
 .iofooter__logo {
   color: var(--colour-background);
-  font-family: var(--font-heading-family);
-  font-size: 1.4rem;
   font-weight: 400;
   text-decoration: none;
 }
@@ -1462,7 +1464,6 @@ a.iowork__card:hover {
   --services-plum-hover: #8a536b;
   --services-plum-soft: #eee8ee;
   --services-card: #fffdfb;
-  --services-beige: #f1ede6;
 
   overflow: hidden;
   background: var(--colour-background);
@@ -1494,13 +1495,7 @@ a.iowork__card:hover {
 .services-page__hero {
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(
-      90deg,
-      var(--services-beige) 0%,
-      var(--services-beige) 50%,
-      color-mix(in srgb, var(--services-beige) 70%, #d6cad4) 100%
-    );
+  background: var(--colour-background);
 }
 
 .services-page__hero-inner {
@@ -1620,6 +1615,7 @@ a.iowork__card:hover {
   margin: 0;
   color: var(--colour-text-secondary);
   font-size: 0.82rem;
+  font-weight: 600;
   line-height: 1.55;
 }
 
@@ -1657,32 +1653,6 @@ a.iowork__card:hover {
   box-shadow: 0 0.75rem 1.5rem rgb(33 19 36 / 12%);
 }
 
-.services-page__price-card--featured {
-  border: 2px solid var(--services-plum);
-  background: linear-gradient(
-    155deg,
-    var(--services-plum-soft),
-    var(--services-card) 76%
-  );
-}
-
-.services-page__popular-badge {
-  position: absolute;
-  top: -0.72rem;
-  left: 50%;
-  padding: 0.32rem 0.8rem;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: var(--services-plum);
-  color: #fff;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
 .services-page__price-card h3 {
   margin: 0;
   color: var(--colour-text-primary);
@@ -1704,7 +1674,7 @@ a.iowork__card:hover {
   min-height: 2.7rem;
   margin: 0;
   color: var(--colour-text-secondary);
-  font-family: var(--font-heading-family);
+  font-family: var(--font-body-family);
   font-size: 0.9rem;
   font-style: italic;
   line-height: 1.4;
@@ -1775,20 +1745,14 @@ a.iowork__card:hover {
   color: #fff;
 }
 
-.services-page__price-card--featured .services-page__card-link {
-  background: var(--services-plum);
-  color: #fff;
-}
-
-.services-page__price-card--featured .services-page__card-link:hover {
-  border-color: var(--services-plum-hover);
-  background: var(--services-plum-hover);
-}
-
 /* Website refresh */
 
 .services-page__refresh-band {
-  background: var(--services-beige);
+  background: color-mix(
+    in srgb,
+    var(--services-plum-soft) 65%,
+    var(--colour-background)
+  );
 }
 
 .services-page__refresh {
@@ -2138,7 +2102,11 @@ Web apps and integrations
 .services-page__also-available {
   margin-inline: calc(50% - 50vw);
   padding-block: 1.5rem 1.7rem;
-  background: var(--services-beige);
+  background: color-mix(
+    in srgb,
+    var(--services-plum-soft) 65%,
+    var(--colour-background)
+  );
 }
 
 .services-page__also-heading {
@@ -2152,7 +2120,7 @@ Web apps and integrations
 }
 
 .services-page__also-heading > p {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 
 .services-page__also-list {
@@ -2250,7 +2218,7 @@ Web apps and integrations
   padding-top: 0.8rem;
   border-top: 1px solid color-mix(in srgb, var(--services-plum) 25%, transparent);
   color: var(--colour-text-secondary);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   line-height: 1.45;
 }
 
@@ -2261,6 +2229,22 @@ Web apps and integrations
 /* ========================================
    Responsive layout
 ======================================== */
+
+/* Single-column cards: place the app preview below the copy, not over it. */
+@media (max-width: 39.99rem) {
+  .services-page__web-apps-copy {
+    max-width: none;
+  }
+
+  .services-page__app-preview {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(100%, 15rem);
+    height: 10rem;
+    margin: 1.25rem 0 0 auto;
+  }
+}
 
 @media (min-width: 40rem) {
   .services-page__hero-inner {
@@ -2451,12 +2435,12 @@ Web apps and integrations
   line-height: 1.65;
 }
 
-@media (min-width: 768px) {
-  .faq__answer p,
+/* Keep the Work intro on one line only where it fits without clipping. */
+@media (min-width: 1100px) {
   .work-page__intro {
     white-space: nowrap;
   }
-}  
+}
 
 /* ========================================
    Project Sections
@@ -2632,8 +2616,130 @@ Web apps and integrations
 }
 
 /* ========================================
+   Concepts
+======================================== */
+
+.work-page__concepts {
+  padding-block: 2.5rem 3rem;
+  border-top: 1px solid var(--colour-border);
+}
+
+.work-page__concepts-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2em;
+  color: var(--colour-text-primary);
+  font-family: var(--font-heading-family);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.work-page__concepts-link span {
+  font-size: 0.5em;
+  transition: transform 160ms ease;
+}
+
+.work-page__concepts-link:hover {
+  color: var(--colour-button-hover);
+}
+
+.work-page__concepts-link:hover span {
+  transform: translateX(0.15em);
+}
+
+/* ========================================
    Contact Prompt
 ======================================== */
+
+/* Concepts carousel: swipe or scroll on smaller screens, arrows on desktop */
+
+.concept-carousel {
+  position: relative;
+  margin-top: 1.75rem;
+}
+
+.concept-carousel__controls {
+  display: none;
+}
+
+.concept-carousel__track {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  list-style: none;
+}
+
+.concept-carousel__item {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+}
+
+.concept-carousel__item .work-page__project-link:hover .work-page__project-screenshot {
+  transform: scale(1.025);
+}
+
+@media (min-width: 48rem) {
+  .concept-carousel__item {
+    flex-basis: calc((100% - 1rem) / 1.6);
+  }
+}
+
+@media (min-width: 64rem) {
+  .concept-carousel__controls {
+    position: absolute;
+    top: -4.25rem;
+    right: 0;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .concept-carousel__button {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--colour-border);
+    border-radius: 50%;
+    background: var(--colour-background);
+    color: var(--colour-text-primary);
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .concept-carousel__button:hover:not(:disabled) {
+    border-color: var(--colour-brand-primary);
+    background: var(--colour-brand-primary);
+    color: var(--colour-background);
+  }
+
+  .concept-carousel__button:disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .concept-carousel__item {
+    flex-basis: calc((100% - 2rem) / 2.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept-carousel__item .work-page__project-link:hover .work-page__project-screenshot {
+    transform: none;
+  }
+}
 
 .work-page__contact {
   padding-block: 3rem 1rem;
@@ -2898,6 +3004,80 @@ Web apps and integrations
   .privacy-page__rights-callout {
     padding-inline: 1rem 0;
   }
+}
+
+/* ========================================
+   Not Found
+======================================== */
+
+.not-found {
+  padding-block: 5rem 7rem;
+  text-align: center;
+}
+
+.not-found__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--colour-brand-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.not-found h1 {
+  margin: 0;
+  color: var(--colour-text-primary);
+  font-family: var(--font-heading-family);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.not-found__text {
+  max-width: 34rem;
+  margin: 1.5rem auto 0;
+  color: var(--colour-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.25rem;
+}
+
+.not-found__primary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  background: var(--colour-brand-primary);
+  color: var(--colour-background);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+.not-found__primary:hover {
+  background: var(--colour-button-hover);
+}
+
+.not-found__secondary {
+  color: var(--colour-brand-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.not-found__secondary:hover {
+  color: var(--colour-button-hover);
 }
 
 /* ========================================
