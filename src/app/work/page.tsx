@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ConceptCarousel from "@/components/work/ConceptCarousel";
 
 export const metadata: Metadata = {
   title: "Selected Web Design & Development Work",
@@ -181,7 +182,7 @@ export default function WorkPage() {
           <h1>From the Studio</h1>
 
           <p className="work-page__intro">
-            Client projects, concepts and personal builds, 
+            Client projects, concept websites and personal builds,
             each shaped around the people who use them.
           </p>
         </header>
@@ -199,6 +200,17 @@ export default function WorkPage() {
           description="Independent builds in product, design and engineering."
           projects={portfolioProjects}
         />
+
+        <section className="work-page__concepts" aria-label="Concepts">
+          <a
+            className="work-page__concepts-link"
+            href="https://concepts.irisoak.dev"
+          >
+            Concept Websites <span aria-hidden="true">→</span>
+          </a>
+
+          <ConceptCarousel />
+        </section>
 
         <section className="work-page__contact">
           <p>Have a project in mind?</p>

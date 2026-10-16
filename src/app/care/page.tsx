@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import {
   Activity,
@@ -70,37 +71,37 @@ const faqs = [
   {
     question: "What does the £149 Site Check-up include?",
     answer:
-      "An 18-check review of up to five key pages, an overall letter grade, prioritised findings and practical next steps. The report explains what was checked and what shaped the grade.",
+      "A review of up to five key pages across 18 checks, covering speed, security, SEO, accessibility and how your key journeys work. You'll get an overall grade, prioritised findings and clear next steps, with an explanation of what shaped the grade.",
   },
   {
     question: "How soon will I receive the report?",
     answer:
-      "Your report will normally be ready within five working days after I have the website URL and any agreed access needed for the review.",
+      "Usually within five working days of receiving your website address and any access we've agreed. I'll let you know if anything might take longer.",
   },
   {
     question: "Which platforms do you support?",
     answer:
-      "Ongoing Core and Growth care is for custom-built and WordPress websites. I can review Squarespace, Wix, GoDaddy Website Builder, Shopify or Webflow when you need a specific check, subject to what the platform allows.",
+      "I can review websites on most platforms, including custom-built sites, WordPress, Squarespace, Wix, GoDaddy Website Builder, Shopify and Webflow. Some platforms limit what can be checked, and if so, I'll explain that in your report.",
   },
   {
     question: "What do you need from me?",
     answer:
-      "Start with your website URL and platform. If a check needs account access, I will explain the access required. I never need or ask for your password; you can invite me with an appropriate account or collaborator role.",
+      "Just your website address and the platform it's built on. If a check needs account access, I'll explain exactly what's needed and why. I'll never ask for your password. Instead, you can invite me as a collaborator or team member, which keeps your account secure.",
   },
   {
     question: "What if my website is unavailable during the review?",
     answer:
-      "I will record what I can verify, note the time and impact of the outage, and agree a follow-up check with you if the affected checks cannot be completed.",
+      "I'll check everything I can, note when the outage happened and how it affected the review, and arrange a follow-up check with you for anything I couldn't complete.",
   },
   {
     question: "Can I share the report with my developer?",
     answer:
-      "Yes. The report is yours to share with your developer or another person helping with your website.",
+      "Of course. The report is yours to share with your developer, or anyone else who helps with your website.",
   },
   {
-    question: "Can you fix the issues in the report?",
+    question: "Can you fix the issues in the site-check up report?",
     answer:
-      "Yes. Any implementation work is scoped and quoted separately before it begins. A follow-up review and updated grade are also quoted separately if you would like one.",
+      "Yes. I'd be happy to provide a quote for one-off fixes, please reach out to me via email and. If you think your website needs ongoing support, a care plan may suit your needs better.",
   },
   {
     question: "How do cancellations and refunds work?",
@@ -151,7 +152,7 @@ export default function CarePage() {
       <section className="care-hero" id="overview" aria-labelledby="care-title">
         <div className="care-hero__copy">
           <p className="care-eyebrow">Website care &amp; site check-ups</p>
-          <h1 id="care-title">A healthier website, without the admin.</h1>
+          <h1 id="care-title">A healthier website,{" "}<span className="care-hero__title-line">without the admin.</span></h1>
           <p className="care-hero__intro">
             Clear website reviews and practical ongoing care for custom-built and WordPress websites.
           </p>
@@ -196,8 +197,7 @@ export default function CarePage() {
             <Link className="care-button care-button--outline" href="/#contact">Discuss Core <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
 
-          <article className="care-plan-card care-plan-card--popular">
-            <span className="care-plan-card__badge">Most popular</span>
+          <article className="care-plan-card">
             <p className="care-plan-card__type">Ongoing website care</p>
             <h3>Growth</h3>
             <p className="care-plan-card__price">£99 <span>/ month</span></p>
@@ -241,27 +241,30 @@ export default function CarePage() {
           <p>Every report covers the same four areas. Checks that do not apply to your platform are identified rather than counted as passed.</p>
         </div>
         <div className="care-check-groups">
-          {checkGroups.map(({ title, icon: Icon, checks }) => (
-            <details className="care-check-group" key={title}>
-              <summary><span className="care-check-group__title"><Icon size={20} aria-hidden="true" />{title}</span><span className="care-check-group__count">{checks.length} checks</span></summary>
-              <ol>{checks.map((check) => <li key={check}>{check}</li>)}</ol>
-            </details>
-          ))}
+          {checkGroups.map(({ title, icon: Icon, checks }) => {
+            const heading = <><span className="care-check-group__title"><Icon size={20} aria-hidden="true" />{title}</span><span className="care-check-group__count">{checks.length} checks</span></>;
+            const list = <ol>{checks.map((check) => <li key={check}>{check}</li>)}</ol>;
+
+            /* Collapsible on smaller screens; always open on desktop (see care.css). */
+            return (
+              <Fragment key={title}>
+                <details className="care-check-group care-check-group--collapsible">
+                  <summary>{heading}</summary>
+                  {list}
+                </details>
+                <div className="care-check-group care-check-group--expanded">
+                  <div className="care-check-group__header">{heading}</div>
+                  {list}
+                </div>
+              </Fragment>
+            );
+          })}
         </div>
       </section>
 
       <section className="care-grade" aria-labelledby="grade-title">
         <div className="care-grade__letter" aria-hidden="true">A–F</div>
         <div><p className="care-eyebrow">A useful score, with context</p><h2 id="grade-title">The letter tells a story. The findings explain it.</h2><p>Your report shows the overall grade alongside the checks behind it. A stronger grade means fewer or less significant issues were found; any grade comes with clear reasons and practical next steps.</p></div>
-      </section>
-
-      <section className="care-after care-section" aria-labelledby="after-title">
-        <div><p className="care-eyebrow">After your check-up</p><h2 id="after-title">Know what to do next.</h2><p>Use the report yourself, share it with your developer, or ask Iris &amp; Oak to scope the changes.</p></div>
-        <div className="care-after__steps">
-          <article><span>01</span><div><h3>Review the findings</h3><p>See what is working, what needs attention and which actions matter first.</p></div></article>
-          <article><span>02</span><div><h3>Choose how to act</h3><p>Make the changes yourself or request a separate implementation quote.</p></div></article>
-          <article><span>03</span><div><h3>Check progress</h3><p>A follow-up review and updated grade can be quoted separately once changes are complete.</p></div></article>
-        </div>
       </section>
 
       <section className="care-faq care-section" id="faqs" aria-labelledby="faq-title">
@@ -274,8 +277,10 @@ export default function CarePage() {
       <section className="care-cta" aria-labelledby="care-cta-title">
         <p className="care-eyebrow">A clear next step for your website</p>
         <h2 id="care-cta-title">Let’s make the next step easier.</h2>
-        <p>Tell me your website platform and what you would like help with. I’ll recommend the right starting point.</p>
-        <Link className="care-button" href="/#contact">Talk to Iris &amp; Oak <ArrowRight size={17} aria-hidden="true" /></Link>
+        <p>Tell me your website platform and what you would like help with.
+        <br />
+        I’ll recommend the right starting point.</p>
+        <Link className="care-button" href="/#contact">Get in touch <ArrowRight size={17} aria-hidden="true" /></Link>
       </section>
     </div>
   );

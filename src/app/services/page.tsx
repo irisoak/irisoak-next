@@ -43,7 +43,6 @@ const websitePackages = [
       "Basic page titles and descriptions",
       "Two revision rounds in total",
     ],
-    featured: true,
   },
   {
     name: "Bespoke",
@@ -130,7 +129,6 @@ type PackageCardProps = {
   tagline: string;
   includes?: string;
   features: string[];
-  featured?: boolean;
 };
 
 function PackageCard({
@@ -139,18 +137,9 @@ function PackageCard({
   tagline,
   includes,
   features,
-  featured = false,
 }: PackageCardProps) {
   return (
-    <article
-      className={`services-page__price-card${
-        featured ? " services-page__price-card--featured" : ""
-      }`}
-    >
-      {featured && (
-        <span className="services-page__popular-badge">Most popular</span>
-      )}
-
+    <article className="services-page__price-card">
       <h3>{name}</h3>
       <p className="services-page__price">{price}</p>
       <p className="services-page__tagline">{tagline}</p>
@@ -488,7 +477,8 @@ export default function ServicesPage() {
             <div className="services-page__api-note">
               <strong>Using something not listed?</strong>
               <span>
-                If it has an integration or API, I can usually connect it.
+                Most popular tools can be connected. Let me know which ones you use
+                and I’ll check what’s possible before quoting.
               </span>
             </div>
           </div>

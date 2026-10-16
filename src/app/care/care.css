@@ -5,7 +5,7 @@
  * 03. Plans and pricing
  * 04. Benefits and platform scope
  * 05. Site Check-up checklist
- * 06. Grade and next steps
+ * 06. Grade
  * 07. FAQs and closing contact section
  * 08. Responsive layouts and accessibility
  */
@@ -313,11 +313,6 @@
   background: var(--care-paper);
 }
 
-.care-plan-card--popular {
-  border: 1px solid var(--care-green-accent);
-  background: #edf3e9;
-}
-
 .care-plan-card__type {
   margin: 0 0 0.45rem;
   color: var(--care-muted);
@@ -392,27 +387,15 @@
 }
 
 .care-button--outline {
+  border: 1px solid var(--care-plum-deep);
   background: transparent;
-  color: var(--care-forest) !important;
+  color: var(--care-plum-deep) !important;
 }
 
 .care-button--outline:hover {
-  background: var(--care-forest);
+  border-color: var(--care-plum-deep);
+  background: var(--care-plum-deep);
   color: var(--care-paper) !important;
-}
-
-.care-plan-card__badge {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  padding: 0.3rem 0.55rem;
-  border-radius: 999px;
-  background: var(--care-forest);
-  color: white;
-  font-size: 0.63rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .care-plans__note {
@@ -543,6 +526,21 @@
   display: none;
 }
 
+.care-check-group__header {
+  display: flex;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  color: var(--care-forest-deep);
+  font-weight: 600;
+}
+
+.care-check-group--expanded {
+  display: none;
+}
+
 .care-check-group__title {
   display: inline-flex;
   align-items: center;
@@ -581,7 +579,7 @@
 }
 
 .care-grade__letter {
-  color: var(--care-paper);
+  color: var(--care-ink);
   font-family: var(--font-heading-family, Georgia, serif);
   font-size: clamp(3.5rem, 8vw, 5rem);
   letter-spacing: -0.06em;
@@ -589,72 +587,20 @@
 }
 
 .care-grade .care-eyebrow {
-  color: #d9e8d6;
+  color: var(--colour-brand-primary);
 }
 
 .care-grade h2 {
-  color: var(--care-paper);
+  color: var(--care-ink);
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
 }
 
 .care-grade p:last-child {
   max-width: 54rem;
   margin: 0.8rem 0 0;
-  color: #f1f4ef;
+  color: var(--care-muted);
   font-size: 0.9rem;
   line-height: 1.65;
-}
-
-/* Grade and next steps */
-.care-after {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 3rem;
-  padding-block: 4.5rem;
-}
-
-.care-after > div:first-child > p:last-child {
-  max-width: 28rem;
-  margin: 1rem 0 0;
-  color: var(--care-muted);
-  font-size: 0.95rem;
-}
-
-.care-after__steps {
-  display: grid;
-}
-
-.care-after__steps article {
-  display: grid;
-  grid-template-columns: 2.25rem minmax(0, 1fr);
-  gap: 1rem;
-  padding-block: 1rem;
-  border-bottom: 1px solid var(--care-line);
-}
-
-.care-after__steps article:first-child {
-  padding-top: 0;
-}
-
-.care-after__steps article > span {
-  color: var(--care-green-accent);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.care-after__steps h3 {
-  margin-bottom: 0.35rem;
-  font-family: var(--font-body-family, Arial, sans-serif);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.care-after__steps p {
-  margin: 0;
-  color: var(--care-muted);
-  font-size: 0.83rem;
-  line-height: 1.55;
 }
 
 /* FAQs and closing contact section */
@@ -721,6 +667,27 @@
 }
 
 /* Responsive layouts and accessibility */
+/* Desktop: hero heading on two lines and check lists always visible */
+@media (min-width: 64rem) {
+  .care-check-group--collapsible {
+    display: none;
+  }
+
+  .care-check-group--expanded {
+    display: block;
+  }
+
+  .care-hero h1 {
+    max-width: none;
+    font-size: clamp(3rem, 4.4vw, 4.6rem);
+    white-space: nowrap;
+  }
+
+  .care-hero__title-line {
+    display: block;
+  }
+}
+
 @media (max-width: 58rem) {
   .care-hero {
     grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
@@ -772,8 +739,7 @@
   }
 
   .care-section__heading,
-  .care-platforms,
-  .care-after {
+  .care-platforms {
     grid-template-columns: 1fr;
     align-items: start;
     gap: 1rem;
