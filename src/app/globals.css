@@ -2306,9 +2306,38 @@ Web apps and integrations
 }
 
 @media (min-width: 64rem) {
+  /*
+    The hero keeps the height it had with the four-line heading
+    (15.45rem plus 3.92 heading lines), so the illustration, which is
+    sized from the hero, stays exactly the same.
+  */
   .services-page__hero-inner {
-    min-height: 21rem;
+    min-height: calc(15.45rem + 3.92 * clamp(3rem, 6vw, 5rem));
     grid-template-columns: 1fr 1fr;
+  }
+
+  .services-page__hero-copy {
+    max-width: 36rem;
+    padding-block: 0;
+  }
+
+  .services-page__hero .services-page__eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .services-page__hero h1 {
+    max-width: none;
+    font-size: clamp(3rem, 4.4vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    white-space: nowrap;
+  }
+
+  .services-page__hero-lead {
+    max-width: 32rem;
+    margin-top: 1.4rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.65;
   }
 
   .services-page__hero-art {

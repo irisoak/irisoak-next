@@ -14,6 +14,7 @@ import {
   Smartphone,
   Wrench,
 } from "lucide-react";
+import CareEnquiryForm from "@/components/care/CareEnquiryForm";
 import "./care.css";
 
 export const metadata: Metadata = pageMetadata({
@@ -185,7 +186,7 @@ export default function CarePage() {
               <li><Check size={15} aria-hidden="true" /> Findings explained and prioritised</li>
               <li><Check size={15} aria-hidden="true" /> Report normally within five working days</li>
             </ul>
-            <Link className="care-button care-button--outline" href="/#contact">Ask about a check-up <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link className="care-button care-button--outline care-plan-card__cta--light" href="/#contact">Ask about a check-up <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
 
           <article className="care-plan-card">
@@ -195,7 +196,7 @@ export default function CarePage() {
             <p className="care-plan-card__annual">or £590 / year</p>
             <p className="care-plan-card__description">Routine maintenance and agreed essential checks for custom-built and WordPress websites.</p>
             <p className="care-plan-card__scope">The tasks included are confirmed for your site before you start.</p>
-            <Link className="care-button care-button--outline" href="/#contact">Discuss Core <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link className="care-button care-button--outline care-plan-card__cta--filled" href="/#contact">Discuss Core <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
 
           <article className="care-plan-card">
@@ -205,7 +206,7 @@ export default function CarePage() {
             <p className="care-plan-card__annual">or £990 / year</p>
             <p className="care-plan-card__description">More hands-on support for websites that need regular attention and agreed improvements.</p>
             <p className="care-plan-card__scope">The tasks and support level are confirmed for your site before you start.</p>
-            <Link className="care-button" href="/#contact">Discuss Growth <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link className="care-button care-plan-card__cta--light" href="/#contact">Discuss Growth <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
         </div>
         <p className="care-plans__note">Ongoing plans are for custom-built and WordPress sites. Check-up work for other platforms is available by request. Prices shown are the total amounts payable; VAT is not charged.</p>
@@ -275,13 +276,15 @@ export default function CarePage() {
         </div>
       </section>
 
-      <section className="care-cta" aria-labelledby="care-cta-title">
-        <p className="care-eyebrow">A clear next step for your website</p>
-        <h2 id="care-cta-title">Let’s make the next step easier.</h2>
-        <p>Tell me your website platform and what you would like help with.
-        <br />
-        I’ll recommend the right starting point.</p>
-        <Link className="care-button" href="/#contact">Get in touch <ArrowRight size={17} aria-hidden="true" /></Link>
+      <section className="care-cta" id="care-enquiry" aria-labelledby="care-cta-title">
+        <div className="care-cta__intro">
+          <p className="care-eyebrow">A clear next step for your website</p>
+          <h2 id="care-cta-title">Let’s make the next step easier.</h2>
+          <p>Tell me your website platform and what you would like help with.
+          <br />
+          I’ll recommend the right starting point.</p>
+        </div>
+        <CareEnquiryForm />
       </section>
     </div>
   );

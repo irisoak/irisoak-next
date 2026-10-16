@@ -213,14 +213,15 @@ const outOfPocketCosts = [
 
 /*
   Recent work shown near the final CTA. Destinations and images are existing
-  pages and assets; concepts.irisoak.dev has no screenshot in the project, so
-  it is shown as a text tile.
+  pages and assets. The concepts screenshot is a copy of the concepts
+  project's public/images/concepts/homepage.png.
 */
 const recentWork: {
   title: string;
   label: string;
   href: string;
   image?: string;
+  imageAlt?: string;
   newTab?: boolean;
 }[] = [
   {
@@ -233,18 +234,21 @@ const recentWork: {
     title: "Iris & Oak Concepts",
     label: "concepts.irisoak.dev",
     href: "https://concepts.irisoak.dev",
+    image: "/images/concepts/iris-oak-concepts-homepage.png",
+    imageAlt:
+      "Iris & Oak Concepts homepage showing the Concept websites heading and previews of the Willow & Gray and Northline Auto concepts",
   },
   {
     title: "Northline Automotive",
     label: "Concept website",
-    href: "https://concepts.irisoak.dev/northline-auto",
+    href: "https://concepts.irisoak.dev/automotivegarage",
     image: "/images/concepts/northline-automotive/northline-automotive-concept.png",
     newTab: true,
   },
   {
     title: "Marlow & Bean",
     label: "Café concept",
-    href: "https://concepts.irisoak.dev/marlow-and-bean",
+    href: "https://concepts.irisoak.dev/marlowandbeancafe",
     image: "/images/concepts/marlow-bean/marlow-bean-concept.png",
     newTab: true,
   },
@@ -663,7 +667,7 @@ export default function PortfolioPartnershipPage() {
             </h2>
 
             <ul className={styles.recentWorkGrid}>
-              {recentWork.map(({ title, label, href, image, newTab }) => (
+              {recentWork.map(({ title, label, href, image, imageAlt, newTab }) => (
                 <li key={title}>
                   <Link
                     className={styles.recentWorkItem}
@@ -681,7 +685,7 @@ export default function PortfolioPartnershipPage() {
                       {image ? (
                         <Image
                           src={image}
-                          alt=""
+                          alt={imageAlt ?? ""}
                           fill
                           sizes="(max-width: 48rem) 50vw, 20vw"
                         />

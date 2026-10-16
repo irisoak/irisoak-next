@@ -430,6 +430,13 @@ export async function POST(request: Request) {
     if (service === "care") {
       serviceDetailsHtml = `
         <p>
+          <strong>Website</strong><br />
+          ${escapeHtml(
+            formatOptionalValue(currentWebsiteUrl)
+          )}
+        </p>
+
+        <p>
           <strong>Current platform</strong><br />
           ${escapeHtml(
             formatOptionalValue(
@@ -491,7 +498,9 @@ export async function POST(request: Request) {
 
     const projectLabel = isPortfolioPartnership
       ? "Business and website goals"
-      : "Project summary";
+      : service === "care"
+        ? "Help needed"
+        : "Project summary";
 
     /*
       The partnership enquiry comes from the short contact form, so the
