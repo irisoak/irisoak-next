@@ -4,7 +4,7 @@ import { PHONE_VIEWPORT } from "./helpers";
 const NAV_LINKS = [
   { name: "Work", path: "/work" },
   { name: "Services", path: "/services" },
-  { name: "Care", path: "/care" },
+  { name: "Website Care", path: "/care" },
 ];
 
 test.describe("Site navigation on desktop", () => {

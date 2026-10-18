@@ -3,13 +3,20 @@ import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import {
   ArrowRight,
+  BarChart3,
   CalendarDays,
   Check,
+  Clock,
   CreditCard,
   Layers,
   Mail,
+  MessageCircle,
+  Plus,
   Settings2,
+  ShoppingBag,
   Star,
+  Workflow,
+  type LucideIcon,
 } from "lucide-react";
 
 export const metadata: Metadata = pageMetadata({
@@ -23,18 +30,20 @@ const websitePackages = [
   {
     name: "Foundation",
     price: "£395",
-    tagline: "Built on a proven layout, adapted to your brand.",
+    tagline: "A polished starting point, shaped around your brand.",
+    includes: "What’s included:",
     features: [
       "One-page website with up to five sections",
-      "You provide the text, images and brand assets",
       "Contact or booking link",
       "One revision round",
     ],
+    timeline: "Ready in about 1–2 weeks",
   },
   {
     name: "Signature",
-    price: "£795",
-    tagline: "Layouts tailored to your business.",
+    price: "£695",
+    tagline:
+      "More room to tell your story, with a layout shaped around your business.",
     includes: "Everything in Foundation, plus:",
     features: [
       "Website of up to three pages",
@@ -42,17 +51,21 @@ const websitePackages = [
       "Basic page titles and descriptions",
       "Two revision rounds in total",
     ],
+    timeline: "Ready in about 2 weeks",
+    popular: true,
   },
   {
     name: "Bespoke",
-    price: "£1,295",
-    tagline: "Fully custom, designed around your customers.",
+    price: "£995",
+    tagline: "A more tailored website, shaped around your goals.",
     includes: "Everything in Signature, plus:",
     features: [
       "Website of up to five pages",
       "Custom visual direction and page layouts",
       "Planning session for page structure and customer journey",
+      "Three revision rounds in total",
     ],
+    timeline: "Ready in about 3–4 weeks",
   },
 ];
 
@@ -60,25 +73,27 @@ const refreshPackages = [
   {
     name: "Polish",
     price: "£325",
-    tagline:
-      "Keeps your current structure and design, and improves how it looks.",
+    tagline: "A visual tidy-up of your existing pages.",
+    includes: "What’s included:",
     features: [
       "Visual updates to up to three existing pages",
       "Updated spacing, typography, colours and image placement",
-      "Mobile layout fixes",
+      "Fixes for mobile layout issues",
       "One revision round",
     ],
   },
   {
     name: "Refine",
     price: "£625",
-    tagline: "Keeps your design and improves how it works.",
+    tagline: "A visual tidy-up, plus better flow and navigation.",
     includes: "Everything in Polish, plus:",
     features: [
       "Refresh of up to five existing pages",
       "Improved page flow, navigation and calls to action",
-      "Updated mobile layouts",
+      "Mobile layouts reworked to match the new flow",
+      "One revision round",
     ],
+    popular: true,
   },
   {
     name: "Redesign",
@@ -102,24 +117,54 @@ const integrationPrices = [
 
 const businessToolFeatures = [
   "One clearly defined workflow",
-  "Booking, calendar, invoicing or CRM automation",
+  "Automation between your calendar, invoicing or CRM",
   "A simple dashboard or report, where useful",
   "Testing, setup notes and handover",
 ];
 
-const otherIntegrations = [
-  "Live chat & WhatsApp",
-  "Google Business Profile & Maps",
-  "Analytics",
-  "Online ordering & click-and-collect",
-  "Event ticketing",
-  "Memberships & classes",
-  "Calendar syncing",
-  "Invoicing (Xero, QuickBooks)",
-  "CRM & enquiry tracking",
-  "Automatic confirmation emails",
-  "Shop & product listings",
-  "Zapier & Make workflows",
+const addOnGroups: {
+  title: string;
+  icon: LucideIcon;
+  items: string[];
+  seeBusinessTools?: boolean;
+  note?: string;
+}[] = [
+  {
+    title: "Selling online",
+    icon: ShoppingBag,
+    items: [
+      "Online ordering & click-and-collect",
+      "Shop & product listings",
+      "Event ticketing",
+      "Memberships & classes",
+    ],
+  },
+  {
+    title: "Customer contact",
+    icon: MessageCircle,
+    items: [
+      "Live chat & WhatsApp",
+      "Google Business Profile & Maps",
+      "CRM & enquiry tracking",
+    ],
+  },
+  {
+    title: "Automation",
+    icon: Workflow,
+    seeBusinessTools: true,
+    note: "Larger or multi-step workflows may be scoped as a Business tools project instead.",
+    items: [
+      "Calendar syncing",
+      "Automatic confirmation emails",
+      "Invoicing (Xero, QuickBooks)",
+      "Zapier & Make workflows",
+    ],
+  },
+  {
+    title: "Insights",
+    icon: BarChart3,
+    items: ["Analytics"],
+  },
 ];
 
 type PackageCardProps = {
@@ -128,6 +173,8 @@ type PackageCardProps = {
   tagline: string;
   includes?: string;
   features: string[];
+  timeline?: string;
+  popular?: boolean;
 };
 
 function PackageCard({
@@ -136,9 +183,15 @@ function PackageCard({
   tagline,
   includes,
   features,
+  timeline,
+  popular = false,
 }: PackageCardProps) {
   return (
     <article className="services-page__price-card">
+      {popular && (
+        <span className="services-page__popular-badge">Most popular</span>
+      )}
+
       <h3>{name}</h3>
       <p className="services-page__price">{price}</p>
       <p className="services-page__tagline">{tagline}</p>
@@ -155,6 +208,13 @@ function PackageCard({
           </li>
         ))}
       </ul>
+
+      {timeline && (
+        <p className="services-page__timeline">
+          <Clock size={13} strokeWidth={2} aria-hidden="true" />
+          {timeline}
+        </p>
+      )}
 
       <Link className="services-page__card-link" href="/#contact">
         Get started <ArrowRight size={15} aria-hidden="true" />
@@ -255,7 +315,7 @@ export default function ServicesPage() {
             <div>
               <p className="services-page__eyebrow">Website services</p>
               <h2 id="website-services-heading">
-                Beautiful websites, built for your business.
+                Websites built around your business.
               </h2>
             </div>
             <p>
@@ -268,6 +328,18 @@ export default function ServicesPage() {
             {websitePackages.map((plan) => (
               <PackageCard key={plan.name} {...plan} />
             ))}
+          </div>
+
+          <div className="services-page__package-notes">
+            <p>
+              All packages: you provide the text and images, or ask about
+              copywriting support.
+            </p>
+            <p>
+              Every website is mobile-friendly, built with accessibility in
+              mind, and includes launch support. Pay in full or split in 2, 3
+              or 4 instalments.
+            </p>
           </div>
         </section>
       </div>
@@ -294,10 +366,21 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <p className="services-page__refresh-note">
-              All refreshes stay on your current platform. Migrations or
-              rebuilds are quoted separately.
-            </p>
+            <div className="services-page__package-notes">
+              <p className="services-page__package-note--strong">
+                Not sure whether to refresh or rebuild? A £149{" "}
+                <Link href="/care#plans">Site Check-up</Link> will tell you.
+              </p>
+              <p className="services-page__refresh-note">
+                On builder platforms like Squarespace or Wix, some changes
+                depend on what the template allows. I’ll confirm this before
+                quoting.
+              </p>
+              <p className="services-page__refresh-note">
+                All refreshes stay on your current platform. Migrations or
+                rebuilds are quoted separately.
+              </p>
+            </div>
           </section>
         </div>
       </section>
@@ -323,11 +406,11 @@ export default function ServicesPage() {
               </span>
 
               <p className="services-page__starting-price">
-                <strong>Web apps</strong> from <b>£1,200</b>
+                From <b>£1,200</b>
               </p>
               <p className="services-page__web-apps-intro">
-                A custom app your customers or users interact with, such as a client 
-                portal, member area, quote calculator or simple booking app.
+                A custom app your customers or users interact with, such as a
+                client portal, member area or quote calculator.
               </p>
 
               <ul className="services-page__compact-list">
@@ -336,6 +419,11 @@ export default function ServicesPage() {
                 <li><Check size={13} aria-hidden="true" />Responsive layout for desktop, tablet and mobile</li>
                 <li><Check size={13} aria-hidden="true" />Testing and handover for the agreed build</li>
               </ul>
+
+              <p className="services-page__scope-note">
+                Accounts, payments, multiple user roles and integrations are
+                scoped separately.
+              </p>
             </div>
 
             <div className="services-page__app-preview" aria-hidden="true">
@@ -367,12 +455,15 @@ export default function ServicesPage() {
             className="services-page__integrations"
             aria-labelledby="integrations-heading"
           >
-            <h2 id="integrations-heading">
-              Bookings, payments &amp; integrations
-            </h2>
+            <div className="services-page__service-heading">
+              <h2 id="integrations-heading">
+                Bookings, payments &amp; integrations
+              </h2>
+              <span className="services-page__heading-rule" />
+            </div>
             <p>
-              Connect your website to the tools you use, so everything works
-              together smoothly.
+              Add the tools you use to your website, such as bookings,
+              payments, newsletters and reviews, so everything works together.
             </p>
 
             <ul className="services-page__integration-list">
@@ -380,10 +471,23 @@ export default function ServicesPage() {
                 <li key={name}>
                   <Icon size={18} strokeWidth={1.6} aria-hidden="true" />
                   <span>{name}</span>
-                  <strong>from £{price.replace("£", "")}</strong>
+                  <span className="services-page__integration-price">
+                    from {price}
+                  </span>
                 </li>
               ))}
             </ul>
+
+            <p className="services-page__integration-example">
+              e.g. a Calendly booking widget, Stripe checkout or Mailchimp
+              sign-up.
+            </p>
+
+            <p className="services-page__scope-note">
+              Prices are for adding to an existing or new website. Subscription
+              fees for third-party tools, like Stripe or Mailchimp, are paid
+              directly by you.
+            </p>
           </article>
         </section>
 
@@ -400,25 +504,30 @@ export default function ServicesPage() {
             <span className="services-page__round-icon" aria-hidden="true">
               <Settings2 size={21} strokeWidth={1.6} />
             </span>
-            <div>
-              <p className="services-page__business-price">
-                <strong>Business tools</strong> from <b>£900</b>
-              </p>
-              <p>
-                Automate routine admin across the tools you already use, 
-                like booking confirmations, enquiry follow-ups or invoices.
-              </p>
-            </div>
+            <p className="services-page__business-price">
+              From <b>£900</b>
+            </p>
+            <p>
+              Automate routine admin across the tools you already use, like
+              booking confirmations, enquiry follow-ups or invoices.
+            </p>
           </div>
 
-          <ul className="services-page__business-list">
-            {businessToolFeatures.map((feature) => (
-              <li key={feature}>
-                <Check size={13} aria-hidden="true" />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="services-page__business-details">
+            <ul className="services-page__business-list">
+              {businessToolFeatures.map((feature) => (
+                <li key={feature}>
+                  <Check size={13} aria-hidden="true" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="services-page__scope-note">
+              Covers one workflow between up to two tools. Larger workflows and
+              data migration are quoted separately.
+            </p>
+          </div>
 
           <svg
             className="services-page__business-art"
@@ -445,19 +554,53 @@ export default function ServicesPage() {
                 <span>support your business.</span>
               </h2>
             </div>
-            <p>Popular add-ons and integrations, tailored to your needs.</p>
+            <p>
+              Popular add-ons and integrations. These can be added to any
+              project and are quoted individually.
+            </p>
           </div>
 
-          <ul className="services-page__also-list">
-            {otherIntegrations.map((item) => (
-              <li key={item}>
-                <span className="services-page__also-check">
-                  <Check size={12} strokeWidth={2.3} aria-hidden="true" />
-                </span>
-                <span>{item}</span>
-              </li>
+          <div className="services-page__addon-groups">
+            {addOnGroups.map(({ title, icon: Icon, items, seeBusinessTools, note }) => (
+              <section
+                className="services-page__addon-group"
+                key={title}
+                aria-label={title}
+              >
+                <h3>
+                  <Icon size={16} strokeWidth={1.7} aria-hidden="true" />
+                  <span>
+                    {title}
+                    {seeBusinessTools && (
+                      <>
+                        {" "}
+                        <span className="services-page__addon-see">
+                          (see{" "}
+                          <a href="#business-tools-heading">Business tools</a>)
+                        </span>
+                      </>
+                    )}
+                  </span>
+                </h3>
+
+                <ul className="services-page__also-list">
+                  {items.map((item) => (
+                    <li key={item}>
+                      <Plus
+                        className="services-page__addon-marker"
+                        size={12}
+                        strokeWidth={2.2}
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {note && <p className="services-page__addon-note">{note}</p>}
+              </section>
             ))}
-          </ul>
+          </div>
 
           <div className="services-page__contact">
             <div className="services-page__contact-copy">

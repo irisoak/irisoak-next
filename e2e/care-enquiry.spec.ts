@@ -9,8 +9,10 @@ function careForm(page: Page) {
     name: form.getByLabel("Your name"),
     email: form.getByLabel("Email address"),
     website: form.getByLabel("Website URL"),
+    platform: form.getByLabel("Website platform"),
+    interest: form.getByLabel("I’m interested in"),
     help: form.getByLabel("What would you like help with?"),
-    submit: form.getByRole("button", { name: /Send Care enquiry/ }),
+    submit: form.getByRole("button", { name: /Send enquiry/ }),
     status: form.getByRole("status"),
   };
 }
@@ -20,6 +22,8 @@ async function fillCareEnquiry(page: Page) {
   await form.name.fill("Test Person");
   await form.email.fill("test@example.com");
   await form.website.fill("example.co.uk");
+  await form.platform.selectOption({ label: "WordPress" });
+  await form.interest.selectOption({ label: "Growth" });
   await form.help.fill("Monthly updates and a speed check, please.");
   return form;
 }
@@ -33,11 +37,49 @@ test.describe("Care enquiry form", () => {
     await form.submit.click();
 
     await expect(form.name).toBeFocused();
-    for (const field of [form.name, form.email, form.website, form.help]) {
+    for (const field of [
+      form.name,
+      form.email,
+      form.website,
+      form.platform,
+      form.interest,
+      form.help,
+    ]) {
       await expect(field).toHaveAttribute("required", "");
     }
 
     expect(requests).toHaveLength(0);
+  });
+
+  test("platform and interest dropdowns list the Care page options", async ({
+    page,
+  }) => {
+    await page.goto("/care#care-enquiry");
+    const form = careForm(page);
+
+    await expect(form.platform.locator("option:not([disabled])")).toHaveText([
+      "Custom-built",
+      "WordPress",
+      "Squarespace",
+      "Wix",
+      "GoDaddy Website Builder",
+      "Shopify",
+      "Webflow",
+      "Other",
+      "Not sure",
+    ]);
+    await expect(form.interest.locator("option:not([disabled])")).toHaveText([
+      "Site Check-up",
+      "Core",
+      "Growth",
+      "Not sure",
+    ]);
+
+    // Keyboard: the dropdown can be focused and changed by typing.
+    await form.platform.focus();
+    await expect(form.platform).toBeFocused();
+    await page.keyboard.type("Shop");
+    await expect(form.platform).toHaveValue("shopify");
   });
 
   test("valid details send a Care enquiry and show success", async ({ page }) => {
@@ -61,6 +103,8 @@ test.describe("Care enquiry form", () => {
     const body = requests[0].postData() ?? "";
     expect(body).toMatch(/name="service"\s+care/);
     expect(body).toMatch(/name="currentWebsiteUrl"\s+example\.co\.uk/);
+    expect(body).toMatch(/name="currentPlatform"\s+wordpress/);
+    expect(body).toMatch(/name="careInterest"\s+growth/);
     expect(body).toMatch(/name="project"\s+Monthly updates/);
     // The honeypot field is present but empty.
     expect(body).toMatch(/name="website"\s+-{2,}/);
@@ -99,7 +143,14 @@ test.describe("Care enquiry form", () => {
       await page.goto("/care#care-enquiry");
 
       const form = careForm(page);
-      for (const field of [form.name, form.email, form.website, form.help]) {
+      for (const field of [
+        form.name,
+        form.email,
+        form.website,
+        form.platform,
+        form.interest,
+        form.help,
+      ]) {
         await field.scrollIntoViewIfNeeded();
         await expectWithinViewport(page, field);
         await expect(field).toBeEditable();

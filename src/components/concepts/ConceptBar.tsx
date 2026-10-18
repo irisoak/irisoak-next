@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "./ConceptBar.module.css";
 
 type ConceptBarProps = {
   number: string;
@@ -10,16 +11,16 @@ export default function ConceptBar({
   packageName,
 }: ConceptBarProps) {
   return (
-    <div className="concept-bar">
-      <Link href="/concepts" className="concept-bar__back">
+    <div className={styles.bar}>
+      <Link href="/concepts" className={styles.back}>
         ← Back to Concepts
       </Link>
 
-      <span className="concept-bar__identity">
+      <span className={styles.identity}>
         Iris & Oak / Concept {number}
       </span>
 
-      <span className="concept-bar__package">
+      <span className={styles.package}>
         {packageName}
       </span>
     </div>

@@ -7,9 +7,10 @@ import {
   Activity,
   ArrowRight,
   Check,
-  CircleHelp,
+  CodeXml,
   FileCheck2,
   Gauge,
+  MonitorSmartphone,
   Search,
   ShieldCheck,
   Smartphone,
@@ -110,7 +111,7 @@ const faqs: faq[] = [
     question: "Can you fix the issues in the Site Check-up report?",
     answer: (
       <>
-        Absolutely. Just reply to your report email and I'll quote for any one-off
+        Absolutely. Just reply to your report email and I’ll quote for any one-off
         fixes. If your website needs regular support, a{" "}
         <Link href="/care#plans" className="care-faq__link">
           <strong>Care plan</strong>
@@ -127,7 +128,7 @@ const faqs: faq[] = [
         You can cancel for a <strong>full refund</strong> any time before the
         review starts, or receive a <strong>50%</strong> refund if you cancel 
         after it starts but before the report is delivered. Once the report is 
-        delivered, the work is complete. If anything isn't clear, I'll happily 
+        delivered, the work is complete. If anything isn’t clear, I’ll happily
         talk it through with you.
       </>
     ),
@@ -194,7 +195,7 @@ export default function CarePage() {
             <p className="care-eyebrow">Clear options, practical support</p>
             <h2 id="plans-title">Choose the support that fits.</h2>
           </div>
-          <p>Start with a one-off check-up, or choose ongoing care for an eligible website.</p>
+          <p>Start with a one-off check-up, or ongoing care for custom-built and WordPress websites.</p>
         </div>
 
         <div className="care-plan-grid">
@@ -208,15 +209,23 @@ export default function CarePage() {
               <li><Check size={15} aria-hidden="true" /> Findings explained and prioritised</li>
               <li><Check size={15} aria-hidden="true" /> Report normally within five working days</li>
             </ul>
+            <p className="care-plan-card__scope">£149 credited if you start an annual plan within 14 days.</p>
             <Link className="care-button care-button--outline care-plan-card__cta--light" href="/#contact">Ask about a check-up <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
 
           <article className="care-plan-card">
+            <span className="care-plan-card__badge">Most popular</span>
             <p className="care-plan-card__type">Ongoing website care</p>
             <h3>Core</h3>
             <p className="care-plan-card__price">£59 <span>/ month</span></p>
             <p className="care-plan-card__annual">or £590 / year</p>
             <p className="care-plan-card__description">Routine maintenance and agreed essential checks for custom-built and WordPress websites.</p>
+            <ul>
+              <li><Check size={15} aria-hidden="true" /> Updates and security checks</li>
+              <li><Check size={15} aria-hidden="true" /> Uptime monitoring</li>
+              <li><Check size={15} aria-hidden="true" /> Monthly health check and report</li>
+              <li><Check size={15} aria-hidden="true" /> Email support within 2 working days</li>
+            </ul>
             <p className="care-plan-card__scope">The tasks included are confirmed for your site before you start.</p>
             <Link className="care-button care-button--outline care-plan-card__cta--filled" href="/#contact">Discuss Core <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
@@ -227,18 +236,24 @@ export default function CarePage() {
             <p className="care-plan-card__price">£99 <span>/ month</span></p>
             <p className="care-plan-card__annual">or £990 / year</p>
             <p className="care-plan-card__description">More hands-on support for websites that need regular attention and agreed improvements.</p>
+            <ul>
+              <li><Check size={15} aria-hidden="true" /> Everything in Core</li>
+              <li><Check size={15} aria-hidden="true" /> Performance improvements</li>
+              <li><Check size={15} aria-hidden="true" /> Up to 1 hour of content updates per month</li>
+              <li><Check size={15} aria-hidden="true" /> Priority support within 1 working day</li>
+            </ul>
             <p className="care-plan-card__scope">The tasks and support level are confirmed for your site before you start.</p>
             <Link className="care-button care-plan-card__cta--light" href="/#contact">Discuss Growth <ArrowRight size={16} aria-hidden="true" /></Link>
           </article>
         </div>
-        <p className="care-plans__note">Ongoing plans are for custom-built and WordPress sites. Check-up work for other platforms is available by request. Prices shown are the total amounts payable; VAT is not charged.</p>
+        <p className="care-plans__note">Ongoing plans are for custom-built and WordPress sites. The Site Check-up is available for all listed platforms. Prices shown are the total amounts payable; VAT is not charged.</p>
       </section>
 
       <section className="care-benefits" aria-label="What the service covers">
         <div><Wrench aria-hidden="true" /><span>Updates and maintenance</span></div>
         <div><Activity aria-hidden="true" /><span>Uptime and performance checks</span></div>
         <div><FileCheck2 aria-hidden="true" /><span>Clear findings and next steps</span></div>
-        <div><CircleHelp aria-hidden="true" /><span>Support that fits your platform</span></div>
+        <div><MonitorSmartphone aria-hidden="true" /><span>Support that fits your platform</span></div>
       </section>
 
       <section className="care-platforms care-section" aria-labelledby="platforms-title">
@@ -248,12 +263,12 @@ export default function CarePage() {
         </div>
         <div className="care-platforms__grid">
           <article>
-            <span className="care-platforms__mark" aria-hidden="true">W</span>
+            <span className="care-platforms__mark" aria-hidden="true"><CodeXml size={20} /></span>
             <div><h3>Custom-built &amp; WordPress</h3><p>Ongoing Core and Growth care plans are available.</p></div>
           </article>
           <article>
             <span className="care-platforms__mark care-platforms__mark--alt" aria-hidden="true"><Search size={20} /></span>
-            <div><h3>Squarespace, Wix, GoDaddy, Shopify &amp; Webflow</h3><p>Specific checks can be arranged when you need them.</p></div>
+            <div><h3>Squarespace, Wix, GoDaddy, Shopify &amp; Webflow</h3><p>The £149 Site Check-up is available. Ongoing care plans aren’t.</p></div>
           </article>
           <p className="care-platforms__note">What I can check or change depends on the access and features your platform provides. I never ask for your password.</p>
         </div>
@@ -288,11 +303,19 @@ export default function CarePage() {
 
       <section className="care-grade" aria-labelledby="grade-title">
         <div className="care-grade__letter" aria-hidden="true">A–F</div>
-        <div><p className="care-eyebrow">A useful score, with context</p><h2 id="grade-title">The letter tells a story. The findings explain it.</h2><p>Your report shows the overall grade alongside the checks behind it. A stronger grade means fewer or less significant issues were found; any grade comes with clear reasons and practical next steps.</p></div>
+        <div><p className="care-eyebrow">A useful score, with context</p><h2 id="grade-title">The letter tells a story. The findings explain it.</h2><p>Your report shows the overall grade alongside the checks behind it. A stronger grade means fewer or less significant issues were found; any grade comes with clear reasons and practical next steps.</p>
+          {/* Bands match gradeFor() in components/care/SiteCheckupReport.tsx (there is no E grade). */}
+          <ul className="care-grade__key" aria-label="Grade key">
+            <li><b>A:</b> strong (90–100%)</li>
+            <li><b>B:</b> good (80–89%)</li>
+            <li><b>C:</b> some improvements (70–79%)</li>
+            <li><b>D:</b> needs attention (60–69%)</li>
+            <li><b>F:</b> priority issues (below 60%)</li>
+          </ul></div>
       </section>
 
       <section className="care-faq care-section" id="faqs" aria-labelledby="faq-title">
-        <div className="care-section__heading"><div><p className="care-eyebrow">FAQs</p><h2 id="faq-title">A few helpful details.</h2></div><p>Still unsure? <Link href="/#contact">Get in touch</Link>.</p></div>
+        <div className="care-section__heading"><div><p className="care-eyebrow">FAQs</p><h2 id="faq-title">A few helpful details.</h2></div><p>Still unsure? <strong><Link href="#care-enquiry">Get in touch</Link></strong>.</p></div>
         <div className="care-faq__list">
           {faqs.map((faq) => <details key={faq.question}><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
         </div>

@@ -35,6 +35,7 @@ type EnquiryRequest = {
   // Care
   currentPlatform?: string;
   supportType?: string;
+  careInterest?: string;
 
   // Custom
   customBuild?: string;
@@ -202,10 +203,20 @@ const pageCountLabels: Record<string, string> = {
 const platformLabels: Record<string, string> = {
   wordpress: "WordPress",
   squarespace: "Squarespace",
+  wix: "Wix",
+  godaddy: "GoDaddy Website Builder",
   shopify: "Shopify",
+  webflow: "Webflow",
   custom: "Custom-built",
   other: "Other",
   unsure: "I'm not sure",
+};
+
+const careInterestLabels: Record<string, string> = {
+  "site-check-up": "Site Check-up",
+  core: "Core",
+  growth: "Growth",
+  unsure: "Not sure",
 };
 
 const supportTypeLabels: Record<string, string> = {
@@ -272,6 +283,7 @@ export async function POST(request: Request) {
 
       currentPlatform,
       supportType,
+      careInterest,
 
       customBuild,
       integrations,
@@ -447,14 +459,30 @@ export async function POST(request: Request) {
         </p>
 
         <p>
-          <strong>Support needed</strong><br />
+          <strong>Interested in</strong><br />
           ${escapeHtml(
             formatOptionalValue(
-              supportType,
-              supportTypeLabels
+              careInterest,
+              careInterestLabels
             )
           )}
         </p>
+
+        ${
+          supportType
+            ? `
+              <p>
+                <strong>Support needed</strong><br />
+                ${escapeHtml(
+                  formatOptionalValue(
+                    supportType,
+                    supportTypeLabels
+                  )
+                )}
+              </p>
+            `
+            : ""
+        }
       `;
     }
 
@@ -512,6 +540,17 @@ export async function POST(request: Request) {
             <strong>Programme</strong><br />
             ${serviceName}
           </p>
+
+          ${
+            currentWebsiteUrl
+              ? `
+                <p>
+                  <strong>Website</strong><br />
+                  ${escapeHtml(currentWebsiteUrl)}
+                </p>
+              `
+              : ""
+          }
         `
       : `
           <p>

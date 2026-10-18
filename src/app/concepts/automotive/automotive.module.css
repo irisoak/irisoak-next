@@ -251,7 +251,6 @@ html {
   margin-top: 2rem;
 }
 
-.primaryButton,
 .secondaryButton {
   display: inline-flex;
   align-items: center;
@@ -276,20 +275,6 @@ html {
     color 200ms ease;
 }
 
-.primaryButton {
-  background: #dadf62;
-  border: 1px solid #dadf62;
-
-  color: #121412;
-}
-
-.primaryButton:hover {
-  background: #121412;
-  border-color: #dadf62;
-
-  color: #dadf62;
-}
-
 .secondaryButton {
   background: transparent;
   border: 1px solid #555951;
@@ -304,7 +289,6 @@ html {
   color: #121412;
 }
 
-.primaryButton:focus-visible,
 .secondaryButton:focus-visible {
   outline: 2px solid #dadf62;
   outline-offset: 3px;
@@ -1105,8 +1089,9 @@ html {
     padding: 5rem 0 3rem;
   }
 
+  /* Sized so "Straightforward" fits on one line. */
   .title {
-    font-size: clamp(3rem, 15vw, 5rem);
+    font-size: clamp(2.4rem, 12.5vw, 5rem);
   }
 
   .serviceStrip {
@@ -1274,7 +1259,6 @@ html {
   }
 
   .navLinks a,
-  .primaryButton,
   .secondaryButton,
   .heroService,
   .heroService::before,
