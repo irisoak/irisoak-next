@@ -24,6 +24,11 @@ import {
   Wallet,
   type LucideIcon,
 } from "lucide-react";
+import {
+  ApplyButton,
+  PartnershipApplicationForm,
+  PartnershipApplicationProvider,
+} from "@/components/portfolio-partnership/PartnershipApplication";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = pageMetadata({
@@ -707,6 +712,7 @@ export default function PortfolioPartnershipPage() {
           </div>
         </section>
 
+        <PartnershipApplicationProvider>
         <section
           className={styles.contact}
           id="contact"
@@ -726,10 +732,10 @@ export default function PortfolioPartnershipPage() {
             </div>
 
             <div className={styles.contactActions}>
-              <Link className={styles.contactCta} href={partnershipEnquiryHref}>
+              <ApplyButton className={styles.contactCta}>
                 Apply for the partnership
                 <ArrowRight size={16} aria-hidden="true" />
-              </Link>
+              </ApplyButton>
 
               <p className={styles.applicationWindow}>
                 Reviewing applications until 30 November 2026.
@@ -741,6 +747,9 @@ export default function PortfolioPartnershipPage() {
             </div>
           </div>
         </section>
+
+        <PartnershipApplicationForm />
+        </PartnershipApplicationProvider>
       </div>
 
       {/* The shared Iris & Oak footer is rendered by app/layout.tsx. */}

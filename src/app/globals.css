@@ -1759,13 +1759,85 @@ a.iowork__card:hover {
   padding-block: 2.5rem 3rem;
 }
 
-.services-page__refresh-note {
-  margin: 0.9rem 0 0;
+.services-page__package-notes .services-page__refresh-note {
+  margin: 0;
   color: var(--colour-text-secondary);
-  font-family: var(--font-heading-family);
-  font-size: 0.72rem;
-  font-style: italic;
-  line-height: 1.45;
+  font-family: var(--font-body-family);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.services-page__package-notes .services-page__package-note--strong {
+  margin-bottom: 0.2rem;
+  color: var(--colour-text-primary);
+  font-weight: 700;
+}
+
+/* Shared notes below the package grids */
+.services-page__package-notes {
+  display: grid;
+  gap: 0.4rem;
+  max-width: 52rem;
+  margin-top: 1.1rem;
+}
+
+.services-page__package-notes p {
+  margin: 0;
+  color: var(--colour-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.services-page__package-notes a {
+  color: var(--services-plum);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.services-page__popular-badge {
+  position: absolute;
+  top: -0.7rem;
+  left: 1.2rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--services-plum);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.services-page__timeline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: auto 0 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--colour-border);
+  color: var(--colour-text-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.services-page__timeline svg {
+  flex: 0 0 auto;
+  color: var(--services-plum);
+}
+
+.services-page__timeline + .services-page__card-link {
+  margin-top: 0;
+}
+
+/* Scope notes in the service cards */
+.services-page .services-page__scope-note {
+  max-width: 31rem;
+  margin: 0.85rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--colour-border);
+  color: var(--colour-text-secondary);
+  font-size: 0.74rem;
+  line-height: 1.5;
 }
 
 /* ========================================
@@ -1997,12 +2069,20 @@ Web apps and integrations
   color: var(--services-plum);
 }
 
-.services-page__integration-list strong {
+.services-page__integration-price {
   color: var(--services-plum);
   font-family: var(--font-heading-family);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 400;
   white-space: nowrap;
+}
+
+.services-page .services-page__integration-example {
+  margin: 0.6rem 0 0;
+  color: var(--colour-text-secondary);
+  font-size: 0.74rem;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 /* ========================================
@@ -2042,27 +2122,34 @@ Web apps and integrations
 .services-page__business-intro {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  display: grid;
+  justify-items: start;
+  align-content: start;
 }
 
 .services-page__business-intro .services-page__round-icon {
-  margin-top: 0;
+  margin-top: 0.2rem;
 }
 
 .services-page__business-price {
-  margin: 0;
+  margin: 0.55rem 0 0;
   color: var(--colour-text-secondary);
   font-family: var(--font-heading-family);
   font-size: 0.95rem;
 }
 
-.services-page__business-intro > div > p:last-child {
-  margin: 0.25rem 0 0;
+.services-page__business-intro > p:last-child {
+  max-width: 29rem;
+  margin: 0.35rem 0 0;
   color: var(--colour-text-secondary);
-  font-size: 0.7rem;
-  line-height: 1.45;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.services-page__business-details {
+  position: relative;
+  z-index: 1;
+  padding-right: 3.5rem;
 }
 
 .services-page__business-list {
@@ -2142,13 +2229,53 @@ Web apps and integrations
   line-height: 1.4;
 }
 
-.services-page__also-check {
+.services-page__addon-groups {
   display: grid;
-  width: 1rem;
-  height: 1rem;
-  place-items: center;
-  border: 1px solid var(--services-plum);
-  border-radius: 50%;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 2rem;
+}
+
+.services-page__addon-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.6rem;
+  color: var(--colour-text-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.services-page__addon-group h3 svg {
+  flex: 0 0 auto;
+  color: var(--services-plum);
+}
+
+.services-page__addon-see {
+  color: var(--colour-text-secondary);
+  font-weight: 500;
+}
+
+.services-page__addon-see a {
+  color: var(--services-plum);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.services-page__addon-group .services-page__also-list {
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+
+.services-page__addon-note {
+  margin: 0.6rem 0 0;
+  color: var(--colour-text-secondary);
+  font-size: 0.74rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.services-page__addon-marker {
+  justify-self: center;
   color: var(--services-plum);
 }
 
@@ -2230,8 +2357,15 @@ Web apps and integrations
    Responsive layout
 ======================================== */
 
-/* Single-column cards: place the app preview below the copy, not over it. */
-@media (max-width: 39.99rem) {
+/* Desktop layout: keep the Web apps scope note clear of the preview. */
+@media (min-width: 64rem) {
+  .services-page__web-apps .services-page__scope-note {
+    max-width: calc(100% - 1.5rem);
+  }
+}
+
+/* Narrow cards (mobile and tablet): place the app preview below the copy. */
+@media (max-width: 63.99rem) {
   .services-page__web-apps-copy {
     max-width: none;
   }
@@ -2256,16 +2390,18 @@ Web apps and integrations
     width: 52%;
   }
 
-  .services-page__section-heading,
-  .services-page__also-heading {
+  .services-page__section-heading {
     grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.65fr);
     align-items: end;
     gap: 1.5rem;
   }
 
-  .services-page__section-heading > p,
-  .services-page__also-heading > p {
+  .services-page__section-heading > p {
     justify-self: end;
+  }
+
+  .services-page__addon-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .services-page__pricing-grid {
@@ -2277,9 +2413,13 @@ Web apps and integrations
   }
 
   .services-page__business-tools {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
     gap: 0.8rem 1.5rem;
+  }
+
+  .services-page__business-details {
+    padding-right: 4rem;
   }
 
   .services-page__business-title {
@@ -2375,6 +2515,14 @@ Web apps and integrations
     gap: 0.8rem 2rem;
     margin-bottom: 2rem;
     padding: 1.35rem;
+  }
+
+  .services-page__business-details {
+    padding-right: 5rem;
+  }
+
+  .services-page__addon-groups {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .services-page__business-title {

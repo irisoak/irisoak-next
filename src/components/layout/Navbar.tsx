@@ -8,7 +8,7 @@ import Container from "./Container";
 const navigation = [
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
-  { href: "/care", label: "Care" },
+  { href: "/care", label: "Website Care" },
 ];
 
 const MOBILE_MENU_ID = "mobile-navigation";

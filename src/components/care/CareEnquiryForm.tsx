@@ -10,6 +10,26 @@ import { useEnquirySubmit } from "@/components/enquiry/useEnquirySubmit";
   Care enquiry form. Uses the shared enquiry flow with service "care", so
   the email is labelled as a Care enquiry.
 */
+/* Values match the platform and interest labels in the enquiry route. */
+const PLATFORMS = [
+  { value: "custom", label: "Custom-built" },
+  { value: "wordpress", label: "WordPress" },
+  { value: "squarespace", label: "Squarespace" },
+  { value: "wix", label: "Wix" },
+  { value: "godaddy", label: "GoDaddy Website Builder" },
+  { value: "shopify", label: "Shopify" },
+  { value: "webflow", label: "Webflow" },
+  { value: "other", label: "Other" },
+  { value: "unsure", label: "Not sure" },
+];
+
+const INTERESTS = [
+  { value: "site-check-up", label: "Site Check-up" },
+  { value: "core", label: "Core" },
+  { value: "growth", label: "Growth" },
+  { value: "unsure", label: "Not sure" },
+];
+
 export default function CareEnquiryForm() {
   const { status, errorMessage, submitEnquiry } = useEnquirySubmit();
 
@@ -68,6 +88,46 @@ export default function CareEnquiryForm() {
         />
       </div>
 
+      <div className="care-enquiry__row">
+        <div className="care-enquiry__field">
+          <label htmlFor="care-platform">Website platform</label>
+          <select
+            id="care-platform"
+            name="currentPlatform"
+            defaultValue=""
+            required
+          >
+            <option value="" disabled>
+              Select a platform
+            </option>
+            {PLATFORMS.map(({ value, label }) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="care-enquiry__field">
+          <label htmlFor="care-interest">I’m interested in</label>
+          <select
+            id="care-interest"
+            name="careInterest"
+            defaultValue=""
+            required
+          >
+            <option value="" disabled>
+              Select an option
+            </option>
+            {INTERESTS.map(({ value, label }) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <div className="care-enquiry__field">
         <label htmlFor="care-help">What would you like help with?</label>
         <textarea
@@ -98,7 +158,7 @@ export default function CareEnquiryForm() {
           "Sending…"
         ) : (
           <>
-            Send Care enquiry <ArrowRight size={17} aria-hidden="true" />
+            Send enquiry <ArrowRight size={17} aria-hidden="true" />
           </>
         )}
       </button>

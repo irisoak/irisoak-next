@@ -11,11 +11,8 @@
  */
 
 .care-page {
-  --care-plum: #3a2034;
   --care-plum-deep: #24152a;
-  --care-rose: #8a536b;
   --care-rose-soft: #f3e8ec;
-  --care-cream: #f7f5ef;
   --care-paper: #fffefa;
   --care-ink: #29212a;
   --care-muted: #625963;
@@ -375,6 +372,10 @@
   color: var(--care-green);
 }
 
+.care-plan-card > ul + .care-plan-card__scope {
+  margin-top: -0.6rem;
+}
+
 .care-plan-card__scope {
   margin: 0.7rem 0 1.3rem;
   color: var(--care-muted);
@@ -396,6 +397,45 @@
   border-color: #8a536b;
   background: #8a536b;
   color: var(--care-paper) !important;
+}
+
+/* Plan CTAs: Core filled plum; Site Check-up and Growth light, rose on hover. */
+.care-plan-card__cta--filled {
+  border-color: var(--care-plum-deep);
+  background: var(--care-plum-deep);
+  color: var(--care-paper) !important;
+}
+
+.care-plan-card__cta--filled:hover {
+  border-color: #8a536b;
+  background: #8a536b;
+  color: var(--care-paper) !important;
+}
+
+.care-plan-card__cta--light {
+  border: 1px solid var(--care-plum-deep);
+  background: var(--care-paper);
+  color: var(--care-plum-deep) !important;
+}
+
+.care-plan-card__cta--light:hover {
+  border-color: #8a536b;
+  background: #8a536b;
+  color: var(--care-paper) !important;
+}
+
+.care-plan-card__badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--care-rose-soft);
+  color: var(--care-plum-deep);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .care-plans__note {
@@ -596,12 +636,41 @@
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
 }
 
-.care-grade p:last-child {
+.care-grade p:not(.care-eyebrow) {
   max-width: 54rem;
   margin: 0.8rem 0 0;
   color: var(--care-muted);
   font-size: 0.9rem;
   line-height: 1.65;
+}
+
+.care-grade > div {
+  min-width: 0;
+}
+
+.care-grade__key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.75rem;
+  max-width: 54rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  color: var(--care-muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  list-style: none;
+}
+
+.care-grade__key li {
+  white-space: nowrap;
+}
+
+.care-grade__key b {
+  margin-right: 0.3rem;
+  color: var(--care-ink);
+  font-family: var(--font-heading-family, Georgia, serif);
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 /* FAQs and closing contact section */
@@ -692,6 +761,7 @@
 }
 
 .care-enquiry__field input,
+.care-enquiry__field select,
 .care-enquiry__field textarea {
   width: 100%;
   padding: 0.8rem 0.95rem;
@@ -713,7 +783,25 @@
   opacity: 0.75;
 }
 
+.care-enquiry__field select {
+  appearance: none;
+  padding-right: 2.4rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2324152a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.9rem center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.care-enquiry__field select:invalid {
+  color: var(--care-muted);
+}
+
+.care-enquiry__field select option {
+  color: var(--care-ink);
+}
+
 .care-enquiry__field input:hover,
+.care-enquiry__field select:hover,
 .care-enquiry__field textarea:hover {
   border-color: var(--care-muted);
 }
@@ -782,31 +870,6 @@
 /* Responsive layouts and accessibility */
 /* Desktop: hero heading on two lines and check lists always visible */
 @media (min-width: 64rem) {
-  /* Plan CTAs: Core filled plum; Site Check-up and Growth light, rose on hover. */
-  .care-plan-card__cta--filled {
-    border-color: var(--care-plum-deep);
-    background: var(--care-plum-deep);
-    color: var(--care-paper) !important;
-  }
-
-  .care-plan-card__cta--filled:hover {
-    border-color: #8a536b;
-    background: #8a536b;
-    color: var(--care-paper) !important;
-  }
-
-  .care-plan-card__cta--light {
-    border: 1px solid var(--care-plum-deep);
-    background: var(--care-paper);
-    color: var(--care-plum-deep) !important;
-  }
-
-  .care-plan-card__cta--light:hover {
-    border-color: #8a536b;
-    background: #8a536b;
-    color: var(--care-paper) !important;
-  }
-
   .care-check-group--collapsible {
     display: none;
   }

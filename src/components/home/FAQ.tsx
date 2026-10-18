@@ -25,8 +25,8 @@ const faqItems: FAQItem[] = [
     question: "How long does a website take?",
     answer: (
       <>
-        Most one-page websites take <strong>one to two weeks</strong>. Larger sites can take <strong>up
-        to three</strong>. For web apps and custom tools, I’ll confirm a timeline once we’ve agreed the scope.
+        Most one-page websites take <strong>one to two weeks</strong>. Larger sites usually take{" "}
+        <strong>three to four weeks</strong>. For web apps and custom tools, I’ll confirm a timeline once we’ve agreed the scope.
       </>
     ),
   },
